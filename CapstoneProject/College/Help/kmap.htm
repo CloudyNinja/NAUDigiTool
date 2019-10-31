@@ -1,0 +1,82 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="en-us">
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>Using the Karnaugh Map </title>
+</head>
+
+<body>
+
+<h3>Deciphering the Karnaugh Map</h3>
+<p>&nbsp;&nbsp;&nbsp; The Karnaugh Map is&nbsp; tool that uses the pattern recognition
+skills of humans to minimize boolean equations.&nbsp; The Karnaugh Map is
+effective on problems with up to six variables, and can produce both
+Sum-of-Product or Product-of-Sum equations. </p>
+
+<p>&nbsp;&nbsp;&nbsp; Each cell in the Karnaugh map corresponds to a line in the
+<a href="ttable.htm">
+Truth Table</a>. </p>
+
+<p align = "center"><img border="0" src="ttableandkmap.jpg" width="355" height="285"> </p>
+
+<p>&nbsp;&nbsp;&nbsp; </p>
+
+<p>&nbsp;Each cell is one &quot;bit&quot; different from each of
+it's neighbors.&nbsp; </p>
+
+<p align = "center"><img border="0" src="cell.jpg" width="275" height="285"> </p>
+
+<p>&nbsp;&nbsp; A cell has as many neighbors as there are variables in the Truth
+Table.&nbsp; </p>
+
+<p align = "center"><img border="0" src="3varneighbors.jpg" width="280" height="201"> </p>
+
+<p>&nbsp;&nbsp; The actual drawing of a Karnaugh Map can vary, as long as each
+cell remains one bit different from each neighbor.&nbsp; </p>
+
+<p align = "center"><img border="0" src="3variety.jpg" width="516" height="719"> </p>
+
+<p>&nbsp; </p>
+
+<h4>Groupings </h4>
+
+<p>&nbsp;&nbsp;&nbsp; Groupings in a Karnaugh Map are made by selecting a group
+of neighboring cells that share the same value.&nbsp; This can be either all
+1's, for Sum-of-Products, or all 0's for Product-of-Sums.&nbsp; All edges of the
+grouping must contain a number of cells that is a multiple of 2 (i.e. 1, 2. or
+4).&nbsp; Thus, all groupings will contain a total number of cells that is a
+power of two (i.e. 1, 2, 4, 8, 32, or 64).&nbsp; </p>
+
+<p align = "center"><img border="0" src="groups.jpg" width="295" height="302"> </p>
+
+<p>&nbsp;&nbsp;&nbsp; As groupings are based on neighboring cells, and not the
+actual representation of the Karnaugh Map, wrap-around is necessary to ensure
+minimal groupings.&nbsp; </p>
+
+<p align = "center"><img border="0" src="groupswrap.jpg" width="295" height="302"> </p>
+
+<p>&nbsp;&nbsp;&nbsp; The larger the grouping, the more simpler the
+equation.&nbsp; If all the groupings are a large as they can possibly be made,
+the resulting equation will be minimized. </p>
+
+<p>&nbsp;&nbsp;&nbsp; Groups may also overlap each other, as long as they follow
+the above rules. </p>
+
+<p>&nbsp; </p>
+
+<h4>Don't Cares </h4>
+
+<p>&nbsp;&nbsp;&nbsp; A Don't Care is an entry in the Truth Table that, for
+whatever reason, doesn't matter in to the final equation.&nbsp; The Don't Care
+is represented by X's in this particular setup.&nbsp; A Don't Care can be deemed
+either a 1 or a 0, whichever is more convenient to supply the simplest boolean
+equation. </p>
+
+<p><a href="index.htm">return</a> to Help MainPage.</p>
+
+</body>
+
+</html>

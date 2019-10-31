@@ -1,0 +1,396 @@
+/**
+ * BooleanEquation.java
+ * 
+ * @author Erica Liszewski
+ * 
+ * This class represents a boolean equation.  In it's pure form, this class
+ * would be constructed given a string representation of a boolean equation
+ * and reduce that equation into a truth table which would be he untimante
+ * "meaning" of that equation.  In reality, we take a boolean equation, and
+ * build a tree of Nodes.  These Nodes can compress to produce a SOP equation 
+ * (from anything...again in theory).
+ * 
+ */
+
+package logic.equation;
+
+import java.util.StringTokenizer;
+import logic.utils.Constants;
+
+public class BooleanEquation{
+	private String org_eq;
+	private String min_eq;
+	private int [] ttable;
+	private char [] symbols;
+	private int terms;
+	private Node root;
+	private String working;
+	private boolean SOP;
+	
+	
+	/**
+	 * Constructor using default variable titles.
+	 * Titles A-F based on number of varibles.
+	 * @param in_eq String of equation 
+	 * @param vars number of varibles in truth table
+	 */
+	public BooleanEquation(String in_eq, int vars ){
+		this.org_eq = in_eq;
+		this.ttable = new int [(int)Math.pow(2.0, (double)vars)];
+		this.symbols = new char[vars];
+		this.SOP =false;
+		char [] titles = {'A', 'B', 'C', 'D', 'E', 'F'};
+		for(int i=0; i<vars; i++){
+			symbols[i] = titles[i];
+		}
+		this.working = in_eq;
+		this.min_eq = minimize();
+		translate();
+	}
+	
+	/**
+	 * Constructor using specified titles for variables
+	 * @param in_eq String of equation
+	 * @param vars Number of variables in truth table
+	 * @param titles char [] of desired title, most significant title first [0].
+	 */
+	public BooleanEquation(String in_eq, int vars, char[]titles){
+		this.org_eq = in_eq;
+		this.ttable = new int [(int)Math.pow(2.0, (double)vars)];
+		this.SOP = false;
+		this.symbols = new char[vars];
+		for(int i=0; i<vars; i++){
+			symbols[i] = titles[i];
+					}
+		this.working = in_eq;
+		this.min_eq = minimize();
+		translate();
+	}
+	
+	/**
+	 * Returns true if temp's truth table equals this truth table
+	 * @param temp input BooleanEquation to be compared
+	 * @return true if temps truthtable is equal
+	 */
+	public boolean equals(BooleanEquation temp){
+		/*
+		 * For the moment, the checking of equations is purely string
+		 * based.  Eventually, the equation will be mapped to an
+		 * array representing a truth table, and truth tables will]
+		 * be compared.  The next line would comapare truth tables.
+		 * However, for the moment we're just comparing strings.
+		 */
+		//return Arrays.equals(this.ttable, temp.getTable());
+		compareEq(temp);
+				
+		return true;
+		//return compareEq(temp);
+	}
+	
+	/**
+	 * A "quick fix" to make equation checking possible.  This compares
+	 * the minimized string of this BooleanEquation with the minimized 
+	 * string of another.  Keep in mind, minimized strings are always
+	 * SOP.
+	 * @param temp
+	 */
+	private void compareEq(BooleanEquation temp){
+		StringTokenizer controleq = new StringTokenizer(this.min_eq, "+");
+		int eqlength = controleq.countTokens();
+		String [] control = new String[eqlength];
+		
+		StringTokenizer testeq = new StringTokenizer(temp.getMinEq(), "+");
+		int tslength = testeq.countTokens();
+		String [] test = new String[tslength];
+		
+		//if(tslength!=eqlength){
+					//logic.utils.StatusFlags.EQ_ERROR=true;
+					//if(Constants.DEBUG)System.out.println("Equations not equal");
+					//return;
+				//}
+		
+				if(Constants.DEBUG)System.out.println("Control Equation");
+				for (int i=0; i<eqlength; i++){
+				control[i] = controleq.nextToken();
+				if(Constants.DEBUG)System.out.println(control[i]);
+					}
+				if(Constants.DEBUG)System.out.println("Test Equation");
+				for (int i=0; i<tslength; i++){
+							test[i] = testeq.nextToken();
+							if(Constants.DEBUG)System.out.println(test[i]);
+							}
+					
+				if(tslength!=eqlength){
+					logic.utils.StatusFlags.EQ_ERROR=true;
+					if(Constants.DEBUG)System.out.println("Equations not equal");
+					return;
+				}
+					
+				if(tslength == 1){
+						if(!control[0].equals(test[0])){
+							logic.utils.StatusFlags.EQ_ERROR=true;
+							return;	
+						}		
+				}
+					
+				for(int i = 0; i<tslength; i++){
+					for(int j=0; j<eqlength; j++){
+						if (control[j] == "#") continue;
+						else if(areEqual(test[i], control[j])){
+							control[j] = "#";
+							break;
+						}
+					}
+				}
+		
+				for( int j=0; j<eqlength; j++){
+						if(control[j]!="#"){
+							if(Constants.DEBUG)System.out.println("Equations not equal");
+							logic.utils.StatusFlags.EQ_ERROR = true;
+							break;	
+						}
+				}
+	}
+	
+	/**
+		 * Checks two Strings to see if they are logically the same.
+		 * i.e. they have the same charecters, but possibly not in 
+		 * the same order.
+		 * @param a
+		 * @param b
+		 * @return
+		 */
+		private boolean areEqual(String a, String b){
+			String [] tokena = parse(a);
+			String [] tokenb = parse(b);
+		
+			if(tokena.length != tokenb.length){
+				if(Constants.DEBUG)System.out.println("Tokens not equal");
+				return false;
+				}
+		
+			if(Constants.DEBUG)System.out.println("Tokens:");
+			for(int i = 0; i<tokena.length; i++){
+				if(Constants.DEBUG) System.out.println("A: " + tokena[i]);
+				if(Constants.DEBUG) System.out.println("B: " + tokenb[i]);
+			}
+		
+			for (int i=0; i<tokena.length; i++){
+				for(int j=0; j<tokenb.length; j++){
+					if(tokenb[j] == "#") continue;
+					else if(tokena[i].equals(tokenb[j])){
+						if(Constants.DEBUG)System.out.println("tokens are equal:" + tokena[i] + " " + tokenb[j]);
+						tokenb[j] = "#";
+						break;
+					}
+				
+				}
+			}
+			for( int j=0; j<tokenb.length; j++){
+					if(tokenb[j]!="#") {
+						if(Constants.DEBUG)System.out.println("tokens not equal");
+						return false;
+						} 
+			}
+			if(Constants.DEBUG)System.out.println("All good");
+			return true;
+		
+		}
+		
+	/**
+		 * Makes a string into an array of strings,
+		 * Useful because it will put "A" into a cell, 
+		 * and "'A" into a single cell.  The array will represent
+		 * only the characters, not how they are deliminated.
+		 * @param a
+		 * @return
+		 */
+		private String[] parse(String a){
+			//System.out.println("In Parser");
+			int counta = 0;
+			int lengtha = a.length();
+			for(int i=0; i<lengtha; i++){
+				if(Character.isLetter(a.charAt(i)))counta++;	
+			}
+			String [] tokena = new String[counta];
+			
+			int i = 0;
+			counta = 0;
+			while(i<lengtha && counta<tokena.length){
+				if(a.substring(i, i+1).equals("'")){
+					tokena[counta]= "'" + a.substring(i+1,i+2);
+					//System.out.println(tokena[counta]);
+					counta++;
+					i+=2;
+				}
+				else if(Character.isLetter(a.charAt(i))){
+					tokena[counta] = a.substring(i,i+1);
+					counta++;
+					i++;
+				}else i++;
+			}
+			
+			//put tokens in alphabetical order, regardless if they are barred
+			boolean sorted = true;
+			do{
+				sorted = true; //assume that it is sorted
+				for (int j=0; j<tokena.length-1; ++j){
+					if (tokena[j].charAt(tokena[j].length() - 1) < 
+							tokena[j+1].charAt(tokena[j+1].length() - 1)){
+						String temp = tokena[j];
+						tokena[j] = tokena[j+1];
+						tokena[j+1] = temp;
+						sorted = false;
+					}
+				}
+			} while ( sorted != true );
+			
+			return tokena;
+		}
+		
+			
+	/**
+	 * Returns the minimized equation
+	 * @return
+	 */
+	public String getMinEq(){
+		return this.min_eq;
+	}
+	
+	/**
+	 * Returns truth table
+	 * @return
+	 */
+	public int[] getTable(){
+		return ttable;
+	}
+	
+  	/**
+  	 * starts the minimization process. 
+  	 * @return
+  	 */
+	private String minimize(){
+		//StringBuffer build_eq = new StringBuffer();
+		root = parse();
+ 		String min = root.compress();
+		if(Constants.DEBUG)System.out.println("String is: "+min);
+ 		return min;
+		//return build_eq;
+	}
+	
+	/**
+	 * Following is a not-so-great parser of an equation string
+	 * into a parse tree of nodes.  While going into a parse tree
+	 * is good, the actual parser is kinda hacked.  Deadlines must
+	 * be met, and good code sometimes gets run over to get things
+	 * done.  Feel free to replace this if you want.
+	 * @return
+	 */
+	private Node parse(){
+		//System.out.println("In Parse");
+		String token = Character.toString(working.charAt(0));
+		Node base = null;
+		
+		if(Character.isLetter(token.charAt(0))){
+			base = parseNode();
+		}
+		else if(token.equals("'")){	
+			base = parseNode();
+		}
+		else if(token.equals("(")){
+			this.SOP = true;
+			working = working.substring(1);
+			base = parse();
+		}
+		while(working.length()>0 ){
+				base = parseSet(base);	
+			   if(working.length()>0 && working.charAt(0)==')') {
+			   	working=working.substring(1);
+			   	break;
+			   	} 
+			}
+		return base;
+	}
+	
+	/**
+	 * Part of the not-so-great parser.  This actually creates nodes.
+	 * @param base
+	 * @return
+	 */
+private Node parseSet(Node base){
+	//System.out.println("In ParseSet");
+	String token = Character.toString(working.charAt(0));
+
+			
+			if(token.equals("+")){
+				working = working.substring(1);
+				if(SOP)	return new OrNode(base, parseNode());
+				else return new OrNode(base, parse());
+			}
+			else if(Character.isLetter(token.charAt(0))){
+				return new AndNode(base, parseNode());
+			}
+			else if(token.equals("'")){	
+				working = working.substring(1);
+				return new NotNode(parseNode());
+			}
+			else if(token.equals("(")){
+				return new AndNode(base, parse());
+			}
+			else if(token.equals(")")){
+					working = working.substring(1);	
+				return base;
+			}
+			else return base;
+}
+
+	/**
+	 * Last part of the not-so-great parser.  Handles things that
+	 * terminate, letters, and stuff.
+	 * @return
+	 */
+private Node parseNode(){
+	  //System.out.println("In ParseNode");
+		String token = Character.toString(working.charAt(0));
+
+		
+		if(Character.isLetter(token.charAt(0))){
+			working = working.substring(1);
+			return new TermNode(token);
+		}
+		else if(token.equals("'")){	
+			working = working.substring(1);
+			return new NotNode(parseNode());
+		}
+		else if(token.equals("(")){
+			working = working.substring(1);
+			return parse();
+		}
+		else {
+			if(Constants.DEBUG) System.out.println("You should not be here");
+			return new TermNode("NO");
+		}
+	}
+	
+	/**
+	 * In theory, this should translate the minimized string
+	 * into an int array, the truth table.  Haven't had time
+	 * to implement it, so I have the hacked compare equations.
+	 *
+	 */
+	private void translate(){
+	}
+	
+	/**
+	 * in theory, this will apply deMorgan's rule, should we need it
+	 * Haven't had time or reason to write it.
+	 * @param in_eq
+	 * @return
+	 */
+	private StringBuffer deMorgan(String in_eq){
+		StringBuffer build_eq = new StringBuffer();
+		return build_eq;
+	}
+	
+	
+	}
