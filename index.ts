@@ -1,6 +1,26 @@
-import * as _ from 'lodash';
-
 // Typescript Practice
-console.log( "Hello world" );
+class Student
+{
+    fullName: string;
 
-console.log( "This is where the converted Java will go to" );
+    constructor( public firstName: string, public middleInitial: string, public lastName: string )
+    {
+        this.fullName = firstName + " " + middleInitial + " " + lastName;
+    }
+}
+
+interface Person
+{
+    firstName: string;
+    middleInitial: string;
+    lastName: string;
+}
+
+function greeter( person : Person )
+{
+    return "Hello, " + person.firstName + " " + person.middleInitial + " " + person.lastName;
+}
+
+var user = new Student( "Traybourne", "P", "North" );
+
+document.body.innerHTML = greeter( user );
