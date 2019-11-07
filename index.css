@@ -1,0 +1,67 @@
+/* Details that modify the body */
+body 
+{
+    background: #DEDEE0;
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+/* Details first problem */
+#problemOneKMap
+{
+    text-align: center;
+    font-family: serif;
+    color: black;
+}
+
+/* Details the level one truth table */
+#myTruthTableCanvas
+{
+    float: left;
+    margin-top: 1em;
+    margin-left: 3em;
+}
+
+/* Details the level one K-Map */
+#myKMapCanvas
+{
+    float: right;
+    margin-top: 1em;
+    margin-right: 25em;
+}
+
+/* Details that modify the navigation bar */
+#navigationBar
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+/* Allows items to float to the left */
+li
+{
+    float: left;
+}
+
+/* Styles and aligns each item in navigation bar */
+li a
+{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 25px;
+    text-decoration: none;
+}
+
+/* Hover effect whenever your mouse is over an item in the navigation bar */
+li a:hover
+{
+    background-color: #001f4d;
+}

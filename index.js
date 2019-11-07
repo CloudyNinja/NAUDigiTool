@@ -1,4 +1,4 @@
-var canvas = document.getElementById("myCanvas");
+var canvas = document.getElementById("myTruthTableCanvas");
 
 //----------------------------------------------------------------------------------
 
@@ -9,10 +9,10 @@ var verticalLine = canvas.getContext("2d");
 verticalLine.beginPath();
 
 // Sets start point
-verticalLine.moveTo(120, 50);
+verticalLine.moveTo(160, 50);
 
 // Sets end point
-verticalLine.lineTo(120, 300);
+verticalLine.lineTo(160, 360);
 
 // Draws line
 verticalLine.stroke();
@@ -26,10 +26,10 @@ var horizontalLine = canvas.getContext("2d");
 horizontalLine.beginPath();
 
 // Sets start point
-horizontalLine.moveTo(10, 80);
+horizontalLine.moveTo(10, 83);
 
 // Sets end point
-horizontalLine.lineTo(200, 80);
+horizontalLine.lineTo(200, 83);
 
 // Draws line
 horizontalLine.stroke();
@@ -59,11 +59,27 @@ text.fillText( 0, 30, 140 );
 
 // Puts number in row 4 column 1
 text.font = "20px Arial";
-text.fillText( 1, 30, 175 );
+text.fillText( 0, 30, 175 );
 
 // Puts number in row 5 column 1
 text.font = "20px Arial";
-text.fillText( 1, 30, 210 );
+text.fillText( 0, 30, 210 );
+
+// Puts number in row 6 column 1
+text.font = "20px Arial";
+text.fillText( 1, 30, 245 );
+
+// Puts number in row 7 column 1
+text.font = "20px Arial";
+text.fillText( 1, 30, 280 );
+
+// Puts number in row 8 column 1
+text.font = "20px Arial";
+text.fillText( 1, 30, 315 );
+
+// Puts number in row 9 column 1
+text.font = "20px Arial";
+text.fillText( 1, 30, 350 );
 
 //----------------------------------------------------------------------------------
 
@@ -77,39 +93,128 @@ text.fillText( 0, 80, 105 );
 
 // Puts number in row 3 column 2
 text.font = "20px Arial";
-text.fillText( 1, 80, 140 );
+text.fillText( 0, 80, 140 );
 
 // Puts number in row 4 column 2
 text.font = "20px Arial";
-text.fillText( 0, 80, 175 );
+text.fillText( 1, 80, 175 );
 
 // Puts number in row 5 column 2
 text.font = "20px Arial";
 text.fillText( 1, 80, 210 );
 
+// Puts number in row 6 column 2
+text.font = "20px Arial";
+text.fillText( 0, 80, 245 );
+
+// Puts number in row 7 column 2
+text.font = "20px Arial";
+text.fillText( 0, 80, 280 );
+
+// Puts number in row 8 column 2
+text.font = "20px Arial";
+text.fillText( 1, 80, 315 );
+
+// Puts number in row 9 column 2
+text.font = "20px Arial";
+text.fillText( 1, 80,350 );
+
+//----------------------------------------------------------------------------------
+
+// C text
+text.font = "20px Arial";
+text.fillText("C", 130, 75);
+
+// Puts number in row 2 column 3
+text.font = "20px Arial";
+text.fillText( 0, 130, 105 );
+
+// Puts number in row 3 column 3
+text.font = "20px Arial";
+text.fillText( 1, 130, 140 );
+
+// Puts number in row 4 column 3
+text.font = "20px Arial";
+text.fillText( 0, 130, 175 );
+
+// Puts number in row 5 column 3
+text.font = "20px Arial";
+text.fillText( 1, 130, 210 );
+
+// Puts number in row 6 column 3
+text.font = "20px Arial";
+text.fillText( 0, 130, 245 );
+
+// Puts number in row 7 column 3
+text.font = "20px Arial";
+text.fillText( 1, 130, 280 );
+
+// Puts number in row 8 column 3
+text.font = "20px Arial";
+text.fillText( 0, 130, 315 );
+
+// Puts number in row 9 column 3
+text.font = "20px Arial";
+text.fillText( 1, 130,350 );
+
 //----------------------------------------------------------------------------------
 
 // F text
 text.font = "20px Arial";
-text.fillText("F", 155, 75);
+text.fillText("F", 180, 75);
 
-// Puts number in row 2 column 3
+// Puts number in row 2 column 4
 text.font = "20px Arial";
-text.fillText( 0, 155, 105 );
+text.fillText( 0, 180, 105 );
 
-// Puts number in row 3 column 3
+// Puts number in row 3 column 4
 text.font = "20px Arial";
-text.fillText( 1, 155, 140 );
+text.fillText( 1, 180, 140 );
 
-// Puts number in row 4 column 3
+// Puts number in row 4 column 4
 text.font = "20px Arial";
-text.fillText( 1, 155, 175 );
+text.fillText( 1, 180, 175 );
 
-// Puts number in row 5 column 3
+// Puts number in row 5 column 4
 text.font = "20px Arial";
-text.fillText( 1, 155, 210 );
+text.fillText( 0, 180, 210 );
+
+// Puts number in row 6 column 4
+text.font = "20px Arial";
+text.fillText( 1, 180, 245 );
+
+// Puts number in row 7 column 4
+text.font = "20px Arial";
+text.fillText( 0, 180, 280 );
+
+// Puts number in row 8 column 4
+text.font = "20px Arial";
+text.fillText( 0, 180, 315 );
+
+// Puts number in row 9 column 4
+text.font = "20px Arial";
+text.fillText( 1, 180,350 );
 
 //----------------------------------------------------------------------------------
+
+// Creates K-MAP
+var kMapCanvas = document.getElementById("myKMapCanvas");
+
+// Creates diagonal line
+var diagonalLine = kMapCanvas.getContext("2d");
+
+// Diagonal Line
+diagonalLine.beginPath();
+
+// Sets start point
+diagonalLine.moveTo(250, 50);
+
+// Sets end point
+diagonalLine.lineTo(250, 360);
+
+// Draws line
+diagonalLine.stroke();
+
 
 // Generates random number and assigns it to number
 // MAY NOT NEED IT
