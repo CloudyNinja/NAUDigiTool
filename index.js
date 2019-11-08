@@ -413,9 +413,82 @@ function generateSquare()
     
     // Create shaded rectangle
     var truthTableCanvas = document.getElementById("myTruthTableCanvas");
-    var rectangle = truthTableCanvas.getContext("2d");
+    var shadedNumbers = truthTableCanvas.getContext("2d");
     
-    rectangle.beginPath();
+    shadedNumbers.font = "20px Arial";
+    shadedNumbers.fillStyle = "#597dd9";
+    
+    if ( number == 1 )
+    {
+        // A
+        shadedNumbers.fillText( 0, 30, 105 );
+        shadedNumbers.fillText( 0, 30, 140 );
+        shadedNumbers.fillText( 0, 30, 175 );
+        shadedNumbers.fillText( 0, 30, 210 );
+        
+        // B
+        shadedNumbers.fillText( 0, 80, 105 );
+        shadedNumbers.fillText( 0, 80, 140 );
+        shadedNumbers.fillText( 1, 80, 175 );
+        shadedNumbers.fillText( 1, 80, 210 );
+        
+        // C
+        shadedNumbers.fillText( 0, 130, 105 );
+        shadedNumbers.fillText( 1, 130, 140 );
+        shadedNumbers.fillText( 0, 130, 175 );
+        shadedNumbers.fillText( 1, 130, 210 ); 
+    }
+    
+    else if ( number == 2 )
+    {
+        // A
+        shadedNumbers.fillText( 0, 30, 140 );
+        shadedNumbers.fillText( 0, 30, 175 );
+        shadedNumbers.fillText( 0, 30, 210 );
+        shadedNumbers.fillText( 1, 30, 245 );
+        
+        
+        // B
+        shadedNumbers.fillText( 0, 80, 140 );
+        shadedNumbers.fillText( 1, 80, 175 );
+        shadedNumbers.fillText( 1, 80, 210 );
+        shadedNumbers.fillText( 0, 80, 245 );
+        
+        // C
+        shadedNumbers.fillText( 1, 130, 140 );
+        shadedNumbers.fillText( 0, 130, 175 );
+        shadedNumbers.fillText( 1, 130, 210 );
+        shadedNumbers.fillText( 0, 130, 245 );
+    }
+    
+    else if ( number == 3 )
+    {
+        // A
+        shadedNumbers.fillText( 0, 30, 175 );
+        shadedNumbers.fillText( 0, 30, 210 );
+        shadedNumbers.fillText( 1, 30, 245 );
+        shadedNumbers.fillText( 1, 30, 280 );
+        
+        
+        // B
+        shadedNumbers.fillText( 1, 80, 175 );
+        shadedNumbers.fillText( 1, 80, 210 );
+        shadedNumbers.fillText( 0, 80, 245 );
+        shadedNumbers.fillText( 0, 80, 280 );
+        
+        // C
+        shadedNumbers.fillText( 0, 130, 175 );
+        shadedNumbers.fillText( 1, 130, 210 );
+        shadedNumbers.fillText( 0, 130, 245 );
+        shadedNumbers.fillText( 1, 130, 280 );
+    }
+    
+    //var rectangle = truthTableCanvas.getContext("2d");
+    
+    /* This creates rectangle but I'm unsure how to correlate the shaded area with K-Map validation.
+       So I'm going to try and create 4 by 4 grid of shaded colors in the truth table. */
+    
+    /*rectangle.beginPath();
     
     // Fills rectangle
     rectangle.lineWidth = "100";
@@ -428,7 +501,7 @@ function generateSquare()
     
     // Sets coordinates of triangle
     rectangle.rect(70, 135, 30, 35);
-    rectangle.stroke();
+    rectangle.stroke();*/
     
     return number;
 }
