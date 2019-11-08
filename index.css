@@ -78,6 +78,13 @@ li a:hover
     color: white;
 }
 
+/* Submit button hover effect */
+#submitButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
 /* Styles reset button */
 #resetButton
 {
@@ -88,4 +95,11 @@ li a:hover
     width: 70px;
     background-color: #597dd9;
     color: white;
+}
+
+/* Reset button hover effect */
+#resetButton:hover
+{
+    background-color: #fbff94;
+    color: black;
 }
