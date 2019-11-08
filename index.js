@@ -376,6 +376,8 @@ kMapText.fillText("11", 213, 96);
 kMapText.font = "20px Arial";
 kMapText.fillText("10", 263, 96);
 
+generateSquare();
+
 // Generates random number and assigns it to number
 // MAY NOT NEED IT
 /*var number = -1;
@@ -402,3 +404,31 @@ number = generateNumber( number );*/
   
   return variable;
 }*/
+
+/* Generate shaded square */
+function generateSquare()
+{ 
+    // Generates a random number from 1 ( inclusive ) to 5 ( inclusive )
+    var number = Math.floor( ( Math.random() * 5 ) + 1 );
+    
+    // Create shaded rectangle
+    var truthTableCanvas = document.getElementById("myTruthTableCanvas");
+    var rectangle = truthTableCanvas.getContext("2d");
+    
+    rectangle.beginPath();
+    
+    // Fills rectangle
+    rectangle.lineWidth = "100";
+    
+    // Sets rectangle color
+    rectangle.strokeStyle = "#fbff94";
+    
+    // Sets rectangle transparency
+    rectangle.globalAlpha = 0.5;
+    
+    // Sets coordinates of triangle
+    rectangle.rect(70, 135, 30, 35);
+    rectangle.stroke();
+    
+    return number;
+}
