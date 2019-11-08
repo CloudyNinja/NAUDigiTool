@@ -103,3 +103,15 @@ li a:hover
     background-color: #fbff94;
     color: black;
 }
+
+/* Styles the footer */
+#footer
+{
+    display: block;
+    padding: 25px 25px;
+    background-color: black;
+    color: white;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+}

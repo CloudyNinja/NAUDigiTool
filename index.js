@@ -416,7 +416,7 @@ function generateSquare()
     var shadedNumbers = truthTableCanvas.getContext("2d");
     
     shadedNumbers.font = "20px Arial";
-    shadedNumbers.fillStyle = "#597dd9";
+    shadedNumbers.fillStyle = "#2066fa";
     
     if ( number == 1 )
     {
@@ -481,6 +481,50 @@ function generateSquare()
         shadedNumbers.fillText( 1, 130, 210 );
         shadedNumbers.fillText( 0, 130, 245 );
         shadedNumbers.fillText( 1, 130, 280 );
+    }
+    
+    else if ( number == 4 )
+    {
+        // A
+        shadedNumbers.fillText( 0, 30, 210 );
+        shadedNumbers.fillText( 1, 30, 245 );
+        shadedNumbers.fillText( 1, 30, 280 );
+        shadedNumbers.fillText( 1, 30, 315 );
+        
+        
+        // B
+        shadedNumbers.fillText( 1, 80, 210 );
+        shadedNumbers.fillText( 0, 80, 245 );
+        shadedNumbers.fillText( 0, 80, 280 );
+        shadedNumbers.fillText( 1, 80, 315 );
+        
+        // C
+        shadedNumbers.fillText( 1, 130, 210 );
+        shadedNumbers.fillText( 0, 130, 245 );
+        shadedNumbers.fillText( 1, 130, 280 );
+        shadedNumbers.fillText( 0, 130, 315 );
+    }
+    
+    else
+    {
+        // A
+        shadedNumbers.fillText( 1, 30, 245 );
+        shadedNumbers.fillText( 1, 30, 280 );
+        shadedNumbers.fillText( 1, 30, 315 );
+        shadedNumbers.fillText( 1, 30, 350 );
+        
+        
+        // B
+        shadedNumbers.fillText( 0, 80, 245 );
+        shadedNumbers.fillText( 0, 80, 280 );
+        shadedNumbers.fillText( 1, 80, 315 );
+        shadedNumbers.fillText( 1, 80, 350 );
+        
+        // C
+        shadedNumbers.fillText( 0, 130, 245 );
+        shadedNumbers.fillText( 1, 130, 280 );
+        shadedNumbers.fillText( 0, 130, 315 );
+        shadedNumbers.fillText( 1, 130, 350 );
     }
     
     //var rectangle = truthTableCanvas.getContext("2d");
