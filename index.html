@@ -21,7 +21,7 @@
         <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
         <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
         
-        <button type="button" id="submitButton" onclick="#questionTwo.html">Submit</button>
+        <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
         <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
         
         <input type="text" id="numberOne" value="0">
@@ -32,6 +32,8 @@
         <input type="text" id="numberSix" value="0">
         <input type="text" id="numberSeven" value="0">
         <input type="text" id="numberEight" value="0">
+        
+        <p id="incorrectAnswerMessage"></p>
         
         <!--Loads the JavaScript file-->
         <script src="index.js"></script>

@@ -376,7 +376,26 @@ kMapText.fillText("11", 213, 96);
 kMapText.font = "20px Arial";
 kMapText.fillText("10", 263, 96);
 
-generateSquare();
+var numberGenerate = generateSquare();
+
+// Generates 0 or 1
+// THIS WORKS BUT I'M NOT SURE IF WE NEED IT
+/*function generateNumber() 
+{
+  var variable = Math.random();
+  
+  if ( variable >= 0.5 )
+  {
+  	variable = Math.ceil( variable );
+  }
+  
+  else
+  {
+  	variable = Math.floor( variable );
+  }
+  
+  return variable;
+}*/
 
 /* Generate shaded square */
 function generateSquare()
@@ -410,6 +429,12 @@ function generateSquare()
         shadedNumbers.fillText( 1, 130, 140 );
         shadedNumbers.fillText( 0, 130, 175 );
         shadedNumbers.fillText( 1, 130, 210 ); 
+        
+        // F
+        shadedNumbers.fillText( 0, 180, 105 );
+        shadedNumbers.fillText( 1, 180, 140 );
+        shadedNumbers.fillText( 1, 180, 175 );
+        shadedNumbers.fillText( 0, 180, 210 ); 
     }
     
     else if ( number == 2 )
@@ -419,7 +444,6 @@ function generateSquare()
         shadedNumbers.fillText( 0, 30, 175 );
         shadedNumbers.fillText( 0, 30, 210 );
         shadedNumbers.fillText( 1, 30, 245 );
-        
         
         // B
         shadedNumbers.fillText( 0, 80, 140 );
@@ -432,6 +456,12 @@ function generateSquare()
         shadedNumbers.fillText( 0, 130, 175 );
         shadedNumbers.fillText( 1, 130, 210 );
         shadedNumbers.fillText( 0, 130, 245 );
+        
+        // F
+        shadedNumbers.fillText( 1, 180, 140 );
+        shadedNumbers.fillText( 1, 180, 175 );
+        shadedNumbers.fillText( 0, 180, 210 );
+        shadedNumbers.fillText( 1, 180, 245 ); 
     }
     
     else if ( number == 3 )
@@ -441,7 +471,6 @@ function generateSquare()
         shadedNumbers.fillText( 0, 30, 210 );
         shadedNumbers.fillText( 1, 30, 245 );
         shadedNumbers.fillText( 1, 30, 280 );
-        
         
         // B
         shadedNumbers.fillText( 1, 80, 175 );
@@ -454,6 +483,12 @@ function generateSquare()
         shadedNumbers.fillText( 1, 130, 210 );
         shadedNumbers.fillText( 0, 130, 245 );
         shadedNumbers.fillText( 1, 130, 280 );
+        
+        // F
+        shadedNumbers.fillText( 1, 180, 175 );
+        shadedNumbers.fillText( 0, 180, 210 );
+        shadedNumbers.fillText( 1, 180, 245 );
+        shadedNumbers.fillText( 0, 180, 280 ); 
     }
     
     else if ( number == 4 )
@@ -463,7 +498,6 @@ function generateSquare()
         shadedNumbers.fillText( 1, 30, 245 );
         shadedNumbers.fillText( 1, 30, 280 );
         shadedNumbers.fillText( 1, 30, 315 );
-        
         
         // B
         shadedNumbers.fillText( 1, 80, 210 );
@@ -476,6 +510,12 @@ function generateSquare()
         shadedNumbers.fillText( 0, 130, 245 );
         shadedNumbers.fillText( 1, 130, 280 );
         shadedNumbers.fillText( 0, 130, 315 );
+        
+        // F
+        shadedNumbers.fillText( 0, 180, 210 );
+        shadedNumbers.fillText( 1, 180, 245 );
+        shadedNumbers.fillText( 0, 180, 280 );
+        shadedNumbers.fillText( 0, 180, 315 ); 
     }
     
     else
@@ -485,7 +525,6 @@ function generateSquare()
         shadedNumbers.fillText( 1, 30, 280 );
         shadedNumbers.fillText( 1, 30, 315 );
         shadedNumbers.fillText( 1, 30, 350 );
-        
         
         // B
         shadedNumbers.fillText( 0, 80, 245 );
@@ -498,6 +537,12 @@ function generateSquare()
         shadedNumbers.fillText( 1, 130, 280 );
         shadedNumbers.fillText( 0, 130, 315 );
         shadedNumbers.fillText( 1, 130, 350 );
+        
+        // F
+        shadedNumbers.fillText( 1, 180, 245 );
+        shadedNumbers.fillText( 0, 180, 280 );
+        shadedNumbers.fillText( 0, 180, 315 );
+        shadedNumbers.fillText( 1, 180, 350 ); 
     }
     
     return number;
@@ -514,4 +559,87 @@ function resetNumbers()
     document.getElementById("numberSix").value = 0;
     document.getElementById("numberSeven").value = 0;
     document.getElementById("numberEight").value = 0;
+    document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    
+}
+
+// Checks user input number to see if they are correct. If they are, move to the next question. If not, retry.
+function checkAnswers()
+{
+    if ( numberGenerate == 1 )
+    {
+        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 1 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
+        document.getElementById("numberFive").value == 0 && document.getElementById("numberSix").value == 0 &&
+        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
+        {
+            window.location.href = "questionTwo.html";
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        }
+    }
+        
+    else if ( numberGenerate == 2 )
+    {
+        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 1 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
+        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
+        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
+        {
+            window.location.href = "questionTwo.html";
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        }
+    }
+    
+    else if ( numberGenerate == 3 )
+    {
+        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
+        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
+        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
+        {
+            window.location.href = "questionTwo.html";
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        }
+    }
+    
+    else if ( numberGenerate == 4 )
+    {
+        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 0 &&
+        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
+        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
+        {
+            window.location.href = "questionTwo.html";
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        }
+    }
+    
+    else if ( numberGenerate == 5 )
+    {
+        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 0 &&
+        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
+        document.getElementById("numberSeven").value == 1 && document.getElementById("numberEight").value == 0 )
+        {
+            window.location.href = "questionTwo.html";
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        }
+    }
+    
+    return 0;
 }

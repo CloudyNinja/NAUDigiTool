@@ -18,6 +18,14 @@ body
     color: black;
 }
 
+/* Details second problem */
+#problemTwoKMap
+{
+    text-align: center;
+    font-family: serif;
+    color: black;
+}
+
 /* Details the level one truth table */
 #myTruthTableCanvas
 {
@@ -209,7 +217,18 @@ li a:hover
     left: 735px;
 }
 
-/**********************************************************************************************
+/**********************************************************************************************/
+
+#incorrectAnswerMessage
+{
+    position: absolute;
+    color: red;
+    top: 560px;
+    left: 505px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: oblique;
+}
 
 /* Styles the footer */
 #footer
