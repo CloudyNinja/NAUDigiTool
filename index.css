@@ -104,6 +104,113 @@ li a:hover
     color: black;
 }
 
+/* Styles user inputs */
+#numberOne
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 260px;
+    left: 585px;
+}
+
+#numberTwo
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 260px;
+    left: 635px;
+}
+
+#numberThree
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 260px;
+    left: 685px;
+}
+
+#numberFour
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 260px;
+    left: 735px;
+}
+
+#numberFive
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 310px;
+    left: 585px;
+}
+
+#numberSix
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 310px;
+    left: 635px;
+}
+
+#numberSeven
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 310px;
+    left: 685px;
+}
+
+#numberEight
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 310px;
+    left: 735px;
+}
+
+/**********************************************************************************************
+
 /* Styles the footer */
 #footer
 {

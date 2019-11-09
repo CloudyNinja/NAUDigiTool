@@ -549,3 +549,16 @@ function generateSquare()
     
     return number;
 }
+
+// Resets all user input numbers
+function resetNumbers()
+{
+    document.getElementById("numberOne").value = 0;
+    document.getElementById("numberTwo").value = 0;
+    document.getElementById("numberThree").value = 0;
+    document.getElementById("numberFour").value = 0;
+    document.getElementById("numberFive").value = 0;
+    document.getElementById("numberSix").value = 0;
+    document.getElementById("numberSeven").value = 0;
+    document.getElementById("numberEight").value = 0;
+}
