@@ -378,33 +378,6 @@ kMapText.fillText("10", 263, 96);
 
 generateSquare();
 
-// Generates random number and assigns it to number
-// MAY NOT NEED IT
-/*var number = -1;
-number = generateNumber( number );*/
-
-// Generates random number and assigns it to number
-//number = generateNumber( number );
-
-// Generates 0 or 1
-// THIS WORKS I'M JUST NOT SURE IF WE NEED IT
-/*function generateNumber( variable ) 
-{
-  var variable = Math.random();
-  
-  if ( variable >= 0.5 )
-  {
-  	variable = Math.ceil( variable );
-  }
-  
-  else
-  {
-  	variable = Math.floor( variable );
-  }
-  
-  return variable;
-}*/
-
 /* Generate shaded square */
 function generateSquare()
 { 
@@ -526,26 +499,6 @@ function generateSquare()
         shadedNumbers.fillText( 0, 130, 315 );
         shadedNumbers.fillText( 1, 130, 350 );
     }
-    
-    //var rectangle = truthTableCanvas.getContext("2d");
-    
-    /* This creates rectangle but I'm unsure how to correlate the shaded area with K-Map validation.
-       So I'm going to try and create 4 by 4 grid of shaded colors in the truth table. */
-    
-    /*rectangle.beginPath();
-    
-    // Fills rectangle
-    rectangle.lineWidth = "100";
-    
-    // Sets rectangle color
-    rectangle.strokeStyle = "#fbff94";
-    
-    // Sets rectangle transparency
-    rectangle.globalAlpha = 0.5;
-    
-    // Sets coordinates of triangle
-    rectangle.rect(70, 135, 30, 35);
-    rectangle.stroke();*/
     
     return number;
 }
