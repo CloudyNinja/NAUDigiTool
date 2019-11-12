@@ -1,8 +1,0 @@
-#SYNTAX
-# minPoints,maxPoints,attemptDeduction,failurePenatly,levelPointFloor
-#minPoints = Minimum number of points earned for correcly answering a question
-#maxPoints = Number of points earned for correctly answering a question on the first attempts
-#attemptDedution = Points deducted from the max for every wrong answer, should be negative
-#failurePenalty = Points deducted from the user's score for failing to answer a question correctly, should be negative
-#levelPointFloor = Minimum number of points a user can have in a level
-5,50,-5,-25,0

@@ -1,25 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
+<html>
+    
     <meta charset="utf-8">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="homepage_css.css">
-  </head>
-  <body>
-    <div class="login-box">
-      <h1>Login</h1>
-      <div class="textbox">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <input type="text" placeholder="Username" name="" value="">
-      </div>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NAU DigiTool</title>
+    <meta name="description" content="Index page for Capstone Project.">
+    <link rel="stylesheet" href="index.css">
+    
+    <body>
+ 
+        <!--Creation of navigation bar-->
+        <ul id="navigationBar">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="#Modules">Modules</a></li>
+            <li><a href="index.html">Log Out</a></li>
+        </ul>
+        
+        <h2 id="problemOneKMap">Question One: Convert the colored area of the truth table into a K-Map.</h2>
+        
+        <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
+        <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
+        
+        <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
+        <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
+        
+        <input type="text" id="numberOne" value="0">
+        <input type="text" id="numberTwo" value="0">
+        <input type="text" id="numberThree" value="0">
+        <input type="text" id="numberFour" value="0">
+        <input type="text" id="numberFive" value="0">
+        <input type="text" id="numberSix" value="0">
+        <input type="text" id="numberSeven" value="0">
+        <input type="text" id="numberEight" value="0">
+        
+        <p id="incorrectAnswerMessage"></p>
+        
+        <!--Loads the JavaScript file-->
+        <script src="index.js"></script>
+        
+        <!--Footer for bottom of page-->
+        <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
+    
+    </body>
 
-      <div class="textbox">
-        <i class="fa fa-lock" aria-hidden="true"></i>
-        <input type="text" placeholder="Password" name="" value="">
-      </div>
-
-      <a href="index.html"><input class="btn" type="button" name="" value="Sign In"></a>
-
-    </div>
-  </body>
-</html>>
+</html>

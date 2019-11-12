@@ -1,2 +1,0 @@
-java -Djava.rmi.server.codebase=http://www.cet.nau.edu:31701/Projects/Karnaugh/ -Djava.security.policy=./java.policy logic/server/TrackerServer www.cet.nau.edu:3306 KarnaughData karnaugh kuser resuk &
-
