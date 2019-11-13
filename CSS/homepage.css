@@ -52,4 +52,9 @@ li a:hover
     bottom: 0;
     width: 100%;
     position: fixed;
+    position: fixed;
+    margin-right: auto;    
+    margin-left: auto;       
+    min-width: inherit;
+    width: inherit;
 }

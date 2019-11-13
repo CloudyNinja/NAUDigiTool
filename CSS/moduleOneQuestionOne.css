@@ -5,23 +5,18 @@ body
     color: #545454;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 16px;
-    height: 100%;
     width: 100%;
-    margin: 0;
+    height: 100%;
 }
 
 /* Details first problem */
 #problemOneKMap
 {
-    text-align: center;
-    font-family: serif;
-    color: black;
-}
-
-/* Details second problem */
-#problemTwoKMap
-{
-    text-align: center;
+    position: absolute;   
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 255px;
     font-family: serif;
     color: black;
 }
@@ -29,17 +24,18 @@ body
 /* Details the level one truth table */
 #myTruthTableCanvas
 {
-    float: left;
-    margin-top: 1em;
-    margin-left: 3em;
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    margin-bottom: 100px;
 }
 
 /* Details the level one K-Map */
 #myKMapCanvas
 {
-    float: right;
-    margin-top: 1em;
-    margin-right: 25em;
+    position: absolute;
+    top: 150px;
+    left: 475px;
 }
 
 /* Details that modify the navigation bar */
@@ -50,6 +46,11 @@ body
     padding: 0;
     overflow: hidden;
     background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
 }
 
 /* Allows items to float to the left */
@@ -84,6 +85,7 @@ li a:hover
     width: 70px;
     background-color: #597dd9;
     color: white;
+    margin-bottom: 100px;
 }
 
 /* Submit button hover effect */
@@ -103,6 +105,7 @@ li a:hover
     width: 70px;
     background-color: #597dd9;
     color: white;
+    margin-bottom: 100px;
 }
 
 /* Reset button hover effect */
@@ -228,6 +231,8 @@ li a:hover
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-style: oblique;
+    margin-bottom: 100px;
+    min-width: 200px;
 }
 
 /* Styles the footer */
@@ -238,6 +243,7 @@ li a:hover
     background-color: black;
     color: white;
     bottom: 0;
-    width: 100%;
-    position: fixed;
+    left: 0;
+    width: inherit;
+    position: fixed; 
 }
