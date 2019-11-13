@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>NAU DigiTool</title>
+    <meta name="description" content="Module One Question One">
+    <link rel="stylesheet" href="CSS/moduleOneQuestionOne.css">
+    
+    <body>
+ 
+        <!--Creation of navigation bar-->
+        <ul id="navigationBar">
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="modules.html">Modules</a></li>
+            <li><a href="freeMode.html">Free Mode</a></li>
+            <li><a href="index.html">Log Out</a></li>
+        </ul>
+        
+        <h2 id="problemOneKMap">Question One: Convert the colored area of the truth table into a K-Map.</h2>
+        
+        <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
+        <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
+        
+        <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
+        <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
+        
+        <input type="text" id="numberOne" value="0">
+        <input type="text" id="numberTwo" value="0">
+        <input type="text" id="numberThree" value="0">
+        <input type="text" id="numberFour" value="0">
+        <input type="text" id="numberFive" value="0">
+        <input type="text" id="numberSix" value="0">
+        <input type="text" id="numberSeven" value="0">
+        <input type="text" id="numberEight" value="0">
+        
+        <p id="incorrectAnswerMessage"></p>
+        
+        <!--Loads the JavaScript file-->
+        <script src="moduleOneQuestionOne.js"></script>
+        
+        <!--Footer for bottom of page-->
+        <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
+    
+    </body>
+
+</html>
