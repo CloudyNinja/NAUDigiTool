@@ -94,29 +94,7 @@ li a:hover
     display: block;
     text-align: center;
     position: fixed;
-    left: 1025px;
-    bottom: 50px;
-    width: 10%;
-    padding: 20px 20px;
-    margin-bottom: 30px;
-    background-color: black;
-    color: white;
-    border-radius: 10px;
-    box-shadow: 15px 15px 18px #888888;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.Tutoring:hover
-{
-    background-color: #001f4d; 
-}
-
-.Contact
-{
-    display: block;
-    text-align: center;
-    position: fixed;
-    left: 575px;
+    left: 875px;
     bottom: 50px;
     width: 10%;
     padding: 20px 20px;
@@ -133,12 +111,12 @@ li a:hover
     background-color: #001f4d; 
 }
 
-.BBLearn
+.Contact
 {
     display: block;
     text-align: center;
     position: fixed;
-    left: 125px;
+    left: 700px;
     bottom: 50px;
     width: 10%;
     padding: 20px 20px;
@@ -150,7 +128,7 @@ li a:hover
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.BBLearn:hover
+.Tutoring:hover
 {
     background-color: #001f4d; 
 }
