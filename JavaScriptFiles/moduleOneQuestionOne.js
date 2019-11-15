@@ -165,35 +165,43 @@ text.fillText("F", 180, 75);
 
 // Puts number in row 2 column 4
 text.font = "20px Arial";
-text.fillText( 0, 180, 105 );
+var numberOne = generateNumber();
+text.fillText( numberOne, 180, 105 );
 
 // Puts number in row 3 column 4
 text.font = "20px Arial";
-text.fillText( 1, 180, 140 );
+var numberTwo = generateNumber();
+text.fillText( numberTwo, 180, 140 );
 
 // Puts number in row 4 column 4
 text.font = "20px Arial";
-text.fillText( 1, 180, 175 );
+var numberThree = generateNumber();
+text.fillText( numberThree, 180, 175 );
 
 // Puts number in row 5 column 4
 text.font = "20px Arial";
-text.fillText( 0, 180, 210 );
+var numberFour = generateNumber();
+text.fillText( numberFour, 180, 210 );
 
 // Puts number in row 6 column 4
 text.font = "20px Arial";
-text.fillText( 1, 180, 245 );
+var numberFive = generateNumber();
+text.fillText( numberFive, 180, 245 );
 
 // Puts number in row 7 column 4
 text.font = "20px Arial";
-text.fillText( 0, 180, 280 );
+var numberSix = generateNumber();
+text.fillText( numberSix, 180, 280 );
 
 // Puts number in row 8 column 4
 text.font = "20px Arial";
-text.fillText( 0, 180, 315 );
+var numberSeven = generateNumber();
+text.fillText( numberSeven, 180, 315 );
 
 // Puts number in row 9 column 4
 text.font = "20px Arial";
-text.fillText( 1, 180,350 );
+var numberEight = generateNumber();
+text.fillText( numberEight, 180,350 );
 
 //----------------------------------------------------------------------------------
 
@@ -376,11 +384,11 @@ kMapText.fillText("11", 213, 96);
 kMapText.font = "20px Arial";
 kMapText.fillText("10", 263, 96);
 
-var numberGenerate = generateSquare();
+//var numberGenerate = generateSquare();
 
 // Generates 0 or 1
 // THIS WORKS BUT I'M NOT SURE IF WE NEED IT
-/*function generateNumber() 
+function generateNumber() 
 {
   var variable = Math.random();
   
@@ -395,10 +403,10 @@ var numberGenerate = generateSquare();
   }
   
   return variable;
-}*/
+}
 
 /* Generate shaded square */
-function generateSquare()
+/*function generateSquare()
 { 
     // Generates a random number from 1 ( inclusive ) to 5 ( inclusive )
     var number = Math.floor( ( Math.random() * 5 ) + 1 );
@@ -546,7 +554,7 @@ function generateSquare()
     }
     
     return number;
-}
+}*/
 
 // Resets all user input numbers
 function resetNumbers()
@@ -564,7 +572,7 @@ function resetNumbers()
 }
 
 // Checks user input number to see if they are correct. If they are, move to the next question. If not, retry.
-function checkAnswers()
+/*function checkAnswers()
 {
     if ( numberGenerate == 1 )
     {
@@ -639,6 +647,27 @@ function checkAnswers()
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
         }
+    }
+    
+    return 0;
+}*/
+function checkAnswers()
+{
+    if ( document.getElementById("numberOne").value == numberOne 
+         && document.getElementById("numberTwo").value == numberTwo 
+         && document.getElementById("numberThree").value == numberThree 
+         && document.getElementById("numberFour").value == numberFour
+         && document.getElementById("numberFive").value == numberFive
+         && document.getElementById("numberSix").value == numberSix
+         && document.getElementById("numberSeven").value == numberSeven
+         && document.getElementById("numberEight").value == numberEight )
+    {
+        window.location.href = "questionTwo.html";
+    }
+        
+    else
+    {
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
     }
     
     return 0;
