@@ -10,16 +10,32 @@
     <div class="login-box">
       <h1>Login</h1>
       <div class="textbox">
-        <i class="fa fa-user" aria-hidden="true"></i>
-        <input type="text" placeholder="Username" name="" value="">
+        <form name="login">
+        <div class="login">
+          <input type="text" placeholder="Username" name="userid"><br>
+          <input type="password" placeholder="Password" name="pswrd"><br>
+          <input type="button" onclick="check(this.form)" value="Login"/>
+          <input type="button" Value="Sign Up">
+
+        </div>
+        </form>
+        <script language="javascript">
+          function check(form)
+          {
+            if( form.userid.value == "" || form.pswrd.value == "" )
+            {
+              alert( "You must fill in both fields to log in." )
+            }
+            else {
+              window.open( 'https://dana.ucc.nau.edu/tpn26/NAUDigiTool/homepage.html' )
+            }
+
+          }
+        </script>
       </div>
 
-      <div class="textbox">
-        <i class="fa fa-lock" aria-hidden="true"></i>
-        <input type="text" placeholder="Password" name="" value="">
-      </div>
 
-      <a href="homepage.html"><input class="btn" type="button" name="" value="Sign In"></a>
+
 
     </div>
   </body>
