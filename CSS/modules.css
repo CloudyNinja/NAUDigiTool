@@ -62,40 +62,40 @@ img:hover
     
 #moduleOneImage
 {
-    position: absolute;
-    top: 200px;
-    left: 100px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
-    margin-bottom: 100px;
 }
 
 #moduleTwoImage
 {
-    position: absolute;
-    top: 200px;
-    left: 500px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 10px;
-    margin-bottom: 100px;
 }
 
 #moduleThreeImage
 {
-    position: absolute;
-    top: 200px;
-    left: 900px;
-    border-radius: 10px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 100px;
+    border-radius: 10px;
 }
 
 /* Styles the footer */
 #footer
 {
-    display: block;
-    padding: 25px 25px;
-    background-color: black;
-    color: white;
     bottom: 0;
+    padding: 20px;
     left: 0;
-    width: inherit;
-    position: fixed; 
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    color: white; 
 }
