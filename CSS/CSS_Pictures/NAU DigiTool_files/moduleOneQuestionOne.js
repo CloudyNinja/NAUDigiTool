@@ -382,13 +382,13 @@ kMapText.fillText("00", 113, 96);
 kMapText.font = "20px Arial";
 kMapText.fillText("01", 163, 96);
 
-// 10
-kMapText.font = "20px Arial";
-kMapText.fillText("10", 213, 96);
-
 // 11
 kMapText.font = "20px Arial";
-kMapText.fillText("11", 263, 96);
+kMapText.fillText("11", 213, 96);
+
+// 10
+kMapText.font = "20px Arial";
+kMapText.fillText("10", 263, 96);
 
 //var numberGenerate = generateSquare();
 
@@ -668,7 +668,7 @@ function checkAnswers()
          && document.getElementById("numberSeven").value == numberSeven
          && document.getElementById("numberEight").value == numberEight )
     {
-        window.location.href = "moduleOneQuestionTwo.html";
+        window.location.href = "questionTwo.html";
     }
         
     else

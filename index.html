@@ -14,23 +14,25 @@
         <div class="login">
           <input type="text" placeholder="Username" name="userid"><br>
           <input type="password" placeholder="Password" name="pswrd"><br>
-          <input type="button" onclick="check(this.form)" value="Login"/>
+          <input type="button" onclick="check(this.form)" target="_self" value="Login"/>
           <input type="button" Value="Sign Up">
 
         </div>
         </form>
         <script language="javascript">
-          function check(form)
+        function check(form)
           {
             if( form.userid.value == "" || form.pswrd.value == "" )
             {
               alert( "You must fill in both fields to log in." )
             }
-            else {
-              window.open( 'https://dana.ucc.nau.edu/tpn26/NAUDigiTool/homepage.html' )
+            else 
+            {
+              /*window.open( 'https://dana.ucc.nau.edu/tpn26/NAUDigiTool/homepage.html' )*/
+              window.location.href = "homepage.html";
             }
-
           }
+          // I commented this out for now because I couldn't live preview by code
         </script>
       </div>
 

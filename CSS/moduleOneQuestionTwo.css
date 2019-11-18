@@ -116,7 +116,7 @@ li a:hover
 }
 
 /* Styles user inputs */
-#numberOne
+/*#numberOne
 {
     position: absolute;
     background: #DEDEE0;
@@ -152,7 +152,7 @@ li a:hover
     font-size: 16px;
     text-align: center;
     top: 260px;
-    left: 685px;
+    left: 735px;
 }
 
 #numberFour
@@ -166,7 +166,6 @@ li a:hover
     text-align: center;
     top: 260px;
     left: 685px;
-    left: 735px;
 }
 
 #numberFive
@@ -205,7 +204,7 @@ li a:hover
     font-size: 16px;
     text-align: center;
     top: 310px;
-    left: 685px;    
+    left: 735px;
 }
 
 #numberEight
@@ -218,8 +217,8 @@ li a:hover
     font-size: 16px;
     text-align: center;
     top: 310px;
-    left: 735px;
-}
+    left: 685px;
+}*/
 
 /**********************************************************************************************/
 
