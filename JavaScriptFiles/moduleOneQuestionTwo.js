@@ -359,6 +359,35 @@ kMapText.fillText(numberSix, 168, 180);
 kMapText.fillText(numberSeven, 218, 180);
 kMapText.fillText(numberEight, 268, 180);
 
+//////////////////////////////////////////////////
+window.onload = function()
+{
+    var clickCanvas = document.getElementById("myKMapCanvas");
+    var canvas = clickCanvas.getContext('2d');
+    clickCanvas.addEventListener('mousedown', onmousedown, false );
+}
+
+// This allows drawing to be done
+function onmousedown( event )
+{
+    coordinateX = event.pageX;
+    coordinateY = event.pageY;
+    
+    inBoundsX = coordinateX > 578 && coordinateX < 775;
+    inBoundsY = coordinateY > 255 && coordinateY < 350;
+    
+    // Creates bounds for sketch
+    if (  inBoundsX && inBoundsY )
+    {
+        alert( "X, Y = " + coordinateX + ', ' + coordinateY );
+    }
+    
+    else
+    {
+        alert( "NOT IN BOUNDS!" );
+    }              
+}
+
 // Generates 0 or 1
 function generateNumber() 
 {
