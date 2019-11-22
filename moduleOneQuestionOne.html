@@ -24,6 +24,7 @@
         <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
         
         <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
+        <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
         <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
         
         <input type="text" id="numberOne" value="0">
@@ -36,6 +37,8 @@
         <input type="text" id="numberEight" value="0">
         
         <p id="incorrectAnswerMessage"></p>
+        
+        <p id="hint"></p>
         
         <!--Loads the JavaScript file-->
         <script src="JavaScriptFiles/moduleOneQuestionOne.js"></script>

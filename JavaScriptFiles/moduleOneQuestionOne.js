@@ -573,7 +573,9 @@ function resetNumbers()
     document.getElementById("numberSix").value = 0;
     document.getElementById("numberSeven").value = 0;
     document.getElementById("numberEight").value = 0;
+
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
     
 }
 
@@ -675,6 +677,13 @@ function checkAnswers()
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
     }
+    
+    return 0;
+}
+
+function receiveHint()
+{
+    document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     
     return 0;
 }

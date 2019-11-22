@@ -360,32 +360,131 @@ kMapText.fillText(numberSeven, 218, 180);
 kMapText.fillText(numberEight, 268, 180);
 
 //////////////////////////////////////////////////
-window.onload = function()
-{
-    var clickCanvas = document.getElementById("myKMapCanvas");
-    var canvas = clickCanvas.getContext('2d');
-    clickCanvas.addEventListener('mousedown', onmousedown, false );
-}
+
+var clickCanvas = document.getElementById("myKMapCanvas");
+
+// Sets flags for top row of squares
+var topLeftFlag = true;
+var topLeftMiddleFlag = true;
+var topRightMiddleFlag = true;
+var topRightFlag = true;
+
+// Sets flags for bottom row of squares
+var bottomLeftFlag = true;
+var bottomLeftMiddleFlag = true;
+var bottomRightMiddleFlag = true;
+var bottomRightFlag = true;
+    
+clickCanvas.addEventListener('mousedown', onmousedown);
 
 // This allows drawing to be done
 function onmousedown( event )
 {
-    coordinateX = event.pageX;
-    coordinateY = event.pageY;
+    var coordinateX = event.pageX;
+    var coordinateY = event.pageY;
     
-    inBoundsX = coordinateX > 578 && coordinateX < 775;
-    inBoundsY = coordinateY > 255 && coordinateY < 350;
+    var inBoundsX = coordinateX > 578 && coordinateX < 775;
+    var inBoundsY = coordinateY > 255 && coordinateY < 350;
     
-    // Creates bounds for sketch
-    if (  inBoundsX && inBoundsY )
+    // Top left square property
+    var topLeft = coordinateX >= 578 && coordinateX <= 626 && coordinateY >= 255 && coordinateY <= 300;
+    
+    // Top left middle square property
+    var topLeftMiddle = coordinateX >= 627 && coordinateX <= 675 && coordinateY >= 255 && coordinateY <= 300;
+    
+    // Top right middle square property
+    var topRightMiddle = coordinateX >= 676 && coordinateX <= 724 && coordinateY >= 255 && coordinateY <= 300;
+    
+    // Top right square property
+    var topRight = coordinateX >= 725 && coordinateX <= 772 && coordinateY >= 255 && coordinateY <= 300;
+    
+    // Bottom left square property
+    var bottomLeft = coordinateX >= 578 && coordinateX <= 626 && coordinateY >= 301 && coordinateY <= 355;
+    
+    // Bottom left middle square property
+    var bottomLeftMiddle = coordinateX >= 627 && coordinateX <= 675 && coordinateY >= 301 && coordinateY <= 355;
+    
+    // Bottom right middle square property
+    var bottomRightMiddle = coordinateX >= 676 && coordinateX <= 724 && coordinateY >= 301 && coordinateY <= 355;
+    
+    // Bottom right square property
+    var bottomRight = coordinateX >= 725 && coordinateX <= 772 && coordinateY >= 301 && coordinateY <= 355;
+    
+    // Square filler
+    var sCanvas = document.getElementById("myKMapCanvas");
+    var square = sCanvas.getContext('2d');
+    
+    square.fillStyle = "#3EFF00";
+    square.globalAlpha = 0.3;
+    
+    // If statement for top left square
+    if ( inBoundsX && inBoundsY && topLeft && topLeftFlag )
     {
-        alert( "X, Y = " + coordinateX + ', ' + coordinateY );
+        square.fillRect(100, 101, 49, 49);
+        topLeftFlag = false;
     }
     
+    /*else if ( inBoundsX && inBoundsY && topLeft && !topLeftFlag )
+    {
+        square.clearRect(101, 101, 49, 49);
+        topLeftFlag = true;
+    }*/
+    
+    // If statement for top left middle square
+    else if ( inBoundsX && inBoundsY && topLeftMiddle && topLeftMiddleFlag )
+    {
+        square.fillRect(150, 101, 49, 49);
+        topLeftMiddleFlag = false;
+    }
+    
+    // If statement for top right middle square
+    else if ( inBoundsX && inBoundsY && topRightMiddle && topRightMiddleFlag )
+    {
+        square.fillRect(200, 101, 49, 49);
+        topRightMiddleFlag = false;
+    }
+    
+    // If statement for top right square
+    else if ( inBoundsX && inBoundsY && topRight && topRightFlag )
+    {
+        square.fillRect(250, 101, 49, 49);
+        topRightFlag = false;
+    }
+    
+    // If statement for bottom left square
+    else if ( inBoundsX && inBoundsY && bottomLeft && bottomLeftFlag )
+    {
+        square.fillRect(100, 151, 49, 49);
+        bottomLeftFlag = false;
+    }
+    
+    // If statement for bottom left middle square
+    else if ( inBoundsX && inBoundsY && bottomLeftMiddle && bottomLeftMiddleFlag )
+    {
+        square.fillRect(150, 151, 49, 49);
+        bottomLeftMiddleFlag = false;
+    }
+    
+    // If statement for bottom right middle square
+    else if ( inBoundsX && inBoundsY && bottomRightMiddle && bottomRightMiddleFlag )
+    {
+        square.fillRect(200, 151, 49, 49);
+        bottomRightMiddleFlag = false;
+    }
+    
+    // If statement for bottom right square
+    else if ( inBoundsX && inBoundsY && bottomRight && bottomRightFlag )
+    {
+        square.fillRect(250, 151, 49, 49);
+        bottomRightFlag = false;
+    }
+    
+    /* FOR TESTING PURPOSES: KEEP HERE FOR NOW
     else
     {
-        alert( "NOT IN BOUNDS!" );
-    }              
+        alert( "X, Y = " + coordinateX + ', ' + coordinateY );
+        //alert( "NOT IN BOUNDS!" );
+    }*/
 }
 
 // Generates 0 or 1

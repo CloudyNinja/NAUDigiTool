@@ -95,6 +95,26 @@ li a:hover
     color: black;
 }
 
+/* Styles hint button */
+#hintButton
+{
+    position: absolute;
+    top: 500px;
+    left: 650px;
+    height: 50px;
+    width: 70px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+}
+
+/* Hint button hover effect */
+#hintButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
 /* Styles reset button */
 #resetButton
 {
@@ -229,6 +249,19 @@ li a:hover
     color: red;
     top: 560px;
     left: 505px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: oblique;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#hint
+{
+    position: absolute;
+    color: red;
+    top: 600px;
+    left: 600px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-style: oblique;
