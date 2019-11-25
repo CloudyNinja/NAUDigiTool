@@ -577,8 +577,81 @@ function resetColors()
 }
 
 function checkAnswers()
-{
-    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+{    
+    // Numbers
+    var topLeftNum = numberOne;
+    var topLeftMiddleNum = numberTwo;
+    var topRightMiddleNum = numberThree;
+    var topRightNum = numberFour;
+    
+    // Combinations
+    var topRowCombOne = topLeftNum == 0 && topLeftMiddleNum == 0 && topRightMiddleNum == 0 && topRightNum == 0;
+    var topRowCombTwo = topLeftNum == 1 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 1;
+    var topRowCombThree = topLeftNum == 1 && topLeftMiddleNum == 0 && topRightMiddleNum == 0 && topRightNum == 1;
+    var topRowCombFour = topLeftNum == 1 && topLeftMiddleNum == 1 && topRightMiddleNum == 0 && topRightNum == 0;
+    var topRowCombFive = topLeftNum == 0 && topLeftMiddleNum == 0 && topRightMiddleNum == 1 && topRightNum == 1;
+    var topRowCombSix = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 0;
+    
+    // User fill in possbilities for top row ( ! means filled in )
+    var topRowFilled = !topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombOne = !topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombTwo = !topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
+    var topRowFillCombThree = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombFour = topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    
+    // Numbers
+    var bottomLeftNum = numberFive;
+    var bottomLeftMiddleNum = numberSix;
+    var bottomRightMiddleNum = numberSeven;
+    var bottomRightNum = numberEight;
+    
+    // Combinations
+    var bottomRowCombOne = bottomLeftNum == 0 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 0 && bottomRightNum == 0;
+    var bottomRowCombTwo = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 1;
+    
+    // User fill in possbilities for bottom row
+    var bottomRowFilled = !bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
+    
+    // If 0000|0000 ( Left: top row, Right: bottom row )
+    if ( topRowCombOne && !topRowFilled && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombTwo && topRowFilled && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombThree && topRowFillCombOne && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombFour && topRowFillCombTwo && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0011|0000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombFive && topRowFillCombThree && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0110|0000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombSix && topRowFillCombFour && bottomRowCombOne && !bottomRowFilled )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    else
+    {        
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+    }
     
     return 0;
 }
