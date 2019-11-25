@@ -21,7 +21,7 @@ body
     color: black;
 }
 
-/* Details the level one truth table */
+/* Details the level two truth table */
 #myTruthTableCanvas
 {
     position: absolute;
@@ -30,8 +30,16 @@ body
     margin-bottom: 100px;
 }
 
-/* Details the level one K-Map */
+/* Details the level two K-Map */
 #myKMapCanvas
+{
+    position: absolute;
+    top: 150px;
+    left: 475px;
+}
+
+/* Details the level two user canvas */
+#userFillCanvas
 {
     position: absolute;
     top: 150px;

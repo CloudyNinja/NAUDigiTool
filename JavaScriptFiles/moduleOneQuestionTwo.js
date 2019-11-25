@@ -361,7 +361,7 @@ kMapText.fillText(numberEight, 268, 180);
 
 //////////////////////////////////////////////////
 
-var clickCanvas = document.getElementById("myKMapCanvas");
+var clickCanvas = document.getElementById("userFillCanvas");
 
 // Sets flags for top row of squares
 var topLeftFlag = true;
@@ -411,7 +411,7 @@ function onmousedown( event )
     var bottomRight = coordinateX >= 725 && coordinateX <= 772 && coordinateY >= 301 && coordinateY <= 355;
     
     // Square filler
-    var sCanvas = document.getElementById("myKMapCanvas");
+    var sCanvas = document.getElementById("userFillCanvas");
     var square = sCanvas.getContext('2d');
     
     square.fillStyle = "#3EFF00";
@@ -420,63 +420,105 @@ function onmousedown( event )
     // If statement for top left square
     if ( inBoundsX && inBoundsY && topLeft && topLeftFlag )
     {
-        square.fillRect(100, 101, 49, 49);
+        square.fillRect(102, 102, 49, 49);
         topLeftFlag = false;
     }
     
-    /*else if ( inBoundsX && inBoundsY && topLeft && !topLeftFlag )
+    else if ( inBoundsX && inBoundsY && topLeft && !topLeftFlag )
     {
-        square.clearRect(101, 101, 49, 49);
+        square.clearRect(102, 102, 49, 49);
         topLeftFlag = true;
-    }*/
+    }
     
     // If statement for top left middle square
     else if ( inBoundsX && inBoundsY && topLeftMiddle && topLeftMiddleFlag )
     {
-        square.fillRect(150, 101, 49, 49);
+        square.fillRect(152, 102, 49, 49);
         topLeftMiddleFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && topLeftMiddle && !topLeftMiddleFlag )
+    {
+        square.clearRect(152, 102, 49, 49);
+        topLeftMiddleFlag = true;
     }
     
     // If statement for top right middle square
     else if ( inBoundsX && inBoundsY && topRightMiddle && topRightMiddleFlag )
     {
-        square.fillRect(200, 101, 49, 49);
+        square.fillRect(202, 102, 49, 49);
         topRightMiddleFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && topRightMiddle && !topRightMiddleFlag )
+    {
+        square.clearRect(202, 102, 49, 49);
+        topRightMiddleFlag = true;
     }
     
     // If statement for top right square
     else if ( inBoundsX && inBoundsY && topRight && topRightFlag )
     {
-        square.fillRect(250, 101, 49, 49);
+        square.fillRect(252, 102, 49, 49);
         topRightFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && topRight && !topRightFlag )
+    {
+        square.clearRect(252, 102, 49, 49);
+        topRightFlag = true;
     }
     
     // If statement for bottom left square
     else if ( inBoundsX && inBoundsY && bottomLeft && bottomLeftFlag )
     {
-        square.fillRect(100, 151, 49, 49);
+        square.fillRect(102, 152, 49, 49);
         bottomLeftFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && bottomLeft && !bottomLeftFlag )
+    {
+        square.clearRect(102, 152, 49, 49);
+        bottomLeftFlag = true;
     }
     
     // If statement for bottom left middle square
     else if ( inBoundsX && inBoundsY && bottomLeftMiddle && bottomLeftMiddleFlag )
     {
-        square.fillRect(150, 151, 49, 49);
+        square.fillRect(152, 152, 49, 49);
         bottomLeftMiddleFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && bottomLeftMiddle && !bottomLeftMiddleFlag )
+    {
+        square.clearRect(152, 152, 49, 49);
+        bottomLeftMiddleFlag = true;
     }
     
     // If statement for bottom right middle square
     else if ( inBoundsX && inBoundsY && bottomRightMiddle && bottomRightMiddleFlag )
     {
-        square.fillRect(200, 151, 49, 49);
+        square.fillRect(202, 152, 49, 49);
         bottomRightMiddleFlag = false;
+    }
+    
+    else if ( inBoundsX && inBoundsY && bottomRightMiddle && !bottomRightMiddleFlag )
+    {
+        square.clearRect(202, 152, 49, 49);
+        bottomRightMiddleFlag = true;
     }
     
     // If statement for bottom right square
     else if ( inBoundsX && inBoundsY && bottomRight && bottomRightFlag )
     {
-        square.fillRect(250, 151, 49, 49);
+        square.fillRect(252, 152, 49, 49);
         bottomRightFlag = false;
+    }
+    
+    else
+    {
+        square.clearRect(252, 152, 49, 49);
+        bottomRightFlag = true;
     }
     
     /* FOR TESTING PURPOSES: KEEP HERE FOR NOW
@@ -506,38 +548,37 @@ function generateNumber()
 }
 
 // Resets all user input numbers
-function resetNumbers()
+function resetColors()
 {
-    document.getElementById("numberOne").value = 0;
-    document.getElementById("numberTwo").value = 0;
-    document.getElementById("numberThree").value = 0;
-    document.getElementById("numberFour").value = 0;
-    document.getElementById("numberFive").value = 0;
-    document.getElementById("numberSix").value = 0;
-    document.getElementById("numberSeven").value = 0;
-    document.getElementById("numberEight").value = 0;
+    // Square filler
+    var eraseCanvas = document.getElementById("userFillCanvas");
+    var clearSquare = eraseCanvas.getContext('2d');
+    
+    clearSquare.clearRect(102, 102, 49, 49);
+    topLeftFlag = true;
+    clearSquare.clearRect(152, 102, 49, 49);
+    topLeftMiddleFlag = true;
+    clearSquare.clearRect(202, 102, 49, 49);
+    topRightMiddleFlag = true;
+    clearSquare.clearRect(252, 102, 49, 49);
+    topRightFlag = true;
+    clearSquare.clearRect(102, 152, 49, 49);
+    bottomLeftFlag = true;
+    clearSquare.clearRect(152, 152, 49, 49);
+    bottomLeftMiddleFlag = true;
+    clearSquare.fillRect(202, 152, 49, 49);
+    bottomRightMiddleFlag = true;
+    clearSquare.clearRect(202, 152, 49, 49);
+    bottomRightMiddleFlag = true;
+    clearSquare.clearRect(252, 152, 49, 49);
+    bottomRightFlag = true;
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     
 }
 
 function checkAnswers()
 {
-    if ( document.getElementById("numberOne").value == numberOne 
-         && document.getElementById("numberTwo").value == numberTwo 
-         && document.getElementById("numberThree").value == numberThree 
-         && document.getElementById("numberFour").value == numberFour
-         && document.getElementById("numberFive").value == numberFive
-         && document.getElementById("numberSix").value == numberSix
-         && document.getElementById("numberSeven").value == numberSeven
-         && document.getElementById("numberEight").value == numberEight )
-    {
-        window.location.href = "questionTwo.html";
-    }
-        
-    else
-    {
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-    }
+    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
     
     return 0;
 }
