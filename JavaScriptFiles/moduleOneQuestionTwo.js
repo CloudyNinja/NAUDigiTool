@@ -656,5 +656,10 @@ function checkAnswers()
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
+    else
+    {
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+    }
+    
     return 0;
 }
