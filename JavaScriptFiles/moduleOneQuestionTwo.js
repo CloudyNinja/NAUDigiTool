@@ -593,11 +593,12 @@ function checkAnswers()
     var topRowCombSix = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 0;
     
     // User fill in possbilities for top row ( ! means filled in )
-    var topRowFilled = !topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
-    var topRowFillCombOne = !topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
-    var topRowFillCombTwo = !topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
-    var topRowFillCombThree = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
-    var topRowFillCombFour = topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    var topRowFillCombOne = topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
+    var topRowFillCombTwo = !topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombThree = !topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombFour = !topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
+    var topRowFillCombFive = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombSix = topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
     
     // Numbers
     var bottomLeftNum = numberFive;
@@ -610,47 +611,49 @@ function checkAnswers()
     var bottomRowCombTwo = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 1;
     
     // User fill in possbilities for bottom row
-    var bottomRowFilled = !bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombOne = bottomLeftFlag && bottomLeftMiddleFlag && bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombTwo = !bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
     
     // If 0000|0000 ( Left: top row, Right: bottom row )
-    if ( topRowCombOne && !topRowFilled && bottomRowCombOne && !bottomRowFilled )
+    if ( topRowCombOne && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1111 ( Left: top row, Right: bottom row )
+    if ( topRowCombOne && topRowFillCombTwo && bottomRowCombTwo && bottomRowFillCombTwo )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
     // If 1111|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombTwo && topRowFilled && bottomRowCombOne && !bottomRowFilled )
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
     // If 1001|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombThree && topRowFillCombOne && bottomRowCombOne && !bottomRowFilled )
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
     // If 1100|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombFour && topRowFillCombTwo && bottomRowCombOne && !bottomRowFilled )
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
     // If 0011|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombFive && topRowFillCombThree && bottomRowCombOne && !bottomRowFilled )
+    else if ( topRowCombFive && topRowFillCombFive && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
     // If 0110|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombSix && topRowFillCombFour && bottomRowCombOne && !bottomRowFilled )
+    else if ( topRowCombSix && topRowFillCombSix && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
-    }
-    
-    else
-    {        
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
     }
     
     return 0;
