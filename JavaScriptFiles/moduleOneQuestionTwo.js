@@ -591,6 +591,16 @@ function checkAnswers()
     var topRowCombFour = topLeftNum == 1 && topLeftMiddleNum == 1 && topRightMiddleNum == 0 && topRightNum == 0;
     var topRowCombFive = topLeftNum == 0 && topLeftMiddleNum == 0 && topRightMiddleNum == 1 && topRightNum == 1;
     var topRowCombSix = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 0;
+    var topRowCombSeven = topLeftNum == 1 && topLeftMiddleNum == 0 && topRightMiddleNum == 0 && topRightNum == 0;
+    var topRowCombEight = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 0 && topRightNum == 0;
+    var topRowCombNine = topLeftNum == 0 && topLeftMiddleNum == 0 && topRightMiddleNum == 1 && topRightNum == 0;
+    var topRowCombTen = topLeftNum == 0 && topLeftMiddleNum == 0 && topRightMiddleNum == 0 && topRightNum == 1;
+    var topRowCombEleven = topLeftNum == 1 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 0;
+    var topRowCombTwelve = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 1 && topRightNum == 1;
+    var topRowCombThirteen = topLeftNum == 1 && topLeftMiddleNum == 0 && topRightMiddleNum == 1 && topRightNum == 0;
+    var topRowCombFourteen = topLeftNum == 0 && topLeftMiddleNum == 1 && topRightMiddleNum == 0 && topRightNum == 1;
+    var topRowCombFifteen = topLeftNum == 1 && topLeftMiddleNum == 1 && topRightMiddleNum == 0 && topRightNum == 1;
+    var topRowCombSixteen = topLeftNum == 1 && topLeftMiddleNum == 0 && topRightMiddleNum == 1 && topRightNum == 1;
     
     // User fill in possbilities for top row ( ! means filled in )
     var topRowFillCombOne = topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
@@ -599,6 +609,16 @@ function checkAnswers()
     var topRowFillCombFour = !topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
     var topRowFillCombFive = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
     var topRowFillCombSix = topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    var topRowFillCombSeven = !topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
+    var topRowFillCombEight = topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && topRightFlag;
+    var topRowFillCombNine = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    var topRowFillCombTen = topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombEleven = !topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    var topRowFillCombTwelve = topLeftFlag && !topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombThirteen = !topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && topRightFlag;
+    var topRowFillCombFourteen = topLeftFlag && !topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombFifteen = !topLeftFlag && topLeftMiddleFlag && topRightMiddleFlag && !topRightFlag;
+    var topRowFillCombSixteen = topLeftFlag && topLeftMiddleFlag && !topRightMiddleFlag && !topRightFlag;
     
     // Numbers
     var bottomLeftNum = numberFive;
@@ -609,10 +629,38 @@ function checkAnswers()
     // Combinations
     var bottomRowCombOne = bottomLeftNum == 0 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 0 && bottomRightNum == 0;
     var bottomRowCombTwo = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 1;
+    var bottomRowCombThree = bottomLeftNum == 1 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 0 && bottomRightNum == 1;
+    var bottomRowCombFour = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 0 && bottomRightNum == 0;
+    var bottomRowCombFive = bottomLeftNum == 0 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 1 && bottomRightNum == 1;
+    var bottomRowCombSix = bottomLeftNum == 0 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 0;
+    var bottomRowCombSeven = bottomLeftNum == 1 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 0 && bottomRightNum == 0;
+    var bottomRowCombEight = bottomLeftNum == 0 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 0 && bottomRightNum == 0;
+    var bottomRowCombNine = bottomLeftNum == 0 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 1 && bottomRightNum == 0;
+    var bottomRowCombTen = bottomLeftNum == 0 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 0 && bottomRightNum == 1;
+    var bottomRowCombEleven = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 0;
+    var bottomRowCombTwelve = bottomLeftNum == 0 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 1 && bottomRightNum == 1;
+    var bottomRowCombThirteen = bottomLeftNum == 1 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 1 && bottomRightNum == 0;
+    var bottomRowCombFourteen = bottomLeftNum == 0 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 0 && bottomRightNum == 1;
+    var bottomRowCombFifteen = bottomLeftNum == 1 && bottomLeftMiddleNum == 1 && bottomRightMiddleNum == 0 && bottomRightNum == 1;
+    var bottomRowCombSixteen = bottomLeftNum == 1 && bottomLeftMiddleNum == 0 && bottomRightMiddleNum == 1 && bottomRightNum == 1; 
     
-    // User fill in possbilities for bottom row
+    // User fill in possbilities for top row ( ! means filled in )
     var bottomRowFillCombOne = bottomLeftFlag && bottomLeftMiddleFlag && bottomRightMiddleFlag && bottomRightFlag;
     var bottomRowFillCombTwo = !bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombThree = !bottomLeftFlag && bottomLeftMiddleFlag && bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombFour = !bottomLeftFlag && !bottomLeftMiddleFlag && bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombFive = bottomLeftFlag && bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombSix = bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombSeven = !bottomLeftFlag && bottomLeftMiddleFlag && bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombEight = bottomLeftFlag && !bottomLeftMiddleFlag && bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombNine = bottomLeftFlag && bottomLeftMiddleFlag && !bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombTen = bottomLeftFlag && bottomLeftMiddleFlag && bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombEleven = !bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombTwelve = bottomLeftFlag && !bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombThirteen = !bottomLeftFlag && bottomLeftMiddleFlag && !bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombFourteen = bottomLeftFlag && !bottomLeftMiddleFlag && bottomRightMiddleFlag && !bottomRightFlag;
+    var bottomRowFillCombFifteen = !bottomLeftFlag && bottomLeftMiddleFlag && !bottomRightMiddleFlag && bottomRightFlag;
+    var bottomRowFillCombSixteen = !bottomLeftFlag && bottomLeftMiddleFlag && !bottomRightMiddleFlag && !bottomRightFlag;
     
     // If 0000|0000 ( Left: top row, Right: bottom row )
     if ( topRowCombOne && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
@@ -620,8 +668,92 @@ function checkAnswers()
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
-    // If 1111|1111 ( Left: top row, Right: bottom row )
-    if ( topRowCombOne && topRowFillCombTwo && bottomRowCombTwo && bottomRowFillCombTwo )
+    // If 0000|1111 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTwo && bottomRowFillCombTwo )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1001 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombThree && bottomRowFillCombThree )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1100 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFour && bottomRowFillCombFour )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0011 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFive && bottomRowFillCombFive )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0110 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSix && bottomRowFillCombSix )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1000 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0100 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0010 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0001 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1110 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombEleven && bottomRowFillCombEleven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTwelve && bottomRowFillCombTwelve )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1010 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombThirteen && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|0101 ( Left: top row, Right: bottom row )
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFourteen && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFifteen && bottomRowFillCombFifteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 0000|1011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
@@ -632,29 +764,289 @@ function checkAnswers()
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
+    // If 1111|1111 ( Left: top row, Right: bottom row )
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTwo && bottomRowFillCombTwo )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombThree && bottomRowFillCombThree )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1100 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFour && bottomRowFillCombFour )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFive && bottomRowFillCombFive )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0110 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSix && bottomRowFillCombSix )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1000 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSeven && bottomRowFillCombSeven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0100 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombEight && bottomRowFillCombEight )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0010 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombNine && bottomRowFillCombNine )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTen && bottomRowFillCombTen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1110 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombEleven && bottomRowFillCombEleven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTwelve && bottomRowFillCombTwelve )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1010 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombThirteen && bottomRowFillCombThirteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|0101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFourteen && bottomRowFillCombFourteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFifteen && bottomRowFillCombFifteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1111|1011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSixteen && bottomRowFillCombSixteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
     // If 1001|0000 ( Left: top row, Right: bottom row )
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
-    // If 1100|0000 ( Left: top row, Right: bottom row )
+    // If 1001|1111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTwo && bottomRowFillCombTwo )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombThree && bottomRowFillCombThree )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1100 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFour && bottomRowFillCombFour )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFive && bottomRowFillCombFive )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0110 ( Left: top row, Right: bottom row ) 
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSix && bottomRowFillCombSix )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1000 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSeven && bottomRowFillCombSeven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0100 ( Left: top row, Right: bottom row ) 
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombEight && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0010 ( Left: top row, Right: bottom row ) 
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombNine && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTen && bottomRowFillCombTen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1110 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombEleven && bottomRowFillCombEleven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTwelve && bottomRowFillCombTwelve )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1010 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombThirteen && bottomRowFillCombSeven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|0101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFourteen && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFifteen && bottomRowFillCombFifteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1001|1011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSixteen && bottomRowFillCombSixteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombOne && bottomRowFillCombOne )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
-    // If 0011|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombFive && topRowFillCombFive && bottomRowCombOne && bottomRowFillCombOne )
+    // If 1100|1111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTwo && bottomRowFillCombTwo )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
     
-    // If 0110|0000 ( Left: top row, Right: bottom row )
-    else if ( topRowCombSix && topRowFillCombSix && bottomRowCombOne && bottomRowFillCombOne )
+    // If 1100|1001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombThree && bottomRowFillCombThree )
     {
         window.location.href = "moduleOneQuestionThree.html"; 
     }
+    
+    // If 1100|1100 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFour && bottomRowFillCombFour )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0011 ( Left: top row, Right: bottom row ) 
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFive && bottomRowFillCombFive )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0110 ( Left: top row, Right: bottom row ) (OL )
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSix && bottomRowFillCombSix )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|1000 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSeven && bottomRowFillCombSeven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0100 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombEight && bottomRowFillCombEight )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0010 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombNine && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0001 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTen && bottomRowFillCombOne )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|1110 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombEleven && bottomRowFillCombEleven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0111 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTwelve && bottomRowFillCombTwelve )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|1010 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombThirteen && bottomRowFillCombSeven )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|0101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFourteen && bottomRowFillCombEight )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|1101 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFifteen && bottomRowFillCombFour )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // If 1100|1011 ( Left: top row, Right: bottom row ) (OL)
+    else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSixteen && bottomRowFillCombSixteen )
+    {
+        window.location.href = "moduleOneQuestionThree.html"; 
+    }
+    
+    // CONTINUE AT 0011|0000
     
     else
     {
