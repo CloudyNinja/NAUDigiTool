@@ -390,10 +390,11 @@ kMapText.fillText("10", 213, 96);
 kMapText.font = "20px Arial";
 kMapText.fillText("11", 263, 96);
 
-//var numberGenerate = generateSquare();
+// Attempts Left Message
+var attemptsLeft = 3;
+document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Generates 0 or 1
-// THIS WORKS BUT I'M NOT SURE IF WE NEED IT
 function generateNumber() 
 {
   var variable = Math.random();
@@ -410,157 +411,6 @@ function generateNumber()
   
   return variable;
 }
-
-/* Generate shaded square */
-/*function generateSquare()
-{ 
-    // Generates a random number from 1 ( inclusive ) to 5 ( inclusive )
-    var number = Math.floor( ( Math.random() * 5 ) + 1 );
-    
-    // Create shaded rectangle
-    var truthTableCanvas = document.getElementById("myTruthTableCanvas");
-    var shadedNumbers = truthTableCanvas.getContext("2d");
-    
-    shadedNumbers.font = "20px Arial";
-    shadedNumbers.fillStyle = "#2066fa";
-    
-    if ( number == 1 )
-    {
-        // A
-        shadedNumbers.fillText( 0, 30, 105 );
-        shadedNumbers.fillText( 0, 30, 140 );
-        shadedNumbers.fillText( 0, 30, 175 );
-        shadedNumbers.fillText( 0, 30, 210 );
-        
-        // B
-        shadedNumbers.fillText( 0, 80, 105 );
-        shadedNumbers.fillText( 0, 80, 140 );
-        shadedNumbers.fillText( 1, 80, 175 );
-        shadedNumbers.fillText( 1, 80, 210 );
-        
-        // C
-        shadedNumbers.fillText( 0, 130, 105 );
-        shadedNumbers.fillText( 1, 130, 140 );
-        shadedNumbers.fillText( 0, 130, 175 );
-        shadedNumbers.fillText( 1, 130, 210 ); 
-        
-        // F
-        shadedNumbers.fillText( 0, 180, 105 );
-        shadedNumbers.fillText( 1, 180, 140 );
-        shadedNumbers.fillText( 1, 180, 175 );
-        shadedNumbers.fillText( 0, 180, 210 ); 
-    }
-    
-    else if ( number == 2 )
-    {
-        // A
-        shadedNumbers.fillText( 0, 30, 140 );
-        shadedNumbers.fillText( 0, 30, 175 );
-        shadedNumbers.fillText( 0, 30, 210 );
-        shadedNumbers.fillText( 1, 30, 245 );
-        
-        // B
-        shadedNumbers.fillText( 0, 80, 140 );
-        shadedNumbers.fillText( 1, 80, 175 );
-        shadedNumbers.fillText( 1, 80, 210 );
-        shadedNumbers.fillText( 0, 80, 245 );
-        
-        // C
-        shadedNumbers.fillText( 1, 130, 140 );
-        shadedNumbers.fillText( 0, 130, 175 );
-        shadedNumbers.fillText( 1, 130, 210 );
-        shadedNumbers.fillText( 0, 130, 245 );
-        
-        // F
-        shadedNumbers.fillText( 1, 180, 140 );
-        shadedNumbers.fillText( 1, 180, 175 );
-        shadedNumbers.fillText( 0, 180, 210 );
-        shadedNumbers.fillText( 1, 180, 245 ); 
-    }
-    
-    else if ( number == 3 )
-    {
-        // A
-        shadedNumbers.fillText( 0, 30, 175 );
-        shadedNumbers.fillText( 0, 30, 210 );
-        shadedNumbers.fillText( 1, 30, 245 );
-        shadedNumbers.fillText( 1, 30, 280 );
-        
-        // B
-        shadedNumbers.fillText( 1, 80, 175 );
-        shadedNumbers.fillText( 1, 80, 210 );
-        shadedNumbers.fillText( 0, 80, 245 );
-        shadedNumbers.fillText( 0, 80, 280 );
-        
-        // C
-        shadedNumbers.fillText( 0, 130, 175 );
-        shadedNumbers.fillText( 1, 130, 210 );
-        shadedNumbers.fillText( 0, 130, 245 );
-        shadedNumbers.fillText( 1, 130, 280 );
-        
-        // F
-        shadedNumbers.fillText( 1, 180, 175 );
-        shadedNumbers.fillText( 0, 180, 210 );
-        shadedNumbers.fillText( 1, 180, 245 );
-        shadedNumbers.fillText( 0, 180, 280 ); 
-    }
-    
-    else if ( number == 4 )
-    {
-        // A
-        shadedNumbers.fillText( 0, 30, 210 );
-        shadedNumbers.fillText( 1, 30, 245 );
-        shadedNumbers.fillText( 1, 30, 280 );
-        shadedNumbers.fillText( 1, 30, 315 );
-        
-        // B
-        shadedNumbers.fillText( 1, 80, 210 );
-        shadedNumbers.fillText( 0, 80, 245 );
-        shadedNumbers.fillText( 0, 80, 280 );
-        shadedNumbers.fillText( 1, 80, 315 );
-        
-        // C
-        shadedNumbers.fillText( 1, 130, 210 );
-        shadedNumbers.fillText( 0, 130, 245 );
-        shadedNumbers.fillText( 1, 130, 280 );
-        shadedNumbers.fillText( 0, 130, 315 );
-        
-        // F
-        shadedNumbers.fillText( 0, 180, 210 );
-        shadedNumbers.fillText( 1, 180, 245 );
-        shadedNumbers.fillText( 0, 180, 280 );
-        shadedNumbers.fillText( 0, 180, 315 ); 
-    }
-    
-    else
-    {
-        // A
-        shadedNumbers.fillText( 1, 30, 245 );
-        shadedNumbers.fillText( 1, 30, 280 );
-        shadedNumbers.fillText( 1, 30, 315 );
-        shadedNumbers.fillText( 1, 30, 350 );
-        
-        // B
-        shadedNumbers.fillText( 0, 80, 245 );
-        shadedNumbers.fillText( 0, 80, 280 );
-        shadedNumbers.fillText( 1, 80, 315 );
-        shadedNumbers.fillText( 1, 80, 350 );
-        
-        // C
-        shadedNumbers.fillText( 0, 130, 245 );
-        shadedNumbers.fillText( 1, 130, 280 );
-        shadedNumbers.fillText( 0, 130, 315 );
-        shadedNumbers.fillText( 1, 130, 350 );
-        
-        // F
-        shadedNumbers.fillText( 1, 180, 245 );
-        shadedNumbers.fillText( 0, 180, 280 );
-        shadedNumbers.fillText( 0, 180, 315 );
-        shadedNumbers.fillText( 1, 180, 350 ); 
-    }
-    
-    return number;
-}*/
 
 // Resets all user input numbers
 function resetNumbers()
@@ -579,86 +429,6 @@ function resetNumbers()
     
 }
 
-// Checks user input number to see if they are correct. If they are, move to the next question. If not, retry.
-/*function checkAnswers()
-{
-    if ( numberGenerate == 1 )
-    {
-        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 1 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
-        document.getElementById("numberFive").value == 0 && document.getElementById("numberSix").value == 0 &&
-        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
-        {
-            window.location.href = "questionTwo.html";
-        }
-        
-        else
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        }
-    }
-        
-    else if ( numberGenerate == 2 )
-    {
-        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 1 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
-        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
-        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
-        {
-            window.location.href = "questionTwo.html";
-        }
-        
-        else
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        }
-    }
-    
-    else if ( numberGenerate == 3 )
-    {
-        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 1 &&
-        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
-        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
-        {
-            window.location.href = "questionTwo.html";
-        }
-        
-        else
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        }
-    }
-    
-    else if ( numberGenerate == 4 )
-    {
-        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 0 &&
-        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
-        document.getElementById("numberSeven").value == 0 && document.getElementById("numberEight").value == 0 )
-        {
-            window.location.href = "questionTwo.html";
-        }
-        
-        else
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        }
-    }
-    
-    else if ( numberGenerate == 5 )
-    {
-        if ( document.getElementById("numberOne").value == 0 && document.getElementById("numberTwo").value == 0 &&       document.getElementById("numberThree").value == 0 && document.getElementById("numberFour").value == 0 &&
-        document.getElementById("numberFive").value == 1 && document.getElementById("numberSix").value == 0 &&
-        document.getElementById("numberSeven").value == 1 && document.getElementById("numberEight").value == 0 )
-        {
-            window.location.href = "questionTwo.html";
-        }
-        
-        else
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        }
-    }
-    
-    return 0;
-}*/
 function checkAnswers()
 {
     if ( document.getElementById("numberOne").value == numberOne 
@@ -676,6 +446,8 @@ function checkAnswers()
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        
+        attemptsLeft = decreaseAttempts( attemptsLeft );
     }
     
     return 0;
@@ -686,4 +458,20 @@ function receiveHint()
     document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     
     return 0;
+}
+
+function decreaseAttempts( number )
+{
+    if ( number > 1 )
+    {
+        number -= 1;
+        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+    }
+    
+    else
+    {
+        window.location.href = "moduleOneQuestionTwo.html";  
+    }
+    
+    return number;
 }
