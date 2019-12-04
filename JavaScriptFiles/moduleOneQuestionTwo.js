@@ -359,6 +359,10 @@ kMapText.fillText(numberSix, 168, 180);
 kMapText.fillText(numberSeven, 218, 180);
 kMapText.fillText(numberEight, 268, 180);
 
+// Attempts Left Message
+var attemptsLeft = 3;
+document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
+
 //////////////////////////////////////////////////
 
 var clickCanvas = document.getElementById("userFillCanvas");
@@ -573,6 +577,7 @@ function resetColors()
     clearSquare.clearRect(252, 152, 49, 49);
     bottomRightFlag = true;
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
     
 }
 
@@ -2213,7 +2218,32 @@ function checkAnswers()
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        
+        attemptsLeft = decreaseAttempts( attemptsLeft );
     }
     
     return 0;
+}
+
+function receiveHint()
+{
+    document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    
+    return 0;
+}
+
+function decreaseAttempts( number )
+{
+    if ( number > 1 )
+    {
+        number -= 1;
+        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+    }
+    
+    else
+    {
+        window.location.href = "moduleOneQuestionThree.html";  
+    }
+    
+    return number;
 }
