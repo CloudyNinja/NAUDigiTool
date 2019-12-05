@@ -363,6 +363,9 @@ kMapText.fillText(numberEight, 268, 180);
 var attemptsLeft = 3;
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
+// Star score message
+document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+
 //////////////////////////////////////////////////
 
 var clickCanvas = document.getElementById("userFillCanvas");
@@ -2238,11 +2241,17 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+        
+        starsGiven -= 1;
+        
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
     }
     
     else
     {
-        window.location.href = "moduleOneQuestionThree.html";  
+        userStars += starsGiven;
+        starsGiven = 3;
+        //window.location.href = "moduleOneQuestionTwo.html"; 
     }
     
     return number;

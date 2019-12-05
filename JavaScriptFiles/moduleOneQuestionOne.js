@@ -395,7 +395,7 @@ var attemptsLeft = 3;
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + moduleOneMaxStars.toString();
+document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
 
 // Generates 0 or 1
 function generateNumber() 
@@ -443,12 +443,12 @@ function checkAnswers()
          && document.getElementById("numberSeven").value == numberSeven
          && document.getElementById("numberEight").value == numberEight )
     {
-        //window.location.href = "moduleOneQuestionTwo.html";
-        
         userStars += starsGiven;
         starsGiven = 3;
         
-        alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() ); 
+        window.location.href = "moduleOneQuestionTwo.html";
+        
+        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
         
     else
@@ -477,14 +477,14 @@ function decreaseAttempts( number )
         
         starsGiven -= 1;
         
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + moduleOneMaxStars.toString();
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
     }
     
     else
     {
         userStars += starsGiven;
         starsGiven = 3;
-        //window.location.href = "moduleOneQuestionTwo.html"; 
+        window.location.href = "moduleOneQuestionTwo.html"; 
     }
     
     return number;
