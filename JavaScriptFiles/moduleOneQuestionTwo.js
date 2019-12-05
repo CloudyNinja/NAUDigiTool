@@ -364,7 +364,9 @@ var attemptsLeft = 3;
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  "Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+var stars
+var uStars = setUserStars( uStars );
+document.getElementById("scoreText").innerHTML =  "Star Score: " + uStars.toString();
 
 //////////////////////////////////////////////////
 
@@ -581,7 +583,6 @@ function resetColors()
     bottomRightFlag = true;
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
-    
 }
 
 function checkAnswers()

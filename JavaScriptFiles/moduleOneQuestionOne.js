@@ -443,12 +443,10 @@ function checkAnswers()
          && document.getElementById("numberSeven").value == numberSeven
          && document.getElementById("numberEight").value == numberEight )
     {
-        userStars += starsGiven;
-        starsGiven = 3;
+        userStars = addToUserStars( starsGiven );
+        //window.location.href = "moduleOneQuestionTwo.html";
         
-        window.location.href = "moduleOneQuestionTwo.html";
-        
-        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
+        alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );
     }
         
     else
@@ -482,9 +480,10 @@ function decreaseAttempts( number )
     
     else
     {
-        userStars += starsGiven;
-        starsGiven = 3;
-        window.location.href = "moduleOneQuestionTwo.html"; 
+        userStars = addToUserStars( starsGiven );
+        //window.location.href = "moduleOneQuestionTwo.html";
+        
+        alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );
     }
     
     return number;
