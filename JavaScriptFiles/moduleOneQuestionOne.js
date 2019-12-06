@@ -392,6 +392,9 @@ kMapText.fillText("11", 263, 96);
 
 // Attempts Left Message
 var attemptsLeft = 3;
+var starsGiven = 3;
+var levelMaxStars = 3;
+
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
@@ -443,10 +446,9 @@ function checkAnswers()
          && document.getElementById("numberSeven").value == numberSeven
          && document.getElementById("numberEight").value == numberEight )
     {
-        userStars = addToUserStars( starsGiven );
-        //window.location.href = "moduleOneQuestionTwo.html";
-        
-        alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );
+        userStars += starsGiven;
+        passUserStars( userStars );
+        window.location.href = "moduleOneQuestionTwo.html";
     }
         
     else
@@ -480,10 +482,11 @@ function decreaseAttempts( number )
     
     else
     {
-        userStars = addToUserStars( starsGiven );
-        //window.location.href = "moduleOneQuestionTwo.html";
+        userStars += starsGiven;
+        passUserStars( userStars );
+        window.location.href = "moduleOneQuestionTwo.html";
         
-        alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );
+        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
     
     return number;

@@ -361,12 +361,15 @@ kMapText.fillText(numberEight, 268, 180);
 
 // Attempts Left Message
 var attemptsLeft = 3;
+var starsGiven = 3;
+var levelMaxStars = 3;
+var totalUserStars = parseInt(localStorage.getItem("updatedUserStars"));
+
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-var stars
-var uStars = setUserStars( uStars );
-document.getElementById("scoreText").innerHTML =  "Star Score: " + uStars.toString();
+document.getElementById("scoreText").innerHTML = "Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+//document.getElementById("scoreText").innerHTML = "Star Score: " + totalUserStars.toString();
 
 //////////////////////////////////////////////////
 
@@ -674,1549 +677,1549 @@ function checkAnswers()
     // If 0000|0000 ( Left: top row, Right: bottom row )
     if ( topRowCombOne && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|1111 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|1001 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|1100 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|0011 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|0110 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0000|1000 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|0100 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|0010 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|0001 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|1010 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombThirteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|0101 ( Left: top row, Right: bottom row )
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFourteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 0000|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombOne && topRowFillCombOne && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|0000 ( Left: top row, Right: bottom row )
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|1111 ( Left: top row, Right: bottom row )
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1111|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombThirteen && bottomRowFillCombThirteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFourteen && bottomRowFillCombFourteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1111|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwo && topRowFillCombTwo && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0000 ( Left: top row, Right: bottom row )
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombThirteen && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFourteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1001|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThree && topRowFillCombThree && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0011 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0110 ( Left: top row, Right: bottom row ) (OL )
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombThirteen && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFourteen && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombFifteen && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1100|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFour && topRowFillCombFour && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0000 ( Left: top row, Right: bottom row )
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombThree && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombThree && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombThirteen && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombFourteen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0011|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFive && topRowFillCombFive && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0001 ( Left: top row, Right: bottom row )
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0001 ( Left: top row, Right: bottom row )
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombThirteen && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombFourteen && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombFifteen && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0110|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSix && topRowFillCombSix && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0011 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombThirteen && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|0101 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSeven && topRowFillCombOne && bottomRowCombFourteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1000|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSeven && topRowFillCombSeven && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0011 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombThirteen && bottomRowFillCombOne)
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|0101 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombFourteen && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEight && topRowFillCombEight && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0100|1011 ( Left: top row, Right: bottom row )
     else if ( topRowCombEight && topRowFillCombOne && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1100 ( Left: top row, Right: bottom row )
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombThirteen && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|0101 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombNine && topRowFillCombEight && bottomRowCombFourteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombOne && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0010|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombNine && topRowFillCombNine && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1100 ( Left: top row, Right: bottom row )
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombOne && bottomRowCombThirteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|0101 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombFourteen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0001|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTen && topRowFillCombTen && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven&& bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombThirteen && bottomRowFillCombThirteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombFourteen && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1110|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombEleven && topRowFillCombEleven && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1110 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1010 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombThirteen && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombFourteen && bottomRowFillCombFourteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0111|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombTwelve && topRowFillCombTwelve && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThirteen && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombThirteen && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombSeven && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombSeven && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombOne && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombNine && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThirteen && topRowFillCombSeven && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThirteen && topRowFillCombOne && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThirteen && topRowFillCombNine && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombOne && bottomRowCombTen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombThirteen && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombNine && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombThirteen && topRowFillCombThirteen && bottomRowCombThirteen && bottomRowFillCombThirteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|0101 ( Left: top row, Right: bottom row )
     else if ( topRowCombThirteen && topRowFillCombOne && bottomRowCombFourteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombSeven && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1010|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombThirteen && topRowFillCombThirteen && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombOne && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombFourteen && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombTen && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombEight && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombTen && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombEight && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombOne && bottomRowCombSeven && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0100 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombEight && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombOne && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0001 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombTen && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombEight && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombFourteen && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombOne && bottomRowCombThirteen && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|0101 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFourteen && topRowFillCombFourteen && bottomRowCombFourteen && bottomRowFillCombFourteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombFourteen && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 0101|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFourteen && topRowFillCombTen && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombEight && bottomRowFillCombEight )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombNine && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1010 ( Left: top row, Right: bottom row ) (OL) 
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombThirteen && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombFourteen && bottomRowFillCombFourteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1101|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombFifteen && topRowFillCombFifteen && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0000 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombOne && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|1111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombTwo && bottomRowFillCombTwo )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|1001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombThree && bottomRowFillCombThree )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|1100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombFour && bottomRowFillCombFour )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombFive && bottomRowFillCombFive )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombSix && bottomRowFillCombSix )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|1000 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombSeven && bottomRowFillCombSeven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1011|0100 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombEight && bottomRowFillCombOne )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0010 ( Left: top row, Right: bottom row ) 
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombNine && bottomRowFillCombNine )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1011|0001 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombTen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1011|1110 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombEleven && bottomRowFillCombEleven )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0111 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombTwelve && bottomRowFillCombTwelve )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|1010 ( Left: top row, Right: bottom row ) (OL) 
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombThirteen && bottomRowFillCombThirteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     // If 1011|0101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombFourteen && bottomRowFillCombTen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1011|1101 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombFifteen && bottomRowFillCombFifteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore(); 
     }
     
     // If 1011|1011 ( Left: top row, Right: bottom row ) (OL)
     else if ( topRowCombSixteen && topRowFillCombSixteen && bottomRowCombSixteen && bottomRowFillCombSixteen )
     {
-        window.location.href = "moduleOneQuestionThree.html"; 
+        showScore();
     }
     
     else
@@ -2250,10 +2253,26 @@ function decreaseAttempts( number )
     
     else
     {
-        userStars += starsGiven;
-        starsGiven = 3;
-        //window.location.href = "moduleOneQuestionTwo.html"; 
+        //window.location.href = "moduleOneQuestionThree.html";
+        
+        showScore();
     }
     
     return number;
+}
+
+function showScore()
+{
+    totalUserStars += starsGiven;
+    passUserStars( totalUserStars );
+    
+    if ( totalUserStars >= 5 )
+    {
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
+    }
+    
+    else
+    {
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nModule failed. Try again.");
+    }
 }

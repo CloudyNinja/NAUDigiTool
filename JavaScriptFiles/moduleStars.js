@@ -1,16 +1,9 @@
 var userStars = 0;
-var starsGiven = 3;
-var levelMaxStars = 3;
-var moduleOneMaxStars = 3;
+var moduleOneMaxStars = 6;
 
-function addToUserStars( variable )
+function passUserStars( variable )
 {
-    userStars += variable;
-    
-    return userStars;
-}
-
-function setUserStars( variable )
-{
-    variable = userStars;
+    userStars = variable;
+    localStorage.setItem( "updatedUserStars", userStars );
+    return false;
 }
