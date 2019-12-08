@@ -1,1 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Registration Form </title>
+</head>
+<body>
+	<link rel="stylesheet" href="CSS/register_css.css"/>
+	<h1> Registration Form </h1>
+	<br>
+	<div id="error-display" class="parent"> 
+		<div id="unmet-password-constraints-error" class="child">
+			<h3> Password must contain the following: </h3>
+			<p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+			<p id="number" class="invalid">A <b>number</b></p>
+			<p id="length" class="invalid">Minimum <b>8 characters</b></p>
+		</div>
+		<div id="password-mismatch-error" class="child"> </div>
+		<div id="invalid-email-error" class="child"> </div>
+		<div id="required-field-error" class="child"> 
+			<p id="username_error"> </p>
+			<p id="email_error"> </p>
+			<p id="password_error"> </p>
+			<p id="password_confirmation_error"> </p>
+		</div>
+		<div id="submit_error" class="child"> 
+			<p id="submit_error_username"> </p>
+			<p id="submit_error_email"> </p>
+			<p id="submit_error_password"> </p>
+			<p id="submit_error_password_confirmation"> </p>
+		</div>
+	</div>
+	<form id="project-form" name="login" > 
+	<label for="username" class="Username"> Username: </label>
+	<input type = "text" name="username" id="username">
+	
+	<label for="email" class="Email"> Email Address: </label>
+	<input type="email" name="email" id="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+">
+	
+	<label for="password" class="Password"> Password: </label>
+	<input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[A-Z]).{8,}">
+	
+	<label for="password-confirmation" class="Password-confirmation"> Password Confirmation: </label>
+	<input type="password" name="password-confirmation" id="password-confirmation" pattern="(?=.*\d)(?=.*[A-Z]).{8,}">
+	
+	<input type="submit" value="Submit" id="submit-btn" onclick="validateForm()"> <!-- This will be necessary for backend work, but is not necessary now -->
+  <input type="button" value="Return to Login Page" id="return-btn" onclick="returnLogin()">
+	</form>
+	<script language="javascript">
+    document.getElementById("submit-btn").disabled = true;
+	// Password validation
+	var myInput = document.getElementById("password");
+	var capital = document.getElementById("capital");
+	var number = document.getElementById("number");
+	var length = document.getElementById("length");
+	
+	myInput.onfocus = function()
+	{
+		document.getElementById("unmet-password-constraints-error").style.display = "block";
+	}
+
+	myInput.onblur = function()
+	{
+		document.getElementById("unmet-password-constraints-error").style.display = "none";
+	}
+
+	myInput.onkeyup = function()
+	{
+		// Validate uppercase letters
+		var upperCaseLetters = /[A-Z]/g;
+		if (myInput.value.match(upperCaseLetters))
+		{
+			capital.classList.remove("invalid");
+			capital.classList.add("valid");
+		}
+		else
+		{
+			capital.classList.remove("valid");
+			capital.classList.add("invalid");
+		}
+		// Validate numbers
+		var numbers = /[0-9]/g;
+		if(myInput.value.match(numbers)) {  
+			number.classList.remove("invalid");
+			number.classList.add("valid");
+		} else {
+			number.classList.remove("valid");
+			number.classList.add("invalid");
+		}
+  
+		// Validate length
+		if(myInput.value.length >= 8) {
+			length.classList.remove("invalid");
+			length.classList.add("valid");
+		} else {
+			length.classList.remove("valid");
+			length.classList.add("invalid");
+		}
+	}
+	
+	// Password-confirmation validation
+	var password = document.getElementById("password")
+    var confirm_password = document.getElementById("password-confirmation");
+
+	function validatePassword(){
+		if(password.value != confirm_password.value) {
+			document.getElementById("password-mismatch-error").innerHTML = "Passwords do not match.";
+			document.getElementById("submit-btn").disabled = true;
+		} 
+		else 
+		{
+			document.getElementById("password-mismatch-error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+		}
+	}
+
+	password.onchange = validatePassword;
+	confirm_password.onkeyup = validatePassword;
+	
+	// Email validation
+	var email = document.getElementById("email");
+	email.onblur = function()
+	{
+		if (!email.checkValidity())
+		{
+			document.getElementById("invalid-email-error").innerHTML = "Please enter a correct email address.";
+			document.getElementById("submit-btn").disabled = true;
+		}
+		else
+		{
+			document.getElementById("invalid-email-error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+		}
+	}
+	
+	// Other validation
+	var Username = document.getElementById("username");
+	var Email = document.getElementById("email");
+	var Password = document.getElementById("password");
+	var Password_confirmation = document.getElementById("password-confirmation");
+	document.getElementById("submit-btn").disabled = true;
+	Username.onblur = function()
+	{
+		if (Username.value == "")
+		{
+			document.getElementById("username_error").innerHTML = "Please enter a username";
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("submit_error_username").innerHTML = "Username was not entered. Submit button disabled."
+		}
+		else if (Email.value == "" || Password.value == "" || Password_confirmation.value == ""  || Password.value != Password_confirmation.value)
+		{
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("username_error").innerHTML = "";
+			document.getElementById("submit_error_username").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("username_error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+			document.getElementById("submit_error_username").innerHTML = "";
+		}
+	}
+	Email.onblur = function()
+	{
+		if (Email.value == "")
+		{
+			document.getElementById("email_error").innerHTML = "Please enter an email.";
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("submit_error_email").innerHTML = "Email was not entered. Submit button disabled.";
+		}
+		else if (Username.value == "" || Password.value == "" || Password_confirmation.value == ""  || Password.value != Password_confirmation.value)
+		{
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("email_error").innerHTML = "";
+			document.getElementById("submit_error_email").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("email_error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+			document.getElementById("submit_error_email").innerHTML = "";
+		}
+	}
+	Password.onblur = function()
+	{
+		if (Password.value == "")
+		{
+			document.getElementById("password_error").innerHTML = "Please enter a password.";
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("submit_error_password").innerHTML = "Password was not entered. Submit button disabled.";
+		}
+		else if (Username.value == "" || Email.value == "" || Password_confirmation.value == ""  || Password.value != Password_confirmation.value)
+		{
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("password_error").innerHTML = "";
+			document.getElementById("submit_error_password").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("password_error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+			document.getElementById("submit_error_password").innerHTML = "";
+		}
+	}
+	Password_confirmation.onblur = function()
+	{
+		if (Password_confirmation.value == "")
+		{
+			document.getElementById("password_confirmation_error").innerHTML = "Please confirm your password here."
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("submit_error_password_confirmation").innerHTML = "Password was not confirmed. Submit button disabled."
+		}
+		else if (Username.value == "" || Email.value == "" || Password.value == ""  || Password.value != Password_confirmation.value)
+		{
+			document.getElementById("submit-btn").disabled = true;
+			document.getElementById("password_confirmation_error").innerHTML = "";
+			document.getElementById("submit_error_password_confirmation").innerHTML = "";
+		}
+		else
+		{
+			document.getElementById("password_confirmation_error").innerHTML = "";
+			document.getElementById("submit-btn").disabled = false;
+			document.getElementById("submit_error_password_confirmation").innerHTML = "";
+		}
+	}
+    
+    function returnLogin() {
+        window.location.href = "index.html";
+    }
+	</script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
