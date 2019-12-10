@@ -15,7 +15,7 @@
           <input type="text" placeholder="Username" name="userid"><br>
           <input type="password" placeholder="Password" name="pswrd"><br>
           <input type="button" onclick="check(this.form)" target="_self" value="Login"/>
-          <input type="button" Value="Sign Up">
+          <input type="button" onclick="register() "Value="Sign Up">
 
         </div>
         </form>
@@ -32,6 +32,10 @@
               window.location.href = "homepage.html";
             }
           }
+          
+        function register() {
+          window.location.href = "register.html"; 
+        }
           // I commented this out for now because I couldn't live preview by code
         </script>
       </div>
