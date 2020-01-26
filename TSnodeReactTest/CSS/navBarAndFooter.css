@@ -34,3 +34,15 @@ li a:hover
 {
     background-color: #001f4d;
 }
+
+/* Styles the footer */
+#footer
+{
+    bottom: 0;
+    padding: 20px;
+    left: 0;
+    width: 100%;
+    position: fixed;
+    background-color: black;
+    color: white;
+}
