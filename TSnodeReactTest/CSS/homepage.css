@@ -1,0 +1,36 @@
+/* Details that modify the navigation bar */
+#navigationBar
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+/* Allows items to float to the left */
+li
+{
+    float: left;
+}
+
+/* Styles and aligns each item in navigation bar */
+li a
+{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px 25px;
+    text-decoration: none;
+}
+
+/* Hover effect whenever your mouse is over an item in the navigation bar */
+li a:hover
+{
+    background-color: #001f4d;
+}
