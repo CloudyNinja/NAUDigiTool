@@ -39,3 +39,12 @@ img:hover
     margin-bottom: 100px;
     border-radius: 10px;
 }
+
+#practiceModeText
+{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 100px;
+    color: black;
+}

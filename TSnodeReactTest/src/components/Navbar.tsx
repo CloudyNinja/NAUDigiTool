@@ -7,7 +7,7 @@ export class Navbar extends React.Component< {}>
         return <ul id="navigationBar">
             <li><a href="index.html">Home</a></li>
             <li><a href="modules.html">Modules</a></li>
-            <li><a href="freeMode.html">Free Mode</a></li>
+            <li><a href="practiceMode.html">Practice Mode</a></li>
             <li><a href="index.html">Log Out</a></li>
         </ul>;
     }
