@@ -1,3 +1,15 @@
+/* Details that modify the body */
+body 
+{
+    background: #C8CFD9;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+}
+
 /* Details that modify the navigation bar */
 #navigationBar
 {
@@ -33,6 +45,32 @@ li a
 li a:hover
 {
     background-color: #001f4d;
+}
+
+#topContainer
+{
+    background-image: url(CSS_Pictures/NAU_Snow.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 40% 30%;
+    height: 450px;
+    margin-top: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    padding: 50px;
+    border-radius: 6px;
+    text-align: center;
+    letter-spacing: .10em;
+}
+
+#logo
+{
+    position: relative;
+    border-radius: 50%;
+    padding: 40px;
 }
 
 /* Styles the footer */
