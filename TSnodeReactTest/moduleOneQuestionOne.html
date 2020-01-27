@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="CSS/default.css">
+        <link rel="stylesheet" href="CSS/moduleOne.css">
+        <title>Module One Question One</title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+        
+        <h2 id="problemOneKMap">Question One: Convert the truth table into a K-Map.</h2>
+        
+        <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
+        <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
+        
+        <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
+        <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
+        <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
+        
+        <input type="text" id="numberOne" value="0">
+        <input type="text" id="numberTwo" value="0">
+        <input type="text" id="numberThree" value="0">
+        <input type="text" id="numberFour" value="0">
+        <input type="text" id="numberFive" value="0">
+        <input type="text" id="numberSix" value="0">
+        <input type="text" id="numberSeven" value="0">
+        <input type="text" id="numberEight" value="0">
+        
+        <p id="incorrectAnswerMessage"></p>
+        
+        <p id="hint"></p>
+        
+        <p id="attemptsLeft"></p>
+        
+        <p id="scoreText"></p>
+        
+        <!--Loads the JavaScript file-->
+        <script src="JavaScriptFiles/moduleStars.js"></script>
+        <script src="JavaScriptFiles/moduleOneQuestionOne.js"></script>
+        
+        <div id="footer"></div>
+        
+        <!-- Dependencies -->
+        <script src="./node_modules/react/umd/react.development.js"></script>
+        <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <!-- Main -->
+        <script src="./dist/main.js"></script>
+    </body>
+</html>
