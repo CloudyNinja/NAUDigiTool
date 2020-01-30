@@ -259,17 +259,17 @@ function resetNumbers()
 
 function checkAnswers()
 {
-    var isValid = false;
+    var incorrectCounter = 0;
     
     for ( var index = 1; index < 9; index++ )
     {
-        if ( document.getElementById("number" + index).value == array[index - 1] );
+        if ( document.getElementById("number" + index).value != array[index - 1] );
         {
-            isValid = true;
+            incorrectCounter += 1;
         }
     }
     
-    if ( isValid )
+    if ( incorrectCounter == 0 )
     {
         userStars += starsGiven;
         passUserStars( userStars );
