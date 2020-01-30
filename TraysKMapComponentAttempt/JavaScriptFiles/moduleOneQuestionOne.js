@@ -247,15 +247,11 @@ function generateNumber()
 
 // Resets all user input numbers
 function resetNumbers()
-{
-    document.getElementById("numberOne").value = 0;
-    document.getElementById("numberTwo").value = 0;
-    document.getElementById("numberThree").value = 0;
-    document.getElementById("numberFour").value = 0;
-    document.getElementById("numberFive").value = 0;
-    document.getElementById("numberSix").value = 0;
-    document.getElementById("numberSeven").value = 0;
-    document.getElementById("numberEight").value = 0;
+{   
+    for ( var index = 1; index < 9; index++ )
+    {
+        document.getElementById("number" + index).value = 0;
+    }
 
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
@@ -263,14 +259,17 @@ function resetNumbers()
 
 function checkAnswers()
 {
-    if ( document.getElementById("numberOne").value == array[0]
-         && document.getElementById("numberTwo").value == array[1]
-         && document.getElementById("numberThree").value == array[2]
-         && document.getElementById("numberFour").value == array[3]
-         && document.getElementById("numberFive").value == array[4]
-         && document.getElementById("numberSix").value == array[5]
-         && document.getElementById("numberSeven").value == array[6]
-         && document.getElementById("numberEight").value == array[7] )
+    var isValid = false;
+    
+    for ( var index = 1; index < 9; index++ )
+    {
+        if ( document.getElementById("number" + index).value == array[index - 1] );
+        {
+            isValid = true;
+        }
+    }
+    
+    if ( isValid )
     {
         userStars += starsGiven;
         passUserStars( userStars );

@@ -128,7 +128,7 @@ body
 }
 
 /* Styles user inputs */
-#numberOne
+#number1
 {
     position: absolute;
     background: #DEDEE0;
@@ -141,7 +141,7 @@ body
     left: 585px;
 }
 
-#numberTwo
+#number2
 {
     position: absolute;
     background: #DEDEE0;
@@ -154,7 +154,7 @@ body
     left: 635px;
 }
 
-#numberThree
+#number3
 {
     position: absolute;
     background: #DEDEE0;
@@ -167,7 +167,7 @@ body
     left: 735px;
 }
 
-#numberFour
+#number4
 {
     position: absolute;
     background: #DEDEE0;
@@ -180,7 +180,7 @@ body
     left: 685px;
 }
 
-#numberFive
+#number5
 {
     position: absolute;
     background: #DEDEE0;
@@ -193,7 +193,7 @@ body
     left: 585px;
 }
 
-#numberSix
+#number6
 {
     position: absolute;
     background: #DEDEE0;
@@ -206,7 +206,7 @@ body
     left: 635px;
 }
 
-#numberSeven
+#number7
 {
     position: absolute;
     background: #DEDEE0;
@@ -219,7 +219,7 @@ body
     left: 735px;   
 }
 
-#numberEight
+#number8
 {
     position: absolute;
     background: #DEDEE0;
