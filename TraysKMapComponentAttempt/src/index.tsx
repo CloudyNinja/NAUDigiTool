@@ -2,8 +2,8 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 import { Navbar } from "./components/Navbar";
-import { Hello } from "./components/Hello";
 import { Footer } from "./components/Footer";
+//import { Hello } from "./components/Hello";
 
 ReactDOM.render(
     <Navbar />,
@@ -11,11 +11,11 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-    <Hello />,
-    document.getElementById("hello")
-);
-
-ReactDOM.render(
     <Footer />,
     document.getElementById("footer")
 );
+
+/*ReactDOM.render(
+    <Hello />,
+    document.getElementById("hello")
+);*/

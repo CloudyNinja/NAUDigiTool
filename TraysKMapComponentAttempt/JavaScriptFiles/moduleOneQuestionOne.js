@@ -1,213 +1,140 @@
-var canvas = document.getElementById("myTruthTableCanvas");
+var array = new Array(8);
+var groupingArray = new Array(8);
 
-//----------------------------------------------------------------------------------
+// Creates an array based on the number of variables provided
+function createArray( numberOfVariables )
+{
+    var length = Math.pow( 2, numberOfVariables );
+    array.length = length;
+    groupingArray.length = length;
 
-// Creates vertical line
-var verticalLine = canvas.getContext("2d");
+    for ( var index = 0; index < array.length; index++ )
+    {
+        array[ index ] = generateNumber();
+        groupingArray[ index ] = 0;
+    }
 
-// Vertical Line
-verticalLine.beginPath();
+    // Swaps array indices to match KMap table
+    /*swapArrayIndices( 2, 3 );
+    swapArrayIndices( 6, 7 );*/
+    
+    return array;
+}
 
-// Sets start point
-verticalLine.moveTo(160, 50);
+function createTruthTable( numOfVariables )
+{
+    var canvas = document.getElementById("myTruthTableCanvas");
 
-// Sets end point
-verticalLine.lineTo(160, 360);
+    // For three variable truth table
+    if ( numOfVariables == 3 )
+    { 
+        // Sets vertical and horizontal lines
+        var verticalLine = canvas.getContext("2d");
+        var horizontalLine = canvas.getContext("2d");
+        
+        // Text properties
+        var text = canvas.getContext("2d");
+        text.font = "20px Arial";
+        
+        // Creates square
+        var square = canvas.getContext("2d");
+        
+        var aColumnX = 30;
+        var aColumnY = 105;
+        
+        var bColumnX = 80;
+        var bColumnY = 105;
+        
+        var cColumnX = 130;
+        var cColumnY = 105;
+        
+        var yColumnX = 180;
+        var yColumnY = 105;
 
-// Draws line
-verticalLine.stroke();
+        // This for loop creates truth table lines
+        for ( var index = 0; index < 1; index++ )
+        {
+            verticalLine.beginPath();
+            verticalLine.moveTo(160, 50);
+            verticalLine.lineTo(160, 360);
+            verticalLine.stroke();
+            
+            horizontalLine.beginPath();
+            horizontalLine.moveTo(10, 83);
+            horizontalLine.lineTo(200, 83);
+            horizontalLine.stroke();
+        } 
+        
+        text.fillText("Truth Table", 60, 30);
+        text.fillText("A", 30, 75);
+        text.fillText("B", 80, 75);
+        text.fillText("C", 130, 75);
+        text.fillText("Y", 180, 75);
+        
+        // This for loop adds the numbers for column A
+        for ( var index = 0; index < 8; index++ )
+        {
+            if ( index < 4 )
+            {
+                text.fillText( 0, aColumnX, aColumnY ); 
+            }
+            
+            else
+            {
+                text.fillText( 1, aColumnX, aColumnY ); 
+            }
+            
+            aColumnY += 35;
+        }
+        
+        // This for loop adds the numbers for column B
+        for ( var index = 0; index < 8; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 4 || index == 5 )
+            {
+                text.fillText( 0, bColumnX, bColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, bColumnX, bColumnY );
+            }
+            
+            bColumnY += 35;
+        } 
+        
+        // This for loop adds the numbers for column C
+        for ( var index = 0; index < 8; index++ )
+        {
+            if ( index % 2 == 0 )
+            {
+                text.fillText( 0, cColumnX, cColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, cColumnX, cColumnY );
+            }
+            
+            cColumnY += 35;
+        }
+        
+        // This for loop adds the numbers for column Y 
+        for ( var index = 0; index < 8; index++ )
+        {
+            text.fillText( array[ index ], yColumnX, yColumnY );
+            yColumnY += 35;
+        } 
+        
+        // Fills square
+        square.fillStyle = "#AE61FF";
+        square.globalAlpha = 0.3;
+        square.fillRect(20, 220, 180, 140);
+    }
+}
 
-//----------------------------------------------------------------------------------
-
-// Creates horizontal line
-var horizontalLine = canvas.getContext("2d");
-
-// Horizontal Line
-horizontalLine.beginPath();
-
-// Sets start point
-horizontalLine.moveTo(10, 83);
-
-// Sets end point
-horizontalLine.lineTo(200, 83);
-
-// Draws line
-horizontalLine.stroke();
-
-// Sets A, B, and F text
-var text = canvas.getContext("2d");
-
-//----------------------------------------------------------------------------------
-
-// Truth Table
-text.font = "20px Arial";
-text.fillText("Truth Table", 60, 30);
-
-//----------------------------------------------------------------------------------
-
-// A text
-text.font = "20px Arial";
-text.fillText("A", 30, 75);
-
-// Puts number in row 2 column 1
-text.font = "20px Arial";
-text.fillText( 0, 30, 105 );
-
-// Puts number in row 3 column 1
-text.font = "20px Arial";
-text.fillText( 0, 30, 140 );
-
-// Puts number in row 4 column 1
-text.font = "20px Arial";
-text.fillText( 0, 30, 175 );
-
-// Puts number in row 5 column 1
-text.font = "20px Arial";
-text.fillText( 0, 30, 210 );
-
-// Puts number in row 6 column 1
-text.font = "20px Arial";
-text.fillText( 1, 30, 245 );
-
-// Puts number in row 7 column 1
-text.font = "20px Arial";
-text.fillText( 1, 30, 280 );
-
-// Puts number in row 8 column 1
-text.font = "20px Arial";
-text.fillText( 1, 30, 315 );
-
-// Puts number in row 9 column 1
-text.font = "20px Arial";
-text.fillText( 1, 30, 350 );
-
-//----------------------------------------------------------------------------------
-
-// B text
-text.font = "20px Arial";
-text.fillText("B", 80, 75);
-
-// Puts number in row 2 column 2
-text.font = "20px Arial";
-text.fillText( 0, 80, 105 );
-
-// Puts number in row 3 column 2
-text.font = "20px Arial";
-text.fillText( 0, 80, 140 );
-
-// Puts number in row 4 column 2
-text.font = "20px Arial";
-text.fillText( 1, 80, 175 );
-
-// Puts number in row 5 column 2
-text.font = "20px Arial";
-text.fillText( 1, 80, 210 );
-
-// Puts number in row 6 column 2
-text.font = "20px Arial";
-text.fillText( 0, 80, 245 );
-
-// Puts number in row 7 column 2
-text.font = "20px Arial";
-text.fillText( 0, 80, 280 );
-
-// Puts number in row 8 column 2
-text.font = "20px Arial";
-text.fillText( 1, 80, 315 );
-
-// Puts number in row 9 column 2
-text.font = "20px Arial";
-text.fillText( 1, 80,350 );
-
-//----------------------------------------------------------------------------------
-
-// C text
-text.font = "20px Arial";
-text.fillText("C", 130, 75);
-
-// Puts number in row 2 column 3
-text.font = "20px Arial";
-text.fillText( 0, 130, 105 );
-
-// Puts number in row 3 column 3
-text.font = "20px Arial";
-text.fillText( 1, 130, 140 );
-
-// Puts number in row 4 column 3
-text.font = "20px Arial";
-text.fillText( 0, 130, 175 );
-
-// Puts number in row 5 column 3
-text.font = "20px Arial";
-text.fillText( 1, 130, 210 );
-
-// Puts number in row 6 column 3
-text.font = "20px Arial";
-text.fillText( 0, 130, 245 );
-
-// Puts number in row 7 column 3
-text.font = "20px Arial";
-text.fillText( 1, 130, 280 );
-
-// Puts number in row 8 column 3
-text.font = "20px Arial";
-text.fillText( 0, 130, 315 );
-
-// Puts number in row 9 column 3
-text.font = "20px Arial";
-text.fillText( 1, 130,350 );
-
-//----------------------------------------------------------------------------------
-
-// F text
-text.font = "20px Arial";
-text.fillText("F", 180, 75);
-
-// Puts number in row 2 column 4
-text.font = "20px Arial";
-var numberOne = generateNumber();
-text.fillText( numberOne, 180, 105 );
-
-// Puts number in row 3 column 4
-text.font = "20px Arial";
-var numberTwo = generateNumber();
-text.fillText( numberTwo, 180, 140 );
-
-// Puts number in row 4 column 4
-text.font = "20px Arial";
-var numberThree = generateNumber();
-text.fillText( numberThree, 180, 175 );
-
-// Puts number in row 5 column 4
-text.font = "20px Arial";
-var numberFour = generateNumber();
-text.fillText( numberFour, 180, 210 );
-
-// Puts number in row 6 column 4
-text.font = "20px Arial";
-var numberFive = generateNumber();
-text.fillText( numberFive, 180, 245 );
-
-// Puts number in row 7 column 4
-text.font = "20px Arial";
-var numberSix = generateNumber();
-text.fillText( numberSix, 180, 280 );
-
-// Puts number in row 8 column 4
-text.font = "20px Arial";
-var numberSeven = generateNumber();
-text.fillText( numberSeven, 180, 315 );
-
-// Puts number in row 9 column 4
-text.font = "20px Arial";
-var numberEight = generateNumber();
-text.fillText( numberEight, 180,350 );
-
-// Creates square
-var square = canvas.getContext("2d");
-square.fillStyle = "#AE61FF";
-square.globalAlpha = 0.3;
-square.fillRect(20, 220, 180, 140);
+array = createArray(3);
+createTruthTable(3);
 
 //----------------------------------------------------------------------------------
 
@@ -437,14 +364,14 @@ function resetNumbers()
 
 function checkAnswers()
 {
-    if ( document.getElementById("numberOne").value == numberOne 
-         && document.getElementById("numberTwo").value == numberTwo 
-         && document.getElementById("numberThree").value == numberThree 
-         && document.getElementById("numberFour").value == numberFour
-         && document.getElementById("numberFive").value == numberFive
-         && document.getElementById("numberSix").value == numberSix
-         && document.getElementById("numberSeven").value == numberSeven
-         && document.getElementById("numberEight").value == numberEight )
+    if ( document.getElementById("numberOne").value == array[0]
+         && document.getElementById("numberTwo").value == array[1]
+         && document.getElementById("numberThree").value == array[2]
+         && document.getElementById("numberFour").value == array[3]
+         && document.getElementById("numberFive").value == array[4]
+         && document.getElementById("numberSix").value == array[5]
+         && document.getElementById("numberSeven").value == array[6]
+         && document.getElementById("numberEight").value == array[7] )
     {
         userStars += starsGiven;
         passUserStars( userStars );
