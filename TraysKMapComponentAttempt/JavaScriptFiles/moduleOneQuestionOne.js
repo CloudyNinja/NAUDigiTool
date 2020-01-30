@@ -15,8 +15,8 @@ function createArray( numberOfVariables )
     }
 
     // Swaps array indices to match KMap table
-    /*swapArrayIndices( 2, 3 );
-    swapArrayIndices( 6, 7 );*/
+    swapArrayIndices( 2, 3 );
+    swapArrayIndices( 6, 7 );
     
     return array;
 }
@@ -203,6 +203,14 @@ function createKMap( numofVariables )
         kMapText.fillText("11", 213, 96);
         kMapText.fillText("10", 263, 96);
     }
+}
+
+function swapArrayIndices( indexOne, indexTwo )
+{
+    var tempVal = array[ indexOne ];
+
+    array[ indexOne ] = array[ indexTwo ];
+    array[ indexTwo ] = tempVal;
 }
 
 array = createArray(3);
