@@ -133,189 +133,81 @@ function createTruthTable( numOfVariables )
     }
 }
 
+function createKMap( numofVariables )
+{
+    // Creates K-MAP
+    var kMapCanvas = document.getElementById("myKMapCanvas");
+    
+    if ( numofVariables == 3 )
+    {
+        // K-Map text
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        kMapText.fillText("K-Map", 160, 30);
+
+        // Creates diagonal line
+        var diagonalLine = kMapCanvas.getContext("2d");
+        diagonalLine.beginPath();
+        diagonalLine.moveTo(65, 50);
+        diagonalLine.lineTo(100, 100);
+        diagonalLine.stroke();
+        
+        // Creates vertical line
+        var verticalLine = kMapCanvas.getContext("2d");
+        var verticalLineMoveToX = 100;
+        var verticalLineMoveToY = 100;
+        var verticalLineLineToX = 100;
+        var verticalLineLineToY = 200;
+        
+        verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+        verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        
+        for ( var index = 0; index < 4; index++ )
+        {
+            verticalLine.stroke();
+            verticalLineMoveToX += 50;
+            verticalLineLineToX += 50;
+            verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+            verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        }
+        
+        // Creates first horizontal line
+        var horizontalLine = kMapCanvas.getContext("2d");
+        var horizontalLineMoveToX = 100;
+        var horizontalLineMoveToY = 100;
+        var horizontalLineLineToX = 301;
+        var horizontalLineLineToY = 100;
+        
+        horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+        horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        
+        for ( var index = 0; index < 3; index++ )
+        {
+            horizontalLine.stroke();
+            horizontalLineMoveToY += 50;
+            horizontalLineLineToY += 50;
+            horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+            horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        }
+        
+        // Sets A, B, and C text as well as numbers
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        
+        kMapText.fillText("A", 55, 70);
+        kMapText.fillText("B C", 81, 70);
+        kMapText.fillText("0", 80, 130);  
+        kMapText.fillText("1", 80, 180);
+        kMapText.fillText("00", 113, 96);
+        kMapText.fillText("01", 163, 96);
+        kMapText.fillText("11", 213, 96);
+        kMapText.fillText("10", 263, 96);
+    }
+}
+
 array = createArray(3);
 createTruthTable(3);
-
-//----------------------------------------------------------------------------------
-
-// Creates K-MAP
-var kMapCanvas = document.getElementById("myKMapCanvas");
-
-// K-Map text
-var kMapText = kMapCanvas.getContext("2d");
-kMapText.font = "20px Arial";
-kMapText.fillText("K-Map", 160, 30);
-
-// Creates diagonal line
-var diagonalLine = kMapCanvas.getContext("2d");
-
-// Diagonal Line
-diagonalLine.beginPath();
-
-// Sets start point
-diagonalLine.moveTo(65, 50);
-
-// Sets end point
-diagonalLine.lineTo(100, 100);
-
-// Draws line
-diagonalLine.stroke();
-
-//----------------------------------------------------------------------------------
-
-// K-Map vertical lines from LEFT to RIGHT
-
-// Creates first vertical line
-var verticalLineOne = kMapCanvas.getContext("2d");
-
-// Vertical line one
-verticalLineOne.beginPath();
-
-// Sets start point
-verticalLineOne.moveTo(100, 100);
-
-// Sets end point
-verticalLineOne.lineTo(100, 200);
-
-// Draws line
-verticalLineOne.stroke();
-
-// Creates second vertical line
-var verticalLineTwo = kMapCanvas.getContext("2d");
-
-// Vertical line two
-verticalLineTwo.beginPath();
-
-// Sets start point
-verticalLineTwo.moveTo(150, 100);
-
-// Sets end point
-verticalLineTwo.lineTo(150, 200);
-
-// Draws line
-verticalLineTwo.stroke();
-
-// Creates third vertical line
-var verticalLineThree = kMapCanvas.getContext("2d");
-
-// Vertical line three
-verticalLineThree.beginPath();
-
-// Sets start point
-verticalLineThree.moveTo(200, 100);
-
-// Sets end point
-verticalLineThree.lineTo(200, 200);
-
-// Draws line
-verticalLineThree.stroke();
-
-// Creates fourth vertical line
-var verticalLineFour = kMapCanvas.getContext("2d");
-
-// Vertical line four
-verticalLineFour.beginPath();
-
-// Sets start point
-verticalLineFour.moveTo(250, 100);
-
-// Sets end point
-verticalLineFour.lineTo(250, 200);
-
-// Draws line
-verticalLineFour.stroke();
-
-// Creates fifth vertical line
-var verticalLineFive = kMapCanvas.getContext("2d");
-
-// Vertical line five
-verticalLineFive.beginPath();
-
-// Sets start point
-verticalLineFive.moveTo(300, 100);
-
-// Sets end point
-verticalLineFive.lineTo(300, 200);
-
-// Draws line
-verticalLineFive.stroke();
-
-//----------------------------------------------------------------------------------
-
-// K-Map horizontal lines from TOP to Bottom
-
-// Creates first horizontal line
-var horizontalLineOne = kMapCanvas.getContext("2d");
-
-// Sets start point
-horizontalLineOne.moveTo(100, 100);
-
-// Sets end point
-horizontalLineOne.lineTo(301, 100);
-
-// Draws line
-horizontalLineOne.stroke();
-
-// Creates second horizontal line
-var horizontalLineTwo = kMapCanvas.getContext("2d");
-
-// Sets start point
-horizontalLineTwo.moveTo(100, 150);
-
-// Sets end point
-horizontalLineTwo.lineTo(301, 150);
-
-// Draws line
-horizontalLineTwo.stroke();
-
-// Creates third horizontal line
-var horizontalLineThree = kMapCanvas.getContext("2d");
-
-// Sets start point
-horizontalLineThree.moveTo(100, 200);
-
-// Sets end point
-horizontalLineThree.lineTo(301, 200);
-
-// Draws line
-horizontalLineThree.stroke();
-
-//----------------------------------------------------------------------------------
-
-// Sets A, B, and C text as well as numbers
-var kMapText = kMapCanvas.getContext("2d");
-
-// A text
-kMapText.font = "20px Arial";
-kMapText.fillText("A", 55, 70);
-
-// B text
-kMapText.font = "20px Arial";
-kMapText.fillText("B C", 81, 70);
-
-// 0
-kMapText.font = "20px Arial";
-kMapText.fillText("0", 80, 130);
-
-// 1
-kMapText.font = "20px Arial";
-kMapText.fillText("1", 80, 180);
-
-// 00
-kMapText.font = "20px Arial";
-kMapText.fillText("00", 113, 96);
-
-// 01
-kMapText.font = "20px Arial";
-kMapText.fillText("01", 163, 96);
-
-// 10
-kMapText.font = "20px Arial";
-kMapText.fillText("10", 213, 96);
-
-// 11
-kMapText.font = "20px Arial";
-kMapText.fillText("11", 263, 96);
+createKMap(3);
 
 // Attempts Left Message
 var attemptsLeft = 3;
@@ -359,7 +251,6 @@ function resetNumbers()
 
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
-    
 }
 
 function checkAnswers()
