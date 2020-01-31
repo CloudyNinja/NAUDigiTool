@@ -259,17 +259,17 @@ function resetNumbers()
 
 function checkAnswers()
 {
-    var incorrectCounter = 0;
+    var isRight = 0;
     
     for ( var index = 1; index < 9; index++ )
     {
-        if ( document.getElementById("number" + index).value != array[index - 1] );
+        if ( Boolean( document.getElementById("number" + index).value != array[index - 1] ) )
         {
-            incorrectCounter += 1;
+            isRight = -1;
         }
     }
     
-    if ( incorrectCounter == 0 )
+    if ( isRight == 0 )
     {
         userStars += starsGiven;
         passUserStars( userStars );
@@ -279,7 +279,6 @@ function checkAnswers()
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        
         attemptsLeft = decreaseAttempts( attemptsLeft );
     }
     
