@@ -1,6 +1,3 @@
-var array = new Array(8);
-var groupingArray = new Array(8);
-
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
 {
@@ -212,20 +209,6 @@ function swapArrayIndices( indexOne, indexTwo )
     array[ indexOne ] = array[ indexTwo ];
     array[ indexTwo ] = tempVal;
 }
-
-array = createArray(3);
-createTruthTable(3);
-createKMap(3);
-
-// Attempts Left Message
-var attemptsLeft = 3;
-var starsGiven = 3;
-var levelMaxStars = 3;
-
-document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
-
-// Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
 
 // Generates 0 or 1
 function generateNumber() 
