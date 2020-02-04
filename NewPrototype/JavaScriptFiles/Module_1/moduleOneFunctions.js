@@ -298,3 +298,57 @@ function decreaseAttempts( number )
     
     return number;
 }
+
+// For groupings 
+
+function checkGroupings()
+{    
+    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        
+    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
+    
+    return 0;
+}
+
+function receiveHintM1Q2()
+{
+    document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    
+    return 0;
+}
+
+function decreaseAttemptsM1Q2( number )
+{
+    if ( number > 1 )
+    {
+        number -= 1;
+        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+        
+        starsGiven -= 1;
+        
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+    }
+    
+    else
+    {
+        window.location.href = "moduleOneQuestionThree.html";
+    }
+    
+    return number;
+}
+
+function showScore()
+{
+    totalUserStars += starsGiven;
+    passUserStars( totalUserStars );
+    
+    if ( totalUserStars >= 5 )
+    {
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
+    }
+    
+    else
+    {
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nModule failed. Try again.");
+    }
+}
