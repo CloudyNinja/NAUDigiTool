@@ -18,6 +18,7 @@ function createArray( numberOfVariables )
     return array;
 }
 
+/////////////////////////////// For creating truth table /////////////////////////////////////////
 function createTruthTable( numOfVariables )
 {
     var canvas = document.getElementById("myTruthTableCanvas");
@@ -130,6 +131,7 @@ function createTruthTable( numOfVariables )
     }
 }
 
+/////////////////////////////// For creating KMap /////////////////////////////////////////
 function createKMap( numofVariables )
 {
     // Creates K-MAP
@@ -260,18 +262,7 @@ function generateNumber()
   return variable;
 }
 
-// Resets all user input numbers
-function resetNumbers()
-{   
-    for ( var index = 1; index < 9; index++ )
-    {
-        document.getElementById("number" + index).value = 0;
-    }
-
-    document.getElementById("incorrectAnswerMessage").innerHTML = "";
-    document.getElementById("hint").innerHTML = "";
-}
-
+/////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
 {
     var isRight = 0;
@@ -300,9 +291,70 @@ function checkAnswers()
     return 0;
 }
 
+function checkGroupings()
+{    
+    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        
+    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
+    
+    return 0;
+}
+
+function checkEquation()
+{
+    var isRight = 1;
+    
+    if ( isRight == 0 )
+    {
+        userStars += starsGiven;
+        passUserStars( userStars );
+    }
+        
+    else
+    {
+     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+    }
+    
+    return 0;
+}
+
+/////////////////////////////// Reset functions go here /////////////////////////////////////////
+function resetNumbers()
+{   
+    for ( var index = 1; index < 9; index++ )
+    {
+        document.getElementById("number" + index).value = 0;
+    }
+
+    document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
+}
+
+function resetEquation()
+{
+     document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
+}
+
+/////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
     document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+    
+    return 0;
+}
+
+function receiveHintM1Q2()
+{
+    document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    
+    return 0;
+}
+
+function receiveHintM1Q3()
+{
+    document.getElementById("hint").innerHTML = "Completely simplify answer...";
     
     return 0;
 }
@@ -331,6 +383,7 @@ function decreaseAttempts( number )
     return number;
 }
 
+/////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
 function decreaseAttemptsM1Q2( number )
 {
     if ( number > 1 )
@@ -371,55 +424,7 @@ function decreaseAttemptsM1Q3( number )
     return number;
 }
 
-// For groupings 
-function checkGroupings()
-{    
-    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        
-    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
-    
-    return 0;
-}
-
-function checkEquation()
-{
-    var isRight = 1;
-    
-    if ( isRight == 0 )
-    {
-        userStars += starsGiven;
-        passUserStars( userStars );
-    }
-        
-    else
-    {
-     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
-    }
-    
-    return 0;
-}
-
-function resetEquation()
-{
-     document.getElementById("incorrectAnswerMessage").innerHTML = "";
-    document.getElementById("hint").innerHTML = "";
-}
-
-function receiveHintM1Q2()
-{
-    document.getElementById("hint").innerHTML = "0s should never be grouped...";
-    
-    return 0;
-}
-
-function receiveHintM1Q3()
-{
-    document.getElementById("hint").innerHTML = "Completely simplify answer...";
-    
-    return 0;
-}
-
+/////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {
     totalUserStars += starsGiven;
