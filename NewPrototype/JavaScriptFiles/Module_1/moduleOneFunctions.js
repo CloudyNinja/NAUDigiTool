@@ -213,6 +213,9 @@ function fillKMap()
     var xCoordinate = 118;
     var yCoordinate = 130;
     
+    swapArrayIndices( 2, 3 );
+    swapArrayIndices( 6, 7 );
+    
     // For 3 var KMaps
     if ( array.length == 8 )
     {
@@ -234,6 +237,9 @@ function fillKMap()
            xCoordinate += 50;
        }
     }
+    
+    swapArrayIndices( 2, 3 );
+    swapArrayIndices( 6, 7 );
 }
 
 function swapArrayIndices( indexOne, indexTwo )
