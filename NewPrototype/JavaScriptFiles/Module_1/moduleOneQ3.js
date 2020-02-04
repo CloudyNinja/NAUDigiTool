@@ -16,3 +16,4 @@ document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attempts
 
 // Star score message
 document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+

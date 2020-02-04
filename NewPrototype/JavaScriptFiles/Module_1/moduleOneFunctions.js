@@ -202,6 +202,38 @@ function createKMap( numofVariables )
     }
 }
 
+function fillKMap()
+{
+    var kMapCanvas = document.getElementById("myKMapCanvas");
+    var kMapText = kMapCanvas.getContext("2d");
+    kMapText.font = "20px Arial";
+    
+    var xCoordinate = 118;
+    var yCoordinate = 130;
+    
+    // For 3 var KMaps
+    if ( array.length == 8 )
+    {
+       for ( var index = 0; index < array.length; index++ )
+       {
+           if ( index == 4 )
+            {
+                xCoordinate = 118;
+                yCoordinate += 50;
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+                
+            }
+           
+           else
+            {
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+            }
+           
+           xCoordinate += 50;
+       }
+    }
+}
+
 function swapArrayIndices( indexOne, indexTwo )
 {
     var tempVal = array[ indexOne ];
@@ -299,24 +331,6 @@ function decreaseAttempts( number )
     return number;
 }
 
-// For groupings 
-
-function checkGroupings()
-{    
-    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        
-    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
-    
-    return 0;
-}
-
-function receiveHintM1Q2()
-{
-    document.getElementById("hint").innerHTML = "0s should never be grouped...";
-    
-    return 0;
-}
-
 function decreaseAttemptsM1Q2( number )
 {
     if ( number > 1 )
@@ -337,12 +351,81 @@ function decreaseAttemptsM1Q2( number )
     return number;
 }
 
+function decreaseAttemptsM1Q3( number )
+{
+    if ( number > 1 )
+    {
+        number -= 1;
+        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+        
+        starsGiven -= 1;
+        
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+    }
+    
+    else
+    {
+        showScore();
+    }
+    
+    return number;
+}
+
+// For groupings 
+function checkGroupings()
+{    
+    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        
+    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
+    
+    return 0;
+}
+
+function checkEquation()
+{
+    var isRight = 1;
+    
+    if ( isRight == 0 )
+    {
+        userStars += starsGiven;
+        passUserStars( userStars );
+    }
+        
+    else
+    {
+     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+    }
+    
+    return 0;
+}
+
+function resetEquation()
+{
+     document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
+}
+
+function receiveHintM1Q2()
+{
+    document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    
+    return 0;
+}
+
+function receiveHintM1Q3()
+{
+    document.getElementById("hint").innerHTML = "Completely simplify answer...";
+    
+    return 0;
+}
+
 function showScore()
 {
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     
-    if ( totalUserStars >= 5 )
+    if ( totalUserStars >= 8 )
     {
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
     }
