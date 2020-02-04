@@ -6,6 +6,18 @@ createTruthTable(3);
 createKMap(3);
 fillKMap();
 
+/* For testing purposes
+*/
+array[0] = 0;
+array[1] = 0;
+array[2] = 0;
+array[3] = 1;
+array[4] = 1;
+array[5] = 1;
+array[6] = 1;
+array[7] = 0;
+
+
 printArray();
 findOctetGroups();
 findQuadGroups();

@@ -314,7 +314,7 @@ function findQuadGroups()
                 checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5 );
             }
 
-            else if ( index == 3 )
+            else if ( index == 4 )
             {
                 checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3 );
             }
