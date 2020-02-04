@@ -1,3 +1,5 @@
+var threeVarEquation = "";
+
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
 {
@@ -388,6 +390,21 @@ function printGroupingArray()
     console.log(JSON.stringify(groupingArray));
 }
 
+// Checks if user equation is valid
+function checkUserEquation()
+{    
+    if ( Boolean( document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase() == threeVarEquation ) )
+    {
+        showScore();
+    }
+    
+    else
+    {
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+    }
+}
+
 // Prints three variable equation
 function printThreeVariableEquation()
 {
@@ -399,7 +416,7 @@ function printThreeVariableEquation()
 
     else
     {
-        threeVarEquation = threeVarEquation.substring( 0, threeVarEquation.length() - 3 );
+        threeVarEquation = threeVarEquation.substring( 0, threeVarEquation.length - 1 );
         console.log( "\nY = " + threeVarEquation );
     }
 }
@@ -458,6 +475,7 @@ function addPairToGroupArray( firstIndex, secondIndex )
     groupingArray[ secondIndex ] = array[ secondIndex ];
     canGroup = true;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
+    addPairToThreeVarEquation( firstIndex, secondIndex );
 }
 
 // Adds given pair to three variable equation. More modular.
@@ -465,62 +483,62 @@ function addPairToThreeVarEquation( firstIndex, secondIndex )
 {
     if ( firstIndex == 0 && secondIndex == 1 )
     {
-        threeVarEquation += "A'B' + ";
+        threeVarEquation += "A'B'+";
     }
 
     else if ( firstIndex == 0 && secondIndex == 3 )
     {
-        threeVarEquation += "A'C' + ";
+        threeVarEquation += "A'C'+";
     }
 
     else if ( firstIndex == 0 && secondIndex == 4 )
     {
-        threeVarEquation += "B'C' + ";
+        threeVarEquation += "B'C'+";
     }
 
     else if ( firstIndex == 1 && secondIndex == 2 )
     {
-        threeVarEquation += "A'C + ";
+        threeVarEquation += "A'C+";
     }
 
     else if ( firstIndex == 1 && secondIndex == 5 )
     {
-        threeVarEquation += "B'C + ";
+        threeVarEquation += "B'C+";
     }
 
     else if ( firstIndex == 2 && secondIndex == 3 )
     {
-        threeVarEquation += "A'B + ";
+        threeVarEquation += "A'B+";
     }
 
     else if ( firstIndex == 2 && secondIndex == 6 )
     {
-        threeVarEquation += "BC + ";
+        threeVarEquation += "BC+";
     }
 
     else if ( firstIndex == 3 && secondIndex == 7 )
     {
-        threeVarEquation += "BC' + ";
+        threeVarEquation += "BC'+";
     }
 
     else if ( firstIndex == 4 && secondIndex == 5 )
     {
-        threeVarEquation += "AB' + ";
+        threeVarEquation += "AB'+";
     }
 
     else if ( firstIndex == 4 && secondIndex == 7 )
     {
-        threeVarEquation += "AC' + ";
+        threeVarEquation += "AC'+";
     }
 
     else if ( firstIndex == 5 && secondIndex == 6 )
     {
-        threeVarEquation += "AC + ";
+        threeVarEquation += "AC+";
     }
 
     else if ( firstIndex == 6 && secondIndex == 7 )
     {
-        threeVarEquation += "AB + ";
+        threeVarEquation += "AB+";
     }
 }
 
@@ -671,6 +689,7 @@ function resetNumbers()
 
 function resetEquation()
 {
+    document.getElementById("userEquation").value = "";
      document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
 }
