@@ -6,6 +6,11 @@ createTruthTable(3);
 createKMap(3);
 fillKMap();
 
+printArray();
+findOctetGroups();
+findQuadGroups();
+findPairGroups();
+
 // Attempts Left Message
 var attemptsLeft = 3;
 var starsGiven = 3;

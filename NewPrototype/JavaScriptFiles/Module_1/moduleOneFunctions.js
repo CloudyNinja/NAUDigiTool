@@ -262,6 +262,338 @@ function generateNumber()
   return variable;
 }
 
+/////////////////////////////// Grouping functions go here //////////////////////////////////////
+
+// Gets the length of array
+function getLengthOfArray()
+{
+    var counter = 0;
+
+    for ( var index = 0; index < array.length; index++ )
+    {
+        counter += 1;
+    }
+
+    return counter;
+}
+
+// Finds octet matches in array
+function findOctetGroups()
+{
+    var length = getLengthOfArray();
+
+    // For 3 Var KMap
+    if ( length == 8 )
+    {
+        if ( array[ 0 ] == 1 )
+        {
+            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7 );
+        }
+    }
+}
+
+// Finds quad matches in array
+function findQuadGroups()
+{
+    var length = getLengthOfArray();
+
+    // This is for a 3 variable truth table: Read it from TOP LEFT to BOTTOM RIGHT
+    if ( length == 8 )
+    {
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7 );
+            }
+
+            else if ( index == 1 || index == 2 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5 );
+            }
+
+            else if ( index == 3 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3 );
+            }
+        }
+    }
+}
+
+function findPairGroups()
+{
+    var length = getLengthOfArray();
+
+    // This is for a 3 variable truth table: Read it from TOP LEFT to BOTTOM RIGHT
+    if ( length == 8 )
+    {
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 4);
+            }
+
+            else if ( index == 1 || index == 2 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
+            }
+
+            else if ( index == 3 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
+            }
+
+            else if ( index == 4 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
+            }
+
+            else if ( index == 5 || index == 6 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
+            }
+        }
+    }
+}
+
+// Prints array
+function printArray()
+{
+    console.log(JSON.stringify(array));
+
+    console.log( "\nA | BC________________________");
+    console.log( "  |     00 |  01 |  11 |  10  |");
+    console.log( " 0|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
+    console.log( " 1|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
+
+
+}
+
+// Prints grouping array
+function printGroupingArray()
+{
+    console.log(JSON.stringify(groupingArray));
+}
+
+// Prints three variable equation
+function printThreeVariableEquation()
+{
+    // Eliminates the plus at the end of the string
+    if ( !canGroup )
+    {
+        console.log( "\nNo groups can be formed" );
+    }
+
+    else
+    {
+        threeVarEquation = threeVarEquation.substring( 0, threeVarEquation.length() - 3 );
+        console.log( "\nY = " + threeVarEquation );
+    }
+}
+
+// Check eight indices in array to see if they are one. More modular.
+function checkEightArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
+fifthIndex, sixthIndex, seventhIndex, eighthIndex )
+{
+    var octetFormed = Boolean(array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
+            && array[ fourthIndex ] == 1 && array[ fifthIndex ] == 1 && array[ sixthIndex ] == 1
+            && array[ seventhIndex ] == 1 && array[ eighthIndex ] == 1 );
+
+    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
+            || groupingArray[ fourthIndex ] != 1 || groupingArray[ fifthIndex ] != 1 || groupingArray[ sixthIndex ] != 1
+            || groupingArray[ seventhIndex ] != 1 || groupingArray[ eighthIndex ] != 1 );
+
+    if ( octetFormed && inGroupArray )
+    {
+        addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
+        eighthIndex );
+    }
+}
+
+// Check four indices in array to see if they are one. More modular.
+function checkFourArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
+{
+    var quadFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
+    && array[ fourthIndex ] == 1 );
+
+    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
+    || groupingArray[ fourthIndex ] != 1 );
+
+    if ( quadFormed && inGroupArray )
+    {
+        addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
+    }
+}
+
+// Check two indices in array to see if they are one. More modular.
+function checkTwoArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex )
+{
+    var pairFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 );
+
+    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 );
+
+    if ( pairFormed && inGroupArray )
+    {
+        addPairToGroupArray( firstIndex, secondIndex );
+    }
+}
+
+// Adds given pair to group array. More modular.
+function addPairToGroupArray( firstIndex, secondIndex )
+{
+    groupingArray[ firstIndex ] = array[ firstIndex ];
+    groupingArray[ secondIndex ] = array[ secondIndex ];
+    canGroup = true;
+    console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
+}
+
+// Adds given pair to three variable equation. More modular.
+function addPairToThreeVarEquation( firstIndex, secondIndex )
+{
+    if ( firstIndex == 0 && secondIndex == 1 )
+    {
+        threeVarEquation += "A'B' + ";
+    }
+
+    else if ( firstIndex == 0 && secondIndex == 3 )
+    {
+        threeVarEquation += "A'C' + ";
+    }
+
+    else if ( firstIndex == 0 && secondIndex == 4 )
+    {
+        threeVarEquation += "B'C' + ";
+    }
+
+    else if ( firstIndex == 1 && secondIndex == 2 )
+    {
+        threeVarEquation += "A'C + ";
+    }
+
+    else if ( firstIndex == 1 && secondIndex == 5 )
+    {
+        threeVarEquation += "B'C + ";
+    }
+
+    else if ( firstIndex == 2 && secondIndex == 3 )
+    {
+        threeVarEquation += "A'B + ";
+    }
+
+    else if ( firstIndex == 2 && secondIndex == 6 )
+    {
+        threeVarEquation += "BC + ";
+    }
+
+    else if ( firstIndex == 3 && secondIndex == 7 )
+    {
+        threeVarEquation += "BC' + ";
+    }
+
+    else if ( firstIndex == 4 && secondIndex == 5 )
+    {
+        threeVarEquation += "AB' + ";
+    }
+
+    else if ( firstIndex == 4 && secondIndex == 7 )
+    {
+        threeVarEquation += "AC' + ";
+    }
+
+    else if ( firstIndex == 5 && secondIndex == 6 )
+    {
+        threeVarEquation += "AC + ";
+    }
+
+    else if ( firstIndex == 6 && secondIndex == 7 )
+    {
+        threeVarEquation += "AB + ";
+    }
+}
+
+// Adds given quad pair to group array. More modular.
+function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
+{
+    groupingArray[ firstIndex ] = array[ firstIndex ];
+    groupingArray[ secondIndex ] = array[ secondIndex ];
+    groupingArray[ thirdIndex ] = array[ thirdIndex ];
+    groupingArray[ fourthIndex ] = array[ fourthIndex ];
+    canGroup = true;
+    console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
+}
+
+// Adds given octet to group array. More modular.
+function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
+                                  sixthIndex, seventhIndex, eighthIndex )
+{
+    groupingArray[ firstIndex ] = array[ firstIndex ];
+    groupingArray[ secondIndex ] = array[ secondIndex ];
+    groupingArray[ thirdIndex ] = array[ thirdIndex ];
+    groupingArray[ fourthIndex ] = array[ fourthIndex ];
+    groupingArray[ fifthIndex ] = array[ fifthIndex ];
+    groupingArray[ sixthIndex ] = array[ sixthIndex ];
+    groupingArray[ seventhIndex ] = array[ seventhIndex ];
+    groupingArray[ eighthIndex ] = array[ eighthIndex ];
+    canGroup = true;
+    console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
+    fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
+}
+
+// Adds octet to three variable equation. More modular.
+function addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
+sixthIndex, seventhIndex, eighthIndex )
+{
+    threeVarEquation += "1 + ";
+}
+
+// Adds quad to three variable equation. More modular.
+function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex )
+{
+    if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 2 && fourthIndex == 3 )
+    {
+        threeVarEquation += "A' + ";
+    }
+
+    else if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 4 && fourthIndex == 5 )
+    {
+        threeVarEquation += "B' + ";
+    }
+
+    else if ( firstIndex == 0 && secondIndex == 3 && thirdIndex == 4 && fourthIndex == 7 )
+    {
+        threeVarEquation += "C' + ";
+    }
+
+    else if ( firstIndex == 1 && secondIndex == 2 && thirdIndex == 5 && fourthIndex == 6 )
+    {
+        threeVarEquation += "C + ";
+    }
+
+    else if ( firstIndex == 2 && secondIndex == 3 && thirdIndex == 6 && fourthIndex == 7 )
+    {
+        threeVarEquation += "B + ";
+    }
+
+    else if ( firstIndex == 4 && secondIndex == 5 && thirdIndex == 6 && fourthIndex == 7 )
+    {
+        threeVarEquation += "A + ";
+    }
+}
+
+// For testing testing purposes
+function testMessage()
+{
+    console.log( "HERE" );
+}
+
+
 /////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
 {
