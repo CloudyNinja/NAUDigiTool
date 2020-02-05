@@ -342,8 +342,8 @@ function findPairGroups()
             if ( index == 0 )
             {
                 checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
                 checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 4);
+                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
             }
 
             else if ( index == 1 || index == 2 )
@@ -574,7 +574,7 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
 function addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
 sixthIndex, seventhIndex, eighthIndex )
 {
-    threeVarEquation += "1 + ";
+    threeVarEquation += "1+";
 }
 
 // Adds quad to three variable equation. More modular.
@@ -582,45 +582,41 @@ function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthI
 {
     if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 2 && fourthIndex == 3 )
     {
-        threeVarEquation += "A' + ";
+        threeVarEquation += "A'+";
     }
 
     else if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 4 && fourthIndex == 5 )
     {
-        threeVarEquation += "B' + ";
+        threeVarEquation += "B'+";
     }
 
     else if ( firstIndex == 0 && secondIndex == 3 && thirdIndex == 4 && fourthIndex == 7 )
     {
-        threeVarEquation += "C' + ";
+        threeVarEquation += "C'+";
     }
 
     else if ( firstIndex == 1 && secondIndex == 2 && thirdIndex == 5 && fourthIndex == 6 )
     {
-        threeVarEquation += "C + ";
+        threeVarEquation += "C+";
     }
 
     else if ( firstIndex == 2 && secondIndex == 3 && thirdIndex == 6 && fourthIndex == 7 )
     {
-        threeVarEquation += "B + ";
+        threeVarEquation += "B+";
     }
 
     else if ( firstIndex == 4 && secondIndex == 5 && thirdIndex == 6 && fourthIndex == 7 )
     {
-        threeVarEquation += "A + ";
+        threeVarEquation += "A+";
     }
 }
-
-// For testing testing purposes
-function testMessage()
-{
-    console.log( "HERE" );
-}
-
 
 /////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
 {
+    swapArrayIndices( 2, 3 );
+    swapArrayIndices( 6, 7 );
+    
     var isRight = 0;
     
     for ( var index = 1; index < 9; index++ )
