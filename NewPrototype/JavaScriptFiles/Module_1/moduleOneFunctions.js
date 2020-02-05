@@ -551,6 +551,7 @@ function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
     groupingArray[ fourthIndex ] = array[ fourthIndex ];
     canGroup = true;
     console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
+    addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex );
 }
 
 // Adds given octet to group array. More modular.
@@ -568,6 +569,7 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
     canGroup = true;
     console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
     fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
+    addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex );
 }
 
 // Adds octet to three variable equation. More modular.
