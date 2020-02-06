@@ -1,5 +1,4 @@
-var threeVarEquation = "";
-var equationArray = new Array(10);
+var equationArray = new Array(15);
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -481,7 +480,7 @@ function countElementsInEquationArray()
 }
 
 // Adds given pair to equation array
-function addPairToEquationArray( equationString )
+function addToEquationArray( equationString )
 {
     var index = 0;
     
@@ -500,64 +499,62 @@ function addPairToThreeVarEquation( firstIndex, secondIndex )
 {
     if ( firstIndex == 0 && secondIndex == 1 )
     {
-        threeVarEquation += "A'B'+";
-        addPairToEquationArray( "A'B'" );
+        addToEquationArray( "A'B'" );
     }
 
     else if ( firstIndex == 0 && secondIndex == 3 )
     {
-        threeVarEquation += "A'C'+";
+        addToEquationArray( "A'C'" );
     }
 
     else if ( firstIndex == 0 && secondIndex == 4 )
     {
-        threeVarEquation += "B'C'+";
-        addPairToEquationArray( "B'C'" );
+        addToEquationArray( "B'C'" );
     }
 
     else if ( firstIndex == 1 && secondIndex == 2 )
     {
-        threeVarEquation += "A'C+";
+        addToEquationArray( "A'C" );
     }
 
     else if ( firstIndex == 1 && secondIndex == 5 )
     {
-        threeVarEquation += "B'C+";
+        addToEquationArray( "B'C" );
     }
 
     else if ( firstIndex == 2 && secondIndex == 3 )
     {
-        threeVarEquation += "A'B+";
+        addToEquationArray( "A'B" );
     }
 
     else if ( firstIndex == 2 && secondIndex == 6 )
     {
-        threeVarEquation += "BC+";
+        addToEquationArray( "BC" );
     }
 
     else if ( firstIndex == 3 && secondIndex == 7 )
     {
-        threeVarEquation += "BC'+";
+        addToEquationArray( "BC'" );
     }
 
     else if ( firstIndex == 4 && secondIndex == 5 )
     {
-        threeVarEquation += "AB'+";
+        addToEquationArray( "AB'" );
     }
 
     else if ( firstIndex == 4 && secondIndex == 7 )
     {
-        threeVarEquation += "AC'+";
+        addToEquationArray( "AC'" );
     }
 
     else if ( firstIndex == 5 && secondIndex == 6 )
     {
-        threeVarEquation += "AC+";
+        addToEquationArray( "AC" );
     }
 
     else if ( firstIndex == 6 && secondIndex == 7 )
     {
-        threeVarEquation += "AB+";
+        addToEquationArray( "AB" );
     }
 }
 
@@ -595,7 +592,7 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
 function addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
 sixthIndex, seventhIndex, eighthIndex )
 {
-    threeVarEquation += "1+";
+    addToEquationArray( "1" );
 }
 
 // Adds quad to three variable equation. More modular.
@@ -603,32 +600,32 @@ function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthI
 {
     if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 2 && fourthIndex == 3 )
     {
-        threeVarEquation += "A'+";
+        addToEquationArray( "A'" );
     }
 
     else if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 4 && fourthIndex == 5 )
     {
-        threeVarEquation += "B'+";
+        addToEquationArray( "B'" );
     }
 
     else if ( firstIndex == 0 && secondIndex == 3 && thirdIndex == 4 && fourthIndex == 7 )
     {
-        threeVarEquation += "C'+";
+        addToEquationArray( "C'" );
     }
 
     else if ( firstIndex == 1 && secondIndex == 2 && thirdIndex == 5 && fourthIndex == 6 )
     {
-        threeVarEquation += "C+";
+        addToEquationArray( "C" );
     }
 
     else if ( firstIndex == 2 && secondIndex == 3 && thirdIndex == 6 && fourthIndex == 7 )
     {
-        threeVarEquation += "B+";
+        addToEquationArray( "B" );
     }
 
     else if ( firstIndex == 4 && secondIndex == 5 && thirdIndex == 6 && fourthIndex == 7 )
     {
-        threeVarEquation += "A+";
+        addToEquationArray( "A" );
     }
 }
 
