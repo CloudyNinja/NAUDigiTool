@@ -390,21 +390,6 @@ function printGroupingArray()
     console.log(JSON.stringify(groupingArray));
 }
 
-// Checks if user equation is valid
-function checkUserEquation()
-{    
-    if ( Boolean( document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase() == threeVarEquation ) )
-    {
-        showScore();
-    }
-    
-    else
-    {
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
-    }
-}
-
 // Prints three variable equation
 function printThreeVariableEquation()
 {
@@ -645,6 +630,7 @@ function checkAnswers()
     return 0;
 }
 
+// NEED TO DO
 function checkGroupings()
 {    
     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
@@ -654,23 +640,19 @@ function checkGroupings()
     return 0;
 }
 
-function checkEquation()
-{
-    var isRight = 1;
-    
-    if ( isRight == 0 )
+// Checks if user equation is valid
+function checkUserEquation()
+{    
+    if ( Boolean( document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase() == threeVarEquation ) )
     {
-        userStars += starsGiven;
-        passUserStars( userStars );
+        showScore();
     }
-        
+    
     else
     {
-     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
         attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
     }
-    
-    return 0;
 }
 
 /////////////////////////////// Reset functions go here /////////////////////////////////////////
