@@ -1,4 +1,5 @@
 var equationArray = new Array(15);
+var canGroup = 0;
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -391,22 +392,6 @@ function printGroupingArray()
     console.log(JSON.stringify(groupingArray));
 }
 
-// Prints three variable equation
-function printThreeVariableEquation()
-{
-    // Eliminates the plus at the end of the string
-    if ( !canGroup )
-    {
-        console.log( "\nNo groups can be formed" );
-    }
-
-    else
-    {
-        threeVarEquation = threeVarEquation.substring( 0, threeVarEquation.length - 1 );
-        console.log( "\nY = " + threeVarEquation );
-    }
-}
-
 // Check eight indices in array to see if they are one. More modular.
 function checkEightArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
 fifthIndex, sixthIndex, seventhIndex, eighthIndex )
@@ -459,7 +444,7 @@ function addPairToGroupArray( firstIndex, secondIndex )
 {
     groupingArray[ firstIndex ] = array[ firstIndex ];
     groupingArray[ secondIndex ] = array[ secondIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
     addPairToThreeVarEquation( firstIndex, secondIndex );
 }
@@ -565,7 +550,7 @@ function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
     groupingArray[ secondIndex ] = array[ secondIndex ];
     groupingArray[ thirdIndex ] = array[ thirdIndex ];
     groupingArray[ fourthIndex ] = array[ fourthIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
     addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex );
 }
@@ -582,7 +567,7 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
     groupingArray[ sixthIndex ] = array[ sixthIndex ];
     groupingArray[ seventhIndex ] = array[ seventhIndex ];
     groupingArray[ eighthIndex ] = array[ eighthIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
     fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
     addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex );
@@ -679,7 +664,7 @@ function checkUserEquation()
     
     console.log( userInput );
     
-    if ( Boolean( userInput.length && countElementsInEquationArray() ) )
+    if ( Boolean( userInput.length == countElementsInEquationArray() ) )
     {
         for ( var outerIndex = 0; outerIndex < equationArray.length; outerIndex++ )
         {
@@ -703,6 +688,12 @@ function checkUserEquation()
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
             attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
         }
+    }
+    
+    // If no groups formed
+    else if ( canGroup == 0 && userInput == "" )
+    {
+        showScore();
     }
     
     else
@@ -812,6 +803,7 @@ function decreaseAttemptsM1Q3( number )
     
     else
     {
+        console.log("FINISHED")
         showScore();
     }
     
