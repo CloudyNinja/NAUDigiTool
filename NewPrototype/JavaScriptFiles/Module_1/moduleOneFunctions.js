@@ -1,4 +1,5 @@
 var threeVarEquation = "";
+var equationArray = new Array(10);
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -375,6 +376,7 @@ function findPairGroups()
 function printArray()
 {
     console.log(JSON.stringify(array));
+    console.log(JSON.stringify(equationArray));
 
     console.log( "\nA | BC________________________");
     console.log( "  |     00 |  01 |  11 |  10  |");
@@ -463,12 +465,43 @@ function addPairToGroupArray( firstIndex, secondIndex )
     addPairToThreeVarEquation( firstIndex, secondIndex );
 }
 
+// Counts number of elements in equation array
+function countElementsInEquationArray()
+{
+    var index = 0;
+    var count = 0;
+    
+    while ( equationArray[ index ] != null )
+    {
+        index++;
+        count += 1;
+    }
+    
+    return count;
+}
+
+// Adds given pair to equation array
+function addPairToEquationArray( equationString )
+{
+    var index = 0;
+    
+    while ( equationArray[ index ] != null )
+    {
+        index++;
+    }
+    
+    equationArray[ index ] = equationString;
+    console.log(JSON.stringify(equationArray));
+    console.log( countElementsInEquationArray() );
+}
+
 // Adds given pair to three variable equation. More modular.
 function addPairToThreeVarEquation( firstIndex, secondIndex )
 {
     if ( firstIndex == 0 && secondIndex == 1 )
     {
         threeVarEquation += "A'B'+";
+        addPairToEquationArray( "A'B'" );
     }
 
     else if ( firstIndex == 0 && secondIndex == 3 )
@@ -479,6 +512,7 @@ function addPairToThreeVarEquation( firstIndex, secondIndex )
     else if ( firstIndex == 0 && secondIndex == 4 )
     {
         threeVarEquation += "B'C'+";
+        addPairToEquationArray( "B'C'" );
     }
 
     else if ( firstIndex == 1 && secondIndex == 2 )
@@ -642,10 +676,36 @@ function checkGroupings()
 
 // Checks if user equation is valid
 function checkUserEquation()
-{    
-    if ( Boolean( document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase() == threeVarEquation ) )
+{  
+    var counter = 0;
+    var userInput = document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase().split("+");
+    
+    console.log( userInput );
+    
+    if ( Boolean( userInput.length && countElementsInEquationArray() ) )
     {
-        showScore();
+        for ( var outerIndex = 0; outerIndex < equationArray.length; outerIndex++ )
+        {
+            for ( var innerIndex = 0; innerIndex < userInput.length; innerIndex++ )
+            {
+                if ( Boolean( equationArray[ outerIndex ] == userInput[ innerIndex ] ) )
+                {
+                    counter += 1;
+                }
+            }
+        }
+        
+        // Since user input has to be same length as answer array
+        if ( counter == userInput.length )
+        {
+           showScore(); 
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+            attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+        }
     }
     
     else
