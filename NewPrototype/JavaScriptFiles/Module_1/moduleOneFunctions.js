@@ -14,10 +14,22 @@ function createArray( numberOfVariables )
         groupingArray[ index ] = 0;
     }
 
-    // Swaps array indices to match KMap table
-    swapArrayIndices( 2, 3 );
-    swapArrayIndices( 6, 7 );
+    if ( numberOfVariables == 3 )
+    {
+       // Swaps array indices to match KMap table
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 ); 
+    }
     
+    else if ( numberOfVariables == 4 )
+    {
+        // Swaps array indices to match KMap table
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
+    }
+
     return array;
 }
 
@@ -257,6 +269,8 @@ function createTruthTable( numOfVariables )
         // Flip once to match kmap
         swapArrayIndices( 2, 3 );
         swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
         
         // Gonna need to swap indices twice more
         
@@ -270,6 +284,8 @@ function createTruthTable( numOfVariables )
         // Flip again to for correct groupings and equation.
         swapArrayIndices( 2, 3 );
         swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
         
         // Gonna need to swap indices twice more
         
@@ -351,6 +367,78 @@ function createKMap( numofVariables )
         kMapText.fillText("11", 213, 96);
         kMapText.fillText("10", 263, 96);
     }
+    
+    else if ( numofVariables == 4 )
+    {
+        // K-Map text
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        kMapText.fillText("K-Map", 160, 30);
+
+        // Creates diagonal line
+        var diagonalLine = kMapCanvas.getContext("2d");
+        diagonalLine.beginPath();
+        diagonalLine.moveTo(65, 50);
+        diagonalLine.lineTo(100, 100);
+        diagonalLine.stroke();
+        
+        // Creates vertical line
+        var verticalLine = kMapCanvas.getContext("2d");
+        var verticalLineMoveToX = 100;
+        var verticalLineMoveToY = 100;
+        var verticalLineLineToX = 100;
+        var verticalLineLineToY = 300;
+        
+        verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+        verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        
+        for ( var index = 0; index < 4; index++ )
+        {
+            verticalLine.stroke();
+            verticalLineMoveToX += 50;
+            verticalLineLineToX += 50;
+            verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+            verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        }
+        
+        // Creates first horizontal line
+        var horizontalLine = kMapCanvas.getContext("2d");
+        var horizontalLineMoveToX = 100;
+        var horizontalLineMoveToY = 100;
+        var horizontalLineLineToX = 301;
+        var horizontalLineLineToY = 100;
+        
+        horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+        horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        
+        for ( var index = 0; index < 5; index++ )
+        {
+            horizontalLine.stroke();
+            horizontalLineMoveToY += 50;
+            horizontalLineLineToY += 50;
+            horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+            horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        }
+        
+        // Sets A, B, and C text as well as numbers
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        
+        // For A and B
+        kMapText.fillText("A B", 30, 70);
+        kMapText.fillText("00", 70, 130);  
+        kMapText.fillText("01", 70, 180);
+        kMapText.fillText("11", 70, 230);  
+        kMapText.fillText("10", 70, 280);
+        
+        
+        // For C and D
+        kMapText.fillText("C D", 81, 70);
+        kMapText.fillText("00", 113, 96);
+        kMapText.fillText("01", 163, 96);
+        kMapText.fillText("11", 213, 96);
+        kMapText.fillText("10", 263, 96);
+    }
 }
 
 function fillKMap()
@@ -368,6 +456,28 @@ function fillKMap()
        for ( var index = 0; index < array.length; index++ )
        {
            if ( index == 4 )
+            {
+                xCoordinate = 118;
+                yCoordinate += 50;
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+                
+            }
+           
+           else
+            {
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+            }
+           
+           xCoordinate += 50;
+       }
+    }
+    
+    // For 4 var KMaps
+    else if ( array.length == 16 )
+    {
+       for ( var index = 0; index < array.length; index++ )
+       {
+           if ( index == 4 || index == 8 || index == 12 )
             {
                 xCoordinate = 118;
                 yCoordinate += 50;
@@ -845,14 +955,28 @@ function checkUserEquation()
 
 /////////////////////////////// Reset functions go here /////////////////////////////////////////
 function resetNumbers()
-{   
-    for ( var index = 1; index < 9; index++ )
+{ 
+    if ( array.length == 8 )
     {
-        document.getElementById("number" + index).value = 0;
-    }
+       for ( var index = 1; index < 9; index++ )
+        {
+            document.getElementById("number" + index).value = 0;
+        }
 
-    document.getElementById("incorrectAnswerMessage").innerHTML = "";
-    document.getElementById("hint").innerHTML = "";
+        document.getElementById("incorrectAnswerMessage").innerHTML = "";
+        document.getElementById("hint").innerHTML = ""; 
+    }
+    
+    else if ( array.length == 16 )
+    {
+       for ( var index = 1; index < 17; index++ )
+        {
+            document.getElementById("number" + index).value = 0;
+        }
+
+        document.getElementById("incorrectAnswerMessage").innerHTML = "";
+        document.getElementById("hint").innerHTML = ""; 
+    }
 }
 
 function resetEquation()
@@ -883,6 +1007,7 @@ function receiveHintM1Q3()
     
     return 0;
 }
+
 
 function decreaseAttempts( number )
 {
