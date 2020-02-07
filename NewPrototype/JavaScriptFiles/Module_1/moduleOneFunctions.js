@@ -138,6 +138,146 @@ function createTruthTable( numOfVariables )
         square.globalAlpha = 0.3;
         square.fillRect(20, 220, 180, 140);
     }
+    
+    // For four variable truth table
+    else if ( numOfVariables == 4 )
+    { 
+        // Sets vertical and horizontal lines
+        var verticalLine = canvas.getContext("2d");
+        var horizontalLine = canvas.getContext("2d");
+        
+        // Text properties
+        var text = canvas.getContext("2d");
+        text.font = "16px Arial";
+        
+        // Creates square
+        var square = canvas.getContext("2d");
+        
+        var aColumnX = 30;
+        var aColumnY = 105;
+        
+        var bColumnX = 80;
+        var bColumnY = 105;
+        
+        var cColumnX = 130;
+        var cColumnY = 105;
+        
+        var dColumnX = 180;
+        var dColumnY = 105;
+        
+        var yColumnX = 230;
+        var yColumnY = 105;
+
+        // This for loop creates truth table lines
+        for ( var index = 0; index < 1; index++ )
+        {
+            verticalLine.beginPath();
+            verticalLine.moveTo(200, 50);
+            verticalLine.lineTo(200, 360);
+            verticalLine.stroke();
+            
+            horizontalLine.beginPath();
+            horizontalLine.moveTo(10, 83);
+            horizontalLine.lineTo(250, 83);
+            horizontalLine.stroke();
+        } 
+        
+        text.fillText("Truth Table", 100, 30);
+        text.fillText("A", 30, 75);
+        text.fillText("B", 80, 75);
+        text.fillText("C", 130, 75);
+        text.fillText("D", 180, 75);
+        text.fillText("Y", 230, 75);
+        
+        // This for loop adds the numbers for column A
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( index < 8 )
+            {
+                text.fillText( 0, aColumnX, aColumnY ); 
+            }
+            
+            else
+            {
+                text.fillText( 1, aColumnX, aColumnY ); 
+            }
+            
+            aColumnY += 25;
+        }
+        
+        // This for loop adds the numbers for column B
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( ( index >= 0 && index <= 3 ) || ( index >= 8 && index <= 11 ) )
+            {
+                text.fillText( 0, bColumnX, bColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, bColumnX, bColumnY );
+            }
+            
+            bColumnY += 25;
+        } 
+        
+        // This for loop adds the numbers for column C
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( ( index >= 0 && index <= 1 ) || ( index >= 5 && index <= 6 ) || ( index >= 8 && index <= 9 )
+            || ( index >= 12 && index <= 13 ) )
+            {
+                text.fillText( 0, cColumnX, cColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, cColumnX, cColumnY );
+            }
+            
+            cColumnY += 25;
+        }
+        
+        // This for loop adds the numbers for column D
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( index % 2 == 0 )
+            {
+                text.fillText( 0, dColumnX, dColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, dColumnX, dColumnY );
+            }
+            
+            dColumnY += 25;
+        }
+        
+        // Flip once to match kmap
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        
+        // Gonna need to swap indices twice more
+        
+        // This for loop adds the numbers for column Y 
+        for ( var index = 0; index < 16; index++ )
+        {   
+            text.fillText( array[ index ], yColumnX, yColumnY );
+            yColumnY += 25;
+        } 
+        
+        // Flip again to for correct groupings and equation.
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        
+        // Gonna need to swap indices twice more
+        
+        // Fills square
+        square.fillStyle = "#AE61FF";
+        square.globalAlpha = 0.3;
+        square.fillRect(20, 290, 230, 200);
+    }
 }
 
 /////////////////////////////// For creating KMap /////////////////////////////////////////
