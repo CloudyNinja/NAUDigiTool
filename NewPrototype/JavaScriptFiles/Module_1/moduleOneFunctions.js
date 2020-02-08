@@ -872,7 +872,7 @@ function checkAnswers()
     
     var isRight = 0;
     
-    for ( var index = 1; index < 9; index++ )
+    for ( var index = 1; index < array.length; index++ )
     {
         if ( Boolean( document.getElementById("number" + index).value != array[index - 1] ) )
         {
@@ -884,7 +884,16 @@ function checkAnswers()
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        window.location.href = "moduleOneQuestionTwo.html";
+        
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionTwo.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFive.html";
+        }
     }
         
     else
@@ -1025,7 +1034,16 @@ function decreaseAttempts( number )
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        window.location.href = "moduleOneQuestionTwo.html";
+        
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionTwo.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFive.html";
+        }
         
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
