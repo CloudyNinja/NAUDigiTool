@@ -236,7 +236,7 @@ function createTruthTable( numOfVariables )
         // This for loop adds the numbers for column C
         for ( var index = 0; index < 16; index++ )
         {
-            if ( ( index >= 0 && index <= 1 ) || ( index >= 5 && index <= 6 ) || ( index >= 8 && index <= 9 )
+            if ( ( index >= 0 && index <= 1 ) || ( index >= 4 && index <= 5 ) || ( index >= 8 && index <= 9 )
             || ( index >= 12 && index <= 13 ) )
             {
                 text.fillText( 0, cColumnX, cColumnY );
@@ -867,18 +867,25 @@ function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthI
 /////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
 {
+    // Need to adjust depending on the size of array
     swapArrayIndices( 2, 3 );
     swapArrayIndices( 6, 7 );
+    swapArrayIndices( 10, 11 );
+    swapArrayIndices( 14, 15 );
     
     var isRight = 0;
+    console.log(JSON.stringify(array));
     
-    for ( var index = 1; index < array.length; index++ )
+    for ( var index = 1; index < array.length + 1; index++ )
     {
+        console.log( "Checking " + document.getElementById("number" + index).value + " with " + array[index-1] );
         if ( Boolean( document.getElementById("number" + index).value != array[index - 1] ) )
         {
             isRight = -1;
         }
     }
+    
+    console.log( isRight );
     
     if ( isRight == 0 )
     {
@@ -892,6 +899,7 @@ function checkAnswers()
         
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
         {
+            showScore();
             window.location.href = "moduleOneQuestionFive.html";
         }
     }
@@ -910,7 +918,7 @@ function checkGroupings()
 {    
     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
         
-    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
+    attemptsLeft = decreaseAttempts( attemptsLeft );
     
     return 0;
 }
@@ -939,26 +947,26 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-           showScore(); 
+           window.location.href = "moduleOneQuestionFive.html";
         }
         
         else
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-            attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+            attemptsLeft = decreaseAttempts( attemptsLeft );
         }
     }
     
     // If no groups formed
     else if ( canGroup == 0 && userInput == "" )
     {
-        showScore();
+        window.location.href = "moduleOneQuestionFive.html";
     }
     
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+        attemptsLeft = decreaseAttempts( attemptsLeft );
     }
 }
 
@@ -998,26 +1006,25 @@ function resetEquation()
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+    }
+    
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    }
+    
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Completely simplify answer...";
+    }
     
     return 0;
 }
 
-function receiveHintM1Q2()
-{
-    document.getElementById("hint").innerHTML = "0s should never be grouped...";
-    
-    return 0;
-}
-
-function receiveHintM1Q3()
-{
-    document.getElementById("hint").innerHTML = "Completely simplify answer...";
-    
-    return 0;
-}
-
-
+/////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
 function decreaseAttempts( number )
 {
     if ( number > 1 )
@@ -1040,54 +1047,22 @@ function decreaseAttempts( number )
             window.location.href = "moduleOneQuestionTwo.html";
         }
         
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionThree.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFour.html";
+        }
+        
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
         {
             window.location.href = "moduleOneQuestionFive.html";
         }
         
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
-    }
-    
-    return number;
-}
-
-/////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
-function decreaseAttemptsM1Q2( number )
-{
-    if ( number > 1 )
-    {
-        number -= 1;
-        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
-        starsGiven -= 1;
-        
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
-    }
-    
-    else
-    {
-        window.location.href = "moduleOneQuestionThree.html";
-    }
-    
-    return number;
-}
-
-function decreaseAttemptsM1Q3( number )
-{
-    if ( number > 1 )
-    {
-        number -= 1;
-        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
-        starsGiven -= 1;
-        
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
-    }
-    
-    else
-    {
-        console.log("FINISHED")
-        showScore();
     }
     
     return number;
