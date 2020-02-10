@@ -226,6 +226,110 @@ body
     left: 685px;
 }
 
+#number9
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 360px;
+    left: 585px;
+}
+
+#number10
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 360px;
+    left: 635px;
+}
+
+#number11
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 360px;
+    left: 735px;
+}
+
+#number12
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 360px;
+    left: 685px;
+}
+
+#number13
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 410px;
+    left: 585px;
+}
+
+#number14
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 410px;
+    left: 635px;
+}
+
+#number15
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 410px;
+    left: 735px;
+}
+
+#number16
+{
+    position: absolute;
+    background: #DEDEE0;
+    width: 30px;
+    height: 30px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    text-align: center;
+    top: 410px;
+    left: 685px;
+}
+
 /**********************************************************************************************/
 
 #incorrectAnswerMessage

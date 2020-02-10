@@ -1,4 +1,5 @@
 var equationArray = new Array(15);
+var canGroup = 0;
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -13,10 +14,22 @@ function createArray( numberOfVariables )
         groupingArray[ index ] = 0;
     }
 
-    // Swaps array indices to match KMap table
-    swapArrayIndices( 2, 3 );
-    swapArrayIndices( 6, 7 );
+    if ( numberOfVariables == 3 )
+    {
+       // Swaps array indices to match KMap table
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 ); 
+    }
     
+    else if ( numberOfVariables == 4 )
+    {
+        // Swaps array indices to match KMap table
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
+    }
+
     return array;
 }
 
@@ -137,6 +150,150 @@ function createTruthTable( numOfVariables )
         square.globalAlpha = 0.3;
         square.fillRect(20, 220, 180, 140);
     }
+    
+    // For four variable truth table
+    else if ( numOfVariables == 4 )
+    { 
+        // Sets vertical and horizontal lines
+        var verticalLine = canvas.getContext("2d");
+        var horizontalLine = canvas.getContext("2d");
+        
+        // Text properties
+        var text = canvas.getContext("2d");
+        text.font = "16px Arial";
+        
+        // Creates square
+        var square = canvas.getContext("2d");
+        
+        var aColumnX = 30;
+        var aColumnY = 105;
+        
+        var bColumnX = 80;
+        var bColumnY = 105;
+        
+        var cColumnX = 130;
+        var cColumnY = 105;
+        
+        var dColumnX = 180;
+        var dColumnY = 105;
+        
+        var yColumnX = 230;
+        var yColumnY = 105;
+
+        // This for loop creates truth table lines
+        for ( var index = 0; index < 1; index++ )
+        {
+            verticalLine.beginPath();
+            verticalLine.moveTo(200, 50);
+            verticalLine.lineTo(200, 360);
+            verticalLine.stroke();
+            
+            horizontalLine.beginPath();
+            horizontalLine.moveTo(10, 83);
+            horizontalLine.lineTo(250, 83);
+            horizontalLine.stroke();
+        } 
+        
+        text.fillText("Truth Table", 100, 30);
+        text.fillText("A", 30, 75);
+        text.fillText("B", 80, 75);
+        text.fillText("C", 130, 75);
+        text.fillText("D", 180, 75);
+        text.fillText("Y", 230, 75);
+        
+        // This for loop adds the numbers for column A
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( index < 8 )
+            {
+                text.fillText( 0, aColumnX, aColumnY ); 
+            }
+            
+            else
+            {
+                text.fillText( 1, aColumnX, aColumnY ); 
+            }
+            
+            aColumnY += 25;
+        }
+        
+        // This for loop adds the numbers for column B
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( ( index >= 0 && index <= 3 ) || ( index >= 8 && index <= 11 ) )
+            {
+                text.fillText( 0, bColumnX, bColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, bColumnX, bColumnY );
+            }
+            
+            bColumnY += 25;
+        } 
+        
+        // This for loop adds the numbers for column C
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( ( index >= 0 && index <= 1 ) || ( index >= 4 && index <= 5 ) || ( index >= 8 && index <= 9 )
+            || ( index >= 12 && index <= 13 ) )
+            {
+                text.fillText( 0, cColumnX, cColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, cColumnX, cColumnY );
+            }
+            
+            cColumnY += 25;
+        }
+        
+        // This for loop adds the numbers for column D
+        for ( var index = 0; index < 16; index++ )
+        {
+            if ( index % 2 == 0 )
+            {
+                text.fillText( 0, dColumnX, dColumnY );
+            }
+                
+            else
+            {
+                text.fillText( 1, dColumnX, dColumnY );
+            }
+            
+            dColumnY += 25;
+        }
+        
+        // Flip once to match kmap
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
+        
+        // Gonna need to swap indices twice more
+        
+        // This for loop adds the numbers for column Y 
+        for ( var index = 0; index < 16; index++ )
+        {   
+            text.fillText( array[ index ], yColumnX, yColumnY );
+            yColumnY += 25;
+        } 
+        
+        // Flip again to for correct groupings and equation.
+        swapArrayIndices( 2, 3 );
+        swapArrayIndices( 6, 7 );
+        swapArrayIndices( 10, 11 );
+        swapArrayIndices( 14, 15 );
+        
+        // Gonna need to swap indices twice more
+        
+        // Fills square
+        square.fillStyle = "#AE61FF";
+        square.globalAlpha = 0.3;
+        square.fillRect(20, 290, 230, 200);
+    }
 }
 
 /////////////////////////////// For creating KMap /////////////////////////////////////////
@@ -210,6 +367,78 @@ function createKMap( numofVariables )
         kMapText.fillText("11", 213, 96);
         kMapText.fillText("10", 263, 96);
     }
+    
+    else if ( numofVariables == 4 )
+    {
+        // K-Map text
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        kMapText.fillText("K-Map", 160, 30);
+
+        // Creates diagonal line
+        var diagonalLine = kMapCanvas.getContext("2d");
+        diagonalLine.beginPath();
+        diagonalLine.moveTo(65, 50);
+        diagonalLine.lineTo(100, 100);
+        diagonalLine.stroke();
+        
+        // Creates vertical line
+        var verticalLine = kMapCanvas.getContext("2d");
+        var verticalLineMoveToX = 100;
+        var verticalLineMoveToY = 100;
+        var verticalLineLineToX = 100;
+        var verticalLineLineToY = 300;
+        
+        verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+        verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        
+        for ( var index = 0; index < 4; index++ )
+        {
+            verticalLine.stroke();
+            verticalLineMoveToX += 50;
+            verticalLineLineToX += 50;
+            verticalLine.moveTo(verticalLineMoveToX, verticalLineMoveToY);
+            verticalLine.lineTo(verticalLineLineToX, verticalLineLineToY);
+        }
+        
+        // Creates first horizontal line
+        var horizontalLine = kMapCanvas.getContext("2d");
+        var horizontalLineMoveToX = 100;
+        var horizontalLineMoveToY = 100;
+        var horizontalLineLineToX = 301;
+        var horizontalLineLineToY = 100;
+        
+        horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+        horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        
+        for ( var index = 0; index < 5; index++ )
+        {
+            horizontalLine.stroke();
+            horizontalLineMoveToY += 50;
+            horizontalLineLineToY += 50;
+            horizontalLine.moveTo(horizontalLineMoveToX, horizontalLineMoveToY);
+            horizontalLine.lineTo(horizontalLineLineToX, horizontalLineLineToY);
+        }
+        
+        // Sets A, B, and C text as well as numbers
+        var kMapText = kMapCanvas.getContext("2d");
+        kMapText.font = "20px Arial";
+        
+        // For A and B
+        kMapText.fillText("A B", 30, 70);
+        kMapText.fillText("00", 70, 130);  
+        kMapText.fillText("01", 70, 180);
+        kMapText.fillText("11", 70, 230);  
+        kMapText.fillText("10", 70, 280);
+        
+        
+        // For C and D
+        kMapText.fillText("C D", 81, 70);
+        kMapText.fillText("00", 113, 96);
+        kMapText.fillText("01", 163, 96);
+        kMapText.fillText("11", 213, 96);
+        kMapText.fillText("10", 263, 96);
+    }
 }
 
 function fillKMap()
@@ -227,6 +456,28 @@ function fillKMap()
        for ( var index = 0; index < array.length; index++ )
        {
            if ( index == 4 )
+            {
+                xCoordinate = 118;
+                yCoordinate += 50;
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+                
+            }
+           
+           else
+            {
+                kMapText.fillText(array[index], xCoordinate, yCoordinate);
+            }
+           
+           xCoordinate += 50;
+       }
+    }
+    
+    // For 4 var KMaps
+    else if ( array.length == 16 )
+    {
+       for ( var index = 0; index < array.length; index++ )
+       {
+           if ( index == 4 || index == 8 || index == 12 )
             {
                 xCoordinate = 118;
                 yCoordinate += 50;
@@ -391,22 +642,6 @@ function printGroupingArray()
     console.log(JSON.stringify(groupingArray));
 }
 
-// Prints three variable equation
-function printThreeVariableEquation()
-{
-    // Eliminates the plus at the end of the string
-    if ( !canGroup )
-    {
-        console.log( "\nNo groups can be formed" );
-    }
-
-    else
-    {
-        threeVarEquation = threeVarEquation.substring( 0, threeVarEquation.length - 1 );
-        console.log( "\nY = " + threeVarEquation );
-    }
-}
-
 // Check eight indices in array to see if they are one. More modular.
 function checkEightArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
 fifthIndex, sixthIndex, seventhIndex, eighthIndex )
@@ -459,7 +694,7 @@ function addPairToGroupArray( firstIndex, secondIndex )
 {
     groupingArray[ firstIndex ] = array[ firstIndex ];
     groupingArray[ secondIndex ] = array[ secondIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
     addPairToThreeVarEquation( firstIndex, secondIndex );
 }
@@ -565,7 +800,7 @@ function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
     groupingArray[ secondIndex ] = array[ secondIndex ];
     groupingArray[ thirdIndex ] = array[ thirdIndex ];
     groupingArray[ fourthIndex ] = array[ fourthIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
     addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex );
 }
@@ -582,7 +817,7 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
     groupingArray[ sixthIndex ] = array[ sixthIndex ];
     groupingArray[ seventhIndex ] = array[ seventhIndex ];
     groupingArray[ eighthIndex ] = array[ eighthIndex ];
-    canGroup = true;
+    canGroup = 1;
     console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
     fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
     addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex );
@@ -632,24 +867,41 @@ function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthI
 /////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
 {
+    // Need to adjust depending on the size of array
     swapArrayIndices( 2, 3 );
     swapArrayIndices( 6, 7 );
+    swapArrayIndices( 10, 11 );
+    swapArrayIndices( 14, 15 );
     
     var isRight = 0;
+    console.log(JSON.stringify(array));
     
-    for ( var index = 1; index < 9; index++ )
+    for ( var index = 1; index < array.length + 1; index++ )
     {
+        console.log( "Checking " + document.getElementById("number" + index).value + " with " + array[index-1] );
         if ( Boolean( document.getElementById("number" + index).value != array[index - 1] ) )
         {
             isRight = -1;
         }
     }
     
+    console.log( isRight );
+    
     if ( isRight == 0 )
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        window.location.href = "moduleOneQuestionTwo.html";
+        
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionTwo.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        {
+            showScore();
+            window.location.href = "moduleOneQuestionFive.html";
+        }
     }
         
     else
@@ -666,7 +918,7 @@ function checkGroupings()
 {    
     document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
         
-    attemptsLeft = decreaseAttemptsM1Q2( attemptsLeft );
+    attemptsLeft = decreaseAttempts( attemptsLeft );
     
     return 0;
 }
@@ -679,7 +931,7 @@ function checkUserEquation()
     
     console.log( userInput );
     
-    if ( Boolean( userInput.length && countElementsInEquationArray() ) )
+    if ( Boolean( userInput.length == countElementsInEquationArray() ) )
     {
         for ( var outerIndex = 0; outerIndex < equationArray.length; outerIndex++ )
         {
@@ -695,33 +947,53 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-           showScore(); 
+           window.location.href = "moduleOneQuestionFive.html";
         }
         
         else
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-            attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+            attemptsLeft = decreaseAttempts( attemptsLeft );
         }
+    }
+    
+    // If no groups formed
+    else if ( canGroup == 0 && userInput == "" )
+    {
+        window.location.href = "moduleOneQuestionFive.html";
     }
     
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttemptsM1Q3( attemptsLeft );
+        attemptsLeft = decreaseAttempts( attemptsLeft );
     }
 }
 
 /////////////////////////////// Reset functions go here /////////////////////////////////////////
 function resetNumbers()
-{   
-    for ( var index = 1; index < 9; index++ )
+{ 
+    if ( array.length == 8 )
     {
-        document.getElementById("number" + index).value = 0;
-    }
+       for ( var index = 1; index < 9; index++ )
+        {
+            document.getElementById("number" + index).value = 0;
+        }
 
-    document.getElementById("incorrectAnswerMessage").innerHTML = "";
-    document.getElementById("hint").innerHTML = "";
+        document.getElementById("incorrectAnswerMessage").innerHTML = "";
+        document.getElementById("hint").innerHTML = ""; 
+    }
+    
+    else if ( array.length == 16 )
+    {
+       for ( var index = 1; index < 17; index++ )
+        {
+            document.getElementById("number" + index).value = 0;
+        }
+
+        document.getElementById("incorrectAnswerMessage").innerHTML = "";
+        document.getElementById("hint").innerHTML = ""; 
+    }
 }
 
 function resetEquation()
@@ -734,25 +1006,25 @@ function resetEquation()
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+    }
+    
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "0s should never be grouped...";
+    }
+    
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Completely simplify answer...";
+    }
     
     return 0;
 }
 
-function receiveHintM1Q2()
-{
-    document.getElementById("hint").innerHTML = "0s should never be grouped...";
-    
-    return 0;
-}
-
-function receiveHintM1Q3()
-{
-    document.getElementById("hint").innerHTML = "Completely simplify answer...";
-    
-    return 0;
-}
-
+/////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
 function decreaseAttempts( number )
 {
     if ( number > 1 )
@@ -769,50 +1041,28 @@ function decreaseAttempts( number )
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        window.location.href = "moduleOneQuestionTwo.html";
+        
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionTwo.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionThree.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFour.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFive.html";
+        }
         
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
-    }
-    
-    return number;
-}
-
-/////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
-function decreaseAttemptsM1Q2( number )
-{
-    if ( number > 1 )
-    {
-        number -= 1;
-        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
-        starsGiven -= 1;
-        
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
-    }
-    
-    else
-    {
-        window.location.href = "moduleOneQuestionThree.html";
-    }
-    
-    return number;
-}
-
-function decreaseAttemptsM1Q3( number )
-{
-    if ( number > 1 )
-    {
-        number -= 1;
-        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
-        starsGiven -= 1;
-        
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
-    }
-    
-    else
-    {
-        showScore();
     }
     
     return number;
