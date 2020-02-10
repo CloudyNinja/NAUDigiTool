@@ -1,6 +1,68 @@
 var equationArray = new Array(15);
 var canGroup = 0;
 
+var canvas = document.getElementById( "myKMapCanvas" );
+var userTrace = canvas.getContext('2d');
+
+var isDrawing = false;
+var lastX = 0;
+var lastY = 0;
+
+// control keycode 17
+
+function draw(e) 
+{
+    if(!isDrawing)
+    {
+        return 0;
+    }
+    
+    else
+    {
+            userTrace.lineWidth = 2;
+            userTrace.beginPath();
+            userTrace.moveTo(lastX, lastY);
+            userTrace.lineTo(e.offsetX, e.offsetY);
+            userTrace.stroke();
+            [lastX, lastY] = [e.offsetX, e.offsetY];    
+    }
+}
+
+canvas.addEventListener('mousedown', (e) => {
+    console.log( "HERE" );
+    isDrawing = true;
+    [lastX, lastY] = [e.offsetX, e.offsetY];
+});
+
+// Auto corrects lines and groups being formed
+// This allows the lines to be perfectly drawn
+canvas.addEventListener('mouseup', (e) => {
+isDrawing = false;
+var c = document.getElementById("myKMapCanvas");
+var ctx = c.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+ctx.stroke();
+});
+
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', () => isDrawing = false);
+canvas.addEventListener('mouseout', () => isDrawing = false);
+
+/*function mouseDown()
+{
+    var kMapCanvas = document.getElementById("myKMapCanvas");
+    var context = kMapCanvas.getContext("2d");
+    
+    document.getElementById("myKMapCanvas").innerHTML = "The mouse button is held down.";
+    context.beginPath();
+    context.moveTo(e.clientX, e.clientY);
+    context.lineTo(e.clientX, e.clientY);
+    context.lineWidth = 2;
+    context.strokeStyle = "#FF2D00";
+    context.stroke();
+}*/
+
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
 {
@@ -995,11 +1057,20 @@ function resetNumbers()
         document.getElementById("hint").innerHTML = ""; 
     }
 }
+function resetGroupings()
+{
+    console.log("HERE");
+    document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("hint").innerHTML = "";
+    userTrace.clearRect(0, 0, canvas.width, canvas.height);
+    createKMap(3);
+    fillKMap();
+}
 
 function resetEquation()
 {
     document.getElementById("userEquation").value = "";
-     document.getElementById("incorrectAnswerMessage").innerHTML = "";
+    document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
 }
 
