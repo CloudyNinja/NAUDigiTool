@@ -19,12 +19,12 @@ function draw(e)
     
     else
     {
-            userTrace.lineWidth = 2;
-            userTrace.beginPath();
-            userTrace.moveTo(lastX, lastY);
-            userTrace.lineTo(e.offsetX, e.offsetY);
-            userTrace.stroke();
-            [lastX, lastY] = [e.offsetX, e.offsetY];    
+        userTrace.lineWidth = 2;
+        userTrace.beginPath();
+        userTrace.moveTo(lastX, lastY);
+        userTrace.lineTo(e.offsetX, e.offsetY);
+        userTrace.stroke();
+        [lastX, lastY] = [e.offsetX, e.offsetY];    
     }
 }
 

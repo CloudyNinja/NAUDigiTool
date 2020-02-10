@@ -39,14 +39,6 @@ body
     left: 475px;
 }
 
-/* Details the level two user canvas */
-#userFillCanvas
-{
-    position: absolute;
-    top: 150px;
-    left: 475px;
-}
-
 /* Styles submit button */
 #submitButton
 {
