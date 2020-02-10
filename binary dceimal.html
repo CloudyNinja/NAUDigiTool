@@ -1,0 +1,211 @@
+<body>
+<div id="content" style="display: none">
+    <p style="font-weight: 700">The timer counting frome 120s to 0 <span style="color: #FF4500"> TimeRemaining：</span><a style="font-weight: 600;" id="countdown"></a></p>
+<table id="answer"></table>
+<div>
+</div>
+<div style="margin-left: 100px;margin-top: 20px;">
+    <input type="button" id="submitbtn" value="submit" onclick="Submit()" />
+</div>
+</div>
+<div id="AnswerDiv" class="mydiv" style="display: none">
+<p>
+Your mark is :<span id="mark" style="color: red"></span>
+</p>
+<div id="correctAnswer" style="display: none">
+<p>Correct Answer</p>
+<ul id="correctAnswer_ul"></ul>
+</div>
+<p style="color:blue;display: none" id="allRight">good 100 ！！！</p>
+</div>
+   
+</body>
+
+
+<script>
+ //timer
+    var timer = 120;
+
+    window.onload = function () {
+       // if (confirm("Are you ready for the quiz?  you need to submit in 60s.")) {
+        //    document.getElementById("content").style.display = "block";
+        //    Quenstion1();
+       //     document.getElementById("countdown").innerHTML = timer;
+       //     Time_kill = setInterval("Time_up()", 1000);
+       // }
+                    document.getElementById("content").style.display = "block";
+            Quenstion1();
+            document.getElementById("countdown").innerHTML = timer;
+            Time_kill = setInterval("Time_up()", 1000);
+    };
+
+
+    function Time_up() {
+        if (timer == 0) {
+            clearInterval(Time_kill);
+            alert('The time expires~');
+            document.getElementById("submitbtn").disabled = "disabled";
+            return;
+        }
+        timer--;
+        document.getElementById("countdown").innerHTML = timer;
+    }
+    var style1 = [];
+    var style2 = [];
+  
+    var Answers = 
+    [
+        { Id: 1, Title: "Converting a Decimal Number 10 to Binary Form ",
+                  mptions: { 
+                    A: "1010", 
+                    B: "1111", 
+                    C: "1100", 
+                    D: "1101" },
+                Answer: "A", },
+        { Id: 2, Title: "Converting a Decimal Number 10 to Binary Form ",
+                  mptions: { 
+                    A: "1010", 
+                    B: "1111", 
+                    C: "1100", 
+                    D: "1101" },
+                Answer: "A", },
+        { Id: 3, Title: "Converting a Decimal Number 10 to Binary Form ",
+                  mptions: { 
+                    A: "1010", 
+                    B: "1111", 
+                    C: "1100", 
+                    D: "1101" },
+                Answer: "A", },
+        { Id: 4, Title: "Converting a Decimal Number 10 to Binary Form ",
+                  mptions: { 
+                    A: "1010", 
+                    B: "1111", 
+                    C: "1100", 
+                    D: "1101" },
+                Answer: "A", },
+        { Id: 5, Title: "Converting a Decimal Number 10 to Binary Form ",
+                  mptions: { 
+                    A: "1010", 
+                    B: "1111", 
+                    C: "1100", 
+                    D: "1101" },
+                Answer: "A", },
+       
+        
+    ];
+
+    
+
+    function Quenstion1() {
+        style1 = [];
+        style2 = [];
+        var i = 0;
+        var randoms = [];
+        var random;
+        while (i < 4) {
+//choose questions random
+            random = parseInt(5 * Math.random());
+            if (randoms.length > 0 && randoms.indexOf(random) > -1) {
+                continue;
+            }
+            randoms.push(random);
+            style1.push(Answers[random]);
+            i++;
+        }
+
+        var randoms1 = [];
+        
+
+        var Table1 = document.getElementById("answer");
+        
+
+
+        var html = '';
+        var t;
+        for (t = 0; t < 4; t++) {
+            html += '<tr id="' + style1[t]['Id'] + '" style="height: 60px;"> <td><p style="font-weight: 600;">•   ' + (t + 1) + ':' + style1[t]['Title'] + '</p>';
+            html += '<p style="padding-left: 30px;">';
+            for (var mbj in style1[t]["mptions"]) {
+                html += ' <span> <input name="answer' + t + '"  type="radio" value=' + mbj + ' />' + mbj + '.' + style1[t]["mptions"][mbj] + '</span>';
+            }
+            html += '</p></td></tr>';
+        }
+
+        var html1 = "";
+        for (t = 0; t < style2.length; t++) {
+            html1 += '<tr id="' + style2[t]['Id'] + '" style="height: 40px;"><td style="font-weight: 600;">•  ' + (t + 5) + '：' + style2[t]["Title"];
+            html1 += '</td><td style="margin-left:20px;padding-left:70px;"><input type="radio" value="T" name="dispute' + t + '" />T</td><td> <input type="radio" value="F" name="dispute' + t + '" />F</td></tr>';
+        }
+
+        Table1.innerHTML = html;
+       
+
+    }
+
+    function Submit() {
+
+        var n = 0;
+        var get_type = document.getElementById("answer").getElementsByTagName("tr");
+        for (var t = 0; t < get_type.length; t++) {
+            var get_input = get_type[t].getElementsByTagName("input");
+            var tf_answer = false;
+            for (var i = 0; i < get_input.length; i++) {
+                if (get_input[i].checked) {
+                    tf_answer = true;
+                    break;
+                }
+            }
+            if (!tf_answer) {
+                alert("please answer all questions！");
+                return;
+            }
+        }
+
+       
+
+        
+        document.getElementById("submitbtn").disabled = "disabled";
+        var correctHtml = "";
+        //get mark
+        for (var t = 0; t < get_type.length; t++) {
+            var get_input = get_type[t].getElementsByTagName("input");
+            for (var i = 0; i < get_input.length; i++) {
+                if (get_input[i].checked) {
+                    for (var m = 0; m < style1.length; m++) {
+                        if (style1[m]["Id"] == get_type[t].id) {
+                            if (style1[m]["Answer"] == get_input[i].value) {
+                                n += 25;
+                            }
+                            else {
+                                correctHtml += '<li>Question ' + (t+1) + ' : the answer should be <span style="color:red">' + style1[m]["Answer"] + '<span></li>';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+       
+
+        clearInterval(Time_kill);
+
+
+        document.getElementById("correctAnswer_ul").innerHTML = correctHtml;
+        document.getElementById("mark").innerText = n;
+        if (n == 100) {
+            document.getElementById("allRight").style.display = "block";
+        } else {
+            document.getElementById("correctAnswer").style.display = "block";
+
+        }
+       
+//open a new weindow
+        var mpen = window.open();
+        mpen.document.write(document.getElementById("AnswerDiv").innerHTML);
+        mpen.document.close();
+
+    }
+
+
+</script>
+    
