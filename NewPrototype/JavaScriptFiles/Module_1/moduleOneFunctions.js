@@ -1009,7 +1009,7 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-           window.location.href = "moduleOneQuestionFive.html";
+           window.location.href = "moduleOneQuestionFour.html";
         }
         
         else
