@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="CSS/default.css">
+        <title>Conversions</title>
+    </head>
+    <body onload="random()">
+        <!--div id="navbar"></div-->
+
+        <h2 id="problem"> Convert the following decimal numbers. </h2>
+
+        Given <span id="randomNumber1"></span>, convert to hexadecimal:
+        <input type="text" id="hex" />
+        <button type="button" id="submitButton" onclick="submitHex()">Submit</button>
+
+        <br><br>
+
+        Given <span id="randomNumber2"></span>, convert to octal:
+        <input type="text" id="oct" />
+        <button type="button" id="submitButton" onclick="submitOctal()">Submit</button>
+
+        <script src="ConversionTest.js"> </script>
+        
+        <!--div id="footer"></div-->
+        
+        <!-- Dependencies >
+        <script src="./node_modules/react/umd/react.development.js"></script>
+        <script src="./node_modules/react-dom/umd/react-dom.development.js"></script-->
+
+        <!-- Main >
+        <script src="./dist/main.js"></script-->
+    </body>
+</html>
