@@ -6,10 +6,13 @@ import { Footer } from "./components/Footer";
 import { ModuleNavbar } from "./components/ModuleNavbar";
 //import { Hello } from "./components/Hello";
 
-ReactDOM.render(
+if(document.getElementById("navbar") != null)
+{
+    ReactDOM.render(
     <Navbar />,
     document.getElementById("navbar")
 );
+}
 
 ReactDOM.render(
     <Footer />,

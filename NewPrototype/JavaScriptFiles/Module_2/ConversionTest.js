@@ -67,7 +67,10 @@ function submitOctal()
 // Gives hint to user
 function receiveHint()
 {
-    alert("Fill this in later")
+    if ( Boolean( window.location.href.indexOf("ConversionTest") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Do better";
+    }
 }
 
 function resetEquation()

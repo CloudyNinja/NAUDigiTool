@@ -11,7 +11,7 @@ body
 }
 
 /* Details that modify the navigation bar */
-#navigationBar
+#navigationBar, #moduleNavbar
 {
     list-style-type: none;
     margin: 0;
