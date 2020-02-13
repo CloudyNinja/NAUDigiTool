@@ -6,6 +6,8 @@ var ctx = canvas.getContext('2d');
 var rect = {};
 var drag = false;
 
+var rectangleArray = new Array( 3 );
+
 function init() 
 {
     canvas.addEventListener('mousedown', mouseDown, false);
@@ -23,7 +25,34 @@ function mouseDown(e)
 function mouseUp() 
 {
     drag = false;
-    sketchRectangle();
+    addRectangleToArray( rect );
+}
+
+function addRectangleToArray( rectangle )
+{
+    var index = 0;
+    
+    while ( rectangleArray[ index ] != null )
+    {
+        console.log(rectangleArray[ index ] );
+        index++;
+    }
+    
+    var temp = { startX: rectangle.startX, startY: rectangle.startY, w: rectangle.w, h : rectangle.h };
+    rectangleArray[index] = temp;
+    
+    console.log(JSON.stringify(rectangleArray));
+}
+
+function drawRectangles()
+{
+    var index = 0;
+    
+    while ( rectangleArray[ index ] != null )
+    {
+        ctx.strokeRect( rectangleArray[index].startX, rectangleArray[index].startY, rectangleArray[index].w, rectangleArray[index].h );
+        index++;
+    }
 }
 
 function mouseMove(e) 
@@ -34,7 +63,9 @@ function mouseMove(e)
         rect.h = (e.pageY - this.offsetTop) - rect.startY ;
         
         // This clear rect affects the rectangle being drawn
-        //ctx.clearRect( rect.startX, rect.startY, rect.w, rect.h );
+        ctx.clearRect( 0, 0, canvas.width, canvas.height);
+        drawRectangles();
+        sketchRectangle();
     }
 }
 
