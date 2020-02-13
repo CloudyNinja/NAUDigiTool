@@ -947,8 +947,8 @@ function checkAnswers()
     // Need to adjust depending on the size of array
     swapArrayIndices( 2, 3 );
     swapArrayIndices( 6, 7 );
-    swapArrayIndices( 10, 11 );
-    swapArrayIndices( 14, 15 );
+    //swapArrayIndices( 10, 11 );
+    //swapArrayIndices( 14, 15 );
     
     var isRight = 0;
     console.log(JSON.stringify(array));
