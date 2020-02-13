@@ -25,6 +25,28 @@ function submitHex()
     {
     alert("Incorrect, try again.")
     }
+
+    var answer2 = randomNum2.toString(16)
+    var userInput2 = document.getElementById("hex2").value
+    if( userInput2.toUpperCase() == answer2.toUpperCase() )
+    {
+        alert("Congratulations, correct answer!")
+    }
+    else
+    {
+    alert("Incorrect, try again.")
+    }
+
+    var answer3 = randomNum3.toString(16)
+    var userInput3 = document.getElementById("hex3").value
+    if( userInput3.toUpperCase() == answer3.toUpperCase() )
+    {
+        alert("Congratulations, correct answer!")
+    }
+    else
+    {
+    alert("Incorrect, try again.")
+    }
 }
 
 // Checks if octal value is correct
@@ -51,4 +73,5 @@ function receiveHint()
 function resetEquation()
 {
     document.getElementById("hex").value = ""
+    location.reload()
 }
