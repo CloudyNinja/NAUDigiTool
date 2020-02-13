@@ -1,0 +1,112 @@
+
+/* Styles the body */
+body 
+{
+    background: #DEDEE0;
+    color: #545454;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+/* Styles the question text*/
+#problem
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 500px;
+    font-family: serif;
+    color: black;
+}
+
+h3
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 125px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styles the question input box*/
+#hex
+{
+    position: absolute;
+    top: 125px;
+    left: 550px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+/* Styles submit button */
+#submitButton
+{
+    position: absolute;
+    top: 500px;
+    left: 550px;
+    height: 50px;
+    width: 70px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+}
+
+/* Submit button hover effect */
+#submitButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+/* Styles hint button */
+#hintButton
+{
+    position: absolute;
+    top: 500px;
+    left: 650px;
+    height: 50px;
+    width: 70px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+}
+
+/* Hint button hover effect */
+#hintButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+/* Styles reset button */
+#resetButton
+{
+    position: absolute;
+    top: 500px;
+    left: 750px;
+    height: 50px;
+    width: 70px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+}
+
+/* Reset button hover effect */
+#resetButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}

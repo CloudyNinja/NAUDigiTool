@@ -38,3 +38,14 @@ function submitOctal()
     alert("Incorrect, try again.")
     }
 }
+
+// Gives hint to user
+function receiveHint()
+{
+    alert("Fill this shit in later")
+}
+
+function resetEquation()
+{
+    document.getElementById("hex").value = ""
+}
