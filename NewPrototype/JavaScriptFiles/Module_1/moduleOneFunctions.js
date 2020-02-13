@@ -26,6 +26,7 @@ function mouseUp()
 {
     drag = false;
     addRectangleToArray( rect );
+    //console.log( "X: " +  + " Y: " + coord.y );
 }
 
 function addRectangleToArray( rectangle )
@@ -1073,12 +1074,10 @@ function resetNumbers()
 }
 function resetGroupings()
 {
-    console.log("HERE");
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
-    userTrace.clearRect(0, 0, canvas.width, canvas.height);
-    createKMap(3);
-    fillKMap();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearRectangleArray();
 }
 
 function resetEquation()
@@ -1086,6 +1085,17 @@ function resetEquation()
     document.getElementById("userEquation").value = "";
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
+}
+
+function clearRectangleArray()
+{
+    var index = 0;
+    
+    while ( rectangleArray[ index ] != null )
+    {
+        rectangleArray[ index ] = null;
+        index++;
+    }
 }
 
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
