@@ -24,7 +24,8 @@ body
     color: black;
 }
 
-h3
+/* Styling for the questions*/
+#question1
 {
     position: absolute;   
     margin-left: auto;
@@ -37,11 +38,63 @@ h3
     color: black;
 }
 
+#question2
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 175px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
+#question3
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 225px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
 /* Styles the question input box*/
 #hex
 {
     position: absolute;
     top: 125px;
+    left: 550px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+#hex2
+{
+    position: absolute;
+    top: 175px;
+    left: 550px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+#hex3
+{
+    position: absolute;
+    top: 225px;
     left: 550px;
     height: 30px;
     width: 200px;
