@@ -64,6 +64,19 @@ body
     color: black;
 }
 
+#question4
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 275px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
 /* Styles the question input box*/
 #hex
 {
@@ -95,6 +108,19 @@ body
 {
     position: absolute;
     top: 225px;
+    left: 550px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+#hex4
+{
+    position: absolute;
+    top: 275px;
     left: 550px;
     height: 30px;
     width: 200px;
