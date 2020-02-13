@@ -80,9 +80,9 @@ function submitOctal()
 // Gives hint to user
 function receiveHint()
 {
-    if ( Boolean( window.location.href.indexOf("ConversionTest") > -1 ) )
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        document.getElementById("hint").innerHTML = "Do better";
+        document.getElementById("hint").innerHTML = "Fill in later";
     }
 }
 
