@@ -26,6 +26,7 @@ function mouseUp()
 {
     drag = false;
     addRectangleToArray( rect );
+    //console.log( "X: " +  + " Y: " + coord.y );
 }
 
 function addRectangleToArray( rectangle )
@@ -946,8 +947,8 @@ function checkAnswers()
     // Need to adjust depending on the size of array
     swapArrayIndices( 2, 3 );
     swapArrayIndices( 6, 7 );
-    swapArrayIndices( 10, 11 );
-    swapArrayIndices( 14, 15 );
+    //swapArrayIndices( 10, 11 );
+    //swapArrayIndices( 14, 15 );
     
     var isRight = 0;
     console.log(JSON.stringify(array));
@@ -1073,12 +1074,10 @@ function resetNumbers()
 }
 function resetGroupings()
 {
-    console.log("HERE");
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
-    userTrace.clearRect(0, 0, canvas.width, canvas.height);
-    createKMap(3);
-    fillKMap();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    clearRectangleArray();
 }
 
 function resetEquation()
@@ -1086,6 +1085,17 @@ function resetEquation()
     document.getElementById("userEquation").value = "";
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
+}
+
+function clearRectangleArray()
+{
+    var index = 0;
+    
+    while ( rectangleArray[ index ] != null )
+    {
+        rectangleArray[ index ] = null;
+        index++;
+    }
 }
 
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
