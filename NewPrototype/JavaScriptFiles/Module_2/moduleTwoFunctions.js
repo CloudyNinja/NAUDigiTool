@@ -32,26 +32,29 @@ function random()
 // Checks if hex value is correct
 function submitHex()
 {
+    var counter = 0;
+
     for( var index = 1; index <= 6; index++ )
     {
         var userInput = document.getElementById( "hex" + index ).value;
         var answer = document.getElementById( "randomNumber" + index).value;
         if( userInput.toUpperCase() == answer.toString(16).toUpperCase() )
         {
-            alert( "Congrats!" );
+            counter += 1;
         }
-        else
-        {
-            alert( "Incorrect" );
-        }
-
-
-
+    }
+    if( counter >= 5 )
+    {
+        alert( "Congrats, you passed this page!" );
+    }
+    else
+    {
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 questions right to move on";
     }
     
 }
 
-// Checks if octal value is correct
+/* Checks if octal value is correct -- TO DO --
 function submitOctal()
 {
     var answer = randomNum2.toString(8);
@@ -65,20 +68,24 @@ function submitOctal()
     alert("Incorrect, try again.")
     }
 }
+*/
 
 // Gives hint to user
 function receiveHint()
 {
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        document.getElementById("hint").innerHTML = "Fill in later";
+        document.getElementById("hint").innerHTML = "Keep in mind that hexadecimal uses a base-16 system...";
     }
 }
 
 // Resets input boxes and reloads page for new numbers
 function resetEquation()
 {
-    document.getElementById("hex").value = ""
+    for( var index = 1; index <= 6; index++ )
+    {
+        document.getElementById( "hex" + index ).value = "";
+    }
     location.reload() 
 }
 
