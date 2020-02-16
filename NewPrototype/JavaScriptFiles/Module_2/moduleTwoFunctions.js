@@ -4,65 +4,57 @@ var randomNum = Math.floor( ( Math.random() * 1000 ) + 1 )
 var randomNum2 = Math.floor( ( Math.random() * 1000 ) + 1 )
 var randomNum3 = Math.floor( ( Math.random() * 1000 ) + 1 )
 var randomNum4 = Math.floor( ( Math.random() * 1000 ) + 1 )
+var randomNum5 = Math.floor( ( Math.random() * 1000 ) + 1 )
+var randomNum6 = Math.floor( ( Math.random() * 1000 ) + 1 )
 
 // Generates random decimal number
 function random()
 {
     document.getElementById("randomNumber1").innerHTML = randomNum
+    document.getElementById("randomNumber1").value = randomNum
+
     document.getElementById("randomNumber2").innerHTML = randomNum2
+    document.getElementById("randomNumber2").value = randomNum2
+
     document.getElementById("randomNumber3").innerHTML = randomNum3
+    document.getElementById("randomNumber3").value = randomNum3
+
     document.getElementById("randomNumber4").innerHTML = randomNum4
+    document.getElementById("randomNumber4").value = randomNum4
+
+    document.getElementById("randomNumber5").innerHTML = randomNum5
+    document.getElementById("randomNumber5").value = randomNum5
+
+    document.getElementById("randomNumber6").innerHTML = randomNum6
+    document.getElementById("randomNumber6").value = randomNum6
 }
 
 // Checks if hex value is correct
 function submitHex()
 {
-    var answer = randomNum.toString(16)
-    var userInput = document.getElementById("hex").value
-    if( userInput.toUpperCase() == answer.toUpperCase() )
-    {
-        alert("Congratulations, correct answer!")
-    }
-    else
-    {
-    alert("Incorrect, try again.")
-    }
+    var counter = 0;
 
-    var answer2 = randomNum2.toString(16)
-    var userInput2 = document.getElementById("hex2").value
-    if( userInput2.toUpperCase() == answer2.toUpperCase() )
+    for( var index = 1; index <= 6; index++ )
     {
-        alert("Congratulations, correct answer!")
+        var userInput = document.getElementById( "hex" + index ).value;
+        var answer = document.getElementById( "randomNumber" + index).value;
+        if( userInput.toUpperCase() == answer.toString(16).toUpperCase() )
+        {
+            counter += 1;
+        }
+    }
+    if( counter >= 5 )
+    {
+        alert( "Congrats, you passed this page!" );
     }
     else
     {
-    alert("Incorrect, try again.")
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 questions right to move on";
     }
-
-    var answer3 = randomNum3.toString(16)
-    var userInput3 = document.getElementById("hex3").value
-    if( userInput3.toUpperCase() == answer3.toUpperCase() )
-    {
-        alert("Congratulations, correct answer!")
-    }
-    else
-    {
-    alert("Incorrect, try again.")
-    }
-
-    var answer4 = randomNum4.toString(16)
-    var userInput4 = document.getElementById("hex4").value
-    if( userInput4.toUpperCase() == answer4.toUpperCase() )
-    {
-        alert("Congratulations, correct answer!")
-    }
-    else
-    {
-    alert("Incorrect, try again.")
-    }
+    
 }
 
-// Checks if octal value is correct
+/* Checks if octal value is correct -- TO DO --
 function submitOctal()
 {
     var answer = randomNum2.toString(8);
@@ -76,18 +68,69 @@ function submitOctal()
     alert("Incorrect, try again.")
     }
 }
+*/
 
 // Gives hint to user
 function receiveHint()
 {
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        document.getElementById("hint").innerHTML = "Fill in later";
+        document.getElementById("hint").innerHTML = "Keep in mind that hexadecimal uses a base-16 system...";
     }
 }
 
+// Resets input boxes and reloads page for new numbers
 function resetEquation()
 {
-    document.getElementById("hex").value = ""
-    location.reload()
+    for( var index = 1; index <= 6; index++ )
+    {
+        document.getElementById( "hex" + index ).value = "";
+    }
+    location.reload() 
+}
+
+// Shows numder of attempts left
+function decreaseAttempts( number )
+{
+    if ( number > 1 )
+    {
+        number -= 1;
+        document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
+        
+        starsGiven -= 1;
+        
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+    }
+    
+    else
+    {
+        userStars += starsGiven;
+        passUserStars( userStars );
+        
+        /*
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionTwo.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionThree.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFour.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionFive.html";
+        }
+        */
+        
+        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
+    }
+    
+    return number;
 }

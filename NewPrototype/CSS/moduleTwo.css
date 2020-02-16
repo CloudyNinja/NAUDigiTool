@@ -33,7 +33,7 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 125px;
-    left: 255px;
+    left: 450px;
     font-family: serif;
     color: black;
 }
@@ -46,7 +46,7 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 175px;
-    left: 255px;
+    left: 450px;
     font-family: serif;
     color: black;
 }
@@ -59,7 +59,7 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 225px;
-    left: 255px;
+    left: 450px;
     font-family: serif;
     color: black;
 }
@@ -72,17 +72,43 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 275px;
-    left: 255px;
+    left: 450px;
+    font-family: serif;
+    color: black;
+}
+
+#question5
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 325px;
+    left: 450px;
+    font-family: serif;
+    color: black;
+}
+
+#question6
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 375px;
+    left: 450px;
     font-family: serif;
     color: black;
 }
 
 /* Styles the question input box*/
-#hex
+#hex1
 {
     position: absolute;
     top: 125px;
-    left: 550px;
+    left: 745px;
     height: 30px;
     width: 200px;
     background-color: white;
@@ -95,7 +121,7 @@ body
 {
     position: absolute;
     top: 175px;
-    left: 550px;
+    left: 745px;
     height: 30px;
     width: 200px;
     background-color: white;
@@ -108,7 +134,7 @@ body
 {
     position: absolute;
     top: 225px;
-    left: 550px;
+    left: 745px;
     height: 30px;
     width: 200px;
     background-color: white;
@@ -121,7 +147,33 @@ body
 {
     position: absolute;
     top: 275px;
-    left: 550px;
+    left: 745px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+#hex5
+{
+    position: absolute;
+    top: 325px;
+    left: 745px;
+    height: 30px;
+    width: 200px;
+    background-color: white;
+    color: black;
+    margin-bottom: 100px;
+    font-size: 18px;
+}
+
+#hex6
+{
+    position: absolute;
+    top: 375px;
+    left: 745px;
     height: 30px;
     width: 200px;
     background-color: white;
@@ -197,6 +249,43 @@ body
     color: red;
     top: 600px;
     left: 600px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-style: oblique;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#attemptsLeft
+{
+    position: absolute;
+    color: black;
+    top: 600px;
+    left: 800px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#scoreText
+{
+    position: absolute;
+    color: black;
+    top: 600px;
+    left: 1000px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#incorrectAnswerMessage
+{
+    position: absolute;
+    color: red;
+    top: 560px;
+    left: 505px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-style: oblique;
