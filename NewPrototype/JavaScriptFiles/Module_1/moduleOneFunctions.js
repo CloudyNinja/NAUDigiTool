@@ -19,6 +19,15 @@ function mouseDown(e)
 {
     rect.startX = e.pageX - this.offsetLeft;
     rect.startY = e.pageY - this.offsetTop;
+    
+    //var x = e.clientX;
+    //var y = e.clientY;
+    
+    /*if ( x >= 575 && x <= 775 && y >= 250 && y <= 350 )
+    {
+        drag = true; 
+    }*/
+    
     drag = true;
 }
 
@@ -39,10 +48,39 @@ function addRectangleToArray( rectangle )
         index++;
     }
     
-    var temp = { startX: rectangle.startX, startY: rectangle.startY, w: rectangle.w, h : rectangle.h };
-    rectangleArray[index] = temp;
+    rectangleArray[index] = formatRectangle( rectangle );
     
     console.log(JSON.stringify(rectangleArray));
+}
+
+function formatRectangle( rectangle )
+{
+    if ( rectangle.startX >= 100 && rectangle.startX <= 150 && rectangle.startY >= 100 && rectangle.startY <= 200 )
+    {
+        temp = { startX: 110, startY: 110, w: 30, h : 80 };
+    }
+    
+    else if ( rectangle.startX >= 150 && rectangle.startX <= 200 && rectangle.startY >= 100 && rectangle.startY <= 200 )
+    {
+        temp = { startX: 160, startY: 110, w: 30, h : 80 };
+    }
+    
+    else if ( rectangle.startX >= 200 && rectangle.startX <= 250 && rectangle.startY >= 100 && rectangle.startY <= 200 )
+    {
+        temp = { startX: 210, startY: 110, w: 30, h : 80 };
+    }
+    
+    else if ( rectangle.startX >= 250 && rectangle.startX <= 300 && rectangle.startY >= 100 && rectangle.startY <= 200 )
+    {
+        temp = { startX: 260, startY: 110, w: 30, h : 80 };
+    }
+    
+    else
+    {
+        temp = {};
+    }
+    
+    return temp;
 }
 
 function drawRectangles()
@@ -57,13 +95,13 @@ function drawRectangles()
 }
 
 function mouseMove(e) 
-{
+{    
     if ( drag ) 
     {
         rect.w = (e.pageX - this.offsetLeft) - rect.startX;
         rect.h = (e.pageY - this.offsetTop) - rect.startY ;
         
-        // This clear rect affects the rectangle being drawn
+        showCoords( e );
         ctx.clearRect( 0, 0, canvas.width, canvas.height);
         drawRectangles();
         sketchRectangle();
@@ -72,8 +110,33 @@ function mouseMove(e)
 
 function sketchRectangle() 
 {
-    ctx.strokeStyle = "#ff0000";
+    ctx.strokeStyle = "#FF0000";
     ctx.strokeRect( rect.startX, rect.startY, rect.w, rect.h );
+    console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
+}
+
+// Used for finding grouping grid
+function showCoords( event ) 
+{
+    var x = event.clientX;
+    var y = event.clientY;
+    console.log( "X coords: " + x + ", Y coords: " + y );
+    
+    return 0;
+}
+
+// This function can be used for grouping but I haven't implemented it yet.
+function generateColor()
+{
+    var letters = "0123456789ABCDEF"; 
+    var color = '#'; 
+
+    for ( var index = 0; index < 6; index++ ) 
+    {
+       color += letters[ ( Math.floor(Math.random() * 16 ) ) ]; 
+    }
+    
+    return color;
 }
 
 init();
