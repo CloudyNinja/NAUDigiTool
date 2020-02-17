@@ -8,7 +8,7 @@ var randomNum5 = Math.floor( ( Math.random() * 1000 ) + 1 )
 var randomNum6 = Math.floor( ( Math.random() * 1000 ) + 1 )
 
 // Generates random decimal number
-function random()
+function randomDecimal()
 {
     document.getElementById("randomNumber1").innerHTML = randomNum
     document.getElementById("randomNumber1").value = randomNum
@@ -49,7 +49,10 @@ function submitHex()
     }
     else
     {
-        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 questions right to move on";
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Try again.";
+        // 1-2 right = 1 star
+        // 3-4 right = 2 stars
+        // 5-6 right = 3 stars
     }
     
 }
@@ -82,14 +85,17 @@ function receiveHint()
 // Resets input boxes and reloads page for new numbers
 function resetEquation()
 {
-    for( var index = 1; index <= 6; index++ )
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        document.getElementById( "hex" + index ).value = "";
+        for( var index = 1; index <= 6; index++ )
+        {
+            document.getElementById( "hex" + index ).value = "";
+        }
     }
     location.reload() 
 }
 
-// Shows numder of attempts left
+// Decreases number of attempts left
 function decreaseAttempts( number )
 {
     if ( number > 1 )
@@ -108,11 +114,12 @@ function decreaseAttempts( number )
         passUserStars( userStars );
         
         /*
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionTwo.html";
+            window.location.href = "moduleTwoQuestionTwo.html";
         }
-        
+        */
+        /* -- Change locations to Module Two pages --
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
         {
             window.location.href = "moduleOneQuestionThree.html";
@@ -128,8 +135,6 @@ function decreaseAttempts( number )
             window.location.href = "moduleOneQuestionFive.html";
         }
         */
-        
-        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
     
     return number;
