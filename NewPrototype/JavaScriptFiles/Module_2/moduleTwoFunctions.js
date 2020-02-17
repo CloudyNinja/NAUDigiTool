@@ -46,6 +46,7 @@ function submitHex()
     if( counter >= 5 )
     {
         alert( "Congrats, you passed this page!" );
+        // Move onto next page
     }
     else
     {
