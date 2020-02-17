@@ -248,7 +248,7 @@ body
     position: absolute;
     color: red;
     top: 600px;
-    left: 600px;
+    left: 500px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     font-style: oblique;
@@ -261,7 +261,7 @@ body
     position: absolute;
     color: black;
     top: 600px;
-    left: 800px;
+    left: 1000px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     margin-bottom: 100px;
@@ -273,7 +273,7 @@ body
     position: absolute;
     color: black;
     top: 600px;
-    left: 1000px;
+    left: 1200px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     margin-bottom: 100px;

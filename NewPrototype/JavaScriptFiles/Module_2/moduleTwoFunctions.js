@@ -47,45 +47,102 @@ function submitHex()
     {
         alert( "Congrats, you passed this page!" );
         // Move onto next page
+        window.location.href = "moduleTwoQuestionTwo.html";
     }
     else
     {
-        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Try again.";
-        // 1-2 right = 1 star
-        // 3-4 right = 2 stars
-        // 5-6 right = 3 stars
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
     }
     
 }
 
-/* Checks if octal value is correct -- TO DO --
+// Checks if octal value is correct 
 function submitOctal()
 {
-    var answer = randomNum2.toString(8);
-    var userInput = document.getElementById("oct").value
-    if( userInput == answer )
+    var counter = 0;
+
+    for( var index = 1; index <= 6; index++ )
     {
-        alert("Congratulations, correct answer!")
+        var userInput = document.getElementById( "hex" + index ).value;
+        var answer = document.getElementById( "randomNumber" + index).value;
+        if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
+        {
+            counter += 1;
+        }
+    }
+    if( counter >= 5 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+         window.location.href = "moduleTwoQuestionThree.html";
     }
     else
     {
-    alert("Incorrect, try again.")
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
     }
 }
-*/
+
+// Checks if binary value is correct 
+function submitBinary()
+{
+    var counter = 0;
+
+    for( var index = 1; index <= 6; index++ )
+    {
+        var userInput = document.getElementById( "hex" + index ).value;
+        var answer = document.getElementById( "randomNumber" + index).value;
+        if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
+        {
+            counter += 1;
+        }
+    }
+    if( counter >= 5 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        // window.location.href = "moduleTwoQuestionFour.html";
+    }
+    else
+    {
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+    }
+}
 
 // Gives hint to user
 function receiveHint()
 {
+    // If current window is decimal to hexadecimal problems
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        document.getElementById("hint").innerHTML = "Keep in mind that hexadecimal uses a base-16 system...";
+        document.getElementById("hint").innerHTML = "Keep in mind that the hexadecimal system uses a base-16 system...";
+    }
+
+    // If current window is decimal to octal problems
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Keep in mind that the octal system uses a base-8 system...";
+    }
+
+    // If current window is decimal to binary problems
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionThree") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Keep in mind that the binary system uses a base-2 system...";
     }
 }
 
 // Resets input boxes and reloads page for new numbers
 function resetEquation()
 {
+    // If current window is decimal to hexadecimal conversions
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
@@ -93,10 +150,30 @@ function resetEquation()
             document.getElementById( "hex" + index ).value = "";
         }
     }
+
+    // If current window is decimal to octal conversions
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            document.getElementById( "hex" + index ).value = "";
+        }
+    }
+
+    // If current window is decimal to binary conversions
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionThree") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            document.getElementById( "hex" + index ).value = "";
+        }
+    }
+
+    // Refreshes the page
     location.reload() 
 }
 
-// Decreases number of attempts left
+// Decreases number of attempts left and number of stars given
 function decreaseAttempts( number )
 {
     if ( number > 1 )
@@ -114,18 +191,17 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        /*
+        
         if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
         {
             window.location.href = "moduleTwoQuestionTwo.html";
         }
-        */
-        /* -- Change locations to Module Two pages --
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionThree.html";
-        }
         
+        else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+        {
+            window.location.href = "moduleTwoQuestionThree.html";
+        }
+        /*
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
         {
             window.location.href = "moduleOneQuestionFour.html";
@@ -136,6 +212,7 @@ function decreaseAttempts( number )
             window.location.href = "moduleOneQuestionFive.html";
         }
         */
+        
     }
     
     return number;
