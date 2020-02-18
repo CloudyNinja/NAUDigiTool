@@ -1,13 +1,27 @@
 var equationArray = new Array(15);
 var canGroup = 0;
 
+var octects = 0;
+var quads =  0;
+var pairs = 0;
+
 var canvas = document.getElementById('userCanvas');
 var ctx = canvas.getContext('2d');
 var rect = {};
 var drag = false;
+var canDraw = 0;
 
 var rectangleArray = new Array( 3 );
-var lineArray = new Array( 3 );
+var drawingArray = new Array( 8 );
+setDrawingArray();
+
+function setDrawingArray()
+{
+    for ( var index = 0; index < drawingArray.length; index++ )
+    {
+        drawingArray[ index ] = 0;
+    }
+}
 
 function init() 
 {
@@ -38,20 +52,90 @@ function mouseUp()
     //addRectangleToArray( rect );
     formatRectangle( rect, event );
     //console.log( "X: " +  + " Y: " + coord.y );
+    console.log(JSON.stringify(groupingArray));
+    console.log(JSON.stringify(drawingArray));
 }
 
 function addRectangleToArray( rectangle )
 {
     var index = 0;
     
-    while ( rectangleArray[ index ] != null )
+    if ( canDraw == 1 )
     {
-        //console.log(rectangleArray[ index ] );
-        index++;
+        while ( rectangleArray[ index ] != null )
+        {
+            //console.log(rectangleArray[ index ] );
+            index++;
+        }
+    
+        rectangleArray[index] = rectangle;  
+        console.log(JSON.stringify(rectangleArray));
+    }
+}
+
+// Adds given pair to drawing array. More modular.
+function addPairToDrawingArray( firstIndex, secondIndex )
+{
+    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 && octects == 0 && quads == 0 )
+    {
+        drawingArray[ firstIndex ] = 1;
+        drawingArray[ secondIndex ] = 1;
+        canDraw = 1;
+        pairs -= 1;
     }
     
-    rectangleArray[index] = rectangle;  
-    console.log(JSON.stringify(rectangleArray));
+    else
+    {
+        canDraw = 0;
+    }
+    
+    return 0;
+}
+
+// Adds given quad to drawing array. More modular.
+function addQuadToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
+{
+    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 && octects == 0 )
+    {
+        drawingArray[ firstIndex ] = 1;
+        drawingArray[ secondIndex ] = 1;
+        drawingArray[ thirdIndex ] = 1;
+        drawingArray[ fourthIndex ] = 1;
+        canDraw = 1;
+        quads -= 1;
+    }
+    
+    else
+    {
+        canDraw = 0;
+    }
+    
+    return 0;
+}
+
+// Adds given octect to drawing array. More modular.
+function addOctetToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex )
+{
+    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 || drawingArray[ fifthIndex ] != 1 || drawingArray[ sixthIndex ] != 1 || drawingArray[ seventhIndex ] != 1 || drawingArray[ eighthIndex ] != 1 )
+    {
+        drawingArray[ firstIndex ] = 1;
+        drawingArray[ secondIndex ] = 1;
+        drawingArray[ thirdIndex ] = 1;
+        drawingArray[ fourthIndex ] = 1;
+        drawingArray[ fifthIndex ] = 1;
+        drawingArray[ sixthIndex ] = 1;
+        drawingArray[ seventhIndex ] = 1;
+        drawingArray[ eighthIndex ] = 1;
+        canDraw = 1;
+        octects -= 1;
+    }
+    
+    else
+    {
+        canDraw = 0;
+    }
+    
+    return 0;
 }
 
 // This formats rectangle as a user groups them
@@ -65,24 +149,29 @@ function formatRectangle( rectangle, event )
     if ( x > 575 && x < 625 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
     {
         temp = { startX: 110, startY: 110, w: 30, h : 80 };
+        addPairToDrawingArray( 0, 4 );
         addRectangleToArray( temp );
+        
     }
     
     else if ( x > 625 && x < 675 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
     {
         temp = { startX: 160, startY: 110, w: 30, h : 80 };
+        addPairToDrawingArray( 1, 5 );
         addRectangleToArray( temp );
     }
 
     else if ( x > 675 && x < 725 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
     {
         temp = { startX: 210, startY: 110, w: 30, h : 80 };
+        addPairToDrawingArray( 2, 6 );
         addRectangleToArray( temp );
     }
     
     else if ( x > 725 && x < 775 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
     {
         temp = { startX: 260, startY: 110, w: 30, h : 80 };
+        addPairToDrawingArray( 3, 7 );
         addRectangleToArray( temp );
     }
     
@@ -91,18 +180,21 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 675 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30  )
     {
         temp = { startX: 110, startY: 110, w: 80, h : 30 };
+        addPairToDrawingArray( 0, 1 );
         addRectangleToArray( temp );
     }
     
     else if ( x > 625 && x < 725 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
     {
         temp = { startX: 160, startY: 110, w: 80, h : 30 };
+        addPairToDrawingArray( 1, 2 );
         addRectangleToArray( temp );
     }
     
     else if ( x > 675 && x < 775 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
     {
         temp = { startX: 210, startY: 110, w: 80, h : 30 };
+        addPairToDrawingArray( 2, 3 );
         addRectangleToArray( temp );
     }
     
@@ -110,18 +202,21 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 675 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
     {
         temp = { startX: 110, startY: 160, w: 80, h : 30 };
+        addPairToDrawingArray( 4, 5 );
         addRectangleToArray( temp );
     }
     
     else if ( x > 625 && x < 725 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
     {
         temp = { startX: 160, startY: 160, w: 80, h : 30 };
+        addPairToDrawingArray( 5, 6 );
         addRectangleToArray( temp );
     }
     
     else if ( x > 675 && x < 775 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
     {
         temp = { startX: 210, startY: 160, w: 80, h : 30 };
+        addPairToDrawingArray( 6, 7 );
         addRectangleToArray( temp );
     }
     
@@ -130,6 +225,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 540 && x < 574 && y > 250 && y < 300 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 5 && rectangle.h < 25 )
     {
         // Top row wrap
+        addPairToDrawingArray( 0, 3 );
         temp = { startX: 100, startY: 110, w: 40, h : 30 };
         addRectangleToArray( temp );
         temp = { startX: 260, startY: 110, w: 40, h : 30 };
@@ -139,6 +235,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 540 && x < 574 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 5 && rectangle.h < 25 )
     {
         // Bottom row wrap
+        addPairToDrawingArray( 4, 7 );
         temp = { startX: 100, startY: 160, w: 40, h : 30 };
         addRectangleToArray( temp );
         temp = { startX: 260, startY: 160, w: 40, h : 30 };
@@ -150,6 +247,7 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 110, w: 80, h : 80 };
+        addQuadToDrawingArray( 0, 1, 4, 5 );
         addRectangleToArray( temp );
     }
     
@@ -157,6 +255,7 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         temp = { startX: 160, startY: 110, w: 80, h : 80 };
+        addQuadToDrawingArray( 1, 2, 5, 6 );
         addRectangleToArray( temp );
     }
     
@@ -164,6 +263,7 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         temp = { startX: 210, startY: 110, w: 80, h : 80 };
+        addQuadToDrawingArray( 2, 3, 6, 7 );
         addRectangleToArray( temp );
     }
     
@@ -172,6 +272,7 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 110, w: 180, h : 30 };
+        addQuadToDrawingArray( 0, 1, 2, 3 );
         addRectangleToArray( temp );
     }
     
@@ -179,12 +280,14 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 160, w: 180, h : 30 };
+        addQuadToDrawingArray( 4, 5, 6, 7 );
         addRectangleToArray( temp );
     }
     
     // Next if statement is for wrap quad grouping
     else if ( x > 550 && x < 570 && y > 250 && y < 350 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 70 && rectangle.h < 80 )
     {
+        addQuadToDrawingArray( 0, 3, 4, 7 );
         temp = { startX: 100, startY: 110, w: 40, h : 80 };
         addRectangleToArray( temp );
         temp = { startX: 260, startY: 110, w: 40, h : 80 };
@@ -195,6 +298,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 775 && y > 250 && y < 350 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 80 )
     {
         temp = { startX: 110, startY: 110, w: 180, h : 80 };
+        addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
         addRectangleToArray( temp );
     }
     
@@ -211,7 +315,7 @@ function drawRectangles()
     var index = 0;
     
     while ( rectangleArray[ index ] != null )
-    {
+    {   
         ctx.strokeRect( rectangleArray[index].startX, rectangleArray[index].startY, rectangleArray[index].w, rectangleArray[index].h );
         index++;
     }
@@ -224,7 +328,7 @@ function mouseMove(e)
         rect.w = (e.pageX - this.offsetLeft) - rect.startX;
         rect.h = (e.pageY - this.offsetTop) - rect.startY ;
         
-        showCoords( e );
+        //showCoords( e );
         ctx.clearRect( 0, 0, canvas.width, canvas.height);
         drawRectangles();
         sketchRectangle();
@@ -235,7 +339,7 @@ function sketchRectangle()
 {
     ctx.strokeStyle = "#FF0000";
     ctx.strokeRect( rect.startX, rect.startY, rect.w, rect.h );
-    console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
+    //console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
 }
 
 // Used for finding grouping grid
@@ -955,6 +1059,7 @@ function checkTwoArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex )
 // Adds given pair to group array. More modular.
 function addPairToGroupArray( firstIndex, secondIndex )
 {
+    pairs += 1;
     groupingArray[ firstIndex ] = array[ firstIndex ];
     groupingArray[ secondIndex ] = array[ secondIndex ];
     canGroup = 1;
@@ -1059,6 +1164,7 @@ function addPairToThreeVarEquation( firstIndex, secondIndex )
 // Adds given quad pair to group array. More modular.
 function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
 {
+    quads += 1;
     groupingArray[ firstIndex ] = array[ firstIndex ];
     groupingArray[ secondIndex ] = array[ secondIndex ];
     groupingArray[ thirdIndex ] = array[ thirdIndex ];
@@ -1072,6 +1178,7 @@ function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
 function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
                                   sixthIndex, seventhIndex, eighthIndex )
 {
+    octects += 1;
     groupingArray[ firstIndex ] = array[ firstIndex ];
     groupingArray[ secondIndex ] = array[ secondIndex ];
     groupingArray[ thirdIndex ] = array[ thirdIndex ];
@@ -1178,10 +1285,36 @@ function checkAnswers()
 
 // NEED TO DO
 function checkGroupings()
-{    
-    document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+{       
+    var isRight = 0;
+    
+    for ( var index = 0; index < groupingArray.length; index++ )
+    {
+        if ( drawingArray[ index ] != groupingArray[ index ] )
+        {
+            isRight = 1;
+        }
+    }
+    
+    console.log( isRight );
+    
+    if ( isRight == 0 )
+    {
+        userStars += starsGiven;
+        passUserStars( userStars );
         
-    attemptsLeft = decreaseAttempts( attemptsLeft );
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionThree.html";
+        }
+    }
+        
+    else
+    {
+        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+        setDrawingArray();
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+    }
     
     return 0;
 }
@@ -1258,12 +1391,14 @@ function resetNumbers()
         document.getElementById("hint").innerHTML = ""; 
     }
 }
+
 function resetGroupings()
 {
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearRectangleArray();
+    setDrawingArray();
 }
 
 function resetEquation()

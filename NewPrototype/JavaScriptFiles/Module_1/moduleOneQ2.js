@@ -1,12 +1,14 @@
 var array = new Array(8);
 var groupingArray = new Array(8);
-var userGroupArray = new Array(8);
 
 array = createArray(3);
-userGroupArray = array;
 createTruthTable(3);
 createKMap(3);
 fillKMap();
+
+findOctetGroups();
+findQuadGroups();
+findPairGroups();
 
 // Attempts Left Message
 var attemptsLeft = 3;
