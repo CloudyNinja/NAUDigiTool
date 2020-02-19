@@ -23,6 +23,27 @@ function setDrawingArray()
     }
 }
 
+function createUserArray()
+{
+    for ( var index = 0; index < userArray.length; index++ )
+    {
+        userArray[ index ] = 0;
+    }
+    
+    return userArray;
+}
+
+function addInputsToUserArray()
+{
+    for ( var index = 1; index < userArray.length + 1; index++ )
+    {
+        userArray[ index - 1 ] = document.getElementById("number" + index).value;
+    }
+    
+    swapUserArrayIndices( 2, 3 );
+    swapUserArrayIndices( 6, 7 );
+}
+
 function init() 
 {
     canvas.addEventListener('mousedown', mouseDown, false);
@@ -870,6 +891,14 @@ function swapArrayIndices( indexOne, indexTwo )
     array[ indexTwo ] = tempVal;
 }
 
+function swapUserArrayIndices( indexOne, indexTwo )
+{
+    var tempVal = userArray[ indexOne ];
+
+    userArray[ indexOne ] = userArray[ indexTwo ];
+    userArray[ indexTwo ] = tempVal;
+}
+
 // Generates 0 or 1
 function generateNumber() 
 {
@@ -1236,20 +1265,14 @@ function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthI
 
 /////////////////////////////// Check functions go here /////////////////////////////////////////
 function checkAnswers()
-{
-    // Need to adjust depending on the size of array
-    swapArrayIndices( 2, 3 );
-    swapArrayIndices( 6, 7 );
-    //swapArrayIndices( 10, 11 );
-    //swapArrayIndices( 14, 15 );
-    
+{    
     var isRight = 0;
-    console.log(JSON.stringify(array));
+    addInputsToUserArray();
     
-    for ( var index = 1; index < array.length + 1; index++ )
+    for ( var index = 0; index < array.length; index++ )
     {
-        console.log( "Checking " + document.getElementById("number" + index).value + " with " + array[index-1] );
-        if ( Boolean( document.getElementById("number" + index).value != array[index - 1] ) )
+        console.log( "Checking " + userArray[index] + " with " + array[index] );
+        if ( Boolean( userArray[index] != array[index] ) )
         {
             isRight = -1;
         }
