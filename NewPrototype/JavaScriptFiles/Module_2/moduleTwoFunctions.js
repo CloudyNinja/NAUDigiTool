@@ -149,24 +149,25 @@ function submitBinary()
         }
     }
 
-    /*
-    // For decimal to octal
-    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+    // For binary to octal
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFive") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
-            var answer = document.getElementById( "randomNumber" + index).value;
-            if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
+            var answer = answer.toString( 8 ); // Converts from decimal to octal
+            if( userInput == answer )
             {
-            counter += 1;
+                counter += 1;
             }
         }
         if( counter >= 5 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionThree.html";
+            // window.location.href = "moduleTwoQuestionSix.html";
         }
         else
         {
@@ -177,7 +178,8 @@ function submitBinary()
         }
     }
 
-    // For decimal to binary
+    /*
+    // For binary to hex
     else
     {
         for( var index = 1; index <= 6; index++ )
@@ -308,12 +310,13 @@ function decreaseAttempts( number )
             window.location.href = "moduleTwoQuestionFour.html";
         }
         
-        /*
+        
         else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
         {
             window.location.href = "moduleTwoQuestionFive.html";
         }
-        */
+        
+        // Add next one
         
     }
     
