@@ -19,7 +19,7 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 70px;
-    left: 500px;
+    left: 400px;
     font-family: serif;
     color: black;
 }
@@ -104,7 +104,7 @@ body
 }
 
 /* Styles the question input box*/
-#hex1
+#input1
 {
     position: absolute;
     top: 125px;
@@ -117,7 +117,7 @@ body
     font-size: 18px;
 }
 
-#hex2
+#input2
 {
     position: absolute;
     top: 175px;
@@ -130,7 +130,7 @@ body
     font-size: 18px;
 }
 
-#hex3
+#input3
 {
     position: absolute;
     top: 225px;
@@ -143,7 +143,7 @@ body
     font-size: 18px;
 }
 
-#hex4
+#input4
 {
     position: absolute;
     top: 275px;
@@ -156,7 +156,7 @@ body
     font-size: 18px;
 }
 
-#hex5
+#input5
 {
     position: absolute;
     top: 325px;
@@ -169,7 +169,7 @@ body
     font-size: 18px;
 }
 
-#hex6
+#input6
 {
     position: absolute;
     top: 375px;

@@ -1,120 +1,119 @@
 
-// Global variables
-var randomNum = Math.floor( ( Math.random() * 1000 ) + 1 ) 
-var randomNum2 = Math.floor( ( Math.random() * 1000 ) + 1 )
-var randomNum3 = Math.floor( ( Math.random() * 1000 ) + 1 )
-var randomNum4 = Math.floor( ( Math.random() * 1000 ) + 1 )
-var randomNum5 = Math.floor( ( Math.random() * 1000 ) + 1 )
-var randomNum6 = Math.floor( ( Math.random() * 1000 ) + 1 )
-
 // Generates random decimal number
 function randomDecimal()
 {
-    document.getElementById("randomNumber1").innerHTML = randomNum
-    document.getElementById("randomNumber1").value = randomNum
-
-    document.getElementById("randomNumber2").innerHTML = randomNum2
-    document.getElementById("randomNumber2").value = randomNum2
-
-    document.getElementById("randomNumber3").innerHTML = randomNum3
-    document.getElementById("randomNumber3").value = randomNum3
-
-    document.getElementById("randomNumber4").innerHTML = randomNum4
-    document.getElementById("randomNumber4").value = randomNum4
-
-    document.getElementById("randomNumber5").innerHTML = randomNum5
-    document.getElementById("randomNumber5").value = randomNum5
-
-    document.getElementById("randomNumber6").innerHTML = randomNum6
-    document.getElementById("randomNumber6").value = randomNum6
+    for( var index = 1; index <= 6; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        randomNumber = Math.floor( ( Math.random() * 1024 ) + 1 ); // Generates random number between 1 and 1024
+        document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
+        document.getElementById( "randomNumber" + index ).value = randomNumber;
+    }
 }
 
 // Checks if hex value is correct
-function submitHex()
+function submitDecimal()
 {
     var counter = 0;
 
-    for( var index = 1; index <= 6; index++ )
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
-        var userInput = document.getElementById( "hex" + index ).value;
-        var answer = document.getElementById( "randomNumber" + index).value;
-        if( userInput.toUpperCase() == answer.toString(16).toUpperCase() )
+        for( var index = 1; index <= 6; index++ )
         {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString(16).toUpperCase() )
+            {
             counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionTwo.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
         }
     }
-    if( counter >= 5 )
+
+    // For decimal to octal
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
     {
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestionTwo.html";
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
+            {
+            counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionTwo.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
     }
+
+    // For decimal to binary
     else
     {
-        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
-        // Decrease attempts and star score by 1
-        attemptsLeft = decreaseAttempts( attemptsLeft );
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
+            {
+            counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionTwo.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
         
+        }
     }
     
 }
 
-// Checks if octal value is correct 
+// Checks if octal conversion is correct 
 function submitOctal()
 {
-    var counter = 0;
-
-    for( var index = 1; index <= 6; index++ )
-    {
-        var userInput = document.getElementById( "hex" + index ).value;
-        var answer = document.getElementById( "randomNumber" + index).value;
-        if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
-        {
-            counter += 1;
-        }
-    }
-    if( counter >= 5 )
-    {
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-         window.location.href = "moduleTwoQuestionThree.html";
-    }
-    else
-    {
-        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
-        // Decrease attempts and star score by 1
-        attemptsLeft = decreaseAttempts( attemptsLeft );
-        
-    }
+    // TO DO
 }
 
-// Checks if binary value is correct 
+// Checks if binary conversion is correct
 function submitBinary()
 {
-    var counter = 0;
+    // TO DO
+}
 
-    for( var index = 1; index <= 6; index++ )
-    {
-        var userInput = document.getElementById( "hex" + index ).value;
-        var answer = document.getElementById( "randomNumber" + index).value;
-        if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
-        {
-            counter += 1;
-        }
-    }
-    if( counter >= 5 )
-    {
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        // window.location.href = "moduleTwoQuestionFour.html";
-    }
-    else
-    {
-        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
-        // Decrease attempts and star score by 1
-        attemptsLeft = decreaseAttempts( attemptsLeft );
-        
-    }
+// Checks if hex conversion is correct
+function submitHex()
+{
+    // TO DO
 }
 
 // Gives hint to user
@@ -170,7 +169,7 @@ function resetEquation()
     }
 
     // Refreshes the page
-    location.reload() 
+    // location.reload() 
 }
 
 // Decreases number of attempts left and number of stars given
