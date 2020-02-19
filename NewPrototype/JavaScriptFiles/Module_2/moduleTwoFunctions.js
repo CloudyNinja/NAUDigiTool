@@ -11,6 +11,19 @@ function randomDecimal()
     }
 }
 
+// Generates random binary number
+function randomBinary()
+{
+    for( var index = 1; index <= 6; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
+        binaryNumber = randomNumber.toString(2); // Converts random number to binary
+        document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
+        document.getElementById( "randomNumber" + index ).value = binaryNumber;
+    }  
+}
+
 // Checks if hex value is correct
 function submitDecimal()
 {
@@ -58,7 +71,7 @@ function submitDecimal()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionTwo.html";
+            window.location.href = "moduleTwoQuestionThree.html";
         }
         else
         {
@@ -85,7 +98,7 @@ function submitDecimal()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionTwo.html";
+            window.location.href = "moduleTwoQuestionFour.html";
         }
         else
         {
@@ -107,7 +120,90 @@ function submitOctal()
 // Checks if binary conversion is correct
 function submitBinary()
 {
-    // TO DO
+    var counter = 0;
+
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            // window.location.href = "moduleTwoQuestionFive.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    /*
+    // For decimal to octal
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
+            {
+            counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionThree.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // For decimal to binary
+    else
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
+            {
+            counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionFour.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+    */
 }
 
 // Checks if hex conversion is correct
@@ -136,6 +232,12 @@ function receiveHint()
     {
         document.getElementById("hint").innerHTML = "Keep in mind that the binary system uses a base-2 system...";
     }
+
+    // If current window is binary to decimal problems
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
+    {
+        document.getElementById("hint").innerHTML = "Keep in mind that the decimal system uses a base-10 system...";
+    }
 }
 
 // Resets input boxes and reloads page for new numbers
@@ -146,7 +248,7 @@ function resetEquation()
     {
         for( var index = 1; index <= 6; index++ )
         {
-            document.getElementById( "hex" + index ).value = "";
+            document.getElementById( "input" + index ).value = "";
         }
     }
 
@@ -155,7 +257,7 @@ function resetEquation()
     {
         for( var index = 1; index <= 6; index++ )
         {
-            document.getElementById( "hex" + index ).value = "";
+            document.getElementById( "input" + index ).value = "";
         }
     }
 
@@ -164,7 +266,7 @@ function resetEquation()
     {
         for( var index = 1; index <= 6; index++ )
         {
-            document.getElementById( "hex" + index ).value = "";
+            document.getElementById( "input" + index ).value = "";
         }
     }
 
@@ -200,15 +302,16 @@ function decreaseAttempts( number )
         {
             window.location.href = "moduleTwoQuestionThree.html";
         }
-        /*
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+        
+        else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionThree") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionFour.html";
+            window.location.href = "moduleTwoQuestionFour.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        /*
+        else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionFive.html";
+            window.location.href = "moduleTwoQuestionFive.html";
         }
         */
         
