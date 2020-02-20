@@ -404,6 +404,13 @@ function receiveHint()
     }
 
     // If current window is hex to decimal problems
+    for( var index = 7; index <= 9; index++ )
+    {
+        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
+        {
+            document.getElementById( "hint" ).innerHTML = "Keep in mind that the hexadecimal system is base-16..."
+        }   
+    }
 }
 
 // Resets input boxes and reloads page for new numbers
