@@ -69,6 +69,41 @@ function randomBinary()
     }  
 }
 
+// Generates random octal number
+function randomOctal()
+{
+    for( var index = 1; index <= 6; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+
+        // Generates random octal number for level 1
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 88 ) + 1 ); // Generates random number between 1 and 130
+            octalNumber = randomNumber.toString(8); // Converts random number to octal
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
+            document.getElementById( "randomNumber" + index ).value = octalNumber;
+        }
+
+        // Generates random binary number for level 2
+        else if( Boolean( window.location.href.indexOf("moduleTwoQuestionFive") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 174 ) + 1 ); // Generates random number between 1 and 256
+            octalNumber = randomNumber.toString(8); // Converts random number to octal
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
+            document.getElementById( "randomNumber" + index ).value = octalNumber;
+        }
+
+        // Generates random binary number for level 3
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestionSix") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 330 ) + 1 ); // Generates random number between 1 and 512
+            octalNumber = randomNumber.toString(8); // Converts random number to octal
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
+            document.getElementById( "randomNumber" + index ).value = octalNumber;
+        }
+    }
+}
 /* Checks if hex value is correct
 function submitDecimal()
 {
@@ -160,7 +195,92 @@ function submitDecimal()
 // Checks if octal conversion is correct 
 function submitOctal()
 {
-    // TO DO
+    var counter = 0;
+
+    // Octal to decimal level 1
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 8 ); // Converts numberToCheck from octal to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionFive.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Octal to decimal level 2
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFive") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 8 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionSix.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    
+    // Octal to decimal to level 3
+    else
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 8 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 1 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestionSeven.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
 }
 
 // Checks if binary conversion is correct
