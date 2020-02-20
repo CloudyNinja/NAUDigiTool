@@ -981,10 +981,10 @@ function findPairGroups()
 {
     var length = getLengthOfArray();
 
-    // This is for a 3 variable truth table: Read it from TOP LEFT to BOTTOM RIGHT
+    // This is for a 3 variable truth table: First loop is for Horizontal pairs, second loop is for Vertical pairs
     if ( length == 8 )
     {
-        for ( var index = 0; index < length; index++ )
+        /*for ( var index = 0; index < length; index++ )
         {
             if ( index == 0 )
             {
@@ -1014,6 +1014,33 @@ function findPairGroups()
             {
                 checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
             }
+        }*/
+        
+        var index = 0;
+        
+        // Horizontal groupings
+        while ( index < length )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
+            }
+            
+            index++;
+        }
+        
+        // Reset index
+        index = 0;
+        
+        // Vertical 
+        while ( index < length )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
+            }
+            
+            index++;
         }
     }
 }
