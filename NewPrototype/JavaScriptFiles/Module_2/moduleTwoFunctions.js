@@ -1,15 +1,37 @@
 
-// Generates random decimal number
+/* Generates random decimal number
 function randomDecimal()
 {
     for( var index = 1; index <= 6; index++ )
     {
         var randomNumber = document.getElementById( "randomNumber" + index );
-        randomNumber = Math.floor( ( Math.random() * 1024 ) + 1 ); // Generates random number between 1 and 1024
-        document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
-        document.getElementById( "randomNumber" + index ).value = randomNumber;
+        // Generates random decimal numbers for level 1 
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
+            document.getElementById( "randomNumber" + index ).value = randomNumber;
+        }
+
+        // Generates random decimal numbers for level 2
+        else if( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 512 ) + 1 ); // Generates random number between 1 and 512
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
+            document.getElementById( "randomNumber" + index ).value = randomNumber;
+        }
+
+        // Generates random decimal numbers for level 3
+        else
+        {
+            randomNumber = Math.floor( ( Math.random() * 1000 ) + 1 ); // Generates random number between 1 and 1,000
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
+            document.getElementById( "randomNumber" + index ).value = randomNumber;
+        }
+        
     }
 }
+*/
 
 // Generates random binary number
 function randomBinary()
@@ -17,14 +39,37 @@ function randomBinary()
     for( var index = 1; index <= 6; index++ )
     {
         var randomNumber = document.getElementById( "randomNumber" + index );
-        randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
-        binaryNumber = randomNumber.toString(2); // Converts random number to binary
-        document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
-        document.getElementById( "randomNumber" + index ).value = binaryNumber;
+
+        // Generates random binary number for level 1
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 64 ) + 1 ); // Generates random number between 1 and 64
+            binaryNumber = randomNumber.toString(2); // Converts random number to binary
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
+            document.getElementById( "randomNumber" + index ).value = binaryNumber;
+        }
+
+        // Generates random binary number for level 2
+        else if( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random number between 1 and 128
+            binaryNumber = randomNumber.toString(2); // Converts random number to binary
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
+            document.getElementById( "randomNumber" + index ).value = binaryNumber;
+        }
+
+        // Generates random binary number for level 3
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestionThree") > -1 ) )
+        {
+            randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
+            binaryNumber = randomNumber.toString(2); // Converts random number to binary
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
+            document.getElementById( "randomNumber" + index ).value = binaryNumber;
+        }
     }  
 }
 
-// Checks if hex value is correct
+/* Checks if hex value is correct
 function submitDecimal()
 {
     var counter = 0;
@@ -110,6 +155,7 @@ function submitDecimal()
     }
     
 }
+*/
 
 // Checks if octal conversion is correct 
 function submitOctal()
@@ -122,7 +168,8 @@ function submitBinary()
 {
     var counter = 0;
 
-    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFour") > -1 ) )
+    // Binary to decimal level 1
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
         {
@@ -138,7 +185,7 @@ function submitBinary()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            // window.location.href = "moduleTwoQuestionFive.html";
+            window.location.href = "moduleTwoQuestionTwo.html";
         }
         else
         {
@@ -149,15 +196,14 @@ function submitBinary()
         }
     }
 
-    // For binary to octal
-    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionFive") > -1 ) )
+    // Binary to decimal level 2
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index).value;
             var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
-            var answer = answer.toString( 8 ); // Converts from decimal to octal
             if( userInput == answer )
             {
                 counter += 1;
@@ -167,7 +213,7 @@ function submitBinary()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            // window.location.href = "moduleTwoQuestionSix.html";
+            window.location.href = "moduleTwoQuestionThree.html";
         }
         else
         {
@@ -178,17 +224,18 @@ function submitBinary()
         }
     }
 
-    /*
-    // For binary to hex
+    
+    // Binary to decimal to level 3
     else
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
-            var answer = document.getElementById( "randomNumber" + index).value;
-            if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer )
             {
-            counter += 1;
+                counter += 1;
             }
         }
         if( counter >= 5 )
@@ -205,7 +252,6 @@ function submitBinary()
         
         }
     }
-    */
 }
 
 // Checks if hex conversion is correct
