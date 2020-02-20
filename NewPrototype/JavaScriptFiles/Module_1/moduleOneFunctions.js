@@ -981,49 +981,21 @@ function findPairGroups()
 {
     var length = getLengthOfArray();
 
-    // This is for a 3 variable truth table: First loop is for Horizontal pairs, second loop is for Vertical pairs
+    // For a 3 variable truth table: First loop is for Horizontal pairs, second loop is for Vertical pairs
     if ( length == 8 )
-    {
-        /*for ( var index = 0; index < length; index++ )
-        {
-            if ( index == 0 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 4);
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
-            }
-
-            else if ( index == 1 || index == 2 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
-            }
-
-            else if ( index == 3 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
-            }
-
-            else if ( index == 4 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 3);
-            }
-
-            else if ( index == 5 || index == 6 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray(index, index + 1);
-            }
-        }*/
-        
+    {        
         var index = 0;
+    
+        // Wrap conditions
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3 );
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7 );
         
-        // Horizontal groupings
+        // Vertical groupings
         while ( index < length )
         {
-            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
             }
             
             index++;
@@ -1032,12 +1004,12 @@ function findPairGroups()
         // Reset index
         index = 0;
         
-        // Vertical 
+        // Horizontal groupings
         while ( index < length )
         {
-            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
             {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
             }
             
             index++;
