@@ -409,15 +409,9 @@ function receiveHint()
 // Resets input boxes and reloads page for new numbers
 function resetEquation()
 {
-    for( var index = 1; index <= 30; index++ )
+    for( var index = 1; index <= 6; index++ )
     {
-        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
-        {
-            for( var index2 = 1; index2 <= 6; index++ )
-            {
-                document.getElementById( "input" + index ).value = "";
-            }
-        }
+        document.getElementById( "input" + index ).value = "";
     } 
 }
 
@@ -443,8 +437,11 @@ function decreaseAttempts( number )
         {
             if ( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
             {
-                var nextPage = index + 1;
-                window.location.href = "moduleTwoQuestion" + nextPage + ".html";
+                if( index < 30)
+                {
+                    var nextPage = index + 1;
+                    window.location.href = "moduleTwoQuestion" + nextPage + ".html";
+                }
             }
         }
         
