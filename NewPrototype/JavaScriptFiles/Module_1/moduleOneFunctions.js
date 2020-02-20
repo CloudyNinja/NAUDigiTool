@@ -1092,7 +1092,134 @@ function addPairToGroupArray( firstIndex, secondIndex )
     groupingArray[ secondIndex ] = array[ secondIndex ];
     canGroup = 1;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
+    twoDArray = addPairToTwoDArray( firstIndex, secondIndex );
     addPairToThreeVarEquation( firstIndex, secondIndex );
+}
+
+// Creates 2D array 
+function create2DArray()
+{
+    // Loop to create 2D array using 1D array 
+    for ( var index = 0; index < twoDArray.length; index++ ) 
+    { 
+        twoDArray[index] = new Array(2); 
+    } 
+  
+    // Loop to initilize 2D array elements. 
+    for (var i = 0; i < twoDArray.length; i++) 
+    { 
+        for (var j = 0; j < 2; j++) 
+        { 
+            twoDArray[i][j] = 0; 
+        } 
+    } 
+}
+
+// Adds pair to twoDArray
+function addPairToTwoDArray( firstIndex, secondIndex )
+{
+    var index = 0; 
+    
+    while ( twoDArray[ index ][0] != 0 || twoDArray[ index ][1] != 0  )
+    {
+        index++;
+    }
+    
+    twoDArray[ index ][ 0 ] = firstIndex;
+    twoDArray[ index ][ 1 ] = secondIndex;
+    
+    console.log( "Stopped at index: " + index );
+    console.log( JSON.stringify( twoDArray ) );
+    
+    return twoDArray;
+}
+
+// takes an array of pairs and returns the array with no redundant groups
+function checkForRedundancies( pairsArray )
+{
+    var redundant1; //boolean for first element
+    var redundant2; //boolean for second element
+    
+    var tempArray = pairsArray;
+    
+    console.log( "BEFORE LOOP: " + JSON.stringify( twoDArray ) );
+    
+    //loop through all groups
+    for( outerIndex in tempArray )
+    {
+        //reset redundant when checking a new group
+        redundant1 = false;
+        redundant2 = false;
+        
+        if ( tempArray[ outerIndex ][0] != 0 || tempArray[ outerIndex ][1] != 0 )
+        {
+            //loop through all groups to compare to
+            for( innerIndex in tempArray )
+            {
+                if ( tempArray[ innerIndex ][0] != 0 || tempArray[ innerIndex ][1] != 0 )
+                {
+                    // do not compare to self
+                    if( innerIndex != outerIndex )
+                    {
+                        // if first element matches either element in compare
+                        if( tempArray[outerIndex][0] == tempArray[innerIndex][0] || tempArray[outerIndex][0] == tempArray[innerIndex][1] )
+                        {
+                            //first element is redundant
+                            redundant1 = true;
+                        }
+
+                        //if second element matches either element in compare
+                        if( tempArray[outerIndex][1] == tempArray[innerIndex][0] || tempArray[outerIndex][1] == tempArray[innerIndex][1] )
+                        {
+                            //second element is redundant
+                            redundant2 = true;
+                        }
+                    }
+                }
+            }
+
+            //both elements were redundant
+            if( redundant1 && redundant2 )
+            {
+                console.log( "Removing pairs array at " + outerIndex );
+                console.log( "TEMP ARRAY LENGTH: " + tempArray.length );
+                
+                // Zero case seems off: THIS IS PROBLEM
+                if ( outerIndex == 0 )
+                {
+                    for( var index = outerIndex; index < tempArray.length - 2; index++ )
+                    {
+                        for( var innerIndex = 0; innerIndex < 2; innerIndex++ )
+                        {
+                            tempArray[index][innerIndex] = tempArray[tempArray.length - index - 2][innerIndex];
+                        }
+                    }
+                
+                    tempArray[tempArray.length - outerIndex - 1 ][0] = 0;
+                    tempArray[tempArray.length - outerIndex - 1 ][1] = 0;
+                }
+                
+                else
+                {
+                    for( var index = outerIndex; index < tempArray.length - 1; index++ )
+                    {
+                        for( var innerIndex = 0; innerIndex < 2; innerIndex++ )
+                        {
+                            tempArray[index][innerIndex] = tempArray[tempArray.length - index - 1][innerIndex];
+                        }
+                    }
+                
+                    tempArray[tempArray.length - outerIndex][0] = 0;
+                    tempArray[tempArray.length - outerIndex][1] = 0;
+                }
+            }
+            
+            console.log( "NEW ARRAY: " + JSON.stringify( tempArray ) );
+        }
+    }
+    
+    //hand back modified local array
+    return tempArray;
 }
 
 // Counts number of elements in equation array
