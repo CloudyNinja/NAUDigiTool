@@ -1,12 +1,12 @@
 
-/* Generates random decimal number
+// Generates random decimal number
 function randomDecimal()
 {
     for( var index = 1; index <= 6; index++ )
     {
         var randomNumber = document.getElementById( "randomNumber" + index );
         // Generates random decimal numbers for level 1 
-        if( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestion10") > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
@@ -14,7 +14,7 @@ function randomDecimal()
         }
 
         // Generates random decimal numbers for level 2
-        else if( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+        else if( Boolean( window.location.href.indexOf("moduleTwoQuestion11") > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 512 ) + 1 ); // Generates random number between 1 and 512
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
@@ -31,7 +31,6 @@ function randomDecimal()
         
     }
 }
-*/
 
 // Generates random binary number
 function randomBinary()
@@ -125,7 +124,7 @@ function randomHex()
         else if( Boolean( window.location.href.indexOf("moduleTwoQuestion8") > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 512 ) + 1 ); // Generates random number between 1 and 512
-            hexNumber = randomNumber.toString(16); // Converts random number to hex
+            hexNumber = randomNumber.toString(16).toUpperCase(); // Converts random number to hex
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumber;
             document.getElementById( "randomNumber" + index ).value = hexNumber;
         }
@@ -134,25 +133,26 @@ function randomHex()
         if( Boolean( window.location.href.indexOf("moduleTwoQuestion9") > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 1000 ) + 1 ); // Generates random number between 1 and 1,000
-            hexNumber = randomNumber.toString(16); // Converts random number to hex
+            hexNumber = randomNumber.toString(16).toUpperCase(); // Converts random number to hex
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumber;
             document.getElementById( "randomNumber" + index ).value = hexNumber;
         }
     }
 }
 
-/* Submit function for decimal conversions
+// Submit function for decimal conversions
 function submitDecimal()
 {
     var counter = 0;
 
-    if ( Boolean( window.location.href.indexOf("moduleTwoQuestionOne") > -1 ) )
+    // Decimal to binary level 1
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion10") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var answer = document.getElementById( "randomNumber" + index).value;
-            if( userInput.toUpperCase() == answer.toString(16).toUpperCase() )
+            if( userInput == answer.toString(2) )
             {
             counter += 1;
             }
@@ -172,14 +172,14 @@ function submitDecimal()
         }
     }
 
-    // For decimal to octal
-    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestionTwo") > -1 ) )
+    // Decimal to binary level 2
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion11") > -1 ) )
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var answer = document.getElementById( "randomNumber" + index).value;
-            if( userInput.toUpperCase() == answer.toString(8).toUpperCase() )
+            if( userInput == answer.toString(2) )
             {
             counter += 1;
             }
@@ -188,7 +188,7 @@ function submitDecimal()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionThree.html";
+            window.location.href = "moduleTwoQuestion12.html";
         }
         else
         {
@@ -199,14 +199,14 @@ function submitDecimal()
         }
     }
 
-    // For decimal to binary
+    // Decimal to binary level 3
     else
     {
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var answer = document.getElementById( "randomNumber" + index).value;
-            if( userInput.toUpperCase() == answer.toString(2).toUpperCase() )
+            if( userInput == answer.toString(2) )
             {
             counter += 1;
             }
@@ -215,7 +215,7 @@ function submitDecimal()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionFour.html";
+            window.location.href = "moduleTwoQuestion13.html";
         }
         else
         {
@@ -227,7 +227,6 @@ function submitDecimal()
     }
     
 }
-*/
 
 // Submit functions for octal conversions
 function submitOctal()
