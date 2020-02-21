@@ -416,7 +416,94 @@ function submitBinary()
 // Submit function for hex conversions
 function submitHex()
 {
-    // TO DO
+    var counter = 0;
+
+    // Hex to decimal level 1
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion7") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 16 ); // Converts numberToCheck from hex to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion8.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Hex to decimal level 2
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion8") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 16 ); // Converts numberToCheck from hex to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion9.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    
+    // Hex to decimal to level 3
+    else
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = parseInt( numberToCheck, 16 ); // Converts numberToCheck from hex to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Award star to user
+                // Function awardStar()
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion10.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
 }
 
 // Gives hint to user
