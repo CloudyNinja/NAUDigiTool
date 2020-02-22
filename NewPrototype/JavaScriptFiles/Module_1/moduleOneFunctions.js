@@ -381,13 +381,173 @@ function generateColor()
 
     for ( var index = 0; index < 6; index++ ) 
     {
-       color += letters[ ( Math.floor(Math.random() * 16 ) ) ]; 
+       color += letters[ ( Math.floor( Math.random() * 16 ) ) ]; 
     }
     
     return color;
 }
 
 init();
+
+// This function draws the octect for problems where the user needs to write the equation
+function drawEquationOctetRectangles( drawRect, firstIndex, secondIndex, thirdIndex, fourthIndex, fifth, sixth, seventh, eighth )
+{
+    var startX = 110;
+    var startY = 110;
+    var indexIncrement = 50;
+    var octetWidth;
+    var octetHeight;
+    
+    // Sets drawing canvas to random color
+    var canvas = document.getElementById('myKMapCanvas');
+    var context = canvas.getContext('2d');
+    context.strokeStyle = generateColor();
+    
+    if ( drawRect == 1 && array.length == 8 )
+    {
+        octetWidth = 180;
+        octetHeight = 80;
+        context.strokeRect( startX, startY, octetWidth, octetHeight );
+    }
+    
+}
+// This function draws the quad rectangles for problems where the user needs to write the equation
+function drawEquationQuadRectangles( drawRect, firstIndex, secondIndex, thirdIndex, fourthIndex )
+{
+    var startX = 110;
+    var startY = 110;
+    var indexIncrement = 50;
+    var quadWidth = 0;
+    var quadHeight = 0;
+    
+    // Sets drawing canvas to random color
+    var canvas = document.getElementById('myKMapCanvas');
+    var context = canvas.getContext('2d');
+    context.strokeStyle = generateColor();
+    
+    if ( drawRect == 1 && array.length == 8 )
+    {
+        // For vertical quads
+        if ( firstIndex + 4 == thirdIndex && firstIndex + 5 == fourthIndex )
+        {
+            quadWidth = 80;
+            quadHeight = 80;
+            
+            startX += indexIncrement * firstIndex;
+            context.strokeRect( startX, startY, quadWidth, quadHeight );
+        }
+        
+        // For horizonal quads
+        else if ( firstIndex + 2 == thirdIndex )
+        {
+            quadWidth = 180;
+            quadHeight = 30;
+            
+            if ( firstIndex == 4 )
+            {
+                startY = 160;
+            }
+            
+            context.strokeRect( startX, startY, quadWidth, quadHeight );
+        }
+        
+        else
+        {
+            quadWidth = 40;
+            quadHeight = 80;
+            startX = 100;
+            context.strokeRect( startX, startY, quadWidth, quadHeight );
+            startX = 260;
+            context.strokeRect( startX, startY, quadWidth, quadHeight );
+        }
+    }
+}
+
+// This function draws the pair rectangles for problems where the user needs to write the equation
+function drawEquationPairRectangles( simplifiedArray )
+{
+    // Passes in twoDArray after redundacy check
+    var startX;
+    var startY;
+    var indexIncrement = 50;
+    var pairWidth;
+    var pairHeight;
+    
+    // 30 80 for vertical, 80 30 for horizontal
+    
+    // Sets drawing canvas to random color
+    var canvas = document.getElementById('myKMapCanvas');
+    var context = canvas.getContext('2d');
+    
+    for ( var index = 0; index < simplifiedArray.length - 1; index++ ) 
+    {
+        startX = 110;
+        startY = 110;
+        context.strokeStyle = generateColor();
+        
+        // For horizontal grouping
+            // If difference of group is 1 ( double check for horizonal )
+        if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 1 )
+        {
+            pairWidth = 80;
+            pairHeight = 30;
+            
+            if ( simplifiedArray[index][0] >= 0 && simplifiedArray[index][0] <= 2 )
+            {
+                startX += indexIncrement * simplifiedArray[index][0];
+                context.strokeRect( startX, startY, pairWidth, pairHeight );
+            }
+            
+            else if ( simplifiedArray[index][0] >= 4 && simplifiedArray[index][0] <= 6 )
+            {
+                startX += indexIncrement * ( simplifiedArray[index][0] - 4 );
+                startY += indexIncrement;
+                context.strokeRect( startX, startY, pairWidth, pairHeight );
+            }
+        }
+        
+        // For vertical grouping
+            // If difference of group is 4 ( double check for vertical )
+        else if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 4 )
+        {
+            pairWidth = 30;
+            pairHeight = 80;
+            
+            startX += indexIncrement * simplifiedArray[index][0];
+            context.strokeRect( startX, startY, pairWidth, pairHeight );
+        }
+        
+        // For the wraps
+        else
+        {
+            if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 3 )
+            {
+                pairWidth = 40;
+                pairHeight = 30;
+                
+                console.log( "HERE" );
+                
+                // Top row wrap
+                if ( simplifiedArray[index][0] == 0 )
+                {
+                    startX = 100;
+                    context.strokeRect( startX, startY, pairWidth, pairHeight );
+                    startX = 260;
+                    context.strokeRect( startX, startY, pairWidth, pairHeight );
+                }
+                
+                else
+                {
+                    startY += indexIncrement;
+                    startX = 100;
+                    context.strokeRect( startX, startY, pairWidth, pairHeight );
+                    startX = 260;
+                    context.strokeRect( startX, startY, pairWidth, pairHeight );
+                }
+            }
+        }
+    }
+}    
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -1135,91 +1295,74 @@ function addPairToTwoDArray( firstIndex, secondIndex )
 }
 
 // takes an array of pairs and returns the array with no redundant groups
-function checkForRedundancies( pairsArray )
+function checkForRedundancies( pairsArray ) 
 {
+    var temp = pairsArray;
     var redundant1; //boolean for first element
     var redundant2; //boolean for second element
-    
-    var tempArray = pairsArray;
-    
-    console.log( "BEFORE LOOP: " + JSON.stringify( twoDArray ) );
-    
-    //loop through all groups
-    for( outerIndex in tempArray )
-    {
-        //reset redundant when checking a new group
-        redundant1 = false;
-        redundant2 = false;
-        
-        if ( tempArray[ outerIndex ][0] != 0 || tempArray[ outerIndex ][1] != 0 )
-        {
-            //loop through all groups to compare to
-            for( innerIndex in tempArray )
-            {
-                if ( tempArray[ innerIndex ][0] != 0 || tempArray[ innerIndex ][1] != 0 )
-                {
-                    // do not compare to self
-                    if( innerIndex != outerIndex )
-                    {
-                        // if first element matches either element in compare
-                        if( tempArray[outerIndex][0] == tempArray[innerIndex][0] || tempArray[outerIndex][0] == tempArray[innerIndex][1] )
-                        {
-                            //first element is redundant
-                            redundant1 = true;
-                        }
 
-                        //if second element matches either element in compare
-                        if( tempArray[outerIndex][1] == tempArray[innerIndex][0] || tempArray[outerIndex][1] == tempArray[innerIndex][1] )
-                        {
-                            //second element is redundant
-                            redundant2 = true;
-                        }
+    //loop through all groups
+    for ( group in temp ) 
+    {
+        if ( temp[group][0] != 0 ) 
+        {
+            //reset redundant when checking a new group
+            redundant1 = false;
+            redundant2 = false;
+            
+            //loop through all groups to compare to
+            for ( compareGroup in temp ) 
+            {
+                //console.log("Comparing groups " + group + " " + compareGroup);
+                // do not compare to self
+                if ( compareGroup != group ) 
+                {
+                    //console.log("Comparing " + temp[group][0] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
+
+                    // if first element matches either element in compare
+                    if ( temp[group][0] == temp[compareGroup][0] || temp[group][0] == temp[compareGroup][1] ) 
+                    {
+                        //console.log("1 is redundant");
+                        //first element is redundant
+                        redundant1 = true;
+                        console.log( "R1 IS TRUE" );
+                    }
+                    //console.log("Comparing " + temp[group][1] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
+
+                    //if second element matches either element in compare
+                    if ( temp[group][1] == temp[compareGroup][0] || temp[group][1] == temp[compareGroup][1] ) 
+                    {
+                        //console.log("2 is redundant");
+                        //second element is redundant
+                        redundant2 = true;
+                        console.log( "R2 IS TRUE" );
                     }
                 }
             }
 
             //both elements were redundant
-            if( redundant1 && redundant2 )
+            if ( redundant1 && redundant2 ) 
             {
-                console.log( "Removing pairs array at " + outerIndex );
-                console.log( "TEMP ARRAY LENGTH: " + tempArray.length );
-                
-                // Zero case seems off: THIS IS PROBLEM
-                if ( outerIndex == 0 )
+                //console.log(`Element ${group} is redundant`);
+                //shift all elements starting from group to the left
+                //this removes the group from the array
+                for ( var i = group; i < temp.length - 1; i++ ) 
                 {
-                    for( var index = outerIndex; index < tempArray.length - 2; index++ )
-                    {
-                        for( var innerIndex = 0; innerIndex < 2; innerIndex++ )
-                        {
-                            tempArray[index][innerIndex] = tempArray[tempArray.length - index - 2][innerIndex];
-                        }
-                    }
-                
-                    tempArray[tempArray.length - outerIndex - 1 ][0] = 0;
-                    tempArray[tempArray.length - outerIndex - 1 ][1] = 0;
+                    //console.log(temp[i]);
+                    //console.log(temp[Number(i) + 1]);
+                    var next = i + 1;
+                    //console.log(`Swapping ${temp[i]} with ${temp[Number(i) + 1]}`);
+                    temp[i] = temp[Number(i) + 1];
                 }
                 
-                else
-                {
-                    for( var index = outerIndex; index < tempArray.length - 1; index++ )
-                    {
-                        for( var innerIndex = 0; innerIndex < 2; innerIndex++ )
-                        {
-                            tempArray[index][innerIndex] = tempArray[tempArray.length - index - 1][innerIndex];
-                        }
-                    }
-                
-                    tempArray[tempArray.length - outerIndex][0] = 0;
-                    tempArray[tempArray.length - outerIndex][1] = 0;
-                }
+                //set final element to 0,0 since it will be listed twice
+                temp[temp.length-1] = [0,0];
             }
-            
-            console.log( "NEW ARRAY: " + JSON.stringify( tempArray ) );
         }
     }
     
     //hand back modified local array
-    return tempArray;
+    return temp;
 }
 
 // Counts number of elements in equation array
@@ -1326,6 +1469,7 @@ function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
     groupingArray[ fourthIndex ] = array[ fourthIndex ];
     canGroup = 1;
     console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
+    drawEquationQuadRectangles( drawRectangles, firstIndex, secondIndex, thirdIndex, fourthIndex );
     addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex );
 }
 
@@ -1345,6 +1489,8 @@ function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
     canGroup = 1;
     console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
     fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
+    drawEquationOctetRectangles( drawRectangles, firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
+    sixthIndex, seventhIndex, eighthIndex );
     addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex );
 }
 
