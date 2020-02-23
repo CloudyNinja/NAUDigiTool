@@ -591,7 +591,6 @@ function submitBinary()
     // Binary to decimal level 1
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1 ) )
     {
-        console.log( "Why is this showing up" );
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;

@@ -1,5 +1,5 @@
 var userStars = 0;
-var moduleTwoMaxStars = 36; // Might need to change later
+var moduleTwoMaxStars = 90; // 30 questions in module, 1 star per question
 
 function passUserStars( variable )
 {
