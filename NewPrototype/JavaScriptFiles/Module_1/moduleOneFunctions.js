@@ -172,10 +172,12 @@ function formatRectangle( rectangle, event )
     var x = event.clientX;
     var y = event.clientY;
     
+    var rectColor = generateColor();
+    
     // First four if statements is for vertical pair grouping
     if ( x > 575 && x < 625 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
-        temp = { startX: 110, startY: 110, w: 30, h : 80 };
+        temp = { startX: 110, startY: 110, w: 30, h : 80, color: rectColor };
         addPairToDrawingArray( 0, 4 );
         addPairToTwoDArray( user2DArray, 0, 4 );
         addRectangleToArray( temp );
@@ -183,7 +185,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 625 && x < 675 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
-        temp = { startX: 160, startY: 110, w: 30, h : 80 };
+        temp = { startX: 160, startY: 110, w: 30, h : 80, color: rectColor };
         addPairToDrawingArray( 1, 5 );
         addPairToTwoDArray( user2DArray, 1, 5 );
         addRectangleToArray( temp );
@@ -191,7 +193,7 @@ function formatRectangle( rectangle, event )
 
     else if ( x > 675 && x < 725 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
-        temp = { startX: 210, startY: 110, w: 30, h : 80 };
+        temp = { startX: 210, startY: 110, w: 30, h : 80, color: rectColor };
         addPairToDrawingArray( 2, 6 );
         addPairToTwoDArray( user2DArray, 2, 6 );
         addRectangleToArray( temp );
@@ -199,7 +201,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 725 && x < 775 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
-        temp = { startX: 260, startY: 110, w: 30, h : 80 };
+        temp = { startX: 260, startY: 110, w: 30, h : 80, color: rectColor };
         addPairToDrawingArray( 3, 7 );
         addPairToTwoDArray( user2DArray, 3, 7 );
         addRectangleToArray( temp );
@@ -209,7 +211,7 @@ function formatRectangle( rectangle, event )
         // First three is top row
     else if ( x > 575 && x < 675 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48  )
     {
-        temp = { startX: 110, startY: 110, w: 80, h : 30 };
+        temp = { startX: 110, startY: 110, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 0, 1 );
         addPairToTwoDArray( user2DArray, 0, 1 );
         addRectangleToArray( temp );
@@ -217,7 +219,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 625 && x < 725 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
-        temp = { startX: 160, startY: 110, w: 80, h : 30 };
+        temp = { startX: 160, startY: 110, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 1, 2 );
         addPairToTwoDArray( user2DArray, 1, 2 );
         addRectangleToArray( temp );
@@ -225,7 +227,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 675 && x < 775 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
-        temp = { startX: 210, startY: 110, w: 80, h : 30 };
+        temp = { startX: 210, startY: 110, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 2, 3 );
         addPairToTwoDArray( user2DArray, 2, 3 );
         addRectangleToArray( temp );
@@ -234,7 +236,7 @@ function formatRectangle( rectangle, event )
         // Next three is bottom row
     else if ( x > 575 && x < 675 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
-        temp = { startX: 110, startY: 160, w: 80, h : 30 };
+        temp = { startX: 110, startY: 160, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 4, 5 );
         addPairToTwoDArray( user2DArray, 4, 5 );
         addRectangleToArray( temp );
@@ -242,7 +244,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 625 && x < 725 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
-        temp = { startX: 160, startY: 160, w: 80, h : 30 };
+        temp = { startX: 160, startY: 160, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 5, 6 );
         addPairToTwoDArray( user2DArray, 5, 6 );
         addRectangleToArray( temp );
@@ -250,7 +252,7 @@ function formatRectangle( rectangle, event )
     
     else if ( x > 675 && x < 775 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
-        temp = { startX: 210, startY: 160, w: 80, h : 30 };
+        temp = { startX: 210, startY: 160, w: 80, h : 30, color: rectColor };
         addPairToDrawingArray( 6, 7 );
         addPairToTwoDArray( user2DArray, 6, 7 );
         addRectangleToArray( temp );
@@ -262,9 +264,9 @@ function formatRectangle( rectangle, event )
     {
         // Top row wrap
         addPairToDrawingArray( 0, 3 );
-        temp = { startX: 100, startY: 110, w: 40, h : 30 };
+        temp = { startX: 100, startY: 110, w: 40, h : 30, color: rectColor };
         addRectangleToArray( temp );
-        temp = { startX: 260, startY: 110, w: 40, h : 30 };
+        temp = { startX: 260, startY: 110, w: 40, h : 30, color: rectColor };
         addRectangleToArray( temp );
         addPairToTwoDArray( user2DArray, 0, 3 );
     }
@@ -273,9 +275,9 @@ function formatRectangle( rectangle, event )
     {
         // Bottom row wrap
         addPairToDrawingArray( 4, 7 );
-        temp = { startX: 100, startY: 160, w: 40, h : 30 };
+        temp = { startX: 100, startY: 160, w: 40, h : 30, color: rectColor };
         addRectangleToArray( temp );
-        temp = { startX: 260, startY: 160, w: 40, h : 30 };
+        temp = { startX: 260, startY: 160, w: 40, h : 30, color: rectColor };
         addRectangleToArray( temp );
         addPairToTwoDArray( user2DArray, 4, 7 );
     }
@@ -284,7 +286,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 675 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
-        temp = { startX: 110, startY: 110, w: 80, h : 80 };
+        temp = { startX: 110, startY: 110, w: 80, h : 80, color: rectColor };
         addQuadToDrawingArray( 0, 1, 4, 5 );
         addRectangleToArray( temp );
     }
@@ -292,7 +294,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 625 && x < 725 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
-        temp = { startX: 160, startY: 110, w: 80, h : 80 };
+        temp = { startX: 160, startY: 110, w: 80, h : 80, color: rectColor };
         addQuadToDrawingArray( 1, 2, 5, 6 );
         addRectangleToArray( temp );
     }
@@ -300,7 +302,7 @@ function formatRectangle( rectangle, event )
      else if ( x > 675 && x < 775 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
-        temp = { startX: 210, startY: 110, w: 80, h : 80 };
+        temp = { startX: 210, startY: 110, w: 80, h : 80, color: rectColor };
         addQuadToDrawingArray( 2, 3, 6, 7 );
         addRectangleToArray( temp );
     }
@@ -309,7 +311,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 775 && y > 250 && y < 300 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
     {
         // Bottom row wrap
-        temp = { startX: 110, startY: 110, w: 180, h : 30 };
+        temp = { startX: 110, startY: 110, w: 180, h : 30, color: rectColor };
         addQuadToDrawingArray( 0, 1, 2, 3 );
         addRectangleToArray( temp );
     }
@@ -317,7 +319,7 @@ function formatRectangle( rectangle, event )
     else if ( x > 575 && x < 775 && y > 300 && y < 350 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
     {
         // Bottom row wrap
-        temp = { startX: 110, startY: 160, w: 180, h : 30 };
+        temp = { startX: 110, startY: 160, w: 180, h : 30, color: rectColor };
         addQuadToDrawingArray( 4, 5, 6, 7 );
         addRectangleToArray( temp );
     }
@@ -326,16 +328,16 @@ function formatRectangle( rectangle, event )
     else if ( x > 550 && x < 570 && y > 250 && y < 350 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 70 && rectangle.h < 95 )
     {
         addQuadToDrawingArray( 0, 3, 4, 7 );
-        temp = { startX: 100, startY: 110, w: 40, h : 80 };
+        temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
         addRectangleToArray( temp );
-        temp = { startX: 260, startY: 110, w: 40, h : 80 };
+        temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
         addRectangleToArray( temp );
     }
     
     // Octal group
     else if ( x > 575 && x < 775 && y > 250 && y < 350 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 95 )
     {
-        temp = { startX: 110, startY: 110, w: 180, h : 80 };
+        temp = { startX: 110, startY: 110, w: 180, h : 80, color: rectColor };
         addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
         addRectangleToArray( temp );
     }
@@ -355,7 +357,7 @@ function drawRectangles()
     while ( rectangleArray[ index ] != null )
     {   
         // This generates random color: May need to fix
-        ctx.strokeStyle = generateColor();
+        ctx.strokeStyle = rectangleArray[index].color;
         
         ctx.strokeRect( rectangleArray[index].startX, rectangleArray[index].startY, rectangleArray[index].w, rectangleArray[index].h );
         index++;
@@ -397,12 +399,13 @@ function showCoords( event )
 function generateColor()
 {
     var index = 0
-    var letters = "0123456789ABCDEF"; 
+    //var letters = "0123456789ABCDEF"; 
+    var letters = "012345678"; 
     var color = '#'; 
 
     for ( var index = 0; index < 6; index++ ) 
     {
-       color += letters[ ( Math.floor( Math.random() * 16 ) ) ]; 
+       color += letters[ ( Math.floor( Math.random() * 8 ) ) ]; 
     }
     
     return color;
