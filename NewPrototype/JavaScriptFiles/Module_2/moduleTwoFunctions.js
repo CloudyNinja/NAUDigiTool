@@ -497,7 +497,7 @@ function submitBinary()
     // Binary to decimal level 1
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1 ) )
     {
-        console.log( "This shouldn't be showing up." );
+        console.log( "Why is this showing up" );
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
@@ -555,18 +555,15 @@ function submitBinary()
     // Binary to decimal to level 3
     else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion3") > -1 ) )
     {
-        console.log( "Got to beginning" );
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index).value;
-            console.log( "Got past numberToCheck assignment" );
             var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
             if( userInput == answer )
             {
                 counter += 1;
             }
-            console.log( "Got past checking" );
         }
         if( counter >= 5 )
         {
