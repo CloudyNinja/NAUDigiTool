@@ -847,10 +847,6 @@ function submitHex()
             {
                 counter += 1;
             }
-            console.log( "==================");
-            console.log( numberToCheck );
-            console.log( answer );
-            console.log( answer.toString( 2 ) );
         }
         if( counter >= 5 )
         {
