@@ -15,8 +15,8 @@ array[2] = 1;
 array[3] = 0;
 array[4] = 1;
 array[5] = 0;
-array[6] = 1;
-array[7] = 1;*/
+array[6] = 0;
+array[7] = 0;*/
 
 printArray();
 findOctetGroups();

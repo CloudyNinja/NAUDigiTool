@@ -41,8 +41,23 @@ function addInputsToUserArray()
         userArray[ index - 1 ] = document.getElementById("number" + index).value;
     }
     
-    swapUserArrayIndices( 2, 3 );
-    swapUserArrayIndices( 6, 7 );
+    if ( array.length == 8 )
+    {
+        swapUserArrayIndices( 2, 3 );
+        swapUserArrayIndices( 6, 7 );
+    }
+    
+    else if ( array.length == 16 )
+    {
+        swapUserArrayIndices( 2, 3 );
+        swapUserArrayIndices( 6, 7 );
+        swapUserArrayIndices( 8, 12 );
+        swapUserArrayIndices( 9, 13 );
+        swapUserArrayIndices( 10, 15 );
+        swapUserArrayIndices( 11, 14 );
+    }
+    
+    console.log( JSON.stringify( userArray ) );
 }
 
 function init() 
@@ -160,7 +175,7 @@ function formatRectangle( rectangle, event )
     var y = event.clientY;
     
     // First four if statements is for vertical pair grouping
-    if ( x > 575 && x < 625 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
+    if ( x > 575 && x < 625 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
         temp = { startX: 110, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 0, 4 );
@@ -168,21 +183,21 @@ function formatRectangle( rectangle, event )
         
     }
     
-    else if ( x > 625 && x < 675 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
+    else if ( x > 625 && x < 675 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
         temp = { startX: 160, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 1, 5 );
         addRectangleToArray( temp );
     }
 
-    else if ( x > 675 && x < 725 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
+    else if ( x > 675 && x < 725 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
         temp = { startX: 210, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 2, 6 );
         addRectangleToArray( temp );
     }
     
-    else if ( x > 725 && x < 775 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 35 && rectangle.h > 70 && rectangle.h < 80 )
+    else if ( x > 725 && x < 775 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
     {
         temp = { startX: 260, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 3, 7 );
@@ -191,21 +206,21 @@ function formatRectangle( rectangle, event )
     
     // Next eight if statements is for horizontal pair grouping
         // First three is top row
-    else if ( x > 575 && x < 675 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30  )
+    else if ( x > 575 && x < 675 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48  )
     {
         temp = { startX: 110, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 0, 1 );
         addRectangleToArray( temp );
     }
     
-    else if ( x > 625 && x < 725 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
+    else if ( x > 625 && x < 725 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
         temp = { startX: 160, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 1, 2 );
         addRectangleToArray( temp );
     }
     
-    else if ( x > 675 && x < 775 && y > 250 && y < 300 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
+    else if ( x > 675 && x < 775 && y > 250 && y < 300 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
         temp = { startX: 210, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 2, 3 );
@@ -213,21 +228,21 @@ function formatRectangle( rectangle, event )
     }
     
         // Next three is bottom row
-    else if ( x > 575 && x < 675 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
+    else if ( x > 575 && x < 675 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
         temp = { startX: 110, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 4, 5 );
         addRectangleToArray( temp );
     }
     
-    else if ( x > 625 && x < 725 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
+    else if ( x > 625 && x < 725 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
         temp = { startX: 160, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 5, 6 );
         addRectangleToArray( temp );
     }
     
-    else if ( x > 675 && x < 775 && y > 300 && y < 350 && rectangle.w > 35 && rectangle.w < 85 && rectangle.h > 20 && rectangle.h < 30 )
+    else if ( x > 675 && x < 775 && y > 300 && y < 350 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
     {
         temp = { startX: 210, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 6, 7 );
@@ -236,7 +251,7 @@ function formatRectangle( rectangle, event )
     
         // Next two are the wraps
             // Top Row
-    else if ( x > 540 && x < 574 && y > 250 && y < 300 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 5 && rectangle.h < 25 )
+    else if ( x > 540 && x < 574 && y > 250 && y < 300 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
     {
         // Top row wrap
         addPairToDrawingArray( 0, 3 );
@@ -246,7 +261,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
     }
             // Bottom row
-    else if ( x > 540 && x < 574 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 5 && rectangle.h < 25 )
+    else if ( x > 540 && x < 574 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
     {
         // Bottom row wrap
         addPairToDrawingArray( 4, 7 );
@@ -257,7 +272,7 @@ function formatRectangle( rectangle, event )
     }
     
     // Next 3 if statements is for vertical quad grouping
-    else if ( x > 575 && x < 675 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 85 && rectangle.h > 70 && rectangle.h < 85 )
+    else if ( x > 575 && x < 675 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 110, w: 80, h : 80 };
@@ -265,7 +280,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
     }
     
-    else if ( x > 625 && x < 725 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 85 && rectangle.h > 70 && rectangle.h < 85 )
+    else if ( x > 625 && x < 725 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
         temp = { startX: 160, startY: 110, w: 80, h : 80 };
@@ -273,7 +288,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
     }
     
-     else if ( x > 675 && x < 775 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 85 && rectangle.h > 70 && rectangle.h < 85 )
+     else if ( x > 675 && x < 775 && y > 250 && y < 350 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
     {
         // Bottom row wrap
         temp = { startX: 210, startY: 110, w: 80, h : 80 };
@@ -282,7 +297,7 @@ function formatRectangle( rectangle, event )
     }
     
     // Next 2 if statements is for horizontal quad grouping
-    else if ( x > 575 && x < 775 && y > 250 && y < 300 && rectangle.w > 162 && rectangle.w < 170 && rectangle.h > 5 && rectangle.h < 50 )
+    else if ( x > 575 && x < 775 && y > 250 && y < 300 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 110, w: 180, h : 30 };
@@ -290,7 +305,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
     }
     
-    else if ( x > 575 && x < 775 && y > 300 && y < 350 && rectangle.w > 162 && rectangle.w < 170 && rectangle.h > 5 && rectangle.h < 50 )
+    else if ( x > 575 && x < 775 && y > 300 && y < 350 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
     {
         // Bottom row wrap
         temp = { startX: 110, startY: 160, w: 180, h : 30 };
@@ -299,7 +314,7 @@ function formatRectangle( rectangle, event )
     }
     
     // Next if statement is for wrap quad grouping
-    else if ( x > 550 && x < 570 && y > 250 && y < 350 && rectangle.w > 5 && rectangle.w < 33 && rectangle.h > 70 && rectangle.h < 80 )
+    else if ( x > 550 && x < 570 && y > 250 && y < 350 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 70 && rectangle.h < 95 )
     {
         addQuadToDrawingArray( 0, 3, 4, 7 );
         temp = { startX: 100, startY: 110, w: 40, h : 80 };
@@ -309,7 +324,7 @@ function formatRectangle( rectangle, event )
     }
     
     // Octal group
-    else if ( x > 575 && x < 775 && y > 250 && y < 350 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 80 )
+    else if ( x > 575 && x < 775 && y > 250 && y < 350 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 95 )
     {
         temp = { startX: 110, startY: 110, w: 180, h : 80 };
         addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
@@ -560,7 +575,6 @@ function createArray( numberOfVariables )
 
     if ( numberOfVariables == 3 )
     {
-        console.log( "ARRAY[0] " + array[0] + ", ARRAY[1] " + array[1] );
         if ( array[0] != 1 || array[1] != 1 )
         {
             array[0] = 1;
@@ -574,11 +588,19 @@ function createArray( numberOfVariables )
     
     else if ( numberOfVariables == 4 )
     {
+        if ( array[0] != 1 || array[1] != 1 )
+        {
+            array[0] = 1;
+            array[1] = 1;
+        }
+        
         // Swaps array indices to match KMap table
         swapArrayIndices( 2, 3 );
         swapArrayIndices( 6, 7 );
-        swapArrayIndices( 10, 11 );
-        swapArrayIndices( 14, 15 );
+        swapArrayIndices( 8, 12 );
+        swapArrayIndices( 9, 13 );
+        swapArrayIndices( 10, 15 );
+        swapArrayIndices( 11, 14 );
     }
 
     return array;
@@ -1731,7 +1753,7 @@ function clearRectangleArray()
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 )  )
     {
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
