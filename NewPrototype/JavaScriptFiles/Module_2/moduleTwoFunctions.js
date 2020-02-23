@@ -7,7 +7,8 @@ function randomDecimal()
         var randomNumber = document.getElementById( "randomNumber" + index );
         // Generates random decimal numbers for level 1 
         if( Boolean( window.location.href.indexOf( "moduleTwoQuestion10" ) > -1 ) || 
-            Boolean( window.location.href.indexOf( "moduleTwoQuestion13" ) > -1 ) ) 
+            Boolean( window.location.href.indexOf( "moduleTwoQuestion13" ) > -1 ) ||
+            Boolean( window.location.href.indexOf( "moduleTwoQuestion16" ) > -1 ) ) 
         {
             randomNumber = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
@@ -16,7 +17,8 @@ function randomDecimal()
 
         // Generates random decimal numbers for level 2
         else if( Boolean( window.location.href.indexOf( "moduleTwoQuestion11" ) > -1 ) || 
-                 Boolean( window.location.href.indexOf( "moduleTwoQuestion14" ) > -1 ) )
+                 Boolean( window.location.href.indexOf( "moduleTwoQuestion14" ) > -1 ) ||
+                 Boolean( window.location.href.indexOf( "moduleTwoQuestion17" ) > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 512 ) + 1 ); // Generates random number between 1 and 512
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
@@ -294,7 +296,6 @@ function submitDecimal()
             {
                 counter += 1;
             }
-            console.log( answer.toString( 8 ) );
         }
         if( counter >= 5 )
         {
@@ -312,6 +313,86 @@ function submitDecimal()
     }
 
     // ================================ DECIMAL TO HEX ================================
+    // Decimal to hex level 1
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion16") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString( 16 ).toUpperCase() )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion17.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Decimal to hex level 2
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion17") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString( 16 ).toUpperCase() )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion18.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Decimal to hex level 3
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion18") > -1 ) )
+    {
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var answer = document.getElementById( "randomNumber" + index).value;
+            if( userInput.toUpperCase() == answer.toString( 16 ).toUpperCase() )
+            {
+                counter += 1;
+            }
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion19.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
     
 }
 
