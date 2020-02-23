@@ -1102,12 +1102,30 @@ function receiveHint()
         }   
     }
 
-    // If current window is binary to octal problems
-    for( var index = 19; index <= 21; index++ )
+    // If current window is binary to octal or hex problems
+    for( var index = 19; index <= 24; index++ )
     {
         if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
         {
             document.getElementById( "hint" ).innerHTML = "Convert from binary to decimal first..."
+        }   
+    }
+
+    // If current window is octal to binary problems
+    for( var index = 25; index <= 27; index++ )
+    {
+        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
+        {
+            document.getElementById( "hint" ).innerHTML = "Convert from octal to decimal first..."
+        }   
+    }
+
+    // If current window is hex to binary problems
+    for( var index = 28; index <= 30; index++ )
+    {
+        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
+        {
+            document.getElementById( "hint" ).innerHTML = "Convert from hex to decimal first..."
         }   
     }
 }
