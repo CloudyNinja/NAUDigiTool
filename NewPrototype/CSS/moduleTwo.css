@@ -292,3 +292,30 @@ body
     margin-bottom: 100px;
     min-width: 200px;
 }
+
+/* Styling for the completion page */
+#congrats1
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 450px;
+    font-family: serif;
+    color: black;
+}
+
+#congrats2
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 220px;
+    left: 320px;
+    font-family: serif;
+    color: black;
+}
