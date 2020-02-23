@@ -44,7 +44,8 @@ function randomBinary()
         var randomNumber = document.getElementById( "randomNumber" + index );
 
         // Generates random binary number for level 1
-        if( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1 ) )
+        if( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1 ) ||
+            Boolean( window.location.href.indexOf("moduleTwoQuestion19") > -1 ) )
         {
             randomNumber = Math.floor( ( Math.random() * 64 ) + 1 ); // Generates random number between 1 and 64
             binaryNumber = randomNumber.toString(2); // Converts random number to binary
@@ -492,9 +493,11 @@ function submitBinary()
 {
     var counter = 0;
 
+    // ================================ BINARY TO DECIMAL ================================
     // Binary to decimal level 1
     if ( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1 ) )
     {
+        console.log( "This shouldn't be showing up." );
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
@@ -550,17 +553,20 @@ function submitBinary()
 
     
     // Binary to decimal to level 3
-    else
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion3") > -1 ) )
     {
+        console.log( "Got to beginning" );
         for( var index = 1; index <= 6; index++ )
         {
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            console.log( "Got past numberToCheck assignment" );
             var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
             if( userInput == answer )
             {
                 counter += 1;
             }
+            console.log( "Got past checking" );
         }
         if( counter >= 5 )
         {
@@ -578,6 +584,51 @@ function submitBinary()
         
         }
     }
+
+    // ================================ BINARY TO OCTAL ================================
+    // Binary to octal level 1
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion19") > -1 ) )
+    {
+        console.log( "Got to beginning" );
+        for( var index = 1; index <= 6; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            console.log( "Got past numberToCheck assignment" );
+            var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer.toString( 8 ) )
+            {
+                counter += 1;
+            }
+            console.log( "Got past checking" );
+        }
+        if( counter >= 5 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Award star to user
+                // Function awardStar()
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion20.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Nope. Try again.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Binary to octal level 2
+
+    // Binary to octal level 3
+
+    // ================================ BINARY TO HEX ================================
+    // Binary to hex level 1
+
+    // Binary to hex level 2
+
+    // Binary to hex level 3
 }
 
 // Submit function for hex conversions
@@ -681,7 +732,7 @@ function receiveHint()
     {
         if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
         {
-            document.getElementById( "hint" ).innerHTML = "Keep in mind that the decimal system is base-2..."
+            document.getElementById( "hint" ).innerHTML = "Keep in mind that the binary system is base-2..."
         }   
     }
 
@@ -700,6 +751,24 @@ function receiveHint()
         if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
         {
             document.getElementById( "hint" ).innerHTML = "Keep in mind that the hexadecimal system is base-16..."
+        }   
+    }
+
+    // If current window is decimal to binary, octal, or hex problems
+    for( var index = 10; index <= 18; index++ )
+    {
+        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
+        {
+            document.getElementById( "hint" ).innerHTML = "Keep in mind that the decimal system is base-10..."
+        }   
+    }
+
+    // If current window is binary to octal problems
+    for( var index = 19; index <= 21; index++ )
+    {
+        if( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
+        {
+            document.getElementById( "hint" ).innerHTML = "Keep in mind that the binary system is base-2..."
         }   
     }
 }
