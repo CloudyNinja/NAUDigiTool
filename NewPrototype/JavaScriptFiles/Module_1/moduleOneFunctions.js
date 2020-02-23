@@ -71,7 +71,6 @@ function mouseDown(e)
 {
     rect.startX = e.pageX - this.offsetLeft;
     rect.startY = e.pageY - this.offsetTop;
-    
     drag = true;
 }
 
@@ -80,7 +79,6 @@ function mouseUp()
     drag = false;
     //addRectangleToArray( rect );
     formatRectangle( rect, event );
-    //console.log( "X: " +  + " Y: " + coord.y );
     console.log(JSON.stringify(groupingArray));
     console.log(JSON.stringify(drawingArray));
 }
@@ -180,7 +178,6 @@ function formatRectangle( rectangle, event )
         temp = { startX: 110, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 0, 4 );
         addRectangleToArray( temp );
-        
     }
     
     else if ( x > 625 && x < 675 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
@@ -345,6 +342,9 @@ function drawRectangles()
     
     while ( rectangleArray[ index ] != null )
     {   
+        // This generates random color: May need to fix
+        ctx.strokeStyle = generateColor();
+        
         ctx.strokeRect( rectangleArray[index].startX, rectangleArray[index].startY, rectangleArray[index].w, rectangleArray[index].h );
         index++;
     }
