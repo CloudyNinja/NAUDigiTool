@@ -79,8 +79,8 @@ function mouseUp()
     drag = false;
     //addRectangleToArray( rect );
     formatRectangle( rect, event );
-    console.log(JSON.stringify(groupingArray));
-    console.log(JSON.stringify(drawingArray));
+    console.log( "\nGrouping array: " + JSON.stringify(groupingArray));
+    console.log( " Drawing array: " + JSON.stringify(drawingArray));
 }
 
 function addRectangleToArray( rectangle )
@@ -177,6 +177,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 110, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 0, 4 );
+        addPairToTwoDArray( user2DArray, 0, 4 );
         addRectangleToArray( temp );
     }
     
@@ -184,6 +185,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 160, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 1, 5 );
+        addPairToTwoDArray( user2DArray, 1, 5 );
         addRectangleToArray( temp );
     }
 
@@ -191,6 +193,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 210, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 2, 6 );
+        addPairToTwoDArray( user2DArray, 2, 6 );
         addRectangleToArray( temp );
     }
     
@@ -198,6 +201,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 260, startY: 110, w: 30, h : 80 };
         addPairToDrawingArray( 3, 7 );
+        addPairToTwoDArray( user2DArray, 3, 7 );
         addRectangleToArray( temp );
     }
     
@@ -207,6 +211,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 110, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 0, 1 );
+        addPairToTwoDArray( user2DArray, 0, 1 );
         addRectangleToArray( temp );
     }
     
@@ -214,6 +219,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 160, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 1, 2 );
+        addPairToTwoDArray( user2DArray, 1, 2 );
         addRectangleToArray( temp );
     }
     
@@ -221,6 +227,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 210, startY: 110, w: 80, h : 30 };
         addPairToDrawingArray( 2, 3 );
+        addPairToTwoDArray( user2DArray, 2, 3 );
         addRectangleToArray( temp );
     }
     
@@ -229,6 +236,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 110, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 4, 5 );
+        addPairToTwoDArray( user2DArray, 4, 5 );
         addRectangleToArray( temp );
     }
     
@@ -236,6 +244,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 160, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 5, 6 );
+        addPairToTwoDArray( user2DArray, 5, 6 );
         addRectangleToArray( temp );
     }
     
@@ -243,6 +252,7 @@ function formatRectangle( rectangle, event )
     {
         temp = { startX: 210, startY: 160, w: 80, h : 30 };
         addPairToDrawingArray( 6, 7 );
+        addPairToTwoDArray( user2DArray, 6, 7 );
         addRectangleToArray( temp );
     }
     
@@ -256,6 +266,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
         temp = { startX: 260, startY: 110, w: 40, h : 30 };
         addRectangleToArray( temp );
+        addPairToTwoDArray( user2DArray, 0, 3 );
     }
             // Bottom row
     else if ( x > 540 && x < 574 && y > 300 && y < 350 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
@@ -266,6 +277,7 @@ function formatRectangle( rectangle, event )
         addRectangleToArray( temp );
         temp = { startX: 260, startY: 160, w: 40, h : 30 };
         addRectangleToArray( temp );
+        addPairToTwoDArray( user2DArray, 4, 7 );
     }
     
     // Next 3 if statements is for vertical quad grouping
@@ -1277,49 +1289,50 @@ function addPairToGroupArray( firstIndex, secondIndex )
     groupingArray[ secondIndex ] = array[ secondIndex ];
     canGroup = 1;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
-    twoDArray = addPairToTwoDArray( firstIndex, secondIndex );
+    twoDArray = addPairToTwoDArray( twoDArray, firstIndex, secondIndex );
     //addPairToThreeVarEquation( firstIndex, secondIndex );
 }
 
 // Creates 2D array 
-function create2DArray()
+function create2DArray( twoDimensionArray )
 {
     // Loop to create 2D array using 1D array 
-    for ( var index = 0; index < twoDArray.length; index++ ) 
+    for ( var index = 0; index < twoDimensionArray.length; index++ ) 
     { 
-        twoDArray[index] = new Array(2); 
+        twoDimensionArray[index] = new Array(2); 
     } 
   
     // Loop to initilize 2D array elements. 
-    for (var i = 0; i < twoDArray.length; i++) 
+    for (var i = 0; i < twoDimensionArray.length; i++) 
     { 
         for (var j = 0; j < 2; j++) 
         { 
-            twoDArray[i][j] = 0; 
+            twoDimensionArray[i][j] = 0; 
         } 
     } 
 }
 
 // Adds pair to twoDArray
-function addPairToTwoDArray( firstIndex, secondIndex )
+function addPairToTwoDArray( arrayPassed, firstIndex, secondIndex )
 {
     var index = 0; 
     
-    while ( twoDArray[ index ][0] != 0 || twoDArray[ index ][1] != 0  )
+    while ( arrayPassed[ index ][0] != 0 || arrayPassed[ index ][1] != 0  )
     {
         index++;
     }
     
-    twoDArray[ index ][ 0 ] = firstIndex;
-    twoDArray[ index ][ 1 ] = secondIndex;
+    arrayPassed[ index ][ 0 ] = firstIndex;
+    arrayPassed[ index ][ 1 ] = secondIndex;
     
     console.log( "Stopped at index: " + index );
-    console.log( JSON.stringify( twoDArray ) );
+    console.log( "NEW ARRAY: " + JSON.stringify( arrayPassed ) );
     
-    return twoDArray;
+    return arrayPassed;
 }
 
 // takes an array of pairs and returns the array with no redundant groups
+// Make sure z
 function checkForRedundancies( pairsArray ) 
 {
     var temp = pairsArray;
@@ -1331,7 +1344,7 @@ function checkForRedundancies( pairsArray )
     {
         //console.log( "FIRST NUM: " + pairsArray[group][0] + " SECOND NUM: " + pairsArray[group][1] );
         
-        if ( temp[group][0] != 0 ) 
+        if ( temp[group][0] != 0 || temp[group][1] != 0 ) 
         {
             //reset redundant when checking a new group
             redundant1 = false;
@@ -1340,29 +1353,32 @@ function checkForRedundancies( pairsArray )
             //loop through all groups to compare to
             for ( compareGroup in temp ) 
             {
-                //console.log("Comparing groups " + group + " " + compareGroup);
-                // do not compare to self
-                if ( compareGroup != group ) 
+                if ( temp[compareGroup][0] != 0 || temp[compareGroup][1] != 0 ) 
                 {
-                    //console.log("Comparing " + temp[group][0] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
-
-                    // if first element matches either element in compare
-                    if ( temp[group][0] == temp[compareGroup][0] || temp[group][0] == temp[compareGroup][1] ) 
+                    //console.log("Comparing groups " + group + " " + compareGroup);
+                    // do not compare to self
+                    if ( compareGroup != group ) 
                     {
-                        //console.log("1 is redundant");
-                        //first element is redundant
-                        redundant1 = true;
-                        console.log( "R1 IS TRUE" );
-                    }
-                    //console.log("Comparing " + temp[group][1] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
+                        //console.log("Comparing " + temp[group][0] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
 
-                    //if second element matches either element in compare
-                    if ( temp[group][1] == temp[compareGroup][0] || temp[group][1] == temp[compareGroup][1] ) 
-                    {
-                        //console.log("2 is redundant");
-                        //second element is redundant
-                        redundant2 = true;
-                        console.log( "R2 IS TRUE" );
+                        // if first element matches either element in compare
+                        if ( temp[group][0] == temp[compareGroup][0] || temp[group][0] == temp[compareGroup][1] ) 
+                        {
+                            //console.log("1 is redundant");
+                            //first element is redundant
+                            redundant1 = true;
+                            //console.log( "R1 IS TRUE" );
+                        }
+                        //console.log("Comparing " + temp[group][1] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
+
+                        //if second element matches either element in compare
+                        if ( temp[group][1] == temp[compareGroup][0] || temp[group][1] == temp[compareGroup][1] ) 
+                        {
+                            //console.log("2 is redundant");
+                            //second element is redundant
+                            redundant2 = true;
+                            //console.log( "R2 IS TRUE" );
+                        }
                     }
                 }
             }
@@ -1614,10 +1630,63 @@ function checkAnswers()
     return 0;
 }
 
-// NEED TO DO
+function compareTwo2DArrays( arrayOne, arrayTwo )
+{
+    var number = 0;
+    var arrayOneLength = 0;
+    var arrayTwoLength = 0;
+    var index = 0;
+
+    // First you would check lengths of both 2DArrays
+    while ( arrayOne[index][0] != 0 || arrayOne[index][1] != 0 )
+    {
+        arrayOneLength += 1;
+        index++;
+    }
+    
+    index = 0;
+    
+    while ( arrayTwo[index][0] != 0 || arrayTwo[index][1] != 0 )
+    {
+        arrayTwoLength += 1;
+        index++;
+    }
+    
+    console.log( "Array one length: " + arrayOneLength );
+    console.log( "Array two length: " + arrayTwoLength );
+    
+    // If they're the same then you can compare both arrays
+    if ( arrayOneLength == arrayTwoLength )
+    {
+        // You can choose arrayOneLength or arrayTwoLength since both are the same
+        for ( var outerGroup = 0; outerGroup < arrayOneLength; outerGroup++ )
+        {
+            for ( var innerGroup = 0; innerGroup < arrayTwoLength; innerGroup++ )
+            {
+                //console.log( "Comparing: " + arrayOne[outerGroup] + " with " + arrayTwo[innerGroup] );
+                if ( arrayOne[outerGroup][0] == arrayTwo[innerGroup][0] && arrayOne[outerGroup][1] == arrayTwo[innerGroup][1]  )
+                {
+                    //console.log( "MATCH" );
+                    number++;
+                }
+            }
+        }
+        
+        if ( number == arrayOneLength )
+        {
+            number = 1;
+        }
+    }
+    
+    return number;
+}
+
 function checkGroupings()
 {       
     var isRight = 0;
+    var both2DArraysTheSame = compareTwo2DArrays( twoDArray, user2DArray );
+    
+    console.log( "ARE SAME: " + both2DArraysTheSame );
     
     for ( var index = 0; index < groupingArray.length; index++ )
     {
@@ -1627,9 +1696,9 @@ function checkGroupings()
         }
     }
     
-    console.log( isRight );
+    //console.log( isRight );
     
-    if ( isRight == 0 )
+    if ( isRight == 0 && both2DArraysTheSame )
     {
         userStars += starsGiven;
         passUserStars( userStars );
@@ -1644,6 +1713,7 @@ function checkGroupings()
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
         setDrawingArray();
+        resetTwoDArray( user2DArray );
         attemptsLeft = decreaseAttempts( attemptsLeft );
     }
     
@@ -1730,6 +1800,7 @@ function resetGroupings()
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearRectangleArray();
     setDrawingArray();
+    resetTwoDArray( user2DArray );
 }
 
 function resetEquation()
@@ -1747,6 +1818,14 @@ function clearRectangleArray()
     {
         rectangleArray[ index ] = null;
         index++;
+    }
+}
+
+function resetTwoDArray( arrayToReset )
+{
+    for ( var index = 0; index < arrayToReset.length - 1; index++ )
+    {
+        arrayToReset[index] = [0,0];
     }
 }
 

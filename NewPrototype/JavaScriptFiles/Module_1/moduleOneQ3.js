@@ -2,7 +2,7 @@ var array = new Array(8);
 var groupingArray = new Array(8);
 var twoDArray = new Array( 4 );
 var drawRectangles = 1;
-create2DArray();
+create2DArray( twoDArray );
 
 array = createArray(3);
 createTruthTable(3);
@@ -13,10 +13,10 @@ fillKMap();
 array[1] = 1;
 array[2] = 1;
 array[3] = 0;
-array[4] = 1;
+array[4] = 0;
 array[5] = 0;
 array[6] = 0;
-array[7] = 0;*/
+array[7] = 1;*/
 
 printArray();
 findOctetGroups();
