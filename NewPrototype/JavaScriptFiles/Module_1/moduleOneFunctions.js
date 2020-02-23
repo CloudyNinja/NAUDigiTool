@@ -15,6 +15,7 @@ var rectangleArray = new Array( 3 );
 var drawingArray = new Array( 8 );
 setDrawingArray();
 
+//////////// FOR GROUPING /////////////////
 function setDrawingArray()
 {
     for ( var index = 0; index < drawingArray.length; index++ )
@@ -55,14 +56,6 @@ function mouseDown(e)
 {
     rect.startX = e.pageX - this.offsetLeft;
     rect.startY = e.pageY - this.offsetTop;
-    
-    //var x = e.clientX;
-    //var y = e.clientY;
-    
-    /*if ( x >= 575 && x <= 775 && y >= 250 && y <= 350 )
-    {
-        drag = true; 
-    }*/
     
     drag = true;
 }
@@ -376,6 +369,7 @@ function showCoords( event )
 // This function can be used for grouping but I haven't implemented it yet.
 function generateColor()
 {
+    var index = 0
     var letters = "0123456789ABCDEF"; 
     var color = '#'; 
 
@@ -388,6 +382,8 @@ function generateColor()
 }
 
 init();
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // This function draws the octect for problems where the user needs to write the equation
 function drawEquationOctetRectangles( drawRect, firstIndex, secondIndex, thirdIndex, fourthIndex, fifth, sixth, seventh, eighth )
@@ -479,11 +475,13 @@ function drawEquationPairRectangles( simplifiedArray )
     var canvas = document.getElementById('myKMapCanvas');
     var context = canvas.getContext('2d');
     
-    for ( var index = 0; index < simplifiedArray.length - 1; index++ ) 
+    for ( var index = 0; index < simplifiedArray.length; index++ ) 
     {
         startX = 110;
         startY = 110;
         context.strokeStyle = generateColor();
+        
+        //console.log( "FIRST NUM: " + simplifiedArray[index][0] + " SECOND NUM: " + simplifiedArray[index][1] );
         
         // For horizontal grouping
             // If difference of group is 1 ( double check for horizonal )
@@ -525,8 +523,6 @@ function drawEquationPairRectangles( simplifiedArray )
                 pairWidth = 40;
                 pairHeight = 30;
                 
-                console.log( "HERE" );
-                
                 // Top row wrap
                 if ( simplifiedArray[index][0] == 0 )
                 {
@@ -564,7 +560,14 @@ function createArray( numberOfVariables )
 
     if ( numberOfVariables == 3 )
     {
-       // Swaps array indices to match KMap table
+        console.log( "ARRAY[0] " + array[0] + ", ARRAY[1] " + array[1] );
+        if ( array[0] != 1 || array[1] != 1 )
+        {
+            array[0] = 1;
+            array[1] = 1;
+        }
+        
+        // Swaps array indices to match KMap table
         swapArrayIndices( 2, 3 );
         swapArrayIndices( 6, 7 ); 
     }
@@ -1253,7 +1256,7 @@ function addPairToGroupArray( firstIndex, secondIndex )
     canGroup = 1;
     console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
     twoDArray = addPairToTwoDArray( firstIndex, secondIndex );
-    addPairToThreeVarEquation( firstIndex, secondIndex );
+    //addPairToThreeVarEquation( firstIndex, secondIndex );
 }
 
 // Creates 2D array 
@@ -1304,6 +1307,8 @@ function checkForRedundancies( pairsArray )
     //loop through all groups
     for ( group in temp ) 
     {
+        //console.log( "FIRST NUM: " + pairsArray[group][0] + " SECOND NUM: " + pairsArray[group][1] );
+        
         if ( temp[group][0] != 0 ) 
         {
             //reset redundant when checking a new group
@@ -1391,71 +1396,80 @@ function addToEquationArray( equationString )
     }
     
     equationArray[ index ] = equationString;
-    console.log(JSON.stringify(equationArray));
-    console.log( countElementsInEquationArray() );
+    //console.log(JSON.stringify(equationArray));
+    //console.log( countElementsInEquationArray() );
 }
 
 // Adds given pair to three variable equation. More modular.
-function addPairToThreeVarEquation( firstIndex, secondIndex )
+function addPairsToThreeVarEquation( twoDimArray )
 {
-    if ( firstIndex == 0 && secondIndex == 1 )
+    var firstValue;
+    var secondValue;
+    
+    for ( var index = 0; index < twoDimArray.length - 1; index++ ) 
     {
-        addToEquationArray( "A'B'" );
-    }
+        firstValue = twoDimArray[index][0];
+        secondValue = twoDimArray[index][1];
+        
+        if ( firstValue == 0 && secondValue == 1 )
+        {
+            addToEquationArray( "A'B'" );
+        }
 
-    else if ( firstIndex == 0 && secondIndex == 3 )
-    {
-        addToEquationArray( "A'C'" );
-    }
+        else if ( firstValue == 0 && secondValue == 3 )
+        {
+            addToEquationArray( "A'C'" );
+        }
 
-    else if ( firstIndex == 0 && secondIndex == 4 )
-    {
-        addToEquationArray( "B'C'" );
-    }
+        else if ( firstValue == 0 && secondValue == 4 )
+        {
+            addToEquationArray( "B'C'" );
+        }
 
-    else if ( firstIndex == 1 && secondIndex == 2 )
-    {
-        addToEquationArray( "A'C" );
-    }
+        else if ( firstValue == 1 && secondValue == 2 )
+        {
+            addToEquationArray( "A'C" );
+        }
 
-    else if ( firstIndex == 1 && secondIndex == 5 )
-    {
-        addToEquationArray( "B'C" );
-    }
+        else if ( firstValue == 1 && secondValue == 5 )
+        {
+            addToEquationArray( "B'C" );
+        }
 
-    else if ( firstIndex == 2 && secondIndex == 3 )
-    {
-        addToEquationArray( "A'B" );
-    }
+        else if ( firstValue == 2 && secondValue == 3 )
+        {
+            addToEquationArray( "A'B" );
+        }
 
-    else if ( firstIndex == 2 && secondIndex == 6 )
-    {
-        addToEquationArray( "BC" );
-    }
+        else if ( firstValue == 2 && secondValue == 6 )
+        {
+            addToEquationArray( "BC" );
+        }
 
-    else if ( firstIndex == 3 && secondIndex == 7 )
-    {
-        addToEquationArray( "BC'" );
-    }
+        else if ( firstValue == 3 && secondValue == 7 )
+        {
+            addToEquationArray( "BC'" );
+        }
 
-    else if ( firstIndex == 4 && secondIndex == 5 )
-    {
-        addToEquationArray( "AB'" );
-    }
+        else if ( firstValue == 4 && secondValue == 5 )
+        {
+            addToEquationArray( "AB'" );
+        }
 
-    else if ( firstIndex == 4 && secondIndex == 7 )
-    {
-        addToEquationArray( "AC'" );
-    }
+        else if ( firstValue == 4 && secondValue == 7 )
+        {
+            addToEquationArray( "AC'" );
+        }
 
-    else if ( firstIndex == 5 && secondIndex == 6 )
-    {
-        addToEquationArray( "AC" );
-    }
+        else if ( firstValue == 5 && secondValue == 6 )
+        {
+            addToEquationArray( "AC" );
+        }
 
-    else if ( firstIndex == 6 && secondIndex == 7 )
-    {
-        addToEquationArray( "AB" );
+        else if ( firstValue == 6 && secondValue == 7 )
+        {
+            addToEquationArray( "AB" );
+        }
     }
 }
 
