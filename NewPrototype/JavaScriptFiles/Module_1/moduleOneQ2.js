@@ -3,7 +3,7 @@ var groupingArray = new Array(8);
 var twoDArray = new Array( 4 );
 create2DArray( twoDArray );
 
-var user2DArray = new Array( 8 );
+var user2DArray = new Array( 20 );
 create2DArray( user2DArray );
 
 array = createArray(3);
