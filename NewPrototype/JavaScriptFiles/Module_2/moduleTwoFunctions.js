@@ -20,7 +20,7 @@ function randomDecimal()
                  Boolean( window.location.href.indexOf( "moduleTwoQuestion14" ) > -1 ) ||
                  Boolean( window.location.href.indexOf( "moduleTwoQuestion17" ) > -1 ) )
         {
-            randomNumber = Math.floor( ( Math.random() * 512 ) + 256 ); // Generates random number between 256 and 512
+            randomNumber = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
             document.getElementById( "randomNumber" + index ).value = randomNumber;
         }
@@ -28,7 +28,7 @@ function randomDecimal()
         // Generates random decimal numbers for level 3
         else
         {
-            randomNumber = Math.floor( ( Math.random() * 1000 ) + 512 ); // Generates random number between 512 and 1,000
+            randomNumber = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumber;
             document.getElementById( "randomNumber" + index ).value = randomNumber;
         }
@@ -59,16 +59,16 @@ function randomBinary()
                  Boolean( window.location.href.indexOf("moduleTwoQuestion20") > -1 ) ||
                  Boolean( window.location.href.indexOf("moduleTwoQuestion23") > -1 ) )
         {
-            randomNumber = Math.floor( ( Math.random() * 128 ) + 64 ); // Generates random number between 64 and 128
+            randomNumber = Math.floor( ( Math.random() * 65 ) + 64 ); // Generates random number between 64 and 128
             binaryNumber = randomNumber.toString(2); // Converts random number to binary
             document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
             document.getElementById( "randomNumber" + index ).value = binaryNumber;
         }
 
         // Generates random binary number for level 3
-        if( Boolean( window.location.href.indexOf("moduleTwoQuestion3") > -1 ) )
+        else
         {
-            randomNumber = Math.floor( ( Math.random() * 256 ) + 128 ); // Generates random number between 128 and 256
+            randomNumber = Math.floor( ( Math.random() * 129 ) + 128 ); // Generates random number between 128 and 256
             binaryNumber = randomNumber.toString(2); // Converts random number to binary
             document.getElementById( "randomNumber" + index ).innerHTML = binaryNumber;
             document.getElementById( "randomNumber" + index ).value = binaryNumber;
@@ -87,7 +87,7 @@ function randomOctal()
         if( Boolean( window.location.href.indexOf("moduleTwoQuestion4") > -1 ) ||
             Boolean( window.location.href.indexOf("moduleTwoQuestion25") > -1 ) )
         {
-            randomNumber = Math.floor( ( Math.random() * 88 ) + 1 ); // Generates random number between 1 and 130
+            randomNumber = Math.floor( ( Math.random() * 88 ) + 1 ); // Generates random number between 1 and 88
             octalNumber = randomNumber.toString(8); // Converts random number to octal
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
             document.getElementById( "randomNumber" + index ).value = octalNumber;
@@ -97,7 +97,7 @@ function randomOctal()
         else if( Boolean( window.location.href.indexOf("moduleTwoQuestion5") > -1 ) ||
                  Boolean( window.location.href.indexOf("moduleTwoQuestion26") > -1 ) )
         {
-            randomNumber = Math.floor( ( Math.random() * 174 ) + 1 ); // Generates random number between 1 and 256
+            randomNumber = Math.floor( ( Math.random() * 87 ) + 88 ); // Generates random number between 88 and 174
             octalNumber = randomNumber.toString(8); // Converts random number to octal
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
             document.getElementById( "randomNumber" + index ).value = octalNumber;
@@ -106,7 +106,7 @@ function randomOctal()
         // Generates random octal number for level 3
         else
         {
-            randomNumber = Math.floor( ( Math.random() * 330 ) + 1 ); // Generates random number between 1 and 512
+            randomNumber = Math.floor( ( Math.random() * 157 ) + 174 ); // Generates random number between 174 and 330
             octalNumber = randomNumber.toString(8); // Converts random number to octal
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
             document.getElementById( "randomNumber" + index ).value = octalNumber;
@@ -135,7 +135,7 @@ function randomHex()
         else if( Boolean( window.location.href.indexOf("moduleTwoQuestion8") > -1 ) ||
                  Boolean( window.location.href.indexOf("moduleTwoQuestion29") > -1 ))
         {
-            randomNumber = Math.floor( ( Math.random() * 512 ) + 256 ); // Generates random number between 256 and 512
+            randomNumber = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
             hexNumber = randomNumber.toString(16).toUpperCase(); // Converts random number to hex
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumber;
             document.getElementById( "randomNumber" + index ).value = hexNumber;
@@ -144,7 +144,7 @@ function randomHex()
         // Generates random hex number for level 3
         else
         {
-            randomNumber = Math.floor( ( Math.random() * 1000 ) + 512 ); // Generates random number between 512 and 1,000
+            randomNumber = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
             hexNumber = randomNumber.toString(16).toUpperCase(); // Converts random number to hex
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumber;
             document.getElementById( "randomNumber" + index ).value = hexNumber;
