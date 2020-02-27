@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../../CSS/default.css">
+        <link rel="stylesheet" href="../../CSS/moduleTwo.css">
+        <title>Convert Binary to Octal</title>
+    </head>
+    <body onload="randomBinary()">
+        <div id="moduleNavbar" ></div>
+
+        <h2 id="problem"> Question 23: Convert the following binary numbers to hexadecimal. </h2>
+
+        <h3 id="question1"> Given <span id="randomNumber1"></span>, convert to hex: </h3>
+        <input type="text" id="input1" placeholder="Enter hexadecimal value here" />
+
+        <br>
+
+        <h3 id="question2"> Given <span id="randomNumber2"></span>, convert to hex: </h3>
+        <input type="text" id="input2" placeholder="Enter hexadecimal value here" />
+
+        <br>
+
+        <h3 id="question3"> Given <span id="randomNumber3"></span>, convert to hex: </h3>
+        <input type="text" id="input3" placeholder="Enter hexadecimal value here" />
+
+        <br>
+
+        <h3 id="question4"> Given <span id="randomNumber4"></span>, convert to hex: </h3>
+        <input type="text" id="input4" placeholder="Enter hexadecimal value here" />
+
+        <br>
+
+        <h3 id="question5"> Given <span id="randomNumber5"></span>, convert to hex: </h3>
+        <input type="text" id="input5" placeholder="Enter hexadecimal value here" />
+
+        <br>
+
+        <h3 id="question6"> Given <span id="randomNumber6"></span>, convert to hex: </h3>
+        <input type="text" id="input6" placeholder="Enter hexadecimal value here" />
+
+        <button type="button" id="submitButton" onclick="submitBinaryToHex()">Submit</button>
+        <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
+        <button type="button" id="resetButton" onclick="resetEquation()">Reset</button>
+
+        <p id="incorrectAnswerMessage"></p>
+        
+        <p id="hint"></p>
+        
+        <p id="attemptsLeft"></p>
+        
+        <p id="scoreText"></p>
+
+        <!-- Loads the JavaScript files -->
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoStars.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoFunctions.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoQ3.js"> </script>
+        
+        <div id="footer"></div>
+        
+        <!-- Dependencies -->
+        <script src="../../node_modules/react/umd/react.development.js"></script>
+        <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <!-- Main -->
+        <script src="../../dist/main.js"></script>
+    </body>
+</html>
