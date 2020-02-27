@@ -1094,19 +1094,15 @@ function swapUserArrayIndices( indexOne, indexTwo )
 // Generates 0 or 1
 function generateNumber() 
 {
-  var variable = Math.random();
+    var variable = Math.round(Math.random());
+    var arrayOfThings = [ 0, 1, "X" ];
+    
+    if ( dontCare == 1 )
+    {
+        variable = arrayOfThings[ Math.round( Math.random() * 2 ) ];
+    }
   
-  if ( variable >= 0.5 )
-  {
-  	variable = Math.ceil( variable );
-  }
-  
-  else
-  {
-  	variable = Math.floor( variable );
-  }
-  
-  return variable;
+    return variable;
 }
 
 /////////////////////////////// Grouping functions go here //////////////////////////////////////
@@ -1599,7 +1595,7 @@ function checkAnswers()
     
     for ( var index = 0; index < array.length; index++ )
     {
-        console.log( "Checking " + userArray[index] + " with " + array[index] );
+        //console.log( "Checking " + userArray[index] + " with " + array[index] );
         if ( Boolean( userArray[index] != array[index] ) )
         {
             isRight = -1;
@@ -1620,8 +1616,17 @@ function checkAnswers()
         
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
         {
-            showScore();
             window.location.href = "moduleOneQuestionFive.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionSix.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionSeven.html";
         }
     }
         
@@ -1836,7 +1841,7 @@ function resetTwoDArray( arrayToReset )
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 )  )
+    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 )  )
     {
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
@@ -1892,6 +1897,16 @@ function decreaseAttempts( number )
             window.location.href = "moduleOneQuestionFive.html";
         }
         
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionSix.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionSeven.html";
+        }
+        
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
     
@@ -1904,7 +1919,7 @@ function showScore()
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     
-    if ( totalUserStars >= 8 )
+    if ( totalUserStars >= 13 )
     {
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
     }
