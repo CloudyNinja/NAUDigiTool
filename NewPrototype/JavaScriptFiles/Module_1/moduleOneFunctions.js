@@ -384,7 +384,7 @@ function getMousePos( canvas, event )
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     
-    console.log( "X: " + x + " Y: " + y );
+    //console.log( "X: " + x + " Y: " + y );
 }
   
 // This function can be used for grouping but I haven't implemented it yet.
@@ -1721,8 +1721,8 @@ function checkGroupings()
     else
     {
         document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        setDrawingArray();
-        resetTwoDArray( user2DArray );
+        //setDrawingArray();
+        //resetTwoDArray( user2DArray );
         attemptsLeft = decreaseAttempts( attemptsLeft );
     }
     
