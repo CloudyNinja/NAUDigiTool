@@ -101,10 +101,12 @@ function addRectangleToArray( rectangle )
 // Adds given pair to drawing array. More modular.
 function addPairToDrawingArray( firstIndex, secondIndex )
 {
-    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 && octects == 0 && quads == 0 )
+    var bothOnes = drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1;
+    
+    if (  bothOnes && octects == 0 && quads == 0 )
     {
-        drawingArray[ firstIndex ] = 1;
-        drawingArray[ secondIndex ] = 1;
+        drawingArray[ firstIndex ] = groupingArray[firstIndex];
+        drawingArray[ secondIndex ] = groupingArray[secondIndex];
         pairs -= 1;
     }
     
@@ -116,10 +118,10 @@ function addQuadToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthIndex
 {
     if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 && octects == 0 )
     {
-        drawingArray[ firstIndex ] = 1;
-        drawingArray[ secondIndex ] = 1;
-        drawingArray[ thirdIndex ] = 1;
-        drawingArray[ fourthIndex ] = 1;
+        drawingArray[ firstIndex ] = groupingArray[firstIndex];
+        drawingArray[ secondIndex ] = groupingArray[secondIndex];
+        drawingArray[ thirdIndex ] = groupingArray[thirdIndex];
+        drawingArray[ fourthIndex ] = groupingArray[fourthIndex];
         quads -= 1;
     }
     
@@ -131,14 +133,14 @@ function addOctetToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthInde
 {
     if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 || drawingArray[ fifthIndex ] != 1 || drawingArray[ sixthIndex ] != 1 || drawingArray[ seventhIndex ] != 1 || drawingArray[ eighthIndex ] != 1 )
     {
-        drawingArray[ firstIndex ] = 1;
-        drawingArray[ secondIndex ] = 1;
-        drawingArray[ thirdIndex ] = 1;
-        drawingArray[ fourthIndex ] = 1;
-        drawingArray[ fifthIndex ] = 1;
-        drawingArray[ sixthIndex ] = 1;
-        drawingArray[ seventhIndex ] = 1;
-        drawingArray[ eighthIndex ] = 1;
+        drawingArray[ firstIndex ] = groupingArray[ firstIndex ];
+        drawingArray[ secondIndex ] = groupingArray[ secondIndex ];
+        drawingArray[ thirdIndex ] = groupingArray[ thirdIndex ];
+        drawingArray[ fourthIndex ] = groupingArray[ fourthIndex ];
+        drawingArray[ fifthIndex ] = groupingArray[ fifthIndex ];
+        drawingArray[ sixthIndex ] = groupingArray[ sixthIndex ];
+        drawingArray[ seventhIndex ] = groupingArray[ seventhIndex ];
+        drawingArray[ eighthIndex ] = groupingArray[ eighthIndex ];
         octects -= 1;
     }
     
@@ -1128,9 +1130,10 @@ function findOctetGroups()
     // For 3 Var KMap
     if ( length == 8 )
     {
-        if ( array[ 0 ] == 1 )
+        if ( array[ 0 ] == 1 || array[ 0 ] == "X" )
         {
-            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7 );
+            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 0 );
+            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 1 );
         }
     }
 }
@@ -1143,23 +1146,45 @@ function findQuadGroups()
     // This is for a 3 variable truth table: Read it from TOP LEFT to BOTTOM RIGHT
     if ( length == 8 )
     {
+        // First for loop is for grouping 1s ONLY
         for ( var index = 0; index < length; index++ )
         {
             if ( index == 0 )
             {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 0 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 0 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7, 0 );
             }
 
             else if ( index == 1 || index == 2 )
             {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 0 );
             }
 
             else if ( index == 4 )
             {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 0 );
+            }
+        }
+        
+        // Checks for Xs
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 1 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 1 );
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7, 1 );
+            }
+
+            else if ( index == 1 || index == 2 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 1 );
+            }
+
+            else if ( index == 4 )
+            {
+                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 1 );
             }
         }
     }
@@ -1169,21 +1194,18 @@ function findPairGroups()
 {
     var length = getLengthOfArray();
 
-    // For a 3 variable truth table: First loop is for Horizontal pairs, second loop is for Vertical pairs
+    // For a 3 variable truth table
     if ( length == 8 )
-    {        
+    {   
+        // The first two while loops are for finding 1s first
         var index = 0;
-    
-        // Wrap conditions
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3 );
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7 );
         
-        // Vertical groupings
+        // Horizontal groupings for finding 1s FIRST
         while ( index < length )
         {
-            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
             {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4 );
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1, 0 );
             }
             
             index++;
@@ -1192,16 +1214,54 @@ function findPairGroups()
         // Reset index
         index = 0;
         
-        // Horizontal groupings
+        // Vertical groupings for finding 1s FIRST
         while ( index < length )
         {
-            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1 );
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4, 0 );
             }
             
             index++;
         }
+        
+        // Wrap conditions
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3, 0 );
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7, 0 );
+        
+        // The next two while loops are for finding dont cares
+        
+        // Reset index
+        index = 0;
+        
+        // Horizontal groupings for finding 1s FIRST
+        while ( index < length )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1, 1 );
+            }
+            
+            index++;
+        }
+        
+        // Reset index
+        index = 0;
+        
+        // Vertical groupings for finding Xs after 1s groups have been made
+        while ( index < length )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            {
+                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4, 1 );
+            }
+            
+            index++;
+        }
+        
+        // Wrap conditions
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3, 1 );
+        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7, 1 );
     }
 }
 
@@ -1215,60 +1275,80 @@ function printArray()
     console.log( "  |     00 |  01 |  11 |  10  |");
     console.log( " 0|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
     console.log( " 1|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
-
-
-}
-
-// Prints grouping array
-function printGroupingArray()
-{
-    console.log(JSON.stringify(groupingArray));
 }
 
 // Check eight indices in array to see if they are one. More modular.
 function checkEightArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
-fifthIndex, sixthIndex, seventhIndex, eighthIndex )
+fifthIndex, sixthIndex, seventhIndex, eighthIndex, checkForXs )
 {
     var octetFormed = Boolean(array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
             && array[ fourthIndex ] == 1 && array[ fifthIndex ] == 1 && array[ sixthIndex ] == 1
             && array[ seventhIndex ] == 1 && array[ eighthIndex ] == 1 );
+    
+    var octetFormedWithXs = Boolean(array[ firstIndex ] != 0 && array[ secondIndex ] != 0 && array[ thirdIndex ] != 0 && array[ fourthIndex ] != 0 && array[ fifthIndex ] != 0 && array[ sixthIndex ] != 0
+    && array[ seventhIndex ] != 0 && array[ eighthIndex ] != 0 );
 
     var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
             || groupingArray[ fourthIndex ] != 1 || groupingArray[ fifthIndex ] != 1 || groupingArray[ sixthIndex ] != 1
             || groupingArray[ seventhIndex ] != 1 || groupingArray[ eighthIndex ] != 1 );
 
-    if ( octetFormed && inGroupArray )
+    if ( octetFormed && inGroupArray && checkForXs == 0 )
     {
         addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
         eighthIndex );
     }
+    
+    else if ( octetFormedWithXs && checkForXs == 1 )
+    {
+        console.log( "IN HERE OCTET FORMED");
+        addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
+        eighthIndex ); 
+    }
 }
 
 // Check four indices in array to see if they are one. More modular.
-function checkFourArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
+function checkFourArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, checkForXs )
 {
     var quadFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
     && array[ fourthIndex ] == 1 );
 
     var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
     || groupingArray[ fourthIndex ] != 1 );
+    
+    var xinQuad = Boolean( ( array[ firstIndex ] == "X" && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1 && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == "X" && array[ thirdIndex ] == 1 && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == "X" && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1 
+    && array[ fourthIndex ] == "X" ) );
 
-    if ( quadFormed && inGroupArray )
+    if ( quadFormed && inGroupArray && checkForXs == 0 )
+    {
+        addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
+    }
+    
+    else if ( xinQuad && inGroupArray && checkForXs == 1 )
     {
         addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
     }
 }
 
 // Check two indices in array to see if they are one. More modular.
-function checkTwoArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex )
+function checkTwoArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, checkForXs )
 {
     var pairFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 );
-
     var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 );
+    
+    var pairFormedWithX = Boolean( ( array[ firstIndex ] == "X" && array[ secondIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == "X" ) );
+    var noXPairNeeded = Boolean( groupingArray[ firstIndex ] == 1 || groupingArray[ secondIndex ] == 1 );
 
-    if ( pairFormed && inGroupArray )
+    // If both indexes are one.
+    if ( pairFormed && inGroupArray && checkForXs == 0 )
     {
         addPairToGroupArray( firstIndex, secondIndex );
+    }
+    
+    // If one index is X and the other is a 1.
+    else if ( pairFormedWithX && !noXPairNeeded && checkForXs == 1 )
+    {
+        addPairToGroupArray( firstIndex, secondIndex );
+        //console.log( "GROUPING ARRAY: " + JSON.stringify( groupingArray ) );
     }
 }
 
@@ -1364,7 +1444,6 @@ function checkForRedundancies( pairsArray )
                         // if first element matches either element in compare
                         if ( temp[group][0] == temp[compareGroup][0] || temp[group][0] == temp[compareGroup][1] ) 
                         {
-                            //console.log("1 is redundant");
                             //first element is redundant
                             redundant1 = true;
                             //console.log( "R1 IS TRUE" );
@@ -1374,7 +1453,6 @@ function checkForRedundancies( pairsArray )
                         //if second element matches either element in compare
                         if ( temp[group][1] == temp[compareGroup][0] || temp[group][1] == temp[compareGroup][1] ) 
                         {
-                            //console.log("2 is redundant");
                             //second element is redundant
                             redundant2 = true;
                             //console.log( "R2 IS TRUE" );
@@ -1716,6 +1794,11 @@ function checkGroupings()
         {
             window.location.href = "moduleOneQuestionThree.html";
         }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionEight.html";
+        }
     }
         
     else
@@ -1846,7 +1929,7 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
@@ -1905,6 +1988,11 @@ function decreaseAttempts( number )
         else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
         {
             window.location.href = "moduleOneQuestionSeven.html";
+        }
+        
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
+        {
+            window.location.href = "moduleOneQuestionEight.html";
         }
         
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
