@@ -1949,41 +1949,23 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        for ( var index = 1; index <= 30; index++ )
         {
-            window.location.href = "moduleOneQuestionTwo.html";
+            if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
+            {
+                if ( index < 12 )
+                {
+                    var nextPage = index + 1;
+                    window.location.href = "moduleOneQuestion" + nextPage + ".html";
+                }
+                
+                else
+                {
+                    window.location.href = "moduleOneQuestionsComplete.html"
+                }
+            }
         }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionThree.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionFour.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionFive.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionSix.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionSeven.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionEight.html";
-        }
-        
+    
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
     
