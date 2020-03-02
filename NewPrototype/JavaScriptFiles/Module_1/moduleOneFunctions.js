@@ -1676,24 +1676,24 @@ function checkAnswers()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionTwo.html";
+            window.location.href = "moduleOneQuestion2.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion4") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionFive.html";
+            window.location.href = "moduleOneQuestion5.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) )
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion5") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionSix.html";
+            window.location.href = "moduleOneQuestion6.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion6") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionSeven.html";
+            window.location.href = "moduleOneQuestion7.html";
         }
     }
         
@@ -1779,14 +1779,14 @@ function checkGroupings()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestion2") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionThree.html";
+            window.location.href = "moduleOneQuestion3.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
+        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion7") > -1 ) )
         {
-            window.location.href = "moduleOneQuestionEight.html";
+            window.location.href = "moduleOneQuestion8.html";
         }
     }
         
@@ -1825,7 +1825,16 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-           window.location.href = "moduleOneQuestionFour.html";
+            if ( Boolean( window.location.href.indexOf("moduleOneQuestion3") > -1 ) )
+            {
+                window.location.href = "moduleOneQuestion4.html";
+            }
+            
+            else if ( Boolean( window.location.href.indexOf("moduleOneQuestion8") > -1 ) )
+            {
+                 window.location.href = "moduleOneQuestion9.html";    
+            }
+           
         }
         
         else
@@ -1833,12 +1842,6 @@ function checkUserEquation()
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
             attemptsLeft = decreaseAttempts( attemptsLeft );
         }
-    }
-    
-    // If no groups formed
-    else if ( canGroup == 0 && userInput == "" )
-    {
-        window.location.href = "moduleOneQuestionFive.html";
     }
     
     else
@@ -1913,17 +1916,17 @@ function resetTwoDArray( arrayToReset )
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 )  )
+    if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion4") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion5") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion6") > -1 )  )
     {
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestion2") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion7") > -1 ) )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
+    else if ( Boolean( window.location.href.indexOf("moduleOneQuestion3") > -1 ) )
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
     }
@@ -1949,7 +1952,7 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        for ( var index = 1; index <= 30; index++ )
+        for ( var index = 1; index <= 15; index++ )
         {
             if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
             {
@@ -1978,7 +1981,7 @@ function showScore()
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     
-    if ( totalUserStars >= 13 )
+    if ( totalUserStars >= 21 )
     {
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
     }
