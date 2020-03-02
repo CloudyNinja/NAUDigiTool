@@ -79,6 +79,8 @@ li a:hover
     border-radius: 6px;
     text-align: center;
     letter-spacing: .10em;
+    height: 420px;
+    font-size-adjust: auto;
 }
 
 #logo
