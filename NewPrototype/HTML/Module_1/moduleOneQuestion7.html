@@ -4,26 +4,20 @@
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="../../CSS/default.css">
         <link rel="stylesheet" href="../../CSS/moduleOne.css">
-        <title>Module One Question Three</title>
+        <title>Module One Question Seven</title>
     </head>
     <body>
-        <ul id="navigationBar">
-            <li><a href="../../index.html">Home</a></li>
-            <li><a href="../../modules.html">Modules</a></li>
-            <li><a href="../../practiceMode.html">Practice Mode</a></li>
-            <li><a href="../../index.html">Log Out</a></li>
-        </ul>
+        <div id="moduleNavbar"></div>
         
-        <h2 id="problem">Question Three: Enter the equation based off of the KMap.</h2>
+        <h2 id="problem">Question Seven: Select the minimal set of groupings for Sum of Products.</h2>
         
         <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
         <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
+        <canvas id="userCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
         
-        <input id="userEquation" type='text' placeholder="Y ="/>
-        
-        <button type="button" id="submitButton" onclick="checkUserEquation()">Submit</button>
+        <button type="button" id="submitButton" onclick="checkGroupings()">Submit</button>
         <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
-        <button type="button" id="resetButton" onclick="resetEquation()">Reset</button>
+        <button type="button" id="resetButton" onclick="resetGroupings()">Reset</button>
         
         <p id="incorrectAnswerMessage"></p>
         
@@ -36,7 +30,7 @@
         <!--Loads the JavaScript file-->
         <script src="../../JavaScriptFiles/Module_1/moduleStars.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleOneFunctions.js"></script>
-        <script src="../../JavaScriptFiles/Module_1/moduleOneQ3.js"></script>
+        <script src="../../JavaScriptFiles/Module_1/moduleOneQ7.js"></script>
         
         <!--Footer for bottom of page-->
         <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>

@@ -584,10 +584,18 @@ function createArray( numberOfVariables )
 
     if ( numberOfVariables == 3 )
     {
-        if ( array[0] != 1 || array[1] != 1 )
+        if ( ( array[0] != 1 || array[1] != 1 ) && dontCare == 0 )
         {
+            console.log("DONT CARE: " + dontCare );
             array[0] = 1;
             array[1] = 1;
+        }
+        
+        else if ( ( array[0] != 1 || array[1] != "X" ) && dontCare == 1 )
+        {
+            console.log("ADD X: " + dontCare );
+            array[0] = 1;
+            array[1] = "X";
         }
         
         // Swaps array indices to match KMap table
@@ -1133,7 +1141,7 @@ function findOctetGroups()
         if ( array[ 0 ] == 1 || array[ 0 ] == "X" )
         {
             checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 0 );
-            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 8, 1 );
+            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 1 );
         }
     }
 }
@@ -1147,46 +1155,19 @@ function findQuadGroups()
     if ( length == 8 )
     {
         // First for loop is for grouping 1s ONLY
-        for ( var index = 0; index < length; index++ )
-        {
-            if ( index == 0 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 0 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 0 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7, 0 );
-            }
-
-            else if ( index == 1 || index == 2 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 0 );
-            }
-
-            else if ( index == 4 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 0 );
-            }
-        }
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 0 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 4, 5, 6, 7, 0 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 4, 5, 0 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 1, 2, 5, 6, 0 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 2, 3, 6, 7, 0 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 3, 4, 7, 0 );
         
-        // Checks for Xs
-        for ( var index = 0; index < length; index++ )
-        {
-            if ( index == 0 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 1 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 1 );
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 3, index + 4, index + 7, 1 );
-            }
-
-            else if ( index == 1 || index == 2 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 4, index + 5, 1 );
-            }
-
-            else if ( index == 4 )
-            {
-                checkFourArrayIndicesIfOneAndNotInGroupArray( index, index + 1, index + 2, index + 3, 1 );
-            }
-        }
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 1 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 4, 5, 6, 7, 1 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 4, 5, 1 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 1, 2, 5, 6, 1 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 2, 3, 6, 7, 1 );
+        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 3, 4, 7, 1 );
     }
 }
 
@@ -1300,7 +1281,6 @@ fifthIndex, sixthIndex, seventhIndex, eighthIndex, checkForXs )
     
     else if ( octetFormedWithXs && checkForXs == 1 )
     {
-        console.log( "IN HERE OCTET FORMED");
         addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
         eighthIndex ); 
     }
@@ -1312,18 +1292,27 @@ function checkFourArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, 
     var quadFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
     && array[ fourthIndex ] == 1 );
 
-    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
-    || groupingArray[ fourthIndex ] != 1 );
+    var notInGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1 || groupingArray[ fourthIndex ] != 1 );
     
-    var xinQuad = Boolean( ( array[ firstIndex ] == "X" && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1 && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == "X" && array[ thirdIndex ] == 1 && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == "X" && array[ fourthIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1 
-    && array[ fourthIndex ] == "X" ) );
+    var xInQuad = Boolean( array[ firstIndex ] == "X" || array[ secondIndex ] == "X" || array[ thirdIndex ] == "X" || array[ fourthIndex ] == "X" )
+    
+    var atLeastAOne = Boolean( ( array[ firstIndex ] == 1 && array[ firstIndex ] != groupingArray[firstIndex] ) || ( array[ secondIndex ] == 1 && array[ secondIndex ] != groupingArray[secondIndex] ) || ( array[ thirdIndex ] == 1 && array[ thirdIndex ] != groupingArray[thirdIndex] ) || ( array[ fourthIndex ] == 1 && array[ fourthIndex] != groupingArray[fourthIndex] ) ); 
+    
+    var areZero = Boolean( groupingArray[ firstIndex ] == 0 || groupingArray[ secondIndex ] == 0 || groupingArray[ thirdIndex ] == 0 || groupingArray[ fourthIndex ] == 0 );
+    
+    var arrayFine = Boolean( array[ firstIndex ] != 0 && array[ secondIndex ] != 0 && array[ thirdIndex ] != 0 && array[ fourthIndex ] != 0 );
 
-    if ( quadFormed && inGroupArray && checkForXs == 0 )
+    if ( quadFormed && notInGroupArray && checkForXs == 0 )
     {
         addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
     }
     
-    else if ( xinQuad && inGroupArray && checkForXs == 1 )
+    /*console.log( "\nxInQuad: " + xInQuad );
+    console.log( "atLeastAOne: " + atLeastAOne );
+    console.log( "noneAreZero: " + areZero );
+    console.log( "Check for Xs: " + checkForXs );*/
+    
+    if ( xInQuad && atLeastAOne && areZero && arrayFine && checkForXs == 1 )
     {
         addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
     }
@@ -1960,41 +1949,23 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestionOne") > -1 ) )
+        for ( var index = 1; index <= 30; index++ )
         {
-            window.location.href = "moduleOneQuestionTwo.html";
+            if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
+            {
+                if ( index < 12 )
+                {
+                    var nextPage = index + 1;
+                    window.location.href = "moduleOneQuestion" + nextPage + ".html";
+                }
+                
+                else
+                {
+                    window.location.href = "moduleOneQuestionsComplete.html"
+                }
+            }
         }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionTwo") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionThree.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionThree") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionFour.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFour") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionFive.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionFive") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionSix.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSix") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionSeven.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestionSeven") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestionEight.html";
-        }
-        
+    
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
     }
     
