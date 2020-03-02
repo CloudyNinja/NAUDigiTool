@@ -12,14 +12,14 @@ createTruthTable(3);
 createKMap(3);
 fillKMap();
 
-array[0] = 1;
+/*array[0] = 1;
 array[1] = "X";
 array[2] = 0;
 array[3] = 1;
 array[4] = "X";
 array[5] = "X";
 array[6] = 1;
-array[7] = 1;
+array[7] = 1;*/
 
 printArray();
 findOctetGroups();
