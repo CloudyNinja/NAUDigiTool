@@ -101,3 +101,165 @@ li a:hover
     background-color: black;
     color: white;
 }
+
+/* CSS for Practice Mode Module 1 */
+#variableText
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
+#buttonOne
+{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonOne:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#buttonTwo
+{
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonTwo:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#buttonThree
+{
+    position: absolute;
+    top: 200px;
+    left: 700px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonThree:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#buttonFour
+{
+    position: absolute;
+    top: 200px;
+    left: 1000px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonFour:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#problemText
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 270px;
+    left: 400px;
+    font-family: serif;
+    color: black;
+}
+
+#buttonFive
+{
+    position: absolute;
+    top: 400px;
+    left: 250px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonFive:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#buttonSix
+{
+    position: absolute;
+    top: 400px;
+    left: 550px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonSix:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+#buttonSeven
+{
+    position: absolute;
+    top: 400px;
+    left: 850px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+#buttonSeven:hover
+{
+    background-color: #13A9FF;
+    color: black;
+}
+
+/* End of CSS for Practice Mode Module 1 */

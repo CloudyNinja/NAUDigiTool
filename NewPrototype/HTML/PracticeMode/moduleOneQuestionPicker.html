@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../../CSS/default.css">
+        <link rel="shortbut icon" href="../../CSS/CSS_Pictures/Team15_Logo.jpg" type="image/x-icon"/>
+        <title>Karnaugh Maps: Question Picker</title>
+    </head>
+    
+    <body>
+    
+        <ul id="moduleNavbar">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../../modules.html">Modules</a></li>
+            <li><a href="../../practiceMode.html">Practice Mode</a></li>
+            <li><a href="../../index.html">Log Out</a></li>
+        </ul>
+        
+        <h1 id="variableText">Select a variable that you would like to work with.</h1>
+        <button id="buttonOne" onclick="setColor( 'buttonOne', '#13A9FF' )">3 variable</button>
+        <button id="buttonTwo" onclick="setColor( 'buttonTwo', '#13A9FF' )">3 variable with don't care</button>
+        <button id="buttonThree" onclick="setColor( 'buttonThree', '#13A9FF' )">4 variable</button>
+        <button id="buttonFour" onclick="setColor( 'buttonFour', '#13A9FF' )">4 variable with don't care</button>
+        
+        <h1 id="problemText">Select a problem to practice.</h1>
+        <button id="buttonFive" onclick="setColor( 'buttonFive', '#13A9FF' )">Truth Table Translation</button>
+        <button id="buttonSix" onclick="setColor( 'buttonSix', '#13A9FF' )">Grouping Practice</button>
+        <button id="buttonSeven" onclick="setColor( 'buttonSeven', '#13A9FF' )">Equation Writing</button>
+        
+        <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
+        
+        <!-- Dependencies -->
+        <!--<script src="./node_modules/react/umd/react.development.js"></script>
+        <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>-->
+
+        <!-- Main -->
+        <!--<script src="./dist/main.js"></script>-->
+        
+        <script>
+            var isClicked = false;
+            
+            function setColor( btn, color )
+            {
+                var property = document.getElementById( btn );
+                
+                if ( isClicked == false )
+                {
+                    property.style.color = "#000000";
+                    property.style.backgroundColor = color.toString();
+                    
+                    if ( btn == 'buttonOne' || btn == 'buttonTwo' || btn == 'buttonThree' || btn == 'buttonFour' || btn == 'buttonFive' || btn == 'buttonSix' || btn == 'buttonSeven' )
+                    {
+                        isClicked = true;
+                    }
+                }
+                
+                else
+                {
+                    property.style.color = "#FFFFFF";
+                    property.style.backgroundColor = "#597dd9";
+                    isClicked = false;
+                }
+            }
+        </script>
+    </body>
+</html>
