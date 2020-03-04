@@ -1,6 +1,7 @@
 var array = new Array(8);
 var userArray = new Array(8);
 var groupingArray = new Array(8);
+var dontCare = 0;
 
 array = createArray(3);
 userArray = createUserArray(3);

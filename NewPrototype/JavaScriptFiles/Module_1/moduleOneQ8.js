@@ -3,7 +3,7 @@ var groupingArray = new Array(8);
 var twoDArray = new Array( 4 );
 var drawRectangles = 1;
 create2DArray( twoDArray );
-var dontCare = 0;
+var dontCare = 1;
 
 array = createArray(3);
 createTruthTable(3);
