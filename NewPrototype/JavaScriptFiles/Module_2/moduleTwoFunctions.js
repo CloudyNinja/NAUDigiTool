@@ -1174,31 +1174,48 @@ function decreaseAttempts( number )
 }
 
 // Creates and sets a timer for each page
-var maxtime;
-if(window.name=='' || window.name == '-1' || isNaN(window.name))
+// var maxtime;
+// if(window.name=='' || window.name == '-1' || isNaN(window.name))
+// {
+//     maxtime = 10*60;
+// }else
+// {
+//     maxtime = window.name;
+// }
+// function CountDown()
+// {
+//     if(maxtime>=0)
+//     {
+//         hours = Math.floor(maxtime/3600);
+//         minutes = Math.floor((maxtime-hours*3600)/60);
+//         seconds = Math.floor(maxtime%60);
+//         msg = "Time left: " + minutes + " minutes, " + seconds + " seconds.";
+//         document.getElementById( "timer" ).innerHTML = msg;
+//         if(maxtime == 5*60) alert('only 5mins!');
+//         --maxtime;
+//         window.name = maxtime;
+//     }
+//     else
+//     {
+//         clearInterval(timer);
+//         document.getElementById( "timer" ).innerHTML = "Time has expired.";
+//     }
+// }
+// timer = setInterval("CountDown()",1000);
+
+function submitDropdown( dropdown )
 {
-    maxtime = 10*60;
-}else
-{
-    maxtime = window.name;
-}
-function CountDown()
-{
-    if(maxtime>=0)
+    // Get user inputs from first page
+    if( Boolean( window.location.href.indexOf( "practiceModuleTwoQuestion" ) > -1 ))
     {
-        hours = Math.floor(maxtime/3600);
-        minutes = Math.floor((maxtime-hours*3600)/60);
-        seconds = Math.floor(maxtime%60);
-        msg = "Time left: " + minutes + " minutes, " + seconds + " seconds.";
-        document.getElementById( "timer" ).innerHTML = msg;
-        if(maxtime == 5*60) alert('only 5mins!');
-        --maxtime;
-        window.name = maxtime;
+        var choice1 = document.getElementById( "conversionSelection1" );
+        var choice2 = document.getElementById( "conversionSelection2" );
     }
+    // Pass user inputs to second page
     else
     {
-        clearInterval(timer);
-        document.getElementById( "timer" ).innerHTML = "Time has expired.";
+
     }
+    
+
 }
-timer = setInterval("CountDown()",1000);
