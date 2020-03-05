@@ -1203,6 +1203,7 @@ function decreaseAttempts( number )
 // }
 // timer = setInterval("CountDown()",1000);
 
+// For practice mode selection page
 function submitDropdown( dropdown )
 {
     // Get user inputs from first page
