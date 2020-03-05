@@ -17,15 +17,24 @@
         </ul>
         
         <h1 id="variableText">Select a variable that you would like to work with.</h1>
-        <button id="buttonOne" onclick="setColor( 'buttonOne', '#13A9FF' )">3 variable</button>
-        <button id="buttonTwo" onclick="setColor( 'buttonTwo', '#13A9FF' )">3 variable with don't care</button>
-        <button id="buttonThree" onclick="setColor( 'buttonThree', '#13A9FF' )">4 variable</button>
-        <button id="buttonFour" onclick="setColor( 'buttonFour', '#13A9FF' )">4 variable with don't care</button>
+        <input type="radio" id="optionOne" name="option" value="optionOne">
+        <label for="optionOne" id="optionOneText">3 variable</label><br>
+        <input type="radio" id="optionTwo" name="option" value="optionTwo">
+        <label for="optionTwo" id="optionTwoText">3 variable with don't care</label><br>
+        <input type="radio" id="optionThree" name="option" value="optionThree">
+        <label for="optionThree" id="optionThreeText">4 variable</label><br>
+        <input type="radio" id="optionFour" name="option" value="optionFour">
+        <label for="optionFour" id="optionFourText">4 variable with don't care</label><br>
         
         <h1 id="problemText">Select a problem to practice.</h1>
-        <button id="buttonFive" onclick="setColor( 'buttonFive', '#13A9FF' )">Truth Table Translation</button>
-        <button id="buttonSix" onclick="setColor( 'buttonSix', '#13A9FF' )">Grouping Practice</button>
-        <button id="buttonSeven" onclick="setColor( 'buttonSeven', '#13A9FF' )">Equation Writing</button>
+        <input type="radio" id="questionOne" name="questionType" value="questionOne">
+        <label for="questionOne" id="questionOneText">Translation of Truth Table</label><br>
+        <input type="radio" id="questionTwo" name="questionType" value="questionTwo">
+        <label for="questionTwo" id="questionTwoText">Grouping</label><br>
+        <input type="radio" id="questionThree" name="questionType" value="questionThree">
+        <label for="questionThree" id="questionThreeText">Equation Writing</label><br>
+        
+        <button type="button" id="subButton" onclick="generateQuestion()">Submit</button>
         
         <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
         
@@ -37,30 +46,25 @@
         <!--<script src="./dist/main.js"></script>-->
         
         <script>
-            var isClicked = false;
             
-            function setColor( btn, color )
+            function generateQuestion()
             {
-                var property = document.getElementById( btn );
-                
-                if ( isClicked == false )
+                if ( document.getElementById("optionOne").checked && document.getElementById("questionOne").checked  )
                 {
-                    property.style.color = "#000000";
-                    property.style.backgroundColor = color.toString();
-                    
-                    if ( btn == 'buttonOne' || btn == 'buttonTwo' || btn == 'buttonThree' || btn == 'buttonFour' || btn == 'buttonFive' || btn == 'buttonSix' || btn == 'buttonSeven' )
-                    {
-                        isClicked = true;
-                    }
+                    window.location.href = "pracMode3VarTruthTableTranslation.html";
+                }
+                
+                else if ( document.getElementById("optionOne").checked && document.getElementById("questionTwo").checked  )
+                {
+                    window.location.href = "pracMode3VarGrouping.html";
                 }
                 
                 else
                 {
-                    property.style.color = "#FFFFFF";
-                    property.style.backgroundColor = "#597dd9";
-                    isClicked = false;
+                    alert("NOT ADDED YET");
                 }
             }
+            
         </script>
     </body>
 </html>

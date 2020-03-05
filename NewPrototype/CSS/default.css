@@ -116,80 +116,165 @@ li a:hover
     color: black;
 }
 
-#buttonOne
+#optionOne
 {
     position: absolute;
     top: 200px;
     left: 100px;
     height: 50px;
     width: 100px;
+}
+
+#optionOneText
+{
+    position: absolute;
+    top: 200px;
+    left: 130px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
     background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
+    text-align: center;
     border-radius: 20px;
 }
 
-#buttonOne:hover
-{
-    background-color: #13A9FF;
-    color: black;
-}
-
-#buttonTwo
+#optionTwo
 {
     position: absolute;
     top: 200px;
     left: 400px;
     height: 50px;
     width: 100px;
+}
+
+#optionTwoText
+{
+    position: absolute;
+    top: 200px;
+    left: 430px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
     background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
+    text-align: center;
     border-radius: 20px;
 }
 
-#buttonTwo:hover
-{
-    background-color: #13A9FF;
-    color: black;
-}
-
-#buttonThree
+#optionThree
 {
     position: absolute;
     top: 200px;
     left: 700px;
     height: 50px;
     width: 100px;
+}
+
+#optionThreeText
+{
+    position: absolute;
+    top: 200px;
+    left: 730px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
     background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
+    text-align: center;
     border-radius: 20px;
 }
 
-#buttonThree:hover
-{
-    background-color: #13A9FF;
-    color: black;
-}
-
-#buttonFour
+#optionFour
 {
     position: absolute;
     top: 200px;
     left: 1000px;
     height: 50px;
     width: 100px;
+}
+
+#optionFourText
+{
+    position: absolute;
+    top: 200px;
+    left: 1030px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
     background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
+    text-align: center;
     border-radius: 20px;
 }
 
-#buttonFour:hover
+#questionOne
 {
-    background-color: #13A9FF;
+    position: absolute;
+    top: 400px;
+    left: 240px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionOneText
+{
+    position: absolute;
+    top: 400px;
+    left: 270px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
     color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#questionTwo
+{
+    position: absolute;
+    top: 400px;
+    left: 540px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionTwoText
+{
+    position: absolute;
+    top: 400px;
+    left: 570px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#questionThree
+{
+    position: absolute;
+    top: 400px;
+    left: 840px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionThreeText
+{
+    position: absolute;
+    top: 400px;
+    left: 870px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
 }
 
 #problemText
@@ -199,66 +284,30 @@ li a:hover
     margin-right: auto;
     max-width: 100%; 
     min-width: 1000px;
-    top: 270px;
+    top: 300px;
     left: 400px;
     font-family: serif;
     color: black;
 }
 
-#buttonFive
+/* Styles submit button */
+#subButton
 {
     position: absolute;
-    top: 400px;
-    left: 250px;
-    height: 50px;
-    width: 100px;
-    background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
-    border-radius: 20px;
-}
-
-#buttonFive:hover
-{
-    background-color: #13A9FF;
-    color: black;
-}
-
-#buttonSix
-{
-    position: absolute;
-    top: 400px;
+    top: 550px;
     left: 550px;
     height: 50px;
     width: 100px;
     background-color: #597dd9;
-    color: white;
-    margin-bottom: 100px;
-    border-radius: 20px;
-}
-
-#buttonSix:hover
-{
-    background-color: #13A9FF;
     color: black;
-}
-
-#buttonSeven
-{
-    position: absolute;
-    top: 400px;
-    left: 850px;
-    height: 50px;
-    width: 100px;
-    background-color: #597dd9;
-    color: white;
     margin-bottom: 100px;
     border-radius: 20px;
 }
 
-#buttonSeven:hover
+/* Submit button hover effect */
+#subButton:hover
 {
-    background-color: #13A9FF;
+    background-color: #fbff94;
     color: black;
 }
 
