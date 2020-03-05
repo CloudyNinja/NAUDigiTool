@@ -39,6 +39,29 @@
         <!-- Dependencies -->
         <script src="../../node_modules/react/umd/react.development.js"></script>
         <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
+        
+        <script>
+            
+            /*window.onbeforeunload = function(e) 
+            {
+                e.preventDefault();
+                e.stopPropagation();
+            }*/
+        
+            /*window.onunload = function(e) 
+            {
+                e.preventDefault();
+                e.stopPropagation();
+            }*/
+            
+            window.addEventListener('beforeunload', (event) => {
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+            // Chrome requires returnValue to be set.
+            event.returnValue = '';
+            });
+        
+        </script>
 
         <!-- Main -->
         <script src="../../dist/main.js"></script>
