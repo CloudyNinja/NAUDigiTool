@@ -1,4 +1,8 @@
 
+/* This file contains all the functions for Module Two, including functions to generate random numbers, functions to check if answers are correct,
+   and functions that allow users to get a hint on their current problem and reset the boxes on a page
+*/
+
 // Generates random decimal number
 function randomDecimal()
 {
@@ -133,7 +137,7 @@ function submitDecimal()
             counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -141,7 +145,7 @@ function submitDecimal()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -160,7 +164,7 @@ function submitDecimal()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -168,7 +172,7 @@ function submitDecimal()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -187,7 +191,7 @@ function submitDecimal()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -195,7 +199,7 @@ function submitDecimal()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -221,7 +225,7 @@ function submitOctal()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -229,7 +233,7 @@ function submitOctal()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -249,7 +253,7 @@ function submitOctal()
                 counter += 1;
             }
         }
-        if( counter >= 1 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -257,7 +261,7 @@ function submitOctal()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -283,7 +287,7 @@ function submitBinary()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -291,7 +295,7 @@ function submitBinary()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -311,7 +315,7 @@ function submitBinary()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -319,7 +323,7 @@ function submitBinary()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -340,17 +344,15 @@ function submitBinary()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
-            // Award star to user
-                // Function awardStar()
             // Move onto next page
             window.location.href = "moduleTwoQuestion9.html";
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -376,7 +378,7 @@ function submitHex()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
@@ -384,7 +386,7 @@ function submitHex()
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
@@ -404,17 +406,15 @@ function submitHex()
                 counter += 1;
             }
         }
-        if( counter >= 5 )
+        if( counter == 3 )
         {
             alert( "Congrats, you passed this page!" );
-            // Award star to user
-                // Function awardStar()
             // Move onto next page
             window.location.href = "moduleTwoQuestionComplete.html";
         }
         else
         {
-            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get at least 5 correct to move on.";
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
         }
