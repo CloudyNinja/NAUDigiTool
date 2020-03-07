@@ -1065,6 +1065,11 @@ function fillKMap()
     // For 4 var KMaps
     else if ( array.length == 16 )
     {
+        swapArrayIndices( 8, 12 );
+        swapArrayIndices( 9, 13 );
+        swapArrayIndices( 10, 14 );
+        swapArrayIndices( 11, 15 );
+        
        for ( var index = 0; index < array.length; index++ )
        {
            if ( index == 4 || index == 8 || index == 12 )
