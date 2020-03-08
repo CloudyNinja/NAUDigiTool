@@ -385,7 +385,20 @@ body
     max-width: 100%; 
     min-width: 1000px;
     top: 70px;
-    left: 520px;
+    left: 420px;
+    font-family: serif;
+    color: black;
+}
+
+#practiceHeader2
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 300px;
+    left: 480px;
     font-family: serif;
     color: black;
 }
