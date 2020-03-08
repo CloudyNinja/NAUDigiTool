@@ -101,3 +101,214 @@ li a:hover
     background-color: black;
     color: white;
 }
+
+/* CSS for Practice Mode Module 1 */
+#variableText
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 255px;
+    font-family: serif;
+    color: black;
+}
+
+#optionOne
+{
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    height: 50px;
+    width: 100px;
+}
+
+#optionOneText
+{
+    position: absolute;
+    top: 200px;
+    left: 130px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#optionTwo
+{
+    position: absolute;
+    top: 200px;
+    left: 400px;
+    height: 50px;
+    width: 100px;
+}
+
+#optionTwoText
+{
+    position: absolute;
+    top: 200px;
+    left: 430px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#optionThree
+{
+    position: absolute;
+    top: 200px;
+    left: 700px;
+    height: 50px;
+    width: 100px;
+}
+
+#optionThreeText
+{
+    position: absolute;
+    top: 200px;
+    left: 730px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#optionFour
+{
+    position: absolute;
+    top: 200px;
+    left: 1000px;
+    height: 50px;
+    width: 100px;
+}
+
+#optionFourText
+{
+    position: absolute;
+    top: 200px;
+    left: 1030px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#questionOne
+{
+    position: absolute;
+    top: 400px;
+    left: 240px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionOneText
+{
+    position: absolute;
+    top: 400px;
+    left: 270px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#questionTwo
+{
+    position: absolute;
+    top: 400px;
+    left: 540px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionTwoText
+{
+    position: absolute;
+    top: 400px;
+    left: 570px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#questionThree
+{
+    position: absolute;
+    top: 400px;
+    left: 840px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionThreeText
+{
+    position: absolute;
+    top: 400px;
+    left: 870px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+#problemText
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 300px;
+    left: 400px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styles submit button */
+#subButton
+{
+    position: absolute;
+    top: 550px;
+    left: 550px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: black;
+    margin-bottom: 100px;
+    border-radius: 20px;
+}
+
+/* Submit button hover effect */
+#subButton:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+/* End of CSS for Practice Mode Module 1 */

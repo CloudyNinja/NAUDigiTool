@@ -1065,6 +1065,11 @@ function fillKMap()
     // For 4 var KMaps
     else if ( array.length == 16 )
     {
+        swapArrayIndices( 8, 12 );
+        swapArrayIndices( 9, 13 );
+        swapArrayIndices( 10, 14 );
+        swapArrayIndices( 11, 15 );
+        
        for ( var index = 0; index < array.length; index++ )
        {
            if ( index == 4 || index == 8 || index == 12 )
@@ -1695,12 +1700,26 @@ function checkAnswers()
         {
             window.location.href = "moduleOneQuestion7.html";
         }
+        
+        else if ( window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
+        {
+            alert( "Congrats, you got the answer right!" );
+            window.location.href = "moduleOneQuestionPicker.html";    
+        }
     }
         
     else
     {
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttempts( attemptsLeft );
+        if ( window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        }
     }
     
     return 0;
@@ -1779,23 +1798,37 @@ function checkGroupings()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestion2") > -1 ) )
+        if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
         {
             window.location.href = "moduleOneQuestion3.html";
         }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion7") > -1 ) )
+        else if ( window.location.href.indexOf("moduleOneQuestion7") > -1 )
         {
             window.location.href = "moduleOneQuestion8.html";
+        }
+        
+        else if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
+        {
+            alert( "Congrats, you got the answer right!" );
+            window.location.href = "moduleOneQuestionPicker.html";   
         }
     }
         
     else
     {
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        //setDrawingArray();
-        //resetTwoDArray( user2DArray );
-        attemptsLeft = decreaseAttempts( attemptsLeft );
+        if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+        }
+        
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+            //setDrawingArray();
+            //resetTwoDArray( user2DArray );
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        }
     }
     
     return 0;
@@ -1825,29 +1858,50 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-            if ( Boolean( window.location.href.indexOf("moduleOneQuestion3") > -1 ) )
+            if ( window.location.href.indexOf("moduleOneQuestion3") > -1 )
             {
                 window.location.href = "moduleOneQuestion4.html";
             }
             
-            else if ( Boolean( window.location.href.indexOf("moduleOneQuestion8") > -1 ) )
+            else if ( window.location.href.indexOf("moduleOneQuestion8") > -1 )
             {
                  window.location.href = "moduleOneQuestion9.html";    
             }
-           
+            
+            else if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+            {
+                alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestionPicker.html";   
+            }
         }
         
         else
         {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-            attemptsLeft = decreaseAttempts( attemptsLeft );
+            if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+            }
+            
+            else
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+                attemptsLeft = decreaseAttempts( attemptsLeft );
+            }
         }
     }
     
     else
     {
-        document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-        attemptsLeft = decreaseAttempts( attemptsLeft );
+        if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+        }
+            
+        else
+        {
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        }
     }
 }
 
@@ -1916,17 +1970,17 @@ function resetTwoDArray( arrayToReset )
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion4") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion5") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion6") > -1 )  )
+    if ( window.location.href.indexOf("moduleOneQuestion1") > -1 || window.location.href.indexOf("moduleOneQuestion4") > -1 || window.location.href.indexOf("moduleOneQuestion5") > -1 || window.location.href.indexOf("moduleOneQuestion6") > -1 || window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
     {
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( Boolean( window.location.href.indexOf("moduleOneQuestion2") > -1 ) || Boolean( window.location.href.indexOf("moduleOneQuestion7") > -1 ) )
+    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else if ( Boolean( window.location.href.indexOf("moduleOneQuestion3") > -1 ) )
+    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
     }
