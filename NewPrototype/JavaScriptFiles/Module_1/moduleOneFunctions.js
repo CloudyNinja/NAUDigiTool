@@ -80,8 +80,8 @@ function mouseUp()
     formatRectangle( rect, event );
     ctx.clearRect( 0, 0, canvas.width, canvas.height);
     drawRectangles();
-    console.log( "\nGrouping array: " + JSON.stringify(groupingArray));
-    console.log( " Drawing array: " + JSON.stringify(drawingArray));
+    //console.log( "\nGrouping array: " + JSON.stringify(groupingArray));
+    //console.log( " Drawing array: " + JSON.stringify(drawingArray));
 }
 
 function addRectangleToArray( rectangle )
@@ -156,174 +156,200 @@ function formatRectangle( rectangle, event )
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    
+    var length = getLengthOfArray();
     var rectColor = generateColor();
     
-    // First four if statements is for vertical pair grouping
-    if ( x > 100 && x < 150 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+    if ( length == 8 )
     {
-        temp = { startX: 110, startY: 110, w: 30, h : 80, color: rectColor };
-        addPairToDrawingArray( 0, 4 );
-        addPairToTwoDArray( user2DArray, 0, 4 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 150 && x < 200 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
-    {
-        temp = { startX: 160, startY: 110, w: 30, h : 80, color: rectColor };
-        addPairToDrawingArray( 1, 5 );
-        addPairToTwoDArray( user2DArray, 1, 5 );
-        addRectangleToArray( temp );
-    }
+        // First four if statements is for vertical pair grouping
+        if ( x > 100 && x < 150 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+        {
+            temp = { startX: 110, startY: 110, w: 30, h : 80, color: rectColor };
+            addPairToDrawingArray( 0, 4 );
+            addPairToTwoDArray( user2DArray, 0, 4 );
+            addRectangleToArray( temp );
+        }
 
-    else if ( x > 200 && x < 250 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
-    {
-        temp = { startX: 210, startY: 110, w: 30, h : 80, color: rectColor };
-        addPairToDrawingArray( 2, 6 );
-        addPairToTwoDArray( user2DArray, 2, 6 );
-        addRectangleToArray( temp );
+        else if ( x > 150 && x < 200 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+        {
+            temp = { startX: 160, startY: 110, w: 30, h : 80, color: rectColor };
+            addPairToDrawingArray( 1, 5 );
+            addPairToTwoDArray( user2DArray, 1, 5 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 200 && x < 250 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+        {
+            temp = { startX: 210, startY: 110, w: 30, h : 80, color: rectColor };
+            addPairToDrawingArray( 2, 6 );
+            addPairToTwoDArray( user2DArray, 2, 6 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 250 && x < 300 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+        {
+            temp = { startX: 260, startY: 110, w: 30, h : 80, color: rectColor };
+            addPairToDrawingArray( 3, 7 );
+            addPairToTwoDArray( user2DArray, 3, 7 );
+            addRectangleToArray( temp );
+        }
+
+        // Next eight if statements is for horizontal pair grouping
+            // First three is top row
+        else if ( x > 100 && x < 200 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48  )
+        {
+            temp = { startX: 110, startY: 110, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 0, 1 );
+            addPairToTwoDArray( user2DArray, 0, 1 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 150 && x < 250 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
+        {
+            temp = { startX: 160, startY: 110, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 1, 2 );
+            addPairToTwoDArray( user2DArray, 1, 2 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 200 && x < 300 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
+        {
+            temp = { startX: 210, startY: 110, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 2, 3 );
+            addPairToTwoDArray( user2DArray, 2, 3 );
+            addRectangleToArray( temp );
+        }
+
+            // Next three is bottom row
+        else if ( x > 100 && x < 200 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
+        {
+            temp = { startX: 110, startY: 160, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 4, 5 );
+            addPairToTwoDArray( user2DArray, 4, 5 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 150 && x < 250 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
+        {
+            temp = { startX: 160, startY: 160, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 5, 6 );
+            addPairToTwoDArray( user2DArray, 5, 6 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 200 && x < 300 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
+        {
+            temp = { startX: 210, startY: 160, w: 80, h : 30, color: rectColor };
+            addPairToDrawingArray( 6, 7 );
+            addPairToTwoDArray( user2DArray, 6, 7 );
+            addRectangleToArray( temp );
+        }
+
+            // Next two are the wraps
+                // Top Row
+        else if ( x > 75 && x < 100 && y > 110 && y < 145 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
+        {
+            // Top row wrap
+            addPairToDrawingArray( 0, 3 );
+            temp = { startX: 100, startY: 110, w: 40, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 110, w: 40, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            addPairToTwoDArray( user2DArray, 0, 3 );
+        }
+                // Bottom row
+        else if ( x > 75 && x < 100 && y > 160 && y < 195 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
+        {
+            // Bottom row wrap
+            addPairToDrawingArray( 4, 7 );
+            temp = { startX: 100, startY: 160, w: 40, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 160, w: 40, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            addPairToTwoDArray( user2DArray, 4, 7 );
+        }
+
+        // Next 3 if statements is for vertical quad grouping
+        else if ( x > 100 && x < 200 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
+        {
+            // Bottom row wrap
+            temp = { startX: 110, startY: 110, w: 80, h : 80, color: rectColor };
+            addQuadToDrawingArray( 0, 1, 4, 5 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 150 && x < 250 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
+        {
+            // Bottom row wrap
+            temp = { startX: 160, startY: 110, w: 80, h : 80, color: rectColor };
+            addQuadToDrawingArray( 1, 2, 5, 6 );
+            addRectangleToArray( temp );
+        }
+
+         else if ( x > 200 && x < 300 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
+        {
+            // Bottom row wrap
+            temp = { startX: 210, startY: 110, w: 80, h : 80, color: rectColor };
+            addQuadToDrawingArray( 2, 3, 6, 7 );
+            addRectangleToArray( temp );
+        }
+
+        // Next 2 if statements is for horizontal quad grouping
+        else if ( x > 100 && x < 300 && y > 100 && y < 150 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
+        {
+            temp = { startX: 110, startY: 110, w: 180, h : 30, color: rectColor };
+            addQuadToDrawingArray( 0, 1, 2, 3 );
+            addRectangleToArray( temp );
+        }
+
+        else if ( x > 100 && x < 300 && y > 150 && y < 200 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
+        {
+            // Bottom row wrap
+            temp = { startX: 110, startY: 160, w: 180, h : 30, color: rectColor };
+            addQuadToDrawingArray( 4, 5, 6, 7 );
+            addRectangleToArray( temp );
+        }
+
+        // Next if statement is for wrap quad grouping
+        else if ( x > 75 && x < 100 && y > 110 && y < 195 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 70 && rectangle.h < 95 )
+        {
+            addQuadToDrawingArray( 0, 3, 4, 7 );
+            temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+        }
+
+        // Octal group
+        else if ( x > 100 && x < 300 && y > 100 && y < 200 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 95 )
+        {
+            temp = { startX: 110, startY: 110, w: 180, h : 80, color: rectColor };
+            addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
+            addRectangleToArray( temp );
+        }
+
+        else
+        {
+            temp = {};
+        }
     }
     
-    else if ( x > 250 && x < 300 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
+    // For 4 variable grouping
+    else if ( length == 16 )
     {
-        temp = { startX: 260, startY: 110, w: 30, h : 80, color: rectColor };
-        addPairToDrawingArray( 3, 7 );
-        addPairToTwoDArray( user2DArray, 3, 7 );
-        addRectangleToArray( temp );
-    }
-    
-    // Next eight if statements is for horizontal pair grouping
-        // First three is top row
-    else if ( x > 100 && x < 200 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48  )
-    {
-        temp = { startX: 110, startY: 110, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 0, 1 );
-        addPairToTwoDArray( user2DArray, 0, 1 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 150 && x < 250 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
-    {
-        temp = { startX: 160, startY: 110, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 1, 2 );
-        addPairToTwoDArray( user2DArray, 1, 2 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 200 && x < 300 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
-    {
-        temp = { startX: 210, startY: 110, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 2, 3 );
-        addPairToTwoDArray( user2DArray, 2, 3 );
-        addRectangleToArray( temp );
-    }
-    
-        // Next three is bottom row
-    else if ( x > 100 && x < 200 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
-    {
-        temp = { startX: 110, startY: 160, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 4, 5 );
-        addPairToTwoDArray( user2DArray, 4, 5 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 150 && x < 250 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
-    {
-        temp = { startX: 160, startY: 160, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 5, 6 );
-        addPairToTwoDArray( user2DArray, 5, 6 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 200 && x < 300 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
-    {
-        temp = { startX: 210, startY: 160, w: 80, h : 30, color: rectColor };
-        addPairToDrawingArray( 6, 7 );
-        addPairToTwoDArray( user2DArray, 6, 7 );
-        addRectangleToArray( temp );
-    }
-    
-        // Next two are the wraps
-            // Top Row
-    else if ( x > 75 && x < 100 && y > 110 && y < 145 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
-    {
-        // Top row wrap
-        addPairToDrawingArray( 0, 3 );
-        temp = { startX: 100, startY: 110, w: 40, h : 30, color: rectColor };
-        addRectangleToArray( temp );
-        temp = { startX: 260, startY: 110, w: 40, h : 30, color: rectColor };
-        addRectangleToArray( temp );
-        addPairToTwoDArray( user2DArray, 0, 3 );
-    }
-            // Bottom row
-    else if ( x > 75 && x < 100 && y > 160 && y < 195 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
-    {
-        // Bottom row wrap
-        addPairToDrawingArray( 4, 7 );
-        temp = { startX: 100, startY: 160, w: 40, h : 30, color: rectColor };
-        addRectangleToArray( temp );
-        temp = { startX: 260, startY: 160, w: 40, h : 30, color: rectColor };
-        addRectangleToArray( temp );
-        addPairToTwoDArray( user2DArray, 4, 7 );
-    }
-    
-    // Next 3 if statements is for vertical quad grouping
-    else if ( x > 100 && x < 200 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
-    {
-        // Bottom row wrap
-        temp = { startX: 110, startY: 110, w: 80, h : 80, color: rectColor };
-        addQuadToDrawingArray( 0, 1, 4, 5 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 150 && x < 250 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
-    {
-        // Bottom row wrap
-        temp = { startX: 160, startY: 110, w: 80, h : 80, color: rectColor };
-        addQuadToDrawingArray( 1, 2, 5, 6 );
-        addRectangleToArray( temp );
-    }
-    
-     else if ( x > 200 && x < 300 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
-    {
-        // Bottom row wrap
-        temp = { startX: 210, startY: 110, w: 80, h : 80, color: rectColor };
-        addQuadToDrawingArray( 2, 3, 6, 7 );
-        addRectangleToArray( temp );
-    }
-    
-    // Next 2 if statements is for horizontal quad grouping
-    else if ( x > 100 && x < 300 && y > 100 && y < 150 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
-    {
-        temp = { startX: 110, startY: 110, w: 180, h : 30, color: rectColor };
-        addQuadToDrawingArray( 0, 1, 2, 3 );
-        addRectangleToArray( temp );
-    }
-    
-    else if ( x > 100 && x < 300 && y > 150 && y < 200 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
-    {
-        // Bottom row wrap
-        temp = { startX: 110, startY: 160, w: 180, h : 30, color: rectColor };
-        addQuadToDrawingArray( 4, 5, 6, 7 );
-        addRectangleToArray( temp );
-    }
-    
-    // Next if statement is for wrap quad grouping
-    else if ( x > 75 && x < 100 && y > 110 && y < 195 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 70 && rectangle.h < 95 )
-    {
-        addQuadToDrawingArray( 0, 3, 4, 7 );
-        temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
-        addRectangleToArray( temp );
-        temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
-        addRectangleToArray( temp );
-    }
-    
-    // Octal group
-    else if ( x > 100 && x < 300 && y > 100 && y < 200 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 95 )
-    {
-        temp = { startX: 110, startY: 110, w: 180, h : 80, color: rectColor };
-        addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
-        addRectangleToArray( temp );
+        var index = 0;
+        
+        // For sixteen
+        if ( x > 105 && x < 295 && y > 105 && y < 295 && rectangle.w > 165 && rectangle.w < 190 && rectangle.h > 165 && rectangle.h < 185 )
+        {
+            temp = { startX: 110, startY: 110, w: 180, h : 180, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array from length of sixteenArray - 1 
+            index = createArraySpace( sixteenDrawingArray );
+            sixteenDrawingArray[index] = sixteenArray[sixteenArray.length-1];
+            console.log( "SIXTEEN DRAWING ARRAY: " + JSON.stringify( sixteenDrawingArray ) );
+        }
     }
     
     else
@@ -352,7 +378,7 @@ function mouseMove(e)
 {    
     if ( drag ) 
     {
-        getMousePos( canvas, e );
+        //getMousePos( canvas, e );
         
         rect.w = (e.pageX - this.offsetLeft) - rect.startX;
         rect.h = (e.pageY - this.offsetTop) - rect.startY ;
@@ -371,22 +397,13 @@ function sketchRectangle()
     //console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
 }
 
-// Used for finding grouping grid
-/*function showCoords( event ) 
-{
-    var x = event.clientX;
-    var y = event.clientY;
-    console.log( "X coords: " + x + ", Y coords: " + y );
-    
-    return 0;
-}*/
 function getMousePos( canvas, event )
 {
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     
-    //console.log( "X: " + x + " Y: " + y );
+    console.log( "X: " + x + " Y: " + y );
 }
   
 // This function can be used for grouping but I haven't implemented it yet.
@@ -1135,10 +1152,118 @@ function getLengthOfArray()
     return counter;
 }
 
+//////////// Section for 4 variable GROUPING //////////////
+
+// Finds 16s in array 
+function find16s()
+{
+    var length = getLengthOfArray();
+    var counter = 1;
+    var newArray = new Array(1);
+    var sixteenArrayIndex = 0;
+    console.log( "LENGTH: " + length );
+    
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( array[index] != 1 )
+        {
+            counter -= 1;
+        }
+    }
+    
+    console.log( "COUNTER: " + counter );
+    
+    // If all 16s
+    if ( counter == 1 )
+    {
+        // Adds array of all 1s to new array
+        for ( var index = 0; index < length; index++ )
+        {
+            newArray[index] = array[index];
+        }
+        
+        console.log( "NEW ARRAY: " + JSON.stringify( newArray ) );
+        
+        // Creates slot to add array and adds the array
+        sixteenArrayIndex = createArraySpace( sixteenArray );
+        sixteenArray[sixteenArrayIndex] = newArray;
+        console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
+    }
+}
+
+// Creates space needed to aadd array
+function createArraySpace( arrayPassed )
+{
+    var index = 0;
+    
+    while ( arrayPassed[index] != null )
+    {
+        index++;
+    }
+    
+    return index;
+}
+
+// Resets drawing array by setting it to null
+function resetDrawingArray( arrayPassed )
+{
+    arrayPassed = new Array(1);
+    
+    return arrayPassed;
+}
+
+
+// Checks both sixteen arrays to see if they match: can be used for all
+function checkIfSixteenArraysMatch( arrayOne, arrayTwo )
+{
+    var sizeEqual = arrayOne.length == arrayTwo.length;
+    var count = 0;
+    
+    if ( sizeEqual )
+    {
+        for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
+        {
+            for ( var innerIndex = 0; innerIndex < arrayOne.length; innerIndex++ )
+            {
+                var arraysMatch = arraysEqual( arrayOne[outerIndex], arrayTwo[innerIndex] );
+                if ( arraysMatch )
+                {
+                    count += 1;
+                }
+            }
+        }
+        
+        if ( count == arrayOne.length )
+        {
+            return true;
+        }
+        
+        else
+        {
+            return false;
+        }
+    }
+    
+    else
+    {
+        return false;
+    }
+}
+
+// Checks both arrays to see if they match
+function arraysEqual( arrayOne, arrayTwo )
+{
+    return JSON.stringify( arrayOne ) == JSON.stringify( arrayTwo )
+}
+
+//////////// Section for 4 variable GROUPING //////////////
+
 // Finds octet matches in array
 function findOctetGroups()
 {
     var length = getLengthOfArray();
+    
+    //console.log( "LENGTH: " + length );
 
     // For 3 Var KMap
     if ( length == 8 )
@@ -1778,56 +1903,75 @@ function compareTwo2DArrays( arrayOne, arrayTwo )
 
 function checkGroupings()
 {       
-    var isRight = 0;
-    var both2DArraysTheSame = compareTwo2DArrays( twoDArray, user2DArray );
+    var length = getLengthOfArray();
+    //console.log( "ARE SAME: " + both2DArraysTheSame );
     
-    console.log( "ARE SAME: " + both2DArraysTheSame );
-    
-    for ( var index = 0; index < groupingArray.length; index++ )
+    if ( length == 8 )
     {
-        if ( drawingArray[ index ] != groupingArray[ index ] )
+        var isRight = 0;
+        var both2DArraysTheSame = compareTwo2DArrays( twoDArray, user2DArray );
+        for ( var index = 0; index < groupingArray.length; index++ )
         {
-            isRight = 1;
+            if ( drawingArray[ index ] != groupingArray[ index ] )
+            {
+                isRight = 1;
+            }
+        }
+
+        //console.log( isRight );
+
+        if ( isRight == 0 && both2DArraysTheSame )
+        {
+            userStars += starsGiven;
+            passUserStars( userStars );
+
+            if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
+            {
+                window.location.href = "moduleOneQuestion3.html";
+            }
+
+            else if ( window.location.href.indexOf("moduleOneQuestion7") > -1 )
+            {
+                window.location.href = "moduleOneQuestion8.html";
+            }
+
+            else if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
+            {
+                alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestionPicker.html";   
+            }
+        }
+
+        else
+        {
+            if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+            }
+
+            else
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+                //setDrawingArray();
+                //resetTwoDArray( user2DArray );
+                attemptsLeft = decreaseAttempts( attemptsLeft );
+            }
         }
     }
     
-    //console.log( isRight );
-    
-    if ( isRight == 0 && both2DArraysTheSame )
+    // For 4 variable
+    else if ( length == 16 )
     {
-        userStars += starsGiven;
-        passUserStars( userStars );
+        var sixteenArraysMatch = checkIfSixteenArraysMatch( sixteenArray, sixteenDrawingArray );
         
-        if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
+        if ( sixteenArraysMatch )
         {
-            window.location.href = "moduleOneQuestion3.html";
-        }
-        
-        else if ( window.location.href.indexOf("moduleOneQuestion7") > -1 )
-        {
-            window.location.href = "moduleOneQuestion8.html";
-        }
-        
-        else if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
-        {
-            alert( "Congrats, you got the answer right!" );
-            window.location.href = "moduleOneQuestionPicker.html";   
-        }
-    }
-        
-    else
-    {
-        if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
-        {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+            alert( "CORRECT!" );
         }
         
         else
         {
-            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-            //setDrawingArray();
-            //resetTwoDArray( user2DArray );
-            attemptsLeft = decreaseAttempts( attemptsLeft );
+            alert( "INCORRECT!" );
         }
     }
     
@@ -1933,12 +2077,23 @@ function resetNumbers()
 
 function resetGroupings()
 {
+    var length = getLengthOfArray();
     document.getElementById("incorrectAnswerMessage").innerHTML = "";
     document.getElementById("hint").innerHTML = "";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     clearRectangleArray();
-    setDrawingArray();
-    resetTwoDArray( user2DArray );
+    
+    if ( length == 8 )
+    {
+        setDrawingArray();
+        resetTwoDArray( user2DArray );
+    }
+    
+    else if ( length == 16 )
+    {
+        sixteenDrawingArray = resetDrawingArray( sixteenDrawingArray );
+        console.log( "SIXTEEN DRAWING ARRAY RESET: " + JSON.stringify( sixteenDrawingArray ) );
+    }
 }
 
 function resetEquation()
@@ -1975,7 +2130,7 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
+    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
