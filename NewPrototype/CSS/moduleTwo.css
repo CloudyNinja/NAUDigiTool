@@ -319,3 +319,87 @@ body
     font-family: serif;
     color: black;
 }
+
+/* Styling for timer */
+#timer
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 220px;
+    left: 1020px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styling for drop down lists in practice module two */
+#conversionSelection1
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 100px;
+    top: 220px;
+    left: 500px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styling for the word "to" in practice module two */
+#toText
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 100px;
+    top: 200px;
+    left: 700px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styling for drop down lists in practice module two */
+#conversionSelection2
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 100px;
+    top: 220px;
+    left: 800px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styles the header text in practice module*/
+#practiceHeader
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 70px;
+    left: 520px;
+    font-family: serif;
+    color: black;
+}
+
+/* Styling for practice module question*/
+#practiceQuestion
+{
+    position: absolute;   
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%; 
+    min-width: 1000px;
+    top: 400px;
+    left: 520px;
+    font-family: serif;
+    color: black;
+}
