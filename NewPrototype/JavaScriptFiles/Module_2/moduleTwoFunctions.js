@@ -310,7 +310,7 @@ function submitBinary()
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index).value;
             var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
-            if( userInput == answer )
+            if( userInput == answer.toString( 8 ) )
             {
                 counter += 1;
             }
@@ -339,7 +339,7 @@ function submitBinary()
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index).value;
             var answer = parseInt( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
-            if( userInput == answer )
+            if( userInput == answer.toString( 16 ) )
             {
                 counter += 1;
             }
