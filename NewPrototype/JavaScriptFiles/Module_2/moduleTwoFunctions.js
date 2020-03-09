@@ -306,12 +306,11 @@ function submitDecimal()
         {
             var userInput = document.getElementById( "input" + index ).value;
             var numberToCheck = document.getElementById( "randomNumber" + index ).value;
-            var answer = new BigNumber( numberToCheck, 2 );
+            var answer = convert( numberToCheck, 10 ).toString( 2 );
             if( userInput == answer )
             {
                 counter += 1;
             }
-            console.log( answer );
         }
         if( counter == 3 )
         {
@@ -380,6 +379,64 @@ function submitDecimal()
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
         }
+    }
+}
+
+// Submit function for decimal fraction to octal
+function submitDecimalFractionToOctal()
+{
+    var counter = 0;
+    for( var index = 1; index <= 3; index++ )
+    {
+        var userInput = document.getElementById( "input" + index ).value;
+        var numberToCheck = document.getElementById( "randomNumber" + index ).value;
+        var answer = convert( numberToCheck, 10 ).toString( 8 );
+        if( userInput == answer )
+        {
+            counter += 1;
+        }
+    }
+    if( counter == 3 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        window.location.href = "moduleTwoQuestion16.html";
+    }
+    else
+    {
+         document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+    }
+}
+
+// Submit function for decimal fraction to hex
+function submitDecimalFractionToHex()
+{
+    var counter = 0;
+    for( var index = 1; index <= 3; index++ )
+    {
+        var userInput = document.getElementById( "input" + index ).value;
+        var numberToCheck = document.getElementById( "randomNumber" + index ).value;
+        var answer = convert( numberToCheck, 10 ).toString( 16 );
+        if( userInput.toUpperCase() == answer.toUpperCase() )
+        {
+            counter += 1;
+        }
+    }
+    if( counter == 3 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        window.location.href = "moduleTwoQuestion17.html";
+    }
+    else
+    {
+         document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
     }
 }
 
@@ -470,6 +527,35 @@ function submitOctal()
             attemptsLeft = decreaseAttempts( attemptsLeft );
         
         }
+    }
+}
+
+// Submit function for octal fractions to binary
+function submitOctalFraction()
+{
+    var counter = 0;
+    for( var index = 1; index <= 3; index++ )
+    {
+        var userInput = document.getElementById( "input" + index ).value;
+        var numberToCheck = document.getElementById( "randomNumber" + index).value;
+        var answer = convert( numberToCheck, 8 ).toString( 2 ); // Converts numberToCheck from octal to decimal and then to binary
+        if( userInput == answer )
+        {
+            counter += 1;
+        }
+    }
+    if( counter == 3 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        window.location.href = "moduleTwoQuestion13.html";
+    }
+    else
+    {
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
     }
 }
 
@@ -597,6 +683,64 @@ function submitBinaryFraction()
     }
 }
 
+// Submit function for binary fraction to octal
+function submitBinaryFractionToOctal()
+{
+    var counter = 0;
+    for( var index = 1; index <= 3; index++ )
+    {
+        var userInput = document.getElementById( "input" + index ).value;
+        var numberToCheck = document.getElementById( "randomNumber" + index).value;
+        var answer = convert( numberToCheck, 2 ).toString( 8 ); // Converts numberToCheck from binary to decimal and then to octal
+        if( userInput == answer )
+        {
+            counter += 1;
+        }
+    }
+    if( counter == 3 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        window.location.href = "moduleTwoQuestion18.html";
+    }
+    else
+    {
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+    }
+}
+
+// Submit function for binary fraction to hex
+function submitBinaryFractionToHex()
+{
+    var counter = 0;
+    for( var index = 1; index <= 3; index++ )
+    {
+        var userInput = document.getElementById( "input" + index ).value;
+        var numberToCheck = document.getElementById( "randomNumber" + index).value;
+        var answer = convert( numberToCheck, 2 ).toString( 16 ); // Converts numberToCheck from binary to decimal and then to hex
+        if( userInput.toUpperCase() == answer.toUpperCase() )
+        {
+            counter += 1;
+        }
+    }
+    if( counter == 3 )
+    {
+        alert( "Congrats, you passed this page!" );
+        // Move onto next page
+        window.location.href = "moduleTwoQuestion18.html";
+    }
+    else
+    {
+        document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+        // Decrease attempts and star score by 1
+        attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+    }
+}
+
 // Submit function for hex conversions
 function submitHex()
 {
@@ -674,7 +818,33 @@ function submitHexFraction()
             {
                 counter += 1;
             }
-            console.log( answer )
+        }
+        if( counter == 3 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion14.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+    // Hex fracion to binary fraction
+    else
+    {
+        for( var index = 1; index <= 3; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = convert( numberToCheck, 16 ).toString( 2 ); // Converts numberToCheck from hex to decimal and then to binary
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
         }
         if( counter == 3 )
         {
