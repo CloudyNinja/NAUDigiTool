@@ -6,7 +6,7 @@
 // Generates random decimal number
 function randomDecimal()
 {
-    for( var index = 1; index <= 6; index++ )
+    for( var index = 1; index <= 3; index++ )
     {
         var randomNumber = document.getElementById( "randomNumber" + index );
         if( index == 1 )
@@ -28,6 +28,36 @@ function randomDecimal()
             document.getElementById( "randomNumber" + index ).value = randomNumber
         }
     }
+}
+
+// Generates random decimal fraction
+function randomDecimalFraction()
+{
+    for( var index = 1; index <= 3; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        if( index == 1 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
+            randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
+        }
+        else if( index == 2 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
+            randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
+        }
+        else
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
+            randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
+        }
+    } 
 }
 
 // Generates random binary number
@@ -60,6 +90,52 @@ function randomBinary()
     }  
 }
 
+// Helper function for converting fractions
+function convert(value, base = 2) 
+{
+    var [integer, fraction = ''] = value.toString().split('.');
+
+    return parseInt(integer, base) + (integer[0] !== '-' || -1) * fraction
+        .split('')
+        .reduceRight((r, a) => (r + parseInt(a, base)) / base, 0);
+}
+
+// Generates random binary fraction
+function randomBinaryFraction()
+{
+    for( var index = 1; index <= 3; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        if( index == 1 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 64 ) + 1 ); // Generates random number between 1 and 64
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            binaryNumberPrefix = randomNumberPrefix.toString(2); // Converts random number to binary
+            binaryNumberSuffix = randomNumberSuffix.toString(2);
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumberPrefix + "." + binaryNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = binaryNumberPrefix + "." + binaryNumberSuffix;
+        }
+        else if( index == 2 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 65 ) + 64 ); // Generates random number between 64 and 128
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            binaryNumberPrefix = randomNumberPrefix.toString(2); // Converts random number to binary
+            binaryNumberSuffix = randomNumberSuffix.toString(2);
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumberPrefix + "." + binaryNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = binaryNumberPrefix + "." + binaryNumberSuffix;
+        }
+        else
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 129 ) + 128 ); // Generates random number between 128 and 256
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            binaryNumberPrefix = randomNumberPrefix.toString(2); // Converts random number to binary
+            binaryNumberSuffix = randomNumberSuffix.toString(2);
+            document.getElementById( "randomNumber" + index ).innerHTML = binaryNumberPrefix + "." + binaryNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = binaryNumberPrefix + "." + binaryNumberSuffix;
+        }
+    }
+}
+
 // Generates random octal number
 function randomOctal()
 {
@@ -86,6 +162,42 @@ function randomOctal()
             octalNumber = randomNumber.toString( 8 ); // Converts random number to octal
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumber;
             document.getElementById( "randomNumber" + index ).value = octalNumber;
+        }
+    }
+}
+
+// Generates random octal fraction
+function randomOctalFraction()
+{
+    for( var index = 1; index <= 3; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        if( index == 1 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 88 ) + 1 ); // Generates random number between 1 and 88
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
+            octalNumberSuffix = randomNumberSuffix.toString(8);
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = octalNumberPrefix + "." + octalNumberSuffix;
+        }
+        else if( index == 2 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 87 ) + 88 ); // Generates random number between 88 and 174
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
+            octalNumberSuffix = randomNumberSuffix.toString(8);
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = octalNumberPrefix + "." + octalNumberSuffix;
+        }
+        else 
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 157 ) + 174 ); // Generates random number between 174 and 330
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
+            octalNumberSuffix = randomNumberSuffix.toString(8);
+            document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = octalNumberPrefix + "." + octalNumberSuffix;
         }
     }
 }
@@ -120,6 +232,41 @@ function randomHex()
     }
 }
 
+function randomHexFraction()
+{
+    for( var index = 1; index <= 6; index++ )
+    {
+        var randomNumber = document.getElementById( "randomNumber" + index );
+        if( index == 1 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
+            document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
+        }
+        else if( index == 2 )
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
+            document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
+        }
+        else
+        {
+            randomNumberPrefix = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
+            document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
+            document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
+        }
+    }
+}
+
 // Submit function for decimal conversions
 function submitDecimal()
 {
@@ -142,6 +289,35 @@ function submitDecimal()
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion5.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Decimal fraction to binary fraction
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion14") > -1 ) )
+    {
+        for( var index = 1; index <= 3; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index ).value;
+            var answer = new BigNumber( numberToCheck, 2 );
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+            console.log( answer );
+        }
+        if( counter == 3 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion15.html";
         }
         else
         {
@@ -230,6 +406,34 @@ function submitOctal()
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion3.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+
+    // Octal fraction to decimal fraction
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion12") > -1 ) )
+    {
+        for( var index = 1; index <= 3; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = convert( numberToCheck, 8 ); // Converts numberToCheck from octal to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter == 3 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion13.html";
         }
         else
         {
@@ -360,6 +564,39 @@ function submitBinary()
     }
 }
 
+// Submit function for binary fraction conversions
+function submitBinaryFraction()
+{
+    var counter = 0;
+
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion11") > -1 ) )
+    {
+        for( var index = 1; index <= 3; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = convert( numberToCheck, 2 ); // Converts numberToCheck from binary to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+        }
+        if( counter == 3 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion12.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
+        }
+    }
+}
+
 // Submit function for hex conversions
 function submitHex()
 {
@@ -410,13 +647,47 @@ function submitHex()
         {
             alert( "Congrats, you passed this page!" );
             // Move onto next page
-            window.location.href = "moduleTwoQuestionComplete.html";
+            window.location.href = "moduleTwoQuestion11.html";
         }
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
             // Decrease attempts and star score by 1
             attemptsLeft = decreaseAttempts( attemptsLeft );
+        }
+    }
+}
+
+function submitHexFraction()
+{
+    var counter = 0;
+
+    // Hex fraction to decimal fraction
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion13") > -1 ) )
+    {
+        for( var index = 1; index <= 3; index++ )
+        {
+            var userInput = document.getElementById( "input" + index ).value;
+            var numberToCheck = document.getElementById( "randomNumber" + index).value;
+            var answer = convert( numberToCheck, 16 ); // Converts numberToCheck from hex to decimal
+            if( userInput == answer )
+            {
+                counter += 1;
+            }
+            console.log( answer )
+        }
+        if( counter == 3 )
+        {
+            alert( "Congrats, you passed this page!" );
+            // Move onto next page
+            window.location.href = "moduleTwoQuestion14.html";
+        }
+        else
+        {
+            document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Must get all questions correct to move on.";
+            // Decrease attempts and star score by 1
+            attemptsLeft = decreaseAttempts( attemptsLeft );
+        
         }
     }
 }
@@ -515,11 +786,11 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        for( var index = 1; index <= 10; index++ )
+        for( var index = 1; index <= 20; index++ )
         {
             if ( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
             {
-                if( index < 10)
+                if( index < 20)
                 {
                     var nextPage = index + 1;
                     window.location.href = "moduleTwoQuestion" + nextPage + ".html";
