@@ -468,6 +468,7 @@ function formatRectangle( rectangle, event )
     return temp;
 }
 
+// Removes duplicates from one array
 function removeDuplicates( arrayPassed )
 {
     if ( arrayPassed.length > 1 )
@@ -505,7 +506,7 @@ function mouseMove(e)
 {    
     if ( drag ) 
     {
-        getMousePos( canvas, e );
+        //getMousePos( canvas, e );
         
         rect.w = (e.pageX - this.offsetLeft) - rect.startX;
         rect.h = (e.pageY - this.offsetTop) - rect.startY ;
@@ -520,7 +521,7 @@ function sketchRectangle()
 {
     ctx.strokeStyle = "#FF0000";
     ctx.strokeRect( rect.startX, rect.startY, rect.w, rect.h );
-    console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
+    //console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
 }
 
 function getMousePos( canvas, event )
@@ -1320,7 +1321,7 @@ function find16s()
     }
 }
 
-// Finds 16s in array 
+// Finds 8s in array 
 function find8s()
 {
     var length = getLengthOfArray();
@@ -1400,6 +1401,317 @@ function find8s()
         console.log( "EIGHT ARRAY NOT FORMED" );
         console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
     }
+}
+
+// Finds 4s in array 
+function find4s()
+{
+    var length = getLengthOfArray();
+    var newArray = new Array(1);
+    var fourArrayIndex = 0;
+    var canAdd = 1;
+    
+    // For horizontal groupings ( lines only )
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( index == 0 || index == 4 || index == 8 || index == 12 )
+        {
+            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 )
+            {
+                newArray = [ index, index + 1, index + 2, index + 3 ];
+                canAdd = checkIfCanAdd( newArray, canAdd );
+                
+                if ( canAdd == 1 )
+                {
+                    // Creates slot to add array and adds the array
+                    fourArrayIndex = createArraySpace( fourArray );
+                    fourArray[fourArrayIndex] = newArray;
+                    fourAmount += 1;
+                }
+            }
+        }
+    }
+    
+    // Vertical lines
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+        {
+            if ( array[index] == 1 && array[index + 4] == 1 && array[index + 8] == 1 && array[index + 12] == 1 )
+            {
+                newArray = [ index, index + 4, index + 8, index + 12 ];
+                canAdd = checkIfCanAdd( newArray, canAdd );
+                
+                if ( canAdd == 1 )
+                {
+                    // Creates slot to add array and adds the array
+                    fourArrayIndex = createArraySpace( fourArray );
+                    fourArray[fourArrayIndex] = newArray;
+                    fourAmount += 1;
+                }
+            }
+        }
+    }
+    
+    // Squares from top left to bottom right
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
+        {
+            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 )
+            {
+                newArray = [ index, index + 1, index + 4, index + 5 ];
+                canAdd = checkIfCanAdd( newArray, canAdd );
+                
+                if ( canAdd == 1 )
+                {
+                    // Creates slot to add array and adds the array
+                    fourArrayIndex = createArraySpace( fourArray );
+                    fourArray[fourArrayIndex] = newArray;
+                    fourAmount += 1;
+                }
+            }
+        }
+    }
+    
+    // Horizontal Wraps
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( index == 0 || index == 4 || index == 8 )
+        {
+            if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 )
+            {
+                newArray = [ index, index + 3, index + 4, index + 7 ];
+                canAdd = checkIfCanAdd( newArray, canAdd );
+                
+                if ( canAdd == 1 )
+                {
+                    // Creates slot to add array and adds the array
+                    fourArrayIndex = createArraySpace( fourArray );
+                    fourArray[fourArrayIndex] = newArray;
+                    fourAmount += 1;
+                }
+            }
+        }
+    }
+    
+    // Vertical Wraps
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+        {
+            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 12] == 1 && array[index + 13] == 1 )
+            {
+                newArray = [ index, index + 1, index + 12, index + 13 ];
+                canAdd = checkIfCanAdd( newArray, canAdd );
+                
+                if ( canAdd == 1 )
+                {
+                    // Creates slot to add array and adds the array
+                    fourArrayIndex = createArraySpace( fourArray );
+                    fourArray[fourArrayIndex] = newArray;
+                    fourAmount += 1;
+                }
+            }
+        }
+    }
+    
+    fourArray = removeRedundancies( fourArray, 4 );
+    
+    if ( fourAmount == 0 )
+    {
+        console.log( "FOUR ARRAY NOT FORMED: " + JSON.stringify( fourArray ) );
+    }
+    
+    else
+    {
+        console.log( "FOUR ARRAY: " + JSON.stringify( fourArray ) );
+    }
+}
+
+// Compares two arrays for duplicates
+function checkForDuplicates( arrayOne, arrayTwo )
+{
+    // arrayOne = [ 0, 1, 2, 3 ]
+    // arrayTwo = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
+    
+    var counter = 0;
+    
+    if ( arrayTwo != null )
+    {
+        for ( var arrayOneIndex = 0; arrayOneIndex < arrayOne.length; arrayOneIndex++ )
+        {
+            for ( var arrayTwoIndex = 0; arrayTwoIndex < arrayTwo.length; arrayTwoIndex++ )
+            {
+                /*console.log( "COMPARING: " + arrayOne[arrayOneIndex] + " with " + arrayTwo[arrayTwoIndex] );*/
+                            
+                if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] )
+                {
+                    //console.log( "FOUND MATCH" );
+                    counter += 1;
+                }
+            }
+        }
+        
+        if ( counter == arrayOne.length )
+        {
+            console.log( "DUPLICATE FOUND" );
+            return true;
+        }
+        
+        else
+        {
+            return false;
+        }
+    }
+    
+    else
+    {
+        return false;
+    }
+}
+
+function checkIfCanAdd( arrayPassed, aNumber )
+{
+    var whileIndex = 0;
+    var inEightArrayBoolean = false;
+    var inFourArrayBoolean = false;
+    aNumber = 1;
+    
+    // Checks if newArray can be added
+    while ( eightArray[whileIndex] != null )
+    {
+        inEightArrayBoolean = checkForDuplicates( arrayPassed, eightArray[whileIndex] );
+        //console.log( "IN EIGHT ARRAY BOOLEAN: " + inEightArrayBoolean );
+
+        if ( inEightArrayBoolean )
+        {
+            aNumber -= 1;
+        }
+
+        whileIndex += 1;
+    }
+
+    whileIndex = 0;
+
+    while ( fourArray[whileIndex] != null )
+    {
+        inEightArrayBoolean = checkForDuplicates( arrayPassed, fourArray[whileIndex] );
+        //console.log( "IN EIGHT ARRAY BOOLEAN: " + inEightArrayBoolean );
+
+        if ( inFourArrayBoolean )
+        {
+            aNumber -= 1;
+        }
+
+        whileIndex += 1;
+    }
+    
+    return aNumber;
+}
+
+function removeRedundancies( arrayPassed, increment )
+{
+    var subArray;
+    var otherSubArray;
+    var numberOfCells = increment * arrayPassed.length;
+    
+    for ( var row = 0; row < arrayPassed.length; row++ )
+    {
+        subArray = arrayPassed[row];
+        console.log( subArray );
+        
+        for ( var column = 1; column < arrayPassed.length - 1; column++ )
+        {
+            otherSubArray = arrayPassed[column + 1];
+            console.log( "Comparing " + subArray + " to " + otherSubArray );
+
+            if ( increment == 4  )
+            {
+                if ( subArray[0] == otherSubArray[0] )
+                {
+                    console.log( "DUP FOUND: " + subArray[0] + " " + otherSubArray[0] );
+                }
+                    
+                if ( subArray[0] == otherSubArray[1] )
+                {
+                    console.log( "DUP FOUND: " + subArray[0] + " " + otherSubArray[1] );
+                }
+                
+                if ( subArray[0] == otherSubArray[2] )
+                {
+                    console.log( "DUP FOUND: " + subArray[0] + " " + otherSubArray[2] );
+                }
+                    
+                if ( subArray[0] == otherSubArray[3] )
+                {
+                    console.log( "DUP FOUND: " + subArray[0] + " " + otherSubArray[3] );
+                }
+                    
+                if ( subArray[1] == otherSubArray[0] )
+                {
+                    console.log( "DUP FOUND: " + subArray[1] + " " + otherSubArray[0] );
+                }
+                    
+                if ( subArray[1] == otherSubArray[1] )
+                {
+                    console.log( "DUP FOUND: " + subArray[1] + " " + otherSubArray[1] );
+                }
+                    
+                if ( subArray[1] == otherSubArray[2] ) 
+                {
+                    console.log( "DUP FOUND: " + subArray[1] + " " + otherSubArray[2] );
+                }
+                    
+                if ( subArray[1] == otherSubArray[3] )
+                {
+                    console.log( "DUP FOUND: " + subArray[1] + " " + otherSubArray[3] );
+                }
+                    
+                if ( subArray[2] == otherSubArray[0] )
+                {
+                    console.log( "DUP FOUND: " + subArray[2] + " " + otherSubArray[0] );
+                }
+                    
+                if ( subArray[2] == otherSubArray[1] )
+                {
+                    console.log( "DUP FOUND: " + subArray[2] + " " + otherSubArray[1] );
+                }
+                    
+                if ( subArray[2] == otherSubArray[2] )
+                {
+                    console.log( "DUP FOUND: " + subArray[2] + " " + otherSubArray[2] );
+                }
+                    
+                if ( subArray[2] == otherSubArray[3] ) 
+                {
+                    console.log( "DUP FOUND: " + subArray[2] + " " + otherSubArray[3] );
+                }
+                    
+                if ( subArray[3] == otherSubArray[0] ) 
+                {
+                    console.log( "DUP FOUND: " + subArray[3] + " " + otherSubArray[0] );
+                }
+                    
+                if ( subArray[3] == otherSubArray[1] ) 
+                {
+                    console.log( "DUP FOUND: " + subArray[3] + " " + otherSubArray[1] );
+                }
+                    
+                if ( subArray[3] == otherSubArray[2] )
+                {
+                    console.log( "DUP FOUND: " + subArray[3] + " " + otherSubArray[2] );
+                }
+                    
+                if ( subArray[3] == otherSubArray[3] )
+                {
+                    console.log( "DUP FOUND: " + subArray[3] + " " + otherSubArray[3] );
+                }
+            }
+        }
+    }
+    
+    return arrayPassed;
 }
 
 // Creates space needed to aadd array

@@ -9,11 +9,17 @@ var sixteenAmount = 0;
 var sixteenArray = new Array(1);
 var sixteenDrawingArray = new Array(1);
 
-// Counter for 16s along with array
+// Counter for 8s along with array
 var eightCounter = 0;
 var eightAmount = 0;
 var eightArray = new Array(1);
 var eightDrawingArray = new Array(1);
+
+// Counter for 4s along with array
+var fourCounter = 0;
+var fourAmount = 0;
+var fourArray = new Array(1);
+var fourDrawingArray = new Array(1);
 
 array = createArray(4);
 userArray = createUserArray(4);
@@ -23,20 +29,20 @@ fillKMap();
 
 // For hardcoding array ( testing )
 array[0] = 1;
-array[1] = 0;
-array[2] = 0;
-array[3] = 1;
+array[1] = 1;
+array[2] = 1;
+array[3] = 0;
 array[4] = 1;
-array[5] = 0;
-array[6] = 0;
-array[7] = 1;
+array[5] = 1;
+array[6] = 1;
+array[7] = 0;
 array[8] = 1;
-array[9] = 0;
-array[10] = 0;
-array[11] = 1;
+array[9] = 1;
+array[10] = 1;
+array[11] = 0;
 array[12] = 1;
 array[13] = 0;
-array[14] = 0;
+array[14] = 1;
 array[15] = 1;
 
 console.log( "\nA | BC________________________");
@@ -48,6 +54,7 @@ console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14]
 
 find16s();
 find8s();
+find4s();
 
 // Attempts Left Message
 var attemptsLeft = 3;
