@@ -23,10 +23,17 @@ var fourArray = new Array(1);
 var fourDrawingArray = new Array(1);
 var fourArrayIndex = 0;
 
-var iOneDup = 0;
-var iTwoDup = 0;
-var iThreeDup = 0;
-var iFourDup = 0;
+// Counter for 2s along with array
+var twoCounter = 0;
+var twoAmount = 0;
+var twoArray = new Array(1);
+var twoDrawingArray = new Array(1);
+var twoArrayIndex = 0;
+
+var iOneDup = false;
+var iTwoDup = false;
+var iThreeDup = false;
+var iFourDup = false;
 
 array = createArray(4);
 userArray = createUserArray(4);
@@ -39,18 +46,18 @@ fillKMap();
 array[1] = 1;
 array[2] = 1;
 array[3] = 1;
-array[4] = 0;
-array[5] = 0;
-array[6] = 0;
-array[7] = 0;
-array[8] = 0;
-array[9] = 0;
+array[4] = 1;
+array[5] = 1;
+array[6] = 1;
+array[7] = 1;
+array[8] = 1;
+array[9] = 1;
 array[10] = 0;
-array[11] = 0;
-array[12] = 1;
-array[13] = 1;
+array[11] = 1;
+array[12] = 0;
+array[13] = 0;
 array[14] = 0;
-array[15] = 1;*/
+array[15] = 0;*/
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
@@ -62,6 +69,7 @@ console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14]
 find16s();
 find8s();
 find4s();
+find2s();
 
 // Attempts Left Message
 var attemptsLeft = 3;

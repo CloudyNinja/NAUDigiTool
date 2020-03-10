@@ -426,20 +426,7 @@ function formatRectangle( rectangle, event )
             console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
-        else if ( x > 100 && x < 300 && y > 55 && y < 100 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 5 && rectangle.h < 45 )
-        {
-            temp = { startX: 110, startY: 100, w: 180, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            temp = { startX: 110, startY: 260, w: 180, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 0, 1, 2, 3, 12, 13, 14, 15 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
-        }
-        
+        // Horizontal Wrap
         else if ( x > 55 && x < 100 && y > 100 && y < 300 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 100, startY: 110, w: 40, h : 180, color: rectColor };
@@ -450,6 +437,21 @@ function formatRectangle( rectangle, event )
             // Creates array space and adds array
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 0, 3, 4, 7, 8, 11, 12, 15 ];
+            eightDrawingArray = removeDuplicates( eightDrawingArray );
+            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+        }
+        
+        // Vertical Wrap
+        else if ( x > 100 && x < 300 && y > 55 && y < 100 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 5 && rectangle.h < 45 )
+        {
+            temp = { startX: 110, startY: 100, w: 180, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 110, startY: 260, w: 180, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( eightDrawingArray );
+            eightDrawingArray[index] = [ 0, 1, 2, 3, 12, 13, 14, 15 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
             console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
@@ -572,7 +574,7 @@ function formatRectangle( rectangle, event )
             
             // Creates array space and adds array
             index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 1, 4, 5 ];
+            fourDrawingArray[index] = [ 1, 2, 5, 6 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
             console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
@@ -584,7 +586,7 @@ function formatRectangle( rectangle, event )
             
             // Creates array space and adds array
             index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 1, 4, 5 ];
+            fourDrawingArray[index] = [ 2, 3, 6, 7 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
             console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
@@ -664,6 +666,111 @@ function formatRectangle( rectangle, event )
         }
         
         // Wraps
+            // Horizontal Wraps
+        else if ( x > 60 && x < 100 && y > 165 && y < 200 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
+        {
+            temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 0, 3, 4, 7 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+        else if ( x > 60 && x < 100 && y > 150 && y < 250 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
+        {
+            temp = { startX: 100, startY: 160, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 160, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 4, 7, 8, 11 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+        else if ( x > 60 && x < 100 && y > 200 && y < 300 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
+        {
+            temp = { startX: 100, startY: 210, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 210, w: 40, h : 80, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 8, 11, 12, 15 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+            //  Vertical Wraps
+        else if ( x > 100 && x < 200 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
+        {
+            temp = { startX: 110, startY: 100, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 110, startY: 260, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 0, 1, 12, 13 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+        else if ( x > 150 && x < 250 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
+        {
+            temp = { startX: 160, startY: 100, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 160, startY: 260, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 1, 2, 13, 14 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+        else if ( x > 200 && x < 300 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
+        {
+            temp = { startX: 210, startY: 100, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 210, startY: 260, w: 80, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 2, 3, 14, 15 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
+        // Four corner wrap
+        else if ( x > 25 && x < 75 && y > 45 && y < 85 && rectangle.w > 35 && rectangle.w < 60 && rectangle.h > 15 && rectangle.h < 40 )
+        {
+            temp = { startX: 100, startY: 100, w: 40, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 100, w: 40, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 100, startY: 260, w: 40, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 260, w: 40, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( fourDrawingArray );
+            fourDrawingArray[index] = [ 0, 3, 12, 15 ];
+            fourDrawingArray = removeDuplicates( fourDrawingArray );
+            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+        }
+        
         else
         {
             temp = {};
@@ -1631,8 +1738,13 @@ function find4s()
             if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 )
             {
                 newArray = [ index, index + 1, index + 2, index + 3 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
@@ -1645,8 +1757,13 @@ function find4s()
             if ( array[index] == 1 && array[index + 4] == 1 && array[index + 8] == 1 && array[index + 12] == 1 )
             {
                 newArray = [ index, index + 4, index + 8, index + 12 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
@@ -1659,8 +1776,13 @@ function find4s()
             if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 )
             {
                 newArray = [ index, index + 1, index + 4, index + 5 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
@@ -1673,8 +1795,13 @@ function find4s()
             if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 )
             {
                 newArray = [ index, index + 3, index + 4, index + 7 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
@@ -1687,8 +1814,13 @@ function find4s()
             if ( array[index] == 1 && array[index + 1] == 1 && array[index + 12] == 1 && array[index + 13] == 1 )
             {
                 newArray = [ index, index + 1, index + 12, index + 13 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
@@ -1701,15 +1833,20 @@ function find4s()
             if ( array[index] == 1 && array[index + 3] == 1 && array[index + 12] == 1 && array[index + 15] == 1 )
             {
                 newArray = [ index, index + 3, index + 12, index + 15 ];
-                checkIfCanAdd( newArray, eightArray, eightArrayIndex, eightAmount );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount );
+                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray );
+                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
             }
         }
     }
     
     if ( fourAmount == 0 )
     {
-        console.log( "FOUR ARRAY NOT FORMED: " + JSON.stringify( fourArray ) );
+        console.log( "FOUR ARRAY FORMED: " + JSON.stringify( fourArray ) );
     }
     
     else
@@ -1718,72 +1855,166 @@ function find4s()
     }
 }
 
-function checkIfCanAdd( arrayPassed, comparedArray, comparedArrayIndex, comparedArrayAmount )
+// Finds 2s in array 
+function find2s()
 {
-    var whileIndex = 0;     
-    while ( fourArray[whileIndex] != null )
+    var length = getLengthOfArray();
+    var newArray = new Array(1);
+
+    // For horizontal groupings ( lines only )
+    for ( var index = 0; index < length; index++ )
     {
-        console.log( "Comparing " + arrayPassed + " to " + comparedArray[whileIndex] );
+        if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 || index == 8 || index == 9 || index == 10 || index == 12 || index == 13 || index == 14 )
+        {            
+            if ( array[index] == 1 && array[index + 1] == 1 )
+            {
+                newArray = [ index, index + 1 ];
+                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray );
+                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray );
+                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
+            }
+        }
+    }
+    
+    // Vertical lines
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 ) )
+        {
+            if ( array[index] == 1 && array[index + 4] == 1 )
+            {
+                newArray = [ index, index + 4 ];
+                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray );
+                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray );
+                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
+            }
+        }
+    }
+    
+    if ( twoAmount == 0 )
+    {
+        console.log( "TWO ARRAY FORMED: " + JSON.stringify( twoArray ) );
+    }
+    
+    else
+    {
+        console.log( "TWO ARRAY: " + JSON.stringify( twoArray ) );
+    }
+}
+
+function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, array )
+{
+    var count = 0;
+    var whileIndex = 0;  
+    
+    while ( comparedArray[whileIndex] != null )
+    {
+        //console.log( "Comparing " + arrayPassed + " to " + comparedArray[whileIndex] );
         checkForDuplicates( arrayPassed, comparedArray[whileIndex] );
         whileIndex += 1;
     }
-
-    if ( iOneDup < 1 || iTwoDup < 1 || iThreeDup < 1 || iFourDup < 1 )
+    
+    if ( iOneDup && iTwoDup && iThreeDup && iFourDup && arrayPassed.length == 4 )
     {
-        // Creates slot to add array and adds the array
-        comparedArrayIndex = createArraySpace( comparedArray );
-        comparedArray[comparedArrayIndex] = arrayPassed;
-        comparedArrayAmount += 1;
-        
-        iOneDup = 0;
-        iTwoDup = 0;
-        iThreeDup = 0;
-        iFourDup = 0;
+        //console.log( "NEW ARRAY NOT ADDED" );
+        count += 1;
     }
-
-    else
+    
+    else if ( count == 0 && ( !iOneDup || !iTwoDup || !iThreeDup || !iFourDup ) && arrayPassed.length == 4 )
     {
-        iOneDup = 0;
-        iTwoDup = 0;
-        iThreeDup = 0;
-        iFourDup = 0;
+        //console.log( "NEW ARRAY ADDED" );
+        // Creates slot to add array and adds the array
+        arrayIndex = createArraySpace( array );
+        array[arrayIndex] = arrayPassed;
+        arrayAmount += 1;
+    }
+    
+    else if ( iOneDup && iTwoDup && arrayPassed.length == 2 )
+    {
+        //console.log( "NEW ARRAY NOT ADDED" );
+        count += 1;
+        //console.log( "Count incremented: " + count );
+    }
+    
+    
+    else if ( count == 0 && ( !iOneDup || !iTwoDup ) )
+    {  
+        console.log( "ADDED" );
+        //console.log( "WHILE INDEX: " + whileIndex );
+        //console.log( "COMPARED ARRAY LENGTH: " + comparedArray.length );
+        arrayIndex = createArraySpace( array );
+        array[arrayIndex] = arrayPassed;
+        arrayAmount += 1;
     }
 }
 
 // Compares two arrays for duplicates
 function checkForDuplicates( arrayOne, arrayTwo )
 {    
-    var counter = 0;
-    
     if ( arrayTwo != null )
     {
         for ( var arrayOneIndex = 0; arrayOneIndex < arrayOne.length; arrayOneIndex++ )
         {
             for ( var arrayTwoIndex = 0; arrayTwoIndex < arrayTwo.length; arrayTwoIndex++ )
             {
-                /*console.log( "COMPARING: " + arrayOne[arrayOneIndex] + " with " + arrayTwo[arrayTwoIndex] );*/
-                            
-                if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 0 )
+                //console.log( "COMPARING: " + arrayOne[arrayOneIndex] + " with " + arrayTwo[arrayTwoIndex] );
+                
+                if ( arrayOne.length == 2 )
                 {
-                    iOneDup += 1;
+                    //console.log( "IN IF" );
+                    
+                    if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 0 )
+                    {
+                        iOneDup = true;
+                    }
+
+                    else if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 1 )
+                    {
+                        iTwoDup  = true;
+                    }
                 }
                 
-                else if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 1 )
+                else 
                 {
-                    iTwoDup += 1;
-                }
-                
-                if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 2 )
-                {
-                    iThreeDup += 1;
-                }
-                
-                if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 3 )
-                {
-                    iFourDup += 1;
+                    //console.log( "IN ELSE" );
+                    
+                    if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 0 )
+                    {
+                        iOneDup = true;
+                    }
+
+                    else if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 1 )
+                    {
+                        iTwoDup  = true;
+                    }
+
+                    else if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 2 )
+                    {
+                        iThreeDup = true;
+                    }
+
+                    else if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] && arrayOneIndex == 3 )
+                    {
+                        iFourDup = true;
+                    }
                 }
             }
         }
+        
+        //console.log( "IONEDUP: " + iOneDup );
+        //console.log( "ITWODUP: "+ iTwoDup );
+        /*console.log( "ITHREEDUP: " + iThreeDup );
+        console.log( "IFOURDUP: " + iFourDup );*/
     }
 }
 
@@ -1815,8 +2046,8 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
     var sizeEqual = arrayOne.length == arrayTwo.length;
     var count = 0;
     
-    if ( sizeEqual )
-    {
+    if ( sizeEqual && arrayOne[0] != null )
+    {           
         for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
         {
             for ( var innerIndex = 0; innerIndex < arrayOne.length; innerIndex++ )
@@ -1838,6 +2069,12 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
         {
             return false;
         }
+    }
+    
+    else if ( arrayOne[0] == null && arrayTwo[0] == null )
+    {
+        console.log( "HERE" );
+        return true;
     }
     
     else
@@ -2560,8 +2797,13 @@ function checkGroupings()
     {
         var sixteenArraysMatch = checkIfArraysMatch( sixteenArray, sixteenDrawingArray );
         var eightArraysMatch = checkIfArraysMatch( eightArray, eightDrawingArray );
+        var fourArraysMatch = checkIfArraysMatch( fourArray, fourDrawingArray );
         
-        if ( sixteenArraysMatch && eightArraysMatch )
+        console.log( "SIXTEEN ARRAYS MATCH: " + sixteenArraysMatch );
+        console.log( "EIGHT ARRAYS MATCH: " + eightArraysMatch );
+        console.log( "FOUR ARRAYS MATCH: " + fourArraysMatch );
+        
+        if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch )
         {
             alert( "CORRECT!" );
         }
@@ -2692,6 +2934,8 @@ function resetGroupings()
         console.log( "SIXTEEN DRAWING ARRAY RESET: " + JSON.stringify( sixteenDrawingArray ) );
         eightDrawingArray = resetDrawingArray( eightDrawingArray );
         console.log( "EIGHT DRAWING ARRAY RESET: " + JSON.stringify( eightDrawingArray ) );
+        fourDrawingArray = resetDrawingArray( fourDrawingArray );
+        console.log( "FOUR DRAWING ARRAY RESET: " + JSON.stringify( fourDrawingArray ) );
     }
 }
 
