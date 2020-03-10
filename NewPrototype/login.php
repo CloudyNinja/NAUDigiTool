@@ -26,7 +26,9 @@
     if( $entry['username'] == $username && $entry['pass'] == $password )
     {
         #Success
-        #echo purely for testing
+        echo( "<script>" );
+        echo( "   sessionStorage.setItem('student_id', '",$entry['id'], ");");
+        echo( "</script>" );
         header("Location: index.html");
     } else {
         #Failed
