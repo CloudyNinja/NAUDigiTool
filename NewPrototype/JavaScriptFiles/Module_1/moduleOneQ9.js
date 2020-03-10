@@ -14,12 +14,19 @@ var eightCounter = 0;
 var eightAmount = 0;
 var eightArray = new Array(1);
 var eightDrawingArray = new Array(1);
+var eightArrayIndex = 0;
 
 // Counter for 4s along with array
 var fourCounter = 0;
 var fourAmount = 0;
 var fourArray = new Array(1);
 var fourDrawingArray = new Array(1);
+var fourArrayIndex = 0;
+
+var iOneDup = 0;
+var iTwoDup = 0;
+var iThreeDup = 0;
+var iFourDup = 0;
 
 array = createArray(4);
 userArray = createUserArray(4);
@@ -28,22 +35,22 @@ createKMap(4);
 fillKMap();
 
 // For hardcoding array ( testing )
-array[0] = 1;
+/*array[0] = 1;
 array[1] = 1;
 array[2] = 1;
-array[3] = 0;
-array[4] = 1;
-array[5] = 1;
-array[6] = 1;
+array[3] = 1;
+array[4] = 0;
+array[5] = 0;
+array[6] = 0;
 array[7] = 0;
-array[8] = 1;
-array[9] = 1;
-array[10] = 1;
+array[8] = 0;
+array[9] = 0;
+array[10] = 0;
 array[11] = 0;
 array[12] = 1;
-array[13] = 0;
-array[14] = 1;
-array[15] = 1;
+array[13] = 1;
+array[14] = 0;
+array[15] = 1;*/
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
