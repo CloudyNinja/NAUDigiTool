@@ -14,6 +14,8 @@ var rectangleArray = new Array( 3 );
 var drawingArray = new Array( 8 );
 setDrawingArray();
 
+var student_id = sessionStorage.getItem('student_id');
+
 //////////// FOR GROUPING /////////////////
 function setDrawingArray()
 {
@@ -2639,6 +2641,8 @@ function checkAnswers()
         userStars += starsGiven;
         passUserStars( userStars );
         
+        log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+
         if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) )
         {
             window.location.href = "moduleOneQuestion2.html";
@@ -2758,6 +2762,8 @@ function checkGroupings()
             userStars += starsGiven;
             passUserStars( userStars );
 
+            log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+
             if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
             {
                 window.location.href = "moduleOneQuestion3.html";
@@ -2841,6 +2847,8 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
+            log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+            
             if ( window.location.href.indexOf("moduleOneQuestion3") > -1 )
             {
                 window.location.href = "moduleOneQuestion4.html";
@@ -3004,6 +3012,9 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
+        log(student_id, 1, "test", false, userStars, 3, 1);
+
+
         for ( var index = 1; index <= 15; index++ )
         {
             if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
