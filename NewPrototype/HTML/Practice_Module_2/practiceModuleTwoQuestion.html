@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../../CSS/default.css">
+        <link rel="stylesheet" href="../../CSS/moduleTwo.css">
+        <link rel="stylesheet" href="../../CSS/moduleTwoPractice.css">
+        <title>Choose Your Conversions</title>
+    </head>
+    <body>
+        <div id="moduleNavbar" ></div>
+
+        <h1 id="practiceHeader"> Choose the First Conversion You'd Like to Practice: </h2>
+
+        <input type="radio" id="optionOne" name="option" value="optionOne">
+        <label for="optionOne" id="optionOneText">Decimal</label>
+        <br>
+
+        <input type="radio" id="optionTwo" name="option" value="optionTwo">
+        <label for="optionTwo" id="optionTwoText">Binary</label>
+        <br>
+
+        <input type="radio" id="optionThree" name="option" value="optionThree">
+        <label for="optionThree" id="optionThreeText">Octal</label>
+        <br>
+
+        <input type="radio" id="optionFour" name="option" value="optionFour">
+        <label for="optionFour" id="optionFourText">Hexadecimal</label>
+        <br>
+
+        <h1 id="practiceHeader2"> Choose What You'd Like to Convert to: </h1>
+        
+        <input type="radio" id="questionOne" name="questionType" value="questionOne">
+        <label for="questionOne" id="questionOneText">Decimal</label>
+        <br>
+
+        <input type="radio" id="questionTwo" name="questionType" value="questionTwo">
+        <label for="questionTwo" id="questionTwoText">Binary</label>
+        <br>
+
+        <input type="radio" id="questionThree" name="questionType" value="questionThree">
+        <label for="questionThree" id="questionThreeText">Octal</label>
+        <br>
+
+        <input type="radio" id="questionFour" name="questionType" value="questionFour">
+        <label for="questionFour" id="questionFourText">Hexadecimal</label>
+        <br>
+        
+        <button type="button" id="subButton" onclick="generateQuestion()">Submit</button>
+        <!-- Loads the JavaScript files -->
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoStars.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoPracticeFunctions.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoQ3.js"> </script>
+        
+        <div id="footer"></div>
+        
+        <!-- Dependencies -->
+        <script src="../../node_modules/react/umd/react.development.js"></script>
+        <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <!-- Main -->
+        <script src="../../dist/main.js"></script>
+
+    </body>
+</html>

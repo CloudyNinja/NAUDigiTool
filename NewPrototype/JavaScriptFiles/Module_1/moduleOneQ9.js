@@ -9,6 +9,32 @@ var sixteenAmount = 0;
 var sixteenArray = new Array(1);
 var sixteenDrawingArray = new Array(1);
 
+// Counter for 8s along with array
+var eightCounter = 0;
+var eightAmount = 0;
+var eightArray = new Array(1);
+var eightDrawingArray = new Array(1);
+var eightArrayIndex = 0;
+
+// Counter for 4s along with array
+var fourCounter = 0;
+var fourAmount = 0;
+var fourArray = new Array(1);
+var fourDrawingArray = new Array(1);
+var fourArrayIndex = 0;
+
+// Counter for 2s along with array
+var twoCounter = 0;
+var twoAmount = 0;
+var twoArray = new Array(1);
+var twoDrawingArray = new Array(1);
+var twoArrayIndex = 0;
+
+var iOneDup = false;
+var iTwoDup = false;
+var iThreeDup = false;
+var iFourDup = false;
+
 array = createArray(4);
 userArray = createUserArray(4);
 createTruthTable(4);
@@ -16,7 +42,7 @@ createKMap(4);
 fillKMap();
 
 // For hardcoding array ( testing )
-array[0] = 1;
+/*array[0] = 1;
 array[1] = 1;
 array[2] = 1;
 array[3] = 1;
@@ -26,12 +52,12 @@ array[6] = 1;
 array[7] = 1;
 array[8] = 1;
 array[9] = 1;
-array[10] = 1;
+array[10] = 0;
 array[11] = 1;
-array[12] = 1;
-array[13] = 1;
-array[14] = 1;
-array[15] = 1;
+array[12] = 0;
+array[13] = 0;
+array[14] = 0;
+array[15] = 0;*/
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
@@ -41,6 +67,9 @@ console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] +
 console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
 
 find16s();
+find8s();
+find4s();
+find2s();
 
 // Attempts Left Message
 var attemptsLeft = 3;

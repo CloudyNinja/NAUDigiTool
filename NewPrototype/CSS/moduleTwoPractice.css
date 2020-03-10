@@ -1,109 +1,4 @@
-/* Details that modify the body */
-body 
-{
-    background: #C8CFD9;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    min-height: 100%;
-}
-
-/* Details that modify the navigation bar */
-#navigationBar, #moduleNavbar
-{
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-}
-
-/* Allows items to float to the left */
-li
-{
-    float: left;
-}
-
-/* Styles and aligns each item in navigation bar */
-li a
-{
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 25px 25px;
-    text-decoration: none;
-}
-
-/* Hover effect whenever your mouse is over an item in the navigation bar */
-li a:hover
-{
-    background-color: #001f4d;
-}
-
-#topContainer
-{
-    background-image: url(CSS_Pictures/NAU_Snow.png);
-    background-size: 82%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    height: 450px;
-    margin-top: 100px;
-    margin-left: 20px;
-    margin-right: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 36px;
-    padding: 50px;
-    border-radius: 6px;
-    text-align: center;
-    letter-spacing: .10em;
-}
-
-#instructions
-{
-    background-color: #bdbdbd;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
-    margin-left: 9%;
-    margin-right: 9%;
-    margin-bottom: 100px;
-    padding: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 6px;
-    text-align: center;
-    letter-spacing: .10em;
-    height: 420px;
-    font-size-adjust: auto;
-}
-
-#logo
-{
-    position: relative;
-    border-radius: 50%;
-    padding: 40px;
-}
-
-/* Styles the footer */
-#footer
-{
-    bottom: 0;
-    padding: 20px;
-    left: 0;
-    width: 100%;
-    position: fixed;
-    background-color: black;
-    color: white;
-}
-
-/* CSS for Practice Mode Module 1 */
+/* CSS for Practice Mode Module 2 */
 #variableText
 {
     position: absolute;   
@@ -121,7 +16,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 100px;
+    left: 270px;
     height: 50px;
     width: 100px;
 }
@@ -130,7 +25,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 130px;
+    left: 270px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
@@ -144,7 +39,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 400px;
+    left: 570px;
     height: 50px;
     width: 100px;
 }
@@ -153,7 +48,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 430px;
+    left: 570px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
@@ -167,7 +62,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 700px;
+    left: 870px;
     height: 50px;
     width: 100px;
 }
@@ -176,7 +71,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 730px;
+    left: 870px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
@@ -190,7 +85,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 1000px;
+    left: 1170px;
     height: 50px;
     width: 100px;
 }
@@ -199,7 +94,7 @@ li a:hover
 {
     position: absolute;
     top: 200px;
-    left: 1030px;
+    left: 1170px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
@@ -278,25 +173,34 @@ li a:hover
     border-radius: 20px;
 }
 
-#problemText
+#questionFour
 {
-    position: absolute;   
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%; 
-    min-width: 1000px;
-    top: 300px;
-    left: 400px;
-    font-family: serif;
-    color: black;
+    position: absolute;
+    top: 400px;
+    left: 1140px;
+    height: 50px;
+    width: 100px;
 }
 
-/* Styles submit button */
+#questionFourText
+{
+    position: absolute;
+    top: 400px;
+    left: 1170px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
 #subButton
 {
     position: absolute;
     top: 550px;
-    left: 550px;
+    left: 720px;
     height: 50px;
     width: 100px;
     background-color: #597dd9;
@@ -304,12 +208,3 @@ li a:hover
     margin-bottom: 100px;
     border-radius: 20px;
 }
-
-/* Submit button hover effect */
-#subButton:hover
-{
-    background-color: #fbff94;
-    color: black;
-}
-
-/* End of CSS for Practice Mode Module 1 */
