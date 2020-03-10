@@ -2909,7 +2909,7 @@ function checkAnswers()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+        //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
 
         if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) )
         {
@@ -3030,7 +3030,7 @@ function checkGroupings()
             userStars += starsGiven;
             passUserStars( userStars );
 
-            log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+            //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
 
             if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
             {
@@ -3117,7 +3117,7 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-            log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+            //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
             
             if ( window.location.href.indexOf("moduleOneQuestion3") > -1 )
             {
@@ -3284,7 +3284,7 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
-        log(student_id, 1, "test", false, userStars, 3, 1);
+        //log(student_id, 1, "test", false, userStars, 3, 1);
 
 
         for ( var index = 1; index <= 15; index++ )
