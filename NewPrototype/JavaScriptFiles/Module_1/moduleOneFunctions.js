@@ -1063,7 +1063,119 @@ function formatRectangle( rectangle, event )
             console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
-        // STILL NEED TO DO WRAPS
+        // Horizontal Wraps
+        else if ( x > 60 && x < 100 && y > 100 && y < 140 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 100, startY: 110, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 265, startY: 110, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 0, 3 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 60 && x < 100 && y > 150 && y < 190 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 100, startY: 160, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 265, startY: 160, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 4, 7 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 60 && x < 100 && y > 200 && y < 240 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 100, startY: 210, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 265, startY: 210, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 8, 11 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 60 && x < 100 && y > 250 && y < 290 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 100, startY: 260, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 265, startY: 260, w: 35, h : 30, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 12, 15 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        // Vertical groups 
+        else if ( x > 105 && x < 145 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 110, startY: 100, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 110, startY: 260, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 0, 12 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 150 && x < 200 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 160, startY: 100, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 160, startY: 260, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 1, 13 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 200 && x < 250 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 210, startY: 100, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 210, startY: 260, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 2, 14 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
+        
+        else if ( x > 250 && x < 300 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
+        {
+            temp = { startX: 260, startY: 100, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            temp = { startX: 260, startY: 260, w: 30, h : 40, color: rectColor };
+            addRectangleToArray( temp );
+            
+            // Creates array space and adds array
+            index = createArraySpace( twoDrawingArray );
+            twoDrawingArray[index] = [ 3, 15 ];
+            twoDrawingArray = removeDuplicates( twoDrawingArray );
+            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+        }
         
         else
         {
@@ -2178,7 +2290,7 @@ function find2s()
     // Vertical lines
     for ( var index = 0; index < length; index++ )
     {
-        if ( ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 ) )
+        if ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 )
         {
             if ( array[index] == 1 && array[index + 4] == 1 )
             {
@@ -2195,15 +2307,77 @@ function find2s()
         }
     }
     
-    if ( twoAmount == 0 )
+    // Horizontal Wraps
+    for ( var index = 0; index < length; index++ )
     {
-        console.log( "TWO ARRAY FORMED: " + JSON.stringify( twoArray ) );
+        if ( index == 0 || index == 4 || index == 8 || index == 12 )
+        {
+            if ( array[index] == 1 && array[index + 3] == 1 )
+            {
+                newArray = [ index, index + 3 ];
+                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
+            }
+        }
     }
     
-    else
+    // Vertical Wraps
+    for ( var index = 0; index < length; index++ )
     {
-        console.log( "TWO ARRAY: " + JSON.stringify( twoArray ) );
+        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+        {
+            if ( array[index] == 1 && array[index + 12] == 1 )
+            {
+                newArray = [ index, index + 12 ];
+                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                
+                iOneDup = false;
+                iTwoDup = false;
+                iThreeDup = false;
+                iFourDup = false;
+            }
+        }
     }
+
+    //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
+    twoArray = eliminateRedundancies( twoArray );
+    console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
+}
+
+function eliminateRedundancies( arrayPassed )
+{
+    //console.log( "LENGTH OF ARRAY PASSED: "+ arrayPassed.length );
+    
+    for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
+    {
+        iOneDup = false;
+        iTwoDup = false;
+        
+        for ( var innerIndex = 0; innerIndex < arrayPassed.length; innerIndex++ )
+        {
+            if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
+            {
+                //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
+                checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
+                
+                if ( iOneDup && iTwoDup )
+                {
+                    //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                    arrayPassed.splice( outerIndex, 1 );
+                }
+            }
+        }
+    }
+    
+    return arrayPassed;
 }
 
 function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, array, number )
