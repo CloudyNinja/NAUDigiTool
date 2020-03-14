@@ -351,7 +351,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( sixteenDrawingArray );
             sixteenDrawingArray[index] = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
             sixteenDrawingArray = removeDuplicates( sixteenDrawingArray );
-            console.log( "SIXTEEN DRAWING ARRAY: " + JSON.stringify( sixteenDrawingArray ) );
+         //   console.log( "SIXTEEN DRAWING ARRAY: " + JSON.stringify( sixteenDrawingArray ) );
         }
         
         // For eights // Horizonals, Verticals, Wraps
@@ -364,7 +364,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+         //   console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         else if ( x > 105 && x < 295 && y > 195 && y < 245 && rectangle.w > 165 && rectangle.w < 195 && rectangle.h > 65 && rectangle.h < 95 )
@@ -376,7 +376,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 4, 5, 6, 7, 8, 9, 10, 11 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         else if ( x > 105 && x < 295 && y > 245 && y < 295 && rectangle.w > 165 && rectangle.w < 195 && rectangle.h > 65 && rectangle.h < 95 )
@@ -388,7 +388,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 8, 9, 10, 11, 12, 13, 14, 15 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         // Verticals
@@ -401,7 +401,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 0, 1, 4, 5, 8, 9, 12, 13 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         else if ( x > 195 && x < 245 && y > 105 && y < 295 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
@@ -413,7 +413,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 1, 2, 5, 6, 9, 10, 13, 14 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         else if ( x > 105 && x < 295 && y > 70 && y < 95 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
@@ -425,7 +425,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 2, 3, 6, 7, 10, 11, 14, 15 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         // Horizontal Wrap
@@ -440,7 +440,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 0, 3, 4, 7, 8, 11, 12, 15 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         // Vertical Wrap
@@ -455,7 +455,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( eightDrawingArray );
             eightDrawingArray[index] = [ 0, 1, 2, 3, 12, 13, 14, 15 ];
             eightDrawingArray = removeDuplicates( eightDrawingArray );
-            console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
         // Quads // Horizontals, verticals, squares ( top left to bottom right ), wraps
@@ -468,7 +468,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 1, 2, 3 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 100 && x < 300 && y > 150 && y < 200 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
@@ -492,7 +492,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 8, 9, 10, 11 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 100 && x < 300 && y > 250 && y < 300 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
@@ -504,7 +504,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 12, 13, 14, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Verticals
@@ -517,7 +517,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 4, 8, 12 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 150 && x < 200 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
@@ -529,7 +529,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 1, 5, 9, 13 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 200 && x < 250 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
@@ -541,7 +541,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 2, 6, 10, 14 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 250 && x < 300 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
@@ -553,7 +553,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 3, 7, 11, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Squares: From left to right
@@ -590,7 +590,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 2, 3, 6, 7 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+         //   console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Middle squares
@@ -603,7 +603,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 4, 5, 8, 9 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 150 && y < 250 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -615,7 +615,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 5, 6, 9, 10 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 150 && y < 250 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -627,7 +627,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 6, 7, 10, 11 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Bottom squares
@@ -640,7 +640,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 8, 9, 12, 13 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 200 && y < 300 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -652,7 +652,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 9, 10, 13, 14 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 200 && y < 300 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -664,7 +664,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 10, 11, 14, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Wraps
@@ -680,7 +680,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 3, 4, 7 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 60 && x < 100 && y > 150 && y < 250 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
@@ -694,7 +694,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 4, 7, 8, 11 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 60 && x < 100 && y > 200 && y < 300 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
@@ -708,7 +708,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 8, 11, 12, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
             //  Vertical Wraps
@@ -723,7 +723,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 1, 12, 13 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
@@ -737,7 +737,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 1, 2, 13, 14 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
@@ -770,7 +770,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 3, 12, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // For pairs ( Horizontal, Vertical, Wraps ( Horizontal, Vertical ) )
@@ -783,7 +783,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 0, 1 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 100 && y < 150 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -795,7 +795,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 1, 2 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 100 && y < 150 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -807,7 +807,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 2, 3 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 100 && x < 200 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -819,7 +819,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 4, 5 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -831,7 +831,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 5, 6 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -843,7 +843,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 6, 7 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 100 && x < 200 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -855,7 +855,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 8, 9 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -867,7 +867,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 9, 10 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -879,7 +879,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 10, 11 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 100 && x < 200 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -891,7 +891,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 12, 13 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -903,7 +903,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 13, 14 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
@@ -915,7 +915,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 14, 15 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         // Vertical
@@ -928,7 +928,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 0, 4 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 200 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -940,7 +940,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 1, 5 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 250 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -952,7 +952,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 2, 6 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 250 && x < 300 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -964,7 +964,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 3, 7 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 100 && x < 150 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -976,7 +976,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 4, 8 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 200 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -988,7 +988,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 5, 9 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 250 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1000,7 +1000,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 6, 10 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 250 && x < 300 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1012,7 +1012,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 7, 11 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 100 && x < 150 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1024,7 +1024,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 8, 12 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 200 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1036,7 +1036,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 9, 13 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 250 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1048,7 +1048,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 10, 14 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 250 && x < 300 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
@@ -1060,7 +1060,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 11, 15 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         // Horizontal Wraps
@@ -1075,7 +1075,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 0, 3 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 60 && x < 100 && y > 150 && y < 190 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
@@ -1089,7 +1089,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 4, 7 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 60 && x < 100 && y > 200 && y < 240 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
@@ -1117,7 +1117,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 12, 15 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         // Vertical groups 
@@ -1132,7 +1132,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 0, 12 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 150 && x < 200 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
@@ -1146,7 +1146,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 1, 13 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 200 && x < 250 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
@@ -1160,7 +1160,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 2, 14 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else if ( x > 250 && x < 300 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
@@ -1174,7 +1174,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( twoDrawingArray );
             twoDrawingArray[index] = [ 3, 15 ];
             twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
         }
         
         else
@@ -2146,11 +2146,7 @@ function find4s()
                 newArray = [ index, index + 1, index + 2, index + 3 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2165,11 +2161,7 @@ function find4s()
                 newArray = [ index, index + 4, index + 8, index + 12 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2184,11 +2176,7 @@ function find4s()
                 newArray = [ index, index + 1, index + 4, index + 5 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2203,11 +2191,7 @@ function find4s()
                 newArray = [ index, index + 3, index + 4, index + 7 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2222,11 +2206,7 @@ function find4s()
                 newArray = [ index, index + 1, index + 12, index + 13 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2241,24 +2221,23 @@ function find4s()
                 newArray = [ index, index + 3, index + 12, index + 15 ];
                 checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
                 checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
     
-    if ( fourAmount == 0 )
-    {
-        console.log( "FOUR ARRAY FORMED: " + JSON.stringify( fourArray ) );
-    }
-    
-    else
-    {
-        console.log( "FOUR ARRAY: " + JSON.stringify( fourArray ) );
-    }
+    console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
+    fourArray = eliminateRedundancies( fourArray );
+    console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
+    resetAllDuplicates();
+}
+
+function resetAllDuplicates()
+{
+    iOneDup = false;
+    iTwoDup = false;
+    iThreeDup = false;
+    iFourDup = false;
 }
 
 // Finds 2s in array 
@@ -2278,11 +2257,7 @@ function find2s()
                 checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
                 checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
                 checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2298,11 +2273,7 @@ function find2s()
                 checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
                 checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
                 checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2318,11 +2289,7 @@ function find2s()
                 checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
                 checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
                 checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
@@ -2338,45 +2305,149 @@ function find2s()
                 checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
                 checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
                 checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                
-                iOneDup = false;
-                iTwoDup = false;
-                iThreeDup = false;
-                iFourDup = false;
+                resetAllDuplicates();
             }
         }
     }
 
-    console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
-    twoArray = eliminateRedundancies( twoArray );
-    console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
+    if ( twoArray[0] != null && fourArray[0] != null )
+    {
+        twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
+        console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
+    }
+    
+    else 
+    {
+        console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
+        twoArray = eliminateRedundancies( twoArray );
+        console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
+    }
 }
 
+// Eliminates Redundacies within one array
 function eliminateRedundancies( arrayPassed )
 {
     //console.log( "LENGTH OF ARRAY PASSED: "+ arrayPassed.length );
     
-    for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
-    {
-        iOneDup = false;
-        iTwoDup = false;
-        
-        for ( var innerIndex = 0; innerIndex < arrayPassed.length; innerIndex++ )
+    if ( arrayPassed != null )
+    {        
+        for ( var outerIndex = arrayPassed.length - 1; outerIndex > 0; outerIndex-- )
         {
-            if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
+            resetAllDuplicates();
+
+            for ( var innerIndex = 0; innerIndex < arrayPassed.length; innerIndex++ )
             {
-                //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
-                checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
-                
+                if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
+                {
+                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
+                    checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
+
+                    if ( arrayPassed[innerIndex].length == 4 )
+                    {
+                        if ( iOneDup && iTwoDup && iThreeDup && iFourDup )
+                        {
+                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                            arrayPassed.splice( outerIndex, 1 );
+                            resetAllDuplicates();
+                        }
+                    }
+
+                    else if ( arrayPassed[innerIndex].length == 2 )
+                    {
+                        if ( iOneDup && iTwoDup )
+                        {
+                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                            arrayPassed.splice( outerIndex, 1 );
+                            resetAllDuplicates();
+                        }
+                    }
+                }
+            }
+        }
+        
+        for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
+        {
+            resetAllDuplicates();
+
+            for ( var innerIndex = arrayPassed.length - 1; innerIndex > 0; innerIndex-- )
+            {
+                if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
+                {
+                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
+                    checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
+
+                    if ( arrayPassed[innerIndex].length == 4 )
+                    {
+                        if ( iOneDup && iTwoDup && iThreeDup && iFourDup )
+                        {
+                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                            arrayPassed.splice( outerIndex, 1 );
+                            resetAllDuplicates();
+                        }
+                    }
+
+                    else if ( arrayPassed[innerIndex].length == 2 )
+                    {
+                        if ( iOneDup && iTwoDup )
+                        {
+                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                            arrayPassed.splice( outerIndex, 1 );
+                            resetAllDuplicates();
+                        }
+                    }
+                }
+            }
+        }
+        
+        return arrayPassed;
+    }
+    
+    return arrayPassed;
+}
+
+// Eliminates redundacies within 2 arrays
+function eliminateRedundanciesFromTwoArrays( arrayPassed, otherArrayPassed, lastArrayPassed )
+{
+    //console.log( "LENGTH OF ARRAY PASSED: "+ arrayPassed.length );
+    
+    if ( arrayPassed != null && otherArrayPassed != null )
+    {        
+        for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
+        {
+            resetAllDuplicates();
+
+            for ( var innerIndex = 0; innerIndex < otherArrayPassed.length; innerIndex++ )
+            {
+
+                //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + otherArrayPassed[innerIndex] );
+                checkForDuplicates( arrayPassed[outerIndex], otherArrayPassed[innerIndex] );
+
                 if ( iOneDup && iTwoDup )
                 {
                     //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                     arrayPassed.splice( outerIndex, 1 );
-                    iOneDup = false;
-                    iTwoDup = false;
+                    resetAllDuplicates();
+                }
+            }
+            
+            for ( var index = 0; index < lastArrayPassed.length; index++ )
+            {
+                if ( arrayPassed[outerIndex] != lastArrayPassed[index] )
+                {
+                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + lastArrayPassed[index] );
+                    checkForDuplicates( arrayPassed[outerIndex], lastArrayPassed[index] );
+                    
+                    if ( iOneDup && iTwoDup )
+                    {
+                        //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
+                        arrayPassed.splice( outerIndex, 1 );
+                        resetAllDuplicates();
+                    }
                 }
             }
         }
+        
+        return arrayPassed;
     }
     
     return arrayPassed;
@@ -2390,6 +2461,8 @@ function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, arr
     while ( comparedArray[whileIndex] != null )
     {
         //console.log( "Comparing " + arrayPassed + " to " + comparedArray[whileIndex] );
+        //console.log( "\nIONEDUP: " + iOneDup );
+        //console.log( "ITWODUP: "+ iTwoDup );
         checkForDuplicates( arrayPassed, comparedArray[whileIndex] );
         whileIndex += 1;
     }
@@ -2397,9 +2470,8 @@ function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, arr
     // console.log( "While INDEX: " + whileIndex );
     // console.log( "COMPARED ARRAY LENGTH: " + whileIndex );
     // console.log( "Compared Array: " + JSON.stringify(comparedArray) );
-    
 
-    if ( count == 0 && ( !iOneDup || !iTwoDup || !iThreeDup || !iFourDup ) && arrayPassed.length == 4 && number != 8 )
+    if ( count == 0 && ( !iOneDup || !iTwoDup || !iThreeDup || !iFourDup ) && arrayPassed.length == 4 && number == 4 )
     {
         //console.log( "NEW ARRAY ADDED" );
         // Creates slot to add array and adds the array
@@ -2408,8 +2480,9 @@ function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, arr
         arrayAmount += 1;
     }
     
-    else if ( count == 0 && ( !iOneDup || !iTwoDup ) && arrayPassed.length == 2 && number != 8 && number != 4 )
+    else if ( count == 0 && ( !iOneDup || !iTwoDup ) && arrayPassed.length == 2 && number == 2 )
     {  
+        //console.log( "IN HERE" );
         //console.log( "ADDED: " + arrayPassed );
         arrayIndex = createArraySpace( array );
         array[arrayIndex] = arrayPassed;
@@ -2519,7 +2592,7 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
     
     else if ( arrayOne[0] == null && arrayTwo[0] == null )
     {
-        console.log( "HERE" );
+        //console.log( "HERE" );
         return true;
     }
     
