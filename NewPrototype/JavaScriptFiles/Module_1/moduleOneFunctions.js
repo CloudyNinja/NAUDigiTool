@@ -2347,7 +2347,7 @@ function find2s()
         }
     }
 
-    //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
+    console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
     twoArray = eliminateRedundancies( twoArray );
     console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
 }
@@ -2372,6 +2372,8 @@ function eliminateRedundancies( arrayPassed )
                 {
                     //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                     arrayPassed.splice( outerIndex, 1 );
+                    iOneDup = false;
+                    iTwoDup = false;
                 }
             }
         }
@@ -3383,13 +3385,13 @@ function resetGroupings()
     else if ( length == 16 )
     {
         sixteenDrawingArray = resetDrawingArray( sixteenDrawingArray );
-        console.log( "SIXTEEN DRAWING ARRAY RESET: " + JSON.stringify( sixteenDrawingArray ) );
+        //console.log( "SIXTEEN DRAWING ARRAY RESET: " + JSON.stringify( sixteenDrawingArray ) );
         eightDrawingArray = resetDrawingArray( eightDrawingArray );
-        console.log( "EIGHT DRAWING ARRAY RESET: " + JSON.stringify( eightDrawingArray ) );
+        //console.log( "EIGHT DRAWING ARRAY RESET: " + JSON.stringify( eightDrawingArray ) );
         fourDrawingArray = resetDrawingArray( fourDrawingArray );
-        console.log( "FOUR DRAWING ARRAY RESET: " + JSON.stringify( fourDrawingArray ) );
+        //console.log( "FOUR DRAWING ARRAY RESET: " + JSON.stringify( fourDrawingArray ) );
         twoDrawingArray = resetDrawingArray( twoDrawingArray );
-        console.log( "TWO DRAWING ARRAY RESET: " + JSON.stringify( twoDrawingArray ) );
+        //console.log( "TWO DRAWING ARRAY RESET: " + JSON.stringify( twoDrawingArray ) );
     }
 }
 
