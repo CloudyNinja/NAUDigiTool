@@ -751,7 +751,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 2, 3, 14, 15 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         // Four corner wrap
@@ -2136,92 +2136,95 @@ function find4s()
     var length = getLengthOfArray();
     var newArray = new Array(1);
     
-    // For horizontal groupings ( lines only )
-    for ( var index = 0; index < length; index++ )
+    if ( sixteenAmount == 0 )
     {
-        if ( index == 0 || index == 4 || index == 8 || index == 12 )
+        // For horizontal groupings ( lines only )
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 )
+            if ( index == 0 || index == 4 || index == 8 || index == 12 )
             {
-                newArray = [ index, index + 1, index + 2, index + 3 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 )
+                {
+                    newArray = [ index, index + 1, index + 2, index + 3 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Vertical lines
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+
+        // Vertical lines
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 4] == 1 && array[index + 8] == 1 && array[index + 12] == 1 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                newArray = [ index, index + 4, index + 8, index + 12 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 4] == 1 && array[index + 8] == 1 && array[index + 12] == 1 )
+                {
+                    newArray = [ index, index + 4, index + 8, index + 12 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Squares from top left to bottom right
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
+
+        // Squares from top left to bottom right
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 )
+            if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
             {
-                newArray = [ index, index + 1, index + 4, index + 5 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 )
+                {
+                    newArray = [ index, index + 1, index + 4, index + 5 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Horizontal Wraps
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 4 || index == 8 )
+
+        // Horizontal Wraps
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 )
+            if ( index == 0 || index == 4 || index == 8 )
             {
-                newArray = [ index, index + 3, index + 4, index + 7 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 )
+                {
+                    newArray = [ index, index + 3, index + 4, index + 7 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Vertical Wraps
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+
+        // Vertical Wraps
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 1] == 1 && array[index + 12] == 1 && array[index + 13] == 1 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                newArray = [ index, index + 1, index + 12, index + 13 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 12] == 1 && array[index + 13] == 1 )
+                {
+                    newArray = [ index, index + 1, index + 12, index + 13 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Four corner wrap
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 )
+
+        // Four corner wrap
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 3] == 1 && array[index + 12] == 1 && array[index + 15] == 1 )
+            if ( index == 0 )
             {
-                newArray = [ index, index + 3, index + 12, index + 15 ];
-                checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
-                checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 3] == 1 && array[index + 12] == 1 && array[index + 15] == 1 )
+                {
+                    newArray = [ index, index + 3, index + 12, index + 15 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
             }
         }
     }
@@ -2246,66 +2249,69 @@ function find2s()
     var length = getLengthOfArray();
     var newArray = new Array(1);
 
-    // For horizontal groupings ( lines only )
-    for ( var index = 0; index < length; index++ )
+    if ( sixteenAmount == 0 )
     {
-        if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 || index == 8 || index == 9 || index == 10 || index == 12 || index == 13 || index == 14 )
-        {            
-            if ( array[index] == 1 && array[index + 1] == 1 )
-            {
-                newArray = [ index, index + 1 ];
-                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
-                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
-                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                resetAllDuplicates();
+        // For horizontal groupings ( lines only )
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 || index == 8 || index == 9 || index == 10 || index == 12 || index == 13 || index == 14 )
+            {            
+                if ( array[index] == 1 && array[index + 1] == 1 )
+                {
+                    newArray = [ index, index + 1 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Vertical lines
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 )
+
+        // Vertical lines
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 4] == 1 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 )
             {
-                newArray = [ index, index + 4 ];
-                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
-                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
-                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 4] == 1 )
+                {
+                    newArray = [ index, index + 4 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Horizontal Wraps
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 4 || index == 8 || index == 12 )
+
+        // Horizontal Wraps
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 3] == 1 )
+            if ( index == 0 || index == 4 || index == 8 || index == 12 )
             {
-                newArray = [ index, index + 3 ];
-                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
-                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
-                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 3] == 1 )
+                {
+                    newArray = [ index, index + 3 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
             }
         }
-    }
-    
-    // Vertical Wraps
-    for ( var index = 0; index < length; index++ )
-    {
-        if ( index == 0 || index == 1 || index == 2 || index == 3 )
+
+        // Vertical Wraps
+        for ( var index = 0; index < length; index++ )
         {
-            if ( array[index] == 1 && array[index + 12] == 1 )
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                newArray = [ index, index + 12 ];
-                checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
-                checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
-                checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
-                resetAllDuplicates();
+                if ( array[index] == 1 && array[index + 12] == 1 )
+                {
+                    newArray = [ index, index + 12 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
             }
         }
     }
@@ -2606,6 +2612,330 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
 function arraysEqual( arrayOne, arrayTwo )
 {
     return JSON.stringify( arrayOne ) == JSON.stringify( arrayTwo )
+}
+
+// Autodraws rectangles from a given array
+function autodrawRectangles( arrayPassed )
+{
+    // 30 80 for vertical, 80 30 for horizontal
+    // Sets drawing canvas to random color
+    var canvas = document.getElementById('myKMapCanvas');
+    var context = canvas.getContext('2d');
+    var startX;
+    var startY;
+    var width;
+    var height;
+    var heightCounter;
+    var valueAtIndex;
+    
+    if ( arrayPassed[0] != null )
+    {   
+        // For sixteen array
+        if ( arrayPassed[0].length == 16 )
+        {
+            startX = 110;
+            startY = 110;
+            context.strokeStyle = generateColor();
+            width = 180;
+            height = 180;
+            context.strokeRect( startX, startY, width, height );
+        }
+        
+        // For eight array
+        else if ( arrayPassed[0].length == 8 )
+        {
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                startX = 110;
+                startY = 110;
+                context.strokeStyle = generateColor();
+                
+                // Horizontal Eights
+                if ( arrayPassed[index][7] - arrayPassed[index][0] == 7 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 180;
+                    height = 80;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startY += 50;
+                        heightCounter -= 4;
+                    }
+
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Vertical Eights
+                else if ( arrayPassed[index][7] - arrayPassed[index][0] == 13 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 80;
+                    height = 180;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startX += 50;
+                        heightCounter -= 1;
+                    }
+
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Horizontal Eight Wrap
+                else if ( arrayPassed[index][6] - arrayPassed[index][2] == 8 )
+                {
+                    startX = 100;
+                    width = 40;
+                    height = 180;
+                    context.strokeRect( startX, startY, width, height );
+                    startX = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Vertical Eight Wrap
+                else if ( arrayPassed[index][6] - arrayPassed[index][2] == 12 )
+                {
+                    startY = 100;
+                    width = 180;
+                    height = 40;
+                    context.strokeRect( startX, startY, width, height );
+                    startY = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+            }
+        }
+        
+        // For four array
+        else if ( arrayPassed[0].length == 4 )
+        {            
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                startX = 110;
+                startY = 110;
+                context.strokeStyle = generateColor();
+                
+                // Horizontal Quads
+                if ( arrayPassed[index][3] - arrayPassed[index][0] == 3 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 180;
+                    height = 30;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startY += 50;
+                        heightCounter -= 4;
+                    }
+
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Vertical Quads
+                else if ( arrayPassed[index][3] - arrayPassed[index][0] == 12 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 30;
+                    height = 180;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startX += 50;
+                        heightCounter -= 1;
+                    }
+
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Quad squares
+                else if ( arrayPassed[index][3] - arrayPassed[index][0] == 5 )
+                {
+                    width = 80;
+                    height = 80;
+                    valueAtIndex = arrayPassed[index][0];
+                    
+                    if ( valueAtIndex == 0 || valueAtIndex == 1 || valueAtIndex == 2 )
+                    {
+                        startX += arrayPassed[index][0] * 50;
+                        context.strokeRect( startX, startY, width, height );   
+                    }
+                    
+                    else if ( valueAtIndex == 4 || valueAtIndex == 5 || valueAtIndex == 6 )
+                    {
+                        startX += ( arrayPassed[index][0] - 4 ) * 50;
+                        startY += 50;
+                        context.strokeRect( startX, startY, width, height );   
+                    }
+                    
+                    else if ( valueAtIndex == 8 || valueAtIndex == 9 || valueAtIndex == 10 )
+                    {
+                        startX += ( arrayPassed[index][0] - 8 ) * 50;
+                        startY += 100;
+                        context.strokeRect( startX, startY, width, height );   
+                    }
+                }
+                
+                // Horizontal Quad Wrap
+                else if ( arrayPassed[index][3] - arrayPassed[index][0] == 7 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 40;
+                    height = 80;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startY += 50;
+                        heightCounter -= 4;
+                    }
+    
+                    startX = 100;
+                    context.strokeRect( startX, startY, width, height );
+                    startX = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Vertical Quad Wrap
+                else if ( arrayPassed[index][3] - arrayPassed[index][0] == 13 )
+                {
+                    heightCounter = arrayPassed[index][0];
+                    width = 80;
+                    height = 40;
+                    
+                    while ( heightCounter > 0 )
+                    {
+                        startX += 50;
+                        heightCounter -= 1;
+                    }
+    
+                    startY = 100;
+                    context.strokeRect( startX, startY, width, height );
+                    startY = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Four corner quad wrap
+                else if ( arrayPassed[index][2] - arrayPassed[index][0] == 12 )
+                {
+                    context.strokeRect( 100, 100, 40, 40 );
+                    context.strokeRect( 260, 100, 40, 40 );
+                    context.strokeRect( 100, 260, 40, 40 );
+                    context.strokeRect( 260, 260, 40, 40 );
+                }
+            }
+        }
+        
+        // For pair array
+        else if ( arrayPassed[0].length == 2 )
+        {            
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                startX = 110;
+                startY = 110;
+                context.strokeStyle = generateColor();
+                
+                // Horizontal pair
+                if ( arrayPassed[index][1] - arrayPassed[index][0] == 1 )
+                {
+                    width = 80;
+                    height = 30;
+                    valueAtIndex = arrayPassed[index][0];
+                    
+                    if ( valueAtIndex >= 0 && valueAtIndex <= 2 )
+                    {
+                        startX += valueAtIndex * 50;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                    
+                    else if ( valueAtIndex >= 4 && valueAtIndex <= 6 )
+                    {
+                        startX += ( valueAtIndex - 4 ) * 50;
+                        startY += 50;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                    
+                    else if ( valueAtIndex >= 8 && valueAtIndex <= 10 )
+                    {
+                        startX += ( valueAtIndex - 8 ) * 50;
+                        startY += 100;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                    
+                    else if ( valueAtIndex >= 12 && valueAtIndex <= 14 )
+                    {
+                        startX += ( valueAtIndex - 12 ) * 50;
+                        startY += 150;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                }
+                
+                // Vertical pair
+                else if ( arrayPassed[index][1] - arrayPassed[index][0] == 4 )
+                {
+                    width = 30;
+                    height = 80;
+                    valueAtIndex = arrayPassed[index][0];
+                    
+                    if ( valueAtIndex >= 0 && valueAtIndex <= 3 )
+                    {
+                        startX += valueAtIndex * 50;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                    
+                    else if ( valueAtIndex >= 4 && valueAtIndex <= 7 )
+                    {
+                        startX += ( valueAtIndex - 4 ) * 50;
+                        startY += 50;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                    
+                    else if ( valueAtIndex >= 8 && valueAtIndex <= 11 )
+                    {
+                        startX += ( valueAtIndex - 8 ) * 50;
+                        startY += 100;
+                        context.strokeRect( startX, startY, width, height );
+                    }
+                }
+                
+                // Horizonal pair wrap
+                else if ( arrayPassed[index][1] - arrayPassed[index][0] == 3 )
+                {
+                    width = 40;
+                    height = 30;
+                    valueAtIndex = arrayPassed[index][0];
+                    
+                    while ( valueAtIndex > 0 )
+                    {
+                        startY += 50;
+                        valueAtIndex -= 4;
+                    }
+                    
+                    startX = 100;
+                    context.strokeRect( startX, startY, width, height );
+                    startX = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+                
+                // Vertical pair wrap
+                else if ( arrayPassed[index][1] - arrayPassed[index][0] == 12 )
+                {
+                    width = 30;
+                    height = 40;
+                    valueAtIndex = arrayPassed[index][0];
+                    
+                    while ( valueAtIndex > 0 )
+                    {
+                        startX += 50;
+                        valueAtIndex -= 1;
+                    }
+                    
+                    startY = 100;
+                    context.strokeRect( startX, startY, width, height );
+                    startY = 260;
+                    context.strokeRect( startX, startY, width, height );
+                }
+            }
+        }
+    }
 }
 
 //////////// Section for 4 variable GROUPING //////////////
@@ -3507,7 +3837,7 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("moduleOneQuestionTen") )
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
     }
