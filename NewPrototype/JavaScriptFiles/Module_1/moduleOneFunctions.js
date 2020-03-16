@@ -1,6 +1,4 @@
-var equationArray = new Array(15);
-var canGroup = 0;
-
+var equationArray = new Array(1);
 var octects = 0;
 var quads =  0;
 var pairs = 0;
@@ -10,8 +8,8 @@ var ctx = canvas.getContext('2d');
 var rect = {};
 var drag = false;
 
-var rectangleArray = new Array( 3 );
-var drawingArray = new Array( 8 );
+var rectangleArray = new Array( 1 );
+var drawingArray = new Array( 1 );
 setDrawingArray();
 
 var student_id = sessionStorage.getItem('student_id');
@@ -2229,7 +2227,7 @@ function find4s()
         }
     }
     
-    console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
+    //console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
     fourArray = eliminateRedundancies( fourArray );
     console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
@@ -2324,7 +2322,7 @@ function find2s()
     
     else 
     {
-        console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
+        //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
         twoArray = eliminateRedundancies( twoArray );
         console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
     }
@@ -2935,6 +2933,386 @@ function autodrawRectangles( arrayPassed )
                 }
             }
         }
+    }
+}
+
+// Adds values to equation array ( should be for four variables only )
+function addValuesToEquationArray( arrayPassed )
+{
+    var firstIndex;
+    var lastIndex;
+    
+    if ( arrayPassed[0] != null )
+    {
+        // For sixteens
+        if ( arrayPassed[0].length == 16 )
+        {
+            addToEquationArray( "1" );
+        }
+        
+        // For eights
+        else if ( arrayPassed[0].length == 8 )
+        {
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                firstIndex = arrayPassed[index][0];
+                lastIndex = arrayPassed[index][7];
+                
+                // Horizontals
+                if ( firstIndex == 0 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 11 )
+                {
+                    addToEquationArray( "B" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 15 )
+                {
+                    addToEquationArray( "A" );
+                }
+                
+                // Verticals
+                else if ( firstIndex == 0 && lastIndex == 13 )
+                {
+                    addToEquationArray( "C'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 14 )
+                {
+                    addToEquationArray( "D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 15 )
+                {
+                    addToEquationArray( "C" );
+                }
+                
+                // Horizontal wrap
+                else if ( firstIndex == 0 && lastIndex == 15 && arrayPassed[index][1] != 1 )
+                {
+                    addToEquationArray( "D'" );
+                }
+                
+                // Vertical wrap
+                else if ( firstIndex == 0 && lastIndex == 15 )
+                {
+                    addToEquationArray( "B'" );
+                }
+            }
+        }
+        
+        // For quads
+        else if ( arrayPassed[0].length == 4 )
+        {
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                firstIndex = arrayPassed[index][0];
+                lastIndex = arrayPassed[index][3];
+                
+                // Horizontals
+                if ( firstIndex == 0 && lastIndex == 3 )
+                {
+                    addToEquationArray( "A'B'" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'B" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 11 )
+                {
+                    addToEquationArray( "AB" );
+                }
+                
+                else if ( firstIndex == 12 && lastIndex == 15 )
+                {
+                    addToEquationArray( "AB'" );
+                }
+                
+                // Verticals
+                else if ( firstIndex == 0 && lastIndex == 12 )
+                {
+                    addToEquationArray( "C'D'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 13 )
+                {
+                    addToEquationArray( "C'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 14 )
+                {
+                    addToEquationArray( "CD" );
+                }
+                
+                else if ( firstIndex == 3 && lastIndex == 15 )
+                {
+                    addToEquationArray( "CD'" );
+                }
+                
+                // Horizontal wraps
+                else if ( firstIndex == 0 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'D'" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 11 )
+                {
+                    addToEquationArray( "BD'" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 15 )
+                {
+                    addToEquationArray( "AD'" );
+                }
+                
+                // Squares ( from top left to bottom right )
+                else if ( firstIndex == 0 && lastIndex == 5 )
+                {
+                    addToEquationArray( "A'C'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 6 )
+                {
+                    addToEquationArray( "A'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'C" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 9 )
+                {
+                    addToEquationArray( "BC'" );
+                }
+                
+                else if ( firstIndex == 5 && lastIndex == 10 )
+                {
+                    addToEquationArray( "BD" );
+                }
+                
+                else if ( firstIndex == 6 && lastIndex == 11 )
+                {
+                    addToEquationArray( "BC" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 13 )
+                {
+                    addToEquationArray( "AC'" );
+                }
+                
+                else if ( firstIndex == 9 && lastIndex == 14 )
+                {
+                    addToEquationArray( "AD" );
+                }
+                
+                else if ( firstIndex == 10 && lastIndex == 15 )
+                {
+                    addToEquationArray( "AC" );
+                }
+                
+                // Vertical wraps
+                else if ( firstIndex == 0 && lastIndex == 13 )
+                {
+                    addToEquationArray( "B'C'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 14 )
+                {
+                    addToEquationArray( "B'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 15 )
+                {
+                    addToEquationArray( "B'C" );
+                }
+                
+                // Four corner quad
+                else if ( firstIndex == 0 && lastIndex == 15 )
+                {
+                    addToEquationArray( "B'D'" );
+                }
+            }
+        }
+        
+        // For pairs
+        else if ( arrayPassed[0].length == 2 )
+        {
+            for ( var index = 0; index < arrayPassed.length; index++ )
+            {
+                firstIndex = arrayPassed[index][0];
+                lastIndex = arrayPassed[index][1];
+                
+                // Horizontals
+                if ( firstIndex == 0 && lastIndex == 1 )
+                {
+                    addToEquationArray( "A'B'C'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 2 )
+                {
+                    addToEquationArray( "A'B'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 3 )
+                {
+                    addToEquationArray( "A'B'C" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 5 )
+                {
+                    addToEquationArray( "A'BC'" );
+                }
+                
+                else if ( firstIndex == 5 && lastIndex == 6 )
+                {
+                    addToEquationArray( "A'BD" );
+                }
+                
+                else if ( firstIndex == 6 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'BC" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 9 )
+                {
+                    addToEquationArray( "ABC'" );
+                }
+                
+                else if ( firstIndex == 9 && lastIndex == 10 )
+                {
+                    addToEquationArray( "ABD" );
+                }
+                
+                else if ( firstIndex == 10 && lastIndex == 11 )
+                {
+                    addToEquationArray( "ABC" );
+                }
+                
+                else if ( firstIndex == 12 && lastIndex == 13 )
+                {
+                    addToEquationArray( "AB'C'" );
+                }
+                
+                else if ( firstIndex == 13 && lastIndex == 14 )
+                {
+                    addToEquationArray( "AB'D" );
+                }
+                
+                else if ( firstIndex == 14 && lastIndex == 15 )
+                {
+                    addToEquationArray( "AB'C" );
+                }
+                
+                // Verticals
+                else if ( firstIndex == 0 && lastIndex == 4 )
+                {
+                    addToEquationArray( "A'C'D'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 5 )
+                {
+                    addToEquationArray( "A'C'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 6 )
+                {
+                    addToEquationArray( "A'CD" );
+                }
+                
+                else if ( firstIndex == 3 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'CD'" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 8 )
+                {
+                    addToEquationArray( "BC'D'" );
+                }
+                
+                else if ( firstIndex == 5 && lastIndex == 9 )
+                {
+                    addToEquationArray( "BC'D" );
+                }
+                
+                else if ( firstIndex == 6 && lastIndex == 10 )
+                {
+                    addToEquationArray( "BCD" );
+                }
+                
+                else if ( firstIndex == 7 && lastIndex == 11 )
+                {
+                    addToEquationArray( "BCD'" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 12 )
+                {
+                    addToEquationArray( "AC'D'" );
+                }
+                
+                else if ( firstIndex == 9 && lastIndex == 13 )
+                {
+                    addToEquationArray( "AC'D" );
+                }
+                
+                else if ( firstIndex == 10 && lastIndex == 14 )
+                {
+                    addToEquationArray( "ACD" );
+                }
+                
+                else if ( firstIndex == 11 && lastIndex == 15 )
+                {
+                    addToEquationArray( "ACD'" );
+                }
+                
+                // Horizontal pair wraps
+                else if ( firstIndex == 0 && lastIndex == 3 )
+                {
+                    addToEquationArray( "A'B'D'" );
+                }
+                
+                else if ( firstIndex == 4 && lastIndex == 7 )
+                {
+                    addToEquationArray( "A'BD'" );
+                }
+                
+                else if ( firstIndex == 8 && lastIndex == 11 )
+                {
+                    addToEquationArray( "ABD'" );
+                }
+                
+                else if ( firstIndex == 12 && lastIndex == 15 )
+                {
+                    addToEquationArray( "AB'D'" );
+                }
+                
+                // Vertical pair wraps
+                else if ( firstIndex == 0 && lastIndex == 12 )
+                {
+                    addToEquationArray( "B'C'D'" );
+                }
+                
+                else if ( firstIndex == 1 && lastIndex == 13 )
+                {
+                    addToEquationArray( "B'C'D" );
+                }
+                
+                else if ( firstIndex == 2 && lastIndex == 14 )
+                {
+                    addToEquationArray( "B'CD" );
+                }
+                
+                else if ( firstIndex == 3 && lastIndex == 15 )
+                {
+                    addToEquationArray( "B'CD'" );
+                }
+            }
+        }       
     }
 }
 
@@ -3678,7 +4056,8 @@ function checkUserEquation()
     var counter = 0;
     var userInput = document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase().split("+");
     
-    console.log( userInput );
+    console.log( "USER INPUT: " + userInput );
+    console.log( "EQUATION ARRAY: " + equationArray );
     
     if ( Boolean( userInput.length == countElementsInEquationArray() ) )
     {
@@ -3713,6 +4092,11 @@ function checkUserEquation()
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";   
             }
+            
+            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+            {
+                alert( "Congrats, you got the answer right!" );
+            }
         }
         
         else
@@ -3720,6 +4104,11 @@ function checkUserEquation()
             if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
             {
                 document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+            }
+            
+            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+            {
+                alert( "WRONG!" );
             }
             
             else
@@ -3735,6 +4124,11 @@ function checkUserEquation()
         if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+        }
+        
+        else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+        {
+            alert( "WRONG!" );
         }
             
         else
