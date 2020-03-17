@@ -414,7 +414,7 @@ function formatRectangle( rectangle, event )
           //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
         }
         
-        else if ( x > 105 && x < 295 && y > 70 && y < 95 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
+        else if ( x > 245 && x < 295 && y > 105 && y < 295 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
         {
             temp = { startX: 210, startY: 110, w: 80, h : 180, color: rectColor };
             addRectangleToArray( temp );
@@ -478,7 +478,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 4, 5, 6, 7 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 100 && x < 300 && y > 200 && y < 250 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
@@ -564,7 +564,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 0, 1, 4, 5 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 150 && x < 250 && y > 100 && y < 200 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -576,7 +576,7 @@ function formatRectangle( rectangle, event )
             index = createArraySpace( fourDrawingArray );
             fourDrawingArray[index] = [ 1, 2, 5, 6 ];
             fourDrawingArray = removeDuplicates( fourDrawingArray );
-            console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
         }
         
         else if ( x > 200 && x < 300 && y > 100 && y < 200 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
@@ -2001,25 +2001,24 @@ function getLengthOfArray()
 
 //////////// Section for 4 variable GROUPING //////////////
 
-// Finds 16s in array 
+// Finds 16s in array ( For don't cares! )
 function find16s()
 {
     var length = getLengthOfArray();
-    var counter = 1;
+    var counter = 0;
     var newArray = new Array(1);
     var sixteenArrayIndex = 0;
-    console.log( "LENGTH: " + length );
     
     for ( var index = 0; index < length; index++ )
     {
-        if ( array[index] != 1 )
+        if ( array[index] == 1 || array[index] == "X" )
         {
-            counter -= 1;
+            counter += 1;
         }
     }
     
     // If all 16s
-    if ( counter == 1 )
+    if ( counter == 16 )
     {
         // Adds array with indexes equal to 1 to new array
         for ( var index = 0; index < length; index++ )
@@ -2041,7 +2040,7 @@ function find16s()
     }
 }
 
-// Finds 8s in array 
+// Finds 8s in array ( For don't cares! )
 function find8s()
 {
     var length = getLengthOfArray();
@@ -2052,9 +2051,12 @@ function find8s()
         // 3 Horizontal Groups
         for ( var index = 0; index < length; index++ )
         {
+            oneCount = 0;
+            xCount = 0;
+            
             if ( index == 0 || index == 4 || index == 8 )
-            {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 5] == 1 && array[index + 6] == 1 && array[index + 7] == 1  )
+            {                
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) && ( array[index + 6] == 1 || array[index + 6] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 2, index + 3, index + 4, index + 5, index + 6, index + 7 ];
         
@@ -2072,7 +2074,7 @@ function find8s()
         {
             if ( index == 0 || index == 1 || index == 2 )
             {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 && array[index + 8] == 1 && array[index + 9] == 1 && array[index + 12] == 1 && array[index + 13] == 1  )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 9] == 1 || array[index + 9] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 4, index + 5, index + 8, index + 9, index + 12, index + 13 ];
         
@@ -2090,7 +2092,7 @@ function find8s()
         {
             if ( index == 0 )
             {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 && array[index + 12] == 1 && array[index + 13] == 1 && array[index + 14] == 1 && array[index + 15] == 1  )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index + 14] == 1 || array[index + 14] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 2, index + 3, index + 12, index + 13, index + 14, index + 15 ];
         
@@ -2101,7 +2103,7 @@ function find8s()
                     console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
                 
-                else if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 && array[index + 8] == 1 && array[index + 11] == 1 && array[index + 12] == 1 && array[index + 15] == 1 )
+                else if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 11] == 1 || array[index + 11] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
                 {
                     newArray = [ index, index + 3, index + 4, index + 7, index + 8, index + 11, index + 12, index + 15 ];
         
@@ -2128,7 +2130,7 @@ function find8s()
     }
 }
 
-// Finds 4s in array 
+// Finds 4s in array ( For don't cares! )
 function find4s()
 {
     var length = getLengthOfArray();
@@ -2141,7 +2143,7 @@ function find4s()
         {
             if ( index == 0 || index == 4 || index == 8 || index == 12 )
             {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 2] == 1 && array[index + 3] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 2, index + 3 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2156,7 +2158,7 @@ function find4s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                if ( array[index] == 1 && array[index + 4] == 1 && array[index + 8] == 1 && array[index + 12] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) )
                 {
                     newArray = [ index, index + 4, index + 8, index + 12 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2171,7 +2173,7 @@ function find4s()
         {
             if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
             {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 4] == 1 && array[index + 5] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 4, index + 5 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2186,7 +2188,7 @@ function find4s()
         {
             if ( index == 0 || index == 4 || index == 8 )
             {
-                if ( array[index] == 1 && array[index + 3] == 1 && array[index + 4] == 1 && array[index + 7] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) )
                 {
                     newArray = [ index, index + 3, index + 4, index + 7 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2201,7 +2203,7 @@ function find4s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                if ( array[index] == 1 && array[index + 1] == 1 && array[index + 12] == 1 && array[index + 13] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 12, index + 13 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2216,7 +2218,7 @@ function find4s()
         {
             if ( index == 0 )
             {
-                if ( array[index] == 1 && array[index + 3] == 1 && array[index + 12] == 1 && array[index + 15] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
                 {
                     newArray = [ index, index + 3, index + 12, index + 15 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2254,7 +2256,7 @@ function find2s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 || index == 8 || index == 9 || index == 10 || index == 12 || index == 13 || index == 14 )
             {            
-                if ( array[index] == 1 && array[index + 1] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" ) )
                 {
                     newArray = [ index, index + 1 ];
                     checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
@@ -2270,7 +2272,7 @@ function find2s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 )
             {
-                if ( array[index] == 1 && array[index + 4] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index] != "X" || array[index + 4] != "X" ) )
                 {
                     newArray = [ index, index + 4 ];
                     checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
@@ -2286,7 +2288,7 @@ function find2s()
         {
             if ( index == 0 || index == 4 || index == 8 || index == 12 )
             {
-                if ( array[index] == 1 && array[index + 3] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" ) )
                 {
                     newArray = [ index, index + 3 ];
                     checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
@@ -2302,7 +2304,7 @@ function find2s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                if ( array[index] == 1 && array[index + 12] == 1 )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index] != "X" || array[index + 12] != "X" ) )
                 {
                     newArray = [ index, index + 12 ];
                     checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
@@ -4226,7 +4228,7 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 )
+    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 || window.location.href.indexOf("moduleOneQuestionEleven") > -1 )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
