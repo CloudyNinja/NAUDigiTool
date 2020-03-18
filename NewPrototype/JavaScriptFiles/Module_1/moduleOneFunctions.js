@@ -2143,7 +2143,7 @@ function find4s()
         {
             if ( index == 0 || index == 4 || index == 8 || index == 12 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 2] != "X" || array[index + 3] != "X" ) )
                 {
                     newArray = [ index, index + 1, index + 2, index + 3 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2158,7 +2158,7 @@ function find4s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index] != "X" || array[index + 4] != "X" || array[index + 8] != "X" || array[index + 12] != "X" ) )
                 {
                     newArray = [ index, index + 4, index + 8, index + 12 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2173,7 +2173,7 @@ function find4s()
         {
             if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 4] != "X" || array[index + 5] != "X" ) )
                 {
                     newArray = [ index, index + 1, index + 4, index + 5 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2188,7 +2188,7 @@ function find4s()
         {
             if ( index == 0 || index == 4 || index == 8 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" || array[index + 4] != "X" || array[index + 7] != "X" ) )
                 {
                     newArray = [ index, index + 3, index + 4, index + 7 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2203,7 +2203,7 @@ function find4s()
         {
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 12] != "X" || array[index + 13] != "X" ) )
                 {
                     newArray = [ index, index + 1, index + 12, index + 13 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2218,7 +2218,7 @@ function find4s()
         {
             if ( index == 0 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" || array[index + 12] != "X" || array[index + 15] != "X" ) )
                 {
                     newArray = [ index, index + 3, index + 12, index + 15 ];
                     checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
@@ -2232,6 +2232,8 @@ function find4s()
     //console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
     fourArray = eliminateRedundancies( fourArray );
     console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
+    fourArray = elimateOneandOnesInGroup( fourArray, fourArray );
+    console.log( "FOUR ARRAY FORMED AFTER ONE AND ONE: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
 }
 
@@ -2320,6 +2322,8 @@ function find2s()
     {
         twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
         console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
+        twoArray = elimateOneandOnesInGroup( twoArray, fourArray );
+        console.log( "TWO ARRAY FORMED AFTER ONE & ONE: " + JSON.stringify( twoArray ) );
     }
     
     else 
@@ -2409,6 +2413,113 @@ function eliminateRedundancies( arrayPassed )
     }
     
     return arrayPassed;
+}
+
+// Checks the 1, "X" condition
+function elimateOneandOnesInGroup( arrayPassed, otherArrayPassed )
+{
+    // arrayPassed: [5, 6]
+    // otherArrayPassed: [12, 13, 14, 15], [0, 1, 4, 5]
+    
+    var removeFlag = false;
+    var numOfOnes = 0;
+    var counter = 0;
+    
+    if ( arrayPassed != null && otherArrayPassed != null )
+    {
+        for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
+        {
+            removeFlag = false;
+            numOfOnes = 0;
+            counter = 0;
+            numOfOnes = countOnesInArray( arrayPassed[outerIndex] );
+            console.log( "\nNUM OF ONES: " + numOfOnes );
+            
+            for ( var innerIndex = 0; innerIndex < otherArrayPassed.length; innerIndex++ )
+            {
+                if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
+                {
+                    console.log( "COMPARING:" + arrayPassed[outerIndex] + " with " + otherArrayPassed[innerIndex] );
+                    
+                    removeFlag = checkForRemoval( arrayPassed[outerIndex], otherArrayPassed[innerIndex], removeFlag, numOfOnes, counter );
+                
+                    if ( removeFlag )
+                    {
+                        arrayPassed.splice( outerIndex, 1 );
+                        removeFlag = false;
+                    }
+                }
+            }
+        }
+
+        // Adding null to empty array
+        if ( arrayPassed.length == 0 )
+        {
+            arrayPassed[0] = null;
+        }
+    }
+    
+    return arrayPassed;
+}
+
+function countOnesInArray( arrayPassed )
+{
+    var number = 0;
+    
+    for ( var index = 0; index < array.length; index++ )
+    {
+        if ( array[arrayPassed[index]] == 1 )
+        {
+            number += 1;
+        }
+    }
+    
+    return number;
+}
+
+function checkForRemoval( arrayOne, arrayTwo, flag, numberOfOnes, count )
+{
+    // arrayOne: [5, 6]
+    // arrayTwo: [12, 13, 14, 15]
+    
+    if ( arrayOne.length == 4 )
+    {   
+        for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
+        {
+            
+            for ( var innerIndex = 0; innerIndex < arrayTwo.length; innerIndex++ )
+            {
+                //console.log( "\nARRAY AT OUTER INDEX: " + array[arrayOne[outerIndex]] );
+                if ( arrayOne[outerIndex] == arrayTwo[innerIndex] && array[arrayOne[outerIndex]] == 1 )
+                {
+                    count += 1;
+                }
+                
+                if ( count == numberOfOnes )
+                {
+                    //console.log( "FLAG IS TRUE" );
+                    flag = true;
+                }
+            }            
+        } 
+    }
+    
+    else if ( ( array[arrayOne[0]] == 1 && array[arrayOne[1]] == "X" ) || ( array[arrayOne[1]] == 1 && array[arrayOne[0]] == "X" ) && arrayOne.length == 2 )
+    {
+        for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
+        {
+            for ( var innerIndex = 0; innerIndex < arrayTwo.length; innerIndex++ )
+            {
+                //console.log( "\nARRAY AT OUTER INDEX: " + array[arrayOne[outerIndex]] );
+                if ( arrayOne[outerIndex] == arrayTwo[innerIndex] && array[arrayOne[outerIndex]] == 1 )
+                {
+                    flag = true;
+                }
+            }
+        } 
+    }
+    
+    return flag;
 }
 
 // Eliminates redundacies within 2 arrays
