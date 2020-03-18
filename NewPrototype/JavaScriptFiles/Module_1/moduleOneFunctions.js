@@ -2232,8 +2232,6 @@ function find4s()
     //console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
     fourArray = eliminateRedundancies( fourArray );
     console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
-    fourArray = elimateOneandOnesInGroup( fourArray, fourArray );
-    console.log( "FOUR ARRAY FORMED AFTER ONE AND ONE: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
 }
 
@@ -2322,8 +2320,6 @@ function find2s()
     {
         twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
         console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
-        twoArray = elimateOneandOnesInGroup( twoArray, fourArray );
-        console.log( "TWO ARRAY FORMED AFTER ONE & ONE: " + JSON.stringify( twoArray ) );
     }
     
     else 

@@ -88,7 +88,10 @@ find8s();
 find4s();
 find2s();
 
-
+fourArray = elimateOneandOnesInGroup( fourArray, fourArray );
+console.log( "FOUR ARRAY FORMED AFTER ONE AND ONE: " + JSON.stringify( fourArray ) );
+twoArray = elimateOneandOnesInGroup( twoArray, fourArray );
+console.log( "TWO ARRAY FORMED AFTER ONE & ONE: " + JSON.stringify( twoArray ) );
 
 // Attempts Left Message
 var attemptsLeft = 3;
