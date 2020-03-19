@@ -2064,7 +2064,7 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
+                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
@@ -2082,7 +2082,7 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
+                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
@@ -2092,18 +2092,7 @@ function find8s()
         {
             if ( index == 0 )
             {
-                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index + 14] == 1 || array[index + 14] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
-                {
-                    newArray = [ index, index + 1, index + 2, index + 3, index + 12, index + 13, index + 14, index + 15 ];
-        
-                    // Creates slot to add array and adds the array
-                    eightArrayIndex = createArraySpace( eightArray );
-                    eightArray[eightArrayIndex] = newArray;
-                    eightAmount += 1;
-                    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
-                }
-                
-                else if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 11] == 1 || array[index + 11] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
+                if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) && ( array[index + 8] == 1 || array[index + 8] == "X" ) && ( array[index + 11] == 1 || array[index + 11] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
                 {
                     newArray = [ index, index + 3, index + 4, index + 7, index + 8, index + 11, index + 12, index + 15 ];
         
@@ -2111,23 +2100,25 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
+                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
+                }
+                
+                else if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index + 14] == 1 || array[index + 14] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 2, index + 3, index + 12, index + 13, index + 14, index + 15 ];
+        
+                    // Creates slot to add array and adds the array
+                    eightArrayIndex = createArraySpace( eightArray );
+                    eightArray[eightArrayIndex] = newArray;
+                    eightAmount += 1;
+                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
         
-        if ( eightAmount == 0 )
-        {
-            console.log( "EIGHT ARRAY NOT FORMED" );
-            console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
-        }
     }
     
-    else
-    {
-        console.log( "EIGHT ARRAY NOT FORMED" );
-        console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
-    }
+    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
 }
 
 // Finds 4s in array ( For don't cares! )
@@ -2411,6 +2402,11 @@ function eliminateRedundancies( arrayPassed )
     return arrayPassed;
 }
 
+function generateDCArray()
+{
+    var arraysToGenerateFrom = [ [1,1,0,1,1,1,1,1,0,0,"X",1,"X",1,"X","X"] ];
+}
+
 // Checks the 1, "X" condition
 function elimateOneandOnesInGroup( arrayPassed, otherArrayPassed )
 {
@@ -2426,10 +2422,6 @@ function elimateOneandOnesInGroup( arrayPassed, otherArrayPassed )
         for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
         {
             removeFlag = false;
-            numOfOnes = 0;
-            counter = 0;
-            numOfOnes = countOnesInArray( arrayPassed[outerIndex] );
-            console.log( "\nNUM OF ONES: " + numOfOnes );
             
             for ( var innerIndex = 0; innerIndex < otherArrayPassed.length; innerIndex++ )
             {
@@ -2458,49 +2450,12 @@ function elimateOneandOnesInGroup( arrayPassed, otherArrayPassed )
     return arrayPassed;
 }
 
-function countOnesInArray( arrayPassed )
-{
-    var number = 0;
-    
-    for ( var index = 0; index < array.length; index++ )
-    {
-        if ( array[arrayPassed[index]] == 1 )
-        {
-            number += 1;
-        }
-    }
-    
-    return number;
-}
-
 function checkForRemoval( arrayOne, arrayTwo, flag, numberOfOnes, count )
 {
     // arrayOne: [5, 6]
     // arrayTwo: [12, 13, 14, 15]
     
-    if ( arrayOne.length == 4 )
-    {   
-        for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
-        {
-            
-            for ( var innerIndex = 0; innerIndex < arrayTwo.length; innerIndex++ )
-            {
-                //console.log( "\nARRAY AT OUTER INDEX: " + array[arrayOne[outerIndex]] );
-                if ( arrayOne[outerIndex] == arrayTwo[innerIndex] && array[arrayOne[outerIndex]] == 1 )
-                {
-                    count += 1;
-                }
-                
-                if ( count == numberOfOnes )
-                {
-                    //console.log( "FLAG IS TRUE" );
-                    flag = true;
-                }
-            }            
-        } 
-    }
-    
-    else if ( ( array[arrayOne[0]] == 1 && array[arrayOne[1]] == "X" ) || ( array[arrayOne[1]] == 1 && array[arrayOne[0]] == "X" ) && arrayOne.length == 2 )
+    if ( ( array[arrayOne[0]] == 1 && array[arrayOne[1]] == "X" ) || ( array[arrayOne[1]] == 1 && array[arrayOne[0]] == "X" ) && arrayOne.length == 2 )
     {
         for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
         {
@@ -2713,6 +2668,23 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
     {
         return false;
     }
+}
+
+function checkIfArrayAlreadyMade( arrayOne, arrayTwo )
+{
+    var flag = false;
+    
+    for ( var index = 0; index < arrayTwo.length; index++ )
+    {
+        //console.log( "Comparing: " + arrayOne + " to " + arrayTwo[index] );
+        
+        if ( arraysEqual( arrayOne, arrayTwo[index] ) )
+        {
+            flag = true;
+        }
+    }
+    
+    return flag;
 }
 
 // Checks both arrays to see if they match

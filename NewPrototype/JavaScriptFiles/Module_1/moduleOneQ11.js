@@ -35,6 +35,7 @@ var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
 
+
 array = createArray(4);
 userArray = createUserArray(4);
 createTruthTable(4);
@@ -59,22 +60,52 @@ array[13] = 1;
 array[14] = "X";
 array[15] = 1;*/
 
-array[0] = 1;
-array[1] = 1;
-array[2] = 1;
-array[3] = 1;
-array[4] = "X";
-array[5] = 0;
-array[6] = 1;
-array[7] = 1;
-array[8] = "X";
-array[9] = 1;
-array[10] = 1;
-array[11] = 1;
-array[12] = 0;
-array[13] = 1;
-array[14] = 0;
-array[15] = "X";
+function countElementsInArray( arrayPassed )
+{
+    var count = 0;
+    
+    for ( var index = 0; index < arrayPassed.length; index++ )
+    {
+        count++; 
+    }
+    
+    return count;
+}
+
+var arraysToGenerateFrom = [ [1,1,0,1,1,1,1,1,0,0,"X",1,"X",1,"X","X"],
+                             [1,1,1,"X",1,"X",0,0,1,"X",0,"X",1,1,0,1],
+                             [1,1,1,"X","X",1,"X",1,0,0,0,0,1,1,1,0],
+                             [1,1,1,0,1,1,0,1,0,1,"X",1,1,1,1,1],
+                             [1,1,0,0,"X",0,0,1,1,0,1,1,0,1,1,1],
+                             [1,1,1,"X",0,1,"X",1,1,"X",1,1,1,1,"X",1],
+                             [1,1,0,1,"X","X","X","X",1,"X",1,1,"X",1,0,1],
+                             [1,1,"X",1,1,"X",0,1,0,1,"X","X",1,"X",1,1],
+                             [1,1,1,0,"X",1,0,1,1,0,0,1,1,1,1,1],
+                             [1,1,1,"X",1,"X","X","X",0,1,1,0,1,"X",1,0],
+                             [1,1,0,1,1,1,"X",1,1,"X",1,1,1,"X",1,0],
+                             [1,1,0,"X",1,1,1,1,1,"X",1,0,"X","X","X",1],
+                             [1,1,1,"X",0,1,1,1,0,1,1,1,1,0,"X",0],
+                             [1,1,1,"X",1,1,"X",1,1,1,0,1,1,1,0,0],
+                             [1,1,1,0,"X",1,"X",0,1,0,"X",0,"X",1,0,1],
+                             [1,1,1,"X","X",0,1,0,1,1,0,1,1,1,0,0],
+                             [1,1,1,1,1,"X",1,"X",0,1,"X",1,1,1,"X",0],
+                             [1,1,1,1,0,1,0,0,1,1,1,0,1,"X",1,1],
+                             [1,1,"X","X",1,1,0,0,1,"X",0,0,"X",1,"X",1],
+                             [1,1,0,0,"X",1,1,0,"X",0,1,"X",1,1,"X",1],
+                             [1,1,1,1,1,0,1,1,"X",1,1,1,1,1,1,1],
+                             [1,1,1,"X",0,1,0,1,"X",1,1,1,0,"X",0,0],
+                             [1,1,1,"X",1,1,1,1,0,1,1,0,0,0,1,"X"],
+                             [1,1,"X",1,"X",1,1,1,1,"X",1,1,0,0,1,0],
+                             [1,1,1,0,0,0,1,0,1,"X",0,1,0,1,1,1],
+                             [1,1,1,"X",1,0,1,0,0,"X",1,1,0,1,0,1],
+                             [1,1,"X","X","X",1,"X",1,1,1,1,"X",1,1,"X","X"],
+                             [1,1,1,0,0,0,1,0,0,"X",1,"X",1,"X",0,1],
+                             [1,1,1,1,1,1,"X",1,"X",0,1,1,0,1,1,0],
+                             [1,1,1,1,1,0,1,"X","X",0,1,0,"X",1,0,0],
+                             [1,1,0,"X",1,0,1,"X",0,1,0,"X",0,1,"X",0],
+                             [1,1,"X",1,1,1,"X",1,1,1,"X",1,1,1,1,1] ];
+                             
+//array = [1,1,"X",1,"X",1,1,1,1,"X",1,1,0,0,1,0];
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
@@ -83,15 +114,14 @@ console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + 
 console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] + " |   " + array[11] + "  |\n" );
 console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
 
+console.log( "ARRAY FORMED: " + JSON.stringify( array ) );
+console.log( "IS THERE AN ARRAY SIMILAR: " + checkIfArrayAlreadyMade( array, arraysToGenerateFrom ) );
+console.log( "NUMBER OF ELEMENTS IN ARRAY: " + countElementsInArray( arraysToGenerateFrom ) );
+
 find16s();
 find8s();
 find4s();
 find2s();
-
-fourArray = elimateOneandOnesInGroup( fourArray, fourArray );
-console.log( "FOUR ARRAY FORMED AFTER ONE AND ONE: " + JSON.stringify( fourArray ) );
-twoArray = elimateOneandOnesInGroup( twoArray, fourArray );
-console.log( "TWO ARRAY FORMED AFTER ONE & ONE: " + JSON.stringify( twoArray ) );
 
 // Attempts Left Message
 var attemptsLeft = 3;
