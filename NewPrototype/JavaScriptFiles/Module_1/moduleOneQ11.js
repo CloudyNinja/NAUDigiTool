@@ -37,30 +37,13 @@ var iFourDup = false;
 
 
 array = createArray(4);
+array = generateArrayIndex();
 userArray = createUserArray(4);
 createTruthTable(4);
 createKMap(4);
 fillKMap();
 
-// For hardcoding array ( testing )
-/*array[0] = 1;
-array[1] = 1;
-array[2] = 0;
-array[3] = 0;
-array[4] = 1;
-array[5] = 1;
-array[6] = "X";
-array[7] = 0;
-array[8] = 0;
-array[9] = 0;
-array[10] = "X";
-array[11] = 0;
-array[12] = 1;
-array[13] = 1;
-array[14] = "X";
-array[15] = 1;*/
-
-function countElementsInArray( arrayPassed )
+/*function countElementsInArray( arrayPassed )
 {
     var count = 0;
     
@@ -70,42 +53,7 @@ function countElementsInArray( arrayPassed )
     }
     
     return count;
-}
-
-var arraysToGenerateFrom = [ [1,1,0,1,1,1,1,1,0,0,"X",1,"X",1,"X","X"],
-                             [1,1,1,"X",1,"X",0,0,1,"X",0,"X",1,1,0,1],
-                             [1,1,1,"X","X",1,"X",1,0,0,0,0,1,1,1,0],
-                             [1,1,1,0,1,1,0,1,0,1,"X",1,1,1,1,1],
-                             [1,1,0,0,"X",0,0,1,1,0,1,1,0,1,1,1],
-                             [1,1,1,"X",0,1,"X",1,1,"X",1,1,1,1,"X",1],
-                             [1,1,0,1,"X","X","X","X",1,"X",1,1,"X",1,0,1],
-                             [1,1,"X",1,1,"X",0,1,0,1,"X","X",1,"X",1,1],
-                             [1,1,1,0,"X",1,0,1,1,0,0,1,1,1,1,1],
-                             [1,1,1,"X",1,"X","X","X",0,1,1,0,1,"X",1,0],
-                             [1,1,0,1,1,1,"X",1,1,"X",1,1,1,"X",1,0],
-                             [1,1,0,"X",1,1,1,1,1,"X",1,0,"X","X","X",1],
-                             [1,1,1,"X",0,1,1,1,0,1,1,1,1,0,"X",0],
-                             [1,1,1,"X",1,1,"X",1,1,1,0,1,1,1,0,0],
-                             [1,1,1,0,"X",1,"X",0,1,0,"X",0,"X",1,0,1],
-                             [1,1,1,"X","X",0,1,0,1,1,0,1,1,1,0,0],
-                             [1,1,1,1,1,"X",1,"X",0,1,"X",1,1,1,"X",0],
-                             [1,1,1,1,0,1,0,0,1,1,1,0,1,"X",1,1],
-                             [1,1,"X","X",1,1,0,0,1,"X",0,0,"X",1,"X",1],
-                             [1,1,0,0,"X",1,1,0,"X",0,1,"X",1,1,"X",1],
-                             [1,1,1,1,1,0,1,1,"X",1,1,1,1,1,1,1],
-                             [1,1,1,"X",0,1,0,1,"X",1,1,1,0,"X",0,0],
-                             [1,1,1,"X",1,1,1,1,0,1,1,0,0,0,1,"X"],
-                             [1,1,"X",1,"X",1,1,1,1,"X",1,1,0,0,1,0],
-                             [1,1,1,0,0,0,1,0,1,"X",0,1,0,1,1,1],
-                             [1,1,1,"X",1,0,1,0,0,"X",1,1,0,1,0,1],
-                             [1,1,"X","X","X",1,"X",1,1,1,1,"X",1,1,"X","X"],
-                             [1,1,1,0,0,0,1,0,0,"X",1,"X",1,"X",0,1],
-                             [1,1,1,1,1,1,"X",1,"X",0,1,1,0,1,1,0],
-                             [1,1,1,1,1,0,1,"X","X",0,1,0,"X",1,0,0],
-                             [1,1,0,"X",1,0,1,"X",0,1,0,"X",0,1,"X",0],
-                             [1,1,"X",1,1,1,"X",1,1,1,"X",1,1,1,1,1] ];
-                             
-//array = [1,1,"X",1,"X",1,1,1,1,"X",1,1,0,0,1,0];
+}*/
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
@@ -115,8 +63,8 @@ console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] +
 console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
 
 console.log( "ARRAY FORMED: " + JSON.stringify( array ) );
-console.log( "IS THERE AN ARRAY SIMILAR: " + checkIfArrayAlreadyMade( array, arraysToGenerateFrom ) );
-console.log( "NUMBER OF ELEMENTS IN ARRAY: " + countElementsInArray( arraysToGenerateFrom ) );
+//console.log( "IS THERE AN ARRAY SIMILAR: " + checkIfArrayAlreadyMade( array, arraysToGenerateFrom ) );
+//console.log( "NUMBER OF ELEMENTS IN ARRAY: " + countElementsInArray( arraysToGenerateFrom ) );
 
 find16s();
 find8s();
