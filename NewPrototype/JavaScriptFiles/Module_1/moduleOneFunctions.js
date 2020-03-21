@@ -4283,7 +4283,7 @@ function checkUserEquation()
                 window.location.href = "moduleOneQuestionPicker.html";   
             }
             
-            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 || window.location.href.indexOf("moduleOneQuestionTwelve") > -1 )
             {
                 alert( "Congrats, you got the answer right!" );
             }
@@ -4296,7 +4296,7 @@ function checkUserEquation()
                 document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
             }
             
-            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 || window.location.href.indexOf("moduleOneQuestionTwelve") > -1 )
             {
                 alert( "WRONG!" );
             }
