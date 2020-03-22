@@ -35,6 +35,7 @@ var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
 
+
 array = createArray(4);
 array = generateArrayIndex();
 userArray = createUserArray(4);
@@ -71,12 +72,5 @@ find4s();
 find2s();
 
 // Attempts Left Message
-var attemptsLeft = 3;
-var starsGiven = 3;
-var levelMaxStars = 3;
-var totalUserStars = parseInt(localStorage.getItem("updatedUserStars"));
-
-document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
-
-// Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+var starsGiven = 0;
+var levelMaxStars = 0;

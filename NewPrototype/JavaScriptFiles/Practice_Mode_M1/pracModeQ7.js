@@ -13,5 +13,5 @@ userArray = createUserArray(3);
 
 // Attempts Left Message
 var starsGiven = 0;
-var levelMaxStars = 3;
+var levelMaxStars = 0;
 

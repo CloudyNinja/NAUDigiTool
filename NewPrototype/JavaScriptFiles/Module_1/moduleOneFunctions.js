@@ -1929,10 +1929,13 @@ function fillKMap()
     // For 4 var KMaps
     else if ( array.length == 16 )
     {
-        swapArrayIndices( 8, 12 );
-        swapArrayIndices( 9, 13 );
-        swapArrayIndices( 10, 14 );
-        swapArrayIndices( 11, 15 );
+        if ( dontCare == 0 )
+        {
+            swapArrayIndices( 8, 12 );
+            swapArrayIndices( 9, 13 );
+            swapArrayIndices( 10, 14 );
+            swapArrayIndices( 11, 15 );
+        }
         
        for ( var index = 0; index < array.length; index++ )
        {
@@ -2400,11 +2403,6 @@ function eliminateRedundancies( arrayPassed )
     }
     
     return arrayPassed;
-}
-
-function generateDCArray()
-{
-    var arraysToGenerateFrom = [ [1,1,0,1,1,1,1,1,0,0,"X",1,"X",1,"X","X"] ];
 }
 
 // Checks the 1, "X" condition
@@ -4206,8 +4204,6 @@ function checkGroupings()
             else
             {
                 document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-                //setDrawingArray();
-                //resetTwoDArray( user2DArray );
                 attemptsLeft = decreaseAttempts( attemptsLeft );
             }
         }
@@ -4228,12 +4224,38 @@ function checkGroupings()
         
         if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
         {
-            alert( "CORRECT!" );
+            if ( window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 )
+            {
+                alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestionPicker.html";   
+            }
+            
+            else 
+            {
+                if ( window.location.href.indexOf("moduleOneQuestion9") > -1 )
+                {
+                    window.location.href = "moduleOneQuestion10.html";
+                }
+                
+                else if ( window.location.href.indexOf("moduleOneQuestion11") > -1 )
+                {
+                    window.location.href = "moduleOneQuestion12.html";
+                }
+            }
         }
         
         else
         {
-            alert( "INCORRECT!" );
+            if ( window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 )
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+            }
+            
+            else
+            {
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+                attemptsLeft = decreaseAttempts( attemptsLeft );
+            }
         }
     }
     
@@ -4283,7 +4305,20 @@ function checkUserEquation()
                 window.location.href = "moduleOneQuestionPicker.html";   
             }
             
-            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 || window.location.href.indexOf("moduleOneQuestionTwelve") > -1 )
+            else if ( window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
+            {
+                alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestionPicker.html";   
+            }
+            
+            else if ( window.location.href.indexOf("moduleOneQuestion10") > -1 )
+            {
+                // I can figure out how to add star here
+                //alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestion11.html"; 
+            }
+            
+            else if ( window.location.href.indexOf("moduleOneQuestion12") > -1 )
             {
                 alert( "Congrats, you got the answer right!" );
             }
@@ -4291,14 +4326,9 @@ function checkUserEquation()
         
         else
         {
-            if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+            if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
             {
                 document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
-            }
-            
-            else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 || window.location.href.indexOf("moduleOneQuestionTwelve") > -1 )
-            {
-                alert( "WRONG!" );
             }
             
             else
@@ -4311,12 +4341,12 @@ function checkUserEquation()
     
     else
     {
-        if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+        if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
         
-        else if ( window.location.href.indexOf("moduleOneQuestionTen") > -1 )
+        else if ( window.location.href.indexOf("moduleOneQuestion10") > -1 )
         {
             alert( "WRONG!" );
         }
@@ -4416,12 +4446,12 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 || window.location.href.indexOf("moduleOneQuestionEleven") > -1 )
+    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 || window.location.href.indexOf("moduleOneQuestion11") > -1 )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("moduleOneQuestionTen") )
+    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("moduleOneQuestion10") )
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
     }

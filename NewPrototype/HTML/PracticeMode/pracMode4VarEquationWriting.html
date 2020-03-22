@@ -15,15 +15,15 @@
             <li><a href="../../index.html">Log Out</a></li>
         </ul>
         
-        <h2 id="problem">Practice Mode: Select the minimal set of groupings for Sum of Products.</h2>
+        <h2 id="problem">Practice Mode: Enter the equation based off of the KMap.</h2>
         
-        <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
-        <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
-        <canvas id="userCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
+        <canvas id="myTruthTableCanvas" width="280" height="500" style="border:2px solid #000000;"></canvas>
+        <canvas id="myKMapCanvas" width="400" height="320" style="border:2px solid #000000;"></canvas>
         
-        <button type="button" id="submitButton" onclick="checkGroupings()">Submit</button>
+        <button type="button" id="submitButton" onclick="checkUserEquation()">Submit</button>
         <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
-        <button type="button" id="resetButton" onclick="resetGroupings()">Reset</button>
+        <button type="button" id="resetButton" onclick="resetEquation()">Reset</button>
+        <input id="userEquation" type="text" placeholder="Y ="/>
         
         <p id="incorrectAnswerMessage"></p>
         <p id="hint"></p>
@@ -31,7 +31,7 @@
         <!--Loads the JavaScript file-->
         <script src="../../JavaScriptFiles/Module_1/moduleStars.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleOneFunctions.js"></script>
-        <script src="../../JavaScriptFiles/Practice_Mode_M1/pracModeQ2.js"></script>
+        <script src="../../JavaScriptFiles/Practice_Mode_M1/pracModeQ10.js"></script>
         
         <!--Footer for bottom of page-->
         <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
@@ -41,6 +41,7 @@
         <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
 
         <!-- Main -->
+        <script src="../../dist/main.js"></script>
         <script src="../../dist/main.js"></script>
     </body>
 </html>
