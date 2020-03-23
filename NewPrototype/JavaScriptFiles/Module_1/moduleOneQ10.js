@@ -2,6 +2,8 @@ var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);
 var dontCare = 0;
+var hint = 3;
+var practiceMode = 0;
 
 // Counter for 16s along with array
 var sixteenCounter = 0;

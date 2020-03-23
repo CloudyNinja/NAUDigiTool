@@ -2,6 +2,8 @@ var array = new Array(8);
 var userArray = new Array(8);
 var groupingArray = new Array(8);
 var dontCare = 0;
+var hint = 1;
+var practiceMode = 0;
 
 array = createArray(3);
 userArray = createUserArray(3);

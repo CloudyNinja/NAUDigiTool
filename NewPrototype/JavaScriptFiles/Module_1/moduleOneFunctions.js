@@ -10,19 +10,10 @@ var drag = false;
 
 var rectangleArray = new Array( 1 );
 var drawingArray = new Array( 1 );
-setDrawingArray();
 
 var student_id = sessionStorage.getItem('student_id');
 
-//////////// FOR GROUPING /////////////////
-function setDrawingArray()
-{
-    for ( var index = 0; index < drawingArray.length; index++ )
-    {
-        drawingArray[ index ] = 0;
-    }
-}
-
+// Creates user equation for truth table translation inputs
 function createUserArray()
 {
     for ( var index = 0; index < userArray.length; index++ )
@@ -55,8 +46,6 @@ function addInputsToUserArray()
         swapUserArrayIndices( 10, 15 );
         swapUserArrayIndices( 11, 14 );
     }
-    
-    console.log( JSON.stringify( userArray ) );
 }
 
 function init() 
@@ -76,12 +65,9 @@ function mouseDown(e)
 function mouseUp() 
 {
     drag = false;
-    //addRectangleToArray( rect );
     formatRectangle( rect, event );
     ctx.clearRect( 0, 0, canvas.width, canvas.height);
     drawRectangles();
-    //console.log( "\nGrouping array: " + JSON.stringify(groupingArray));
-    //console.log( " Drawing array: " + JSON.stringify(drawingArray));
 }
 
 function addRectangleToArray( rectangle )
@@ -90,108 +76,63 @@ function addRectangleToArray( rectangle )
     
     while ( rectangleArray[ index ] != null )
     {
-        //console.log(rectangleArray[ index ] );
         index++;
     }
 
     rectangleArray[index] = rectangle;  
-    //console.log(JSON.stringify(rectangleArray));
 }
 
-// Adds given pair to drawing array. More modular.
-function addPairToDrawingArray( firstIndex, secondIndex )
+// Adds to drawing array. More modular.
+function addToDrawingArray( tempPassed, arrayPassed, indexPassed, drawingArrayPassed )
 {
-    var bothOnes = drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1;
-    
-    if (  bothOnes && octects == 0 && quads == 0 )
-    {
-        drawingArray[ firstIndex ] = groupingArray[firstIndex];
-        drawingArray[ secondIndex ] = groupingArray[secondIndex];
-        pairs -= 1;
-    }
-    
-    return 0;
-}
-
-// Adds given quad to drawing array. More modular.
-function addQuadToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
-{
-    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 && octects == 0 )
-    {
-        drawingArray[ firstIndex ] = groupingArray[firstIndex];
-        drawingArray[ secondIndex ] = groupingArray[secondIndex];
-        drawingArray[ thirdIndex ] = groupingArray[thirdIndex];
-        drawingArray[ fourthIndex ] = groupingArray[fourthIndex];
-        quads -= 1;
-    }
-    
-    return 0;
-}
-
-// Adds given octect to drawing array. More modular.
-function addOctetToDrawingArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex )
-{
-    if ( drawingArray[ firstIndex ] != 1 || drawingArray[ secondIndex ] != 1 || drawingArray[ thirdIndex ] != 1 || drawingArray[ fourthIndex ] != 1 || drawingArray[ fifthIndex ] != 1 || drawingArray[ sixthIndex ] != 1 || drawingArray[ seventhIndex ] != 1 || drawingArray[ eighthIndex ] != 1 )
-    {
-        drawingArray[ firstIndex ] = groupingArray[ firstIndex ];
-        drawingArray[ secondIndex ] = groupingArray[ secondIndex ];
-        drawingArray[ thirdIndex ] = groupingArray[ thirdIndex ];
-        drawingArray[ fourthIndex ] = groupingArray[ fourthIndex ];
-        drawingArray[ fifthIndex ] = groupingArray[ fifthIndex ];
-        drawingArray[ sixthIndex ] = groupingArray[ sixthIndex ];
-        drawingArray[ seventhIndex ] = groupingArray[ seventhIndex ];
-        drawingArray[ eighthIndex ] = groupingArray[ eighthIndex ];
-        octects -= 1;
-    }
-    
-    return 0;
+    addRectangleToArray( tempPassed );
+    indexPassed = createArraySpace( drawingArrayPassed );
+    drawingArrayPassed[indexPassed] = arrayPassed;
+    drawingArrayPassed = removeDuplicates( drawingArrayPassed );
+    console.log( "DRAWING ARRAY: " + JSON.stringify( drawingArrayPassed ) );
 }
 
 // This formats rectangle as a user groups them
 function formatRectangle( rectangle, event )
 {
     // Coordinates
-    /*var x = event.clientX;
-    var y = event.clientY;*/
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
     var length = getLengthOfArray();
     var rectColor = generateColor();
+    var arrayToBeAdded;
     
     if ( length == 8 )
     {
         // First four if statements is for vertical pair grouping
         if ( x > 100 && x < 150 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
         {
+            // Creates spaces and adds to drawing array
             temp = { startX: 110, startY: 110, w: 30, h : 80, color: rectColor };
-            addPairToDrawingArray( 0, 4 );
-            addPairToTwoDArray( user2DArray, 0, 4 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 4 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 150 && x < 200 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 110, w: 30, h : 80, color: rectColor };
-            addPairToDrawingArray( 1, 5 );
-            addPairToTwoDArray( user2DArray, 1, 5 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 1, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 200 && x < 250 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 110, w: 30, h : 80, color: rectColor };
-            addPairToDrawingArray( 2, 6 );
-            addPairToTwoDArray( user2DArray, 2, 6 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 2, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 250 && x < 300 && y > 100 && y < 200 && rectangle.w > 5 && rectangle.w < 47 && rectangle.h > 52 && rectangle.h < 95 )
         {
             temp = { startX: 260, startY: 110, w: 30, h : 80, color: rectColor };
-            addPairToDrawingArray( 3, 7 );
-            addPairToTwoDArray( user2DArray, 3, 7 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 3, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         // Next eight if statements is for horizontal pair grouping
@@ -199,133 +140,119 @@ function formatRectangle( rectangle, event )
         else if ( x > 100 && x < 200 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48  )
         {
             temp = { startX: 110, startY: 110, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 0, 1 );
-            addPairToTwoDArray( user2DArray, 0, 1 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 150 && x < 250 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
         {
             temp = { startX: 160, startY: 110, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 1, 2 );
-            addPairToTwoDArray( user2DArray, 1, 2 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 1, 2 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 200 && x < 300 && y > 100 && y < 150 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
         {
             temp = { startX: 210, startY: 110, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 2, 3 );
-            addPairToTwoDArray( user2DArray, 2, 3 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 2, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
             // Next three is bottom row
         else if ( x > 100 && x < 200 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
         {
             temp = { startX: 110, startY: 160, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 4, 5 );
-            addPairToTwoDArray( user2DArray, 4, 5 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 4, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 150 && x < 250 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
         {
             temp = { startX: 160, startY: 160, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 5, 6 );
-            addPairToTwoDArray( user2DArray, 5, 6 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 5, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         else if ( x > 200 && x < 300 && y > 150 && y < 200 && rectangle.w > 25 && rectangle.w < 98 && rectangle.h > 15 && rectangle.h < 48 )
         {
             temp = { startX: 210, startY: 160, w: 80, h : 30, color: rectColor };
-            addPairToDrawingArray( 6, 7 );
-            addPairToTwoDArray( user2DArray, 6, 7 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
-            // Next two are the wraps
-                // Top Row
+        // Next two are the wraps ( top first, bottom second )
         else if ( x > 75 && x < 100 && y > 110 && y < 145 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
         {
-            // Top row wrap
-            addPairToDrawingArray( 0, 3 );
             temp = { startX: 100, startY: 110, w: 40, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 260, startY: 110, w: 40, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            addPairToTwoDArray( user2DArray, 0, 3 );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
-                // Bottom row
+
         else if ( x > 75 && x < 100 && y > 160 && y < 195 && rectangle.w > 5 && rectangle.w < 40 && rectangle.h > 5 && rectangle.h < 40 )
         {
-            // Bottom row wrap
-            addPairToDrawingArray( 4, 7 );
             temp = { startX: 100, startY: 160, w: 40, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 4, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 260, startY: 160, w: 40, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            addPairToTwoDArray( user2DArray, 4, 7 );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
 
         // Next 3 if statements is for vertical quad grouping
         else if ( x > 100 && x < 200 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
         {
-            // Bottom row wrap
             temp = { startX: 110, startY: 110, w: 80, h : 80, color: rectColor };
-            addQuadToDrawingArray( 0, 1, 4, 5 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1, 4, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
         else if ( x > 150 && x < 250 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
         {
-            // Bottom row wrap
             temp = { startX: 160, startY: 110, w: 80, h : 80, color: rectColor };
-            addQuadToDrawingArray( 1, 2, 5, 6 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 1, 2, 5, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
          else if ( x > 200 && x < 300 && y > 100 && y < 200 && rectangle.w > 70 && rectangle.w < 95 && rectangle.h > 70 && rectangle.h < 95 )
         {
-            // Bottom row wrap
             temp = { startX: 210, startY: 110, w: 80, h : 80, color: rectColor };
-            addQuadToDrawingArray( 2, 3, 6, 7 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 2, 3, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
         // Next 2 if statements is for horizontal quad grouping
         else if ( x > 100 && x < 300 && y > 100 && y < 150 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
         {
             temp = { startX: 110, startY: 110, w: 180, h : 30, color: rectColor };
-            addQuadToDrawingArray( 0, 1, 2, 3 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1, 2, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
         else if ( x > 100 && x < 300 && y > 150 && y < 200 && rectangle.w > 162 && rectangle.w < 180 && rectangle.h > 5 && rectangle.h < 50 )
         {
             // Bottom row wrap
             temp = { startX: 110, startY: 160, w: 180, h : 30, color: rectColor };
-            addQuadToDrawingArray( 4, 5, 6, 7 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 4, 5, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
         // Next if statement is for wrap quad grouping
         else if ( x > 75 && x < 100 && y > 110 && y < 195 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 70 && rectangle.h < 95 )
         {
-            addQuadToDrawingArray( 0, 3, 4, 7 );
             temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3, 4, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
 
         // Octal group
         else if ( x > 100 && x < 300 && y > 100 && y < 200 && rectangle.w > 150 && rectangle.w < 190 && rectangle.h > 70 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 110, w: 180, h : 80, color: rectColor };
-            addOctetToDrawingArray( 0, 1, 2, 3, 4, 5, 6, 7 );
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
 
         else
@@ -343,836 +270,510 @@ function formatRectangle( rectangle, event )
         if ( x > 105 && x < 295 && y > 105 && y < 295 && rectangle.w > 165 && rectangle.w < 190 && rectangle.h > 165 && rectangle.h < 185 )
         {
             temp = { startX: 110, startY: 110, w: 180, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( sixteenDrawingArray );
-            sixteenDrawingArray[index] = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
-            sixteenDrawingArray = removeDuplicates( sixteenDrawingArray );
-         //   console.log( "SIXTEEN DRAWING ARRAY: " + JSON.stringify( sixteenDrawingArray ) );
+            arrayToBeAdded = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, sixteenDrawingArray );
         }
         
         // For eights // Horizonals, Verticals, Wraps
         else if ( x > 105 && x < 295 && y > 105 && y < 195 && rectangle.w > 165 && rectangle.w < 195 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 110, w: 180, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-         //   console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            arrayToBeAdded = [ 0, 1, 2, 3, 4, 5, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         else if ( x > 105 && x < 295 && y > 195 && y < 245 && rectangle.w > 165 && rectangle.w < 195 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 160, w: 180, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 4, 5, 6, 7, 8, 9, 10, 11 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            arrayToBeAdded = [ 4, 5, 6, 7, 8, 9, 10, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         else if ( x > 105 && x < 295 && y > 245 && y < 295 && rectangle.w > 165 && rectangle.w < 195 && rectangle.h > 65 && rectangle.h < 95 )
         {
-            temp = { startX: 110, startY: 210, w: 180, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 8, 9, 10, 11, 12, 13, 14, 15 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            temp = { startX: 110, startY: 210, w: 180, h : 80, color: rectColor };            
+            arrayToBeAdded = [ 8, 9, 10, 11, 12, 13, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         // Verticals
         else if ( x > 105 && x < 195 && y > 105 && y < 295 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
         {
             temp = { startX: 110, startY: 110, w: 80, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 0, 1, 4, 5, 8, 9, 12, 13 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            arrayToBeAdded = [ 0, 1, 4, 5, 8, 9, 12, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         else if ( x > 195 && x < 245 && y > 105 && y < 295 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
         {
             temp = { startX: 160, startY: 110, w: 80, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 1, 2, 5, 6, 9, 10, 13, 14 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            arrayToBeAdded = [ 1, 2, 5, 6, 9, 10, 13, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         else if ( x > 245 && x < 295 && y > 105 && y < 295 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 165 && rectangle.h < 195 )
         {
             temp = { startX: 210, startY: 110, w: 80, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 2, 3, 6, 7, 10, 11, 14, 15 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            arrayToBeAdded = [ 2, 3, 6, 7, 10, 11, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         // Horizontal Wrap
         else if ( x > 55 && x < 100 && y > 100 && y < 300 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 100, startY: 110, w: 40, h : 180, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3, 4, 7, 8, 11, 12, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
             temp = { startX: 260, startY: 110, w: 40, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 0, 3, 4, 7, 8, 11, 12, 15 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         // Vertical Wrap
         else if ( x > 100 && x < 300 && y > 55 && y < 100 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 5 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 100, w: 180, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1, 2, 3, 12, 13, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
             temp = { startX: 110, startY: 260, w: 180, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( eightDrawingArray );
-            eightDrawingArray[index] = [ 0, 1, 2, 3, 12, 13, 14, 15 ];
-            eightDrawingArray = removeDuplicates( eightDrawingArray );
-          //  console.log( "EIGHT DRAWING ARRAY: " + JSON.stringify( eightDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, eightDrawingArray );
         }
         
         // Quads // Horizontals, verticals, squares ( top left to bottom right ), wraps
         else if ( x > 100 && x < 300 && y > 100 && y < 150 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 110, w: 180, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 1, 2, 3 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 0, 1, 2, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 100 && x < 300 && y > 150 && y < 200 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 160, w: 180, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 4, 5, 6, 7 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 4, 5, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 100 && x < 300 && y > 200 && y < 250 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 210, w: 180, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 8, 9, 10, 11 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 8, 9, 10, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 100 && x < 300 && y > 250 && y < 300 && rectangle.w > 155 && rectangle.w < 195 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 260, w: 180, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 12, 13, 14, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 12, 13, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // Verticals
         else if ( x > 100 && x < 150 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 110, startY: 110, w: 30, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 4, 8, 12 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 0, 4, 8, 12 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 150 && x < 200 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 160, startY: 110, w: 30, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 1, 5, 9, 13 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 1, 5, 9, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 200 && x < 250 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 210, startY: 110, w: 30, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 2, 6, 10, 14 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 2, 6, 10, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 250 && x < 300 && y > 100 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 155 && rectangle.h < 195 )
         {
             temp = { startX: 260, startY: 110, w: 30, h : 180, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 3, 7, 11, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 3, 7, 11, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // Squares: From left to right
         else if ( x > 100 && x < 200 && y > 100 && y < 200 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 110, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 1, 4, 5 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 0, 1, 4, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 100 && y < 200 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 110, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 1, 2, 5, 6 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 1, 2, 5, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 100 && y < 200 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 110, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 2, 3, 6, 7 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-         //   console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 2, 3, 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // Middle squares
         else if ( x > 100 && x < 200 && y > 150 && y < 250 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 160, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 4, 5, 8, 9 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 4, 5, 8, 9 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 150 && y < 250 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 160, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 5, 6, 9, 10 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 5, 6, 9, 10 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 150 && y < 250 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 160, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 6, 7, 10, 11 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 6, 7, 10, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // Bottom squares
         else if ( x > 100 && x < 200 && y > 200 && y < 300 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 210, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 8, 9, 12, 13 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 8, 9, 12, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 200 && y < 300 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 210, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 9, 10, 13, 14 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 9, 10, 13, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 200 && y < 300 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 75 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 210, w: 80, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 10, 11, 14, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            arrayToBeAdded = [ 10, 11, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
-        // Wraps
-            // Horizontal Wraps
+        // Wraps ( Horizontals first, verticals second )
         else if ( x > 60 && x < 100 && y > 165 && y < 200 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
         {
             temp = { startX: 100, startY: 110, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3, 4, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 110, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 3, 4, 7 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 60 && x < 100 && y > 150 && y < 250 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
         {
             temp = { startX: 100, startY: 160, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 4, 7, 8, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 160, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 4, 7, 8, 11 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 60 && x < 100 && y > 200 && y < 300 && rectangle.w > 5 && rectangle.w < 45 && rectangle.h > 55 && rectangle.h < 95 )
         {
             temp = { startX: 100, startY: 210, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 8, 11, 12, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 210, w: 40, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 8, 11, 12, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-           // console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
             //  Vertical Wraps
         else if ( x > 100 && x < 200 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
         {
             temp = { startX: 110, startY: 100, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 1, 12, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 110, startY: 260, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 1, 12, 13 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
         {
             temp = { startX: 160, startY: 100, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 1, 2, 13, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 160, startY: 260, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 1, 2, 13, 14 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 65 && y < 100 && rectangle.w > 75 && rectangle.w < 95 && rectangle.h > 5 && rectangle.h < 35 )
         {
             temp = { startX: 210, startY: 100, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 2, 3, 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 210, startY: 260, w: 80, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 2, 3, 14, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-            //console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // Four corner wrap
         else if ( x > 25 && x < 75 && y > 45 && y < 85 && rectangle.w > 35 && rectangle.w < 60 && rectangle.h > 15 && rectangle.h < 40 )
         {
             temp = { startX: 100, startY: 100, w: 40, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3, 12, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 100, w: 40, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 100, startY: 260, w: 40, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
             temp = { startX: 260, startY: 260, w: 40, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( fourDrawingArray );
-            fourDrawingArray[index] = [ 0, 3, 12, 15 ];
-            fourDrawingArray = removeDuplicates( fourDrawingArray );
-          //  console.log( "FOUR DRAWING ARRAY: " + JSON.stringify( fourDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, fourDrawingArray );
         }
         
         // For pairs ( Horizontal, Vertical, Wraps ( Horizontal, Vertical ) )
         else if ( x > 100 && x < 200 && y > 100 && y < 150 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 110, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 0, 1 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 0, 1 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 100 && y < 150 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 160, startY: 110, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 1, 2 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 1, 2 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 100 && y < 150 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 210, startY: 110, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 2, 3 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 2, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 100 && x < 200 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 160, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 4, 5 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 4, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 160, startY: 160, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 5, 6 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 5, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 150 && y < 200 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 210, startY: 160, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 6, 7 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 6, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 100 && x < 200 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 210, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 8, 9 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 8, 9 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 160, startY: 210, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 9, 10 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 9, 10 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 200 && y < 250 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 210, startY: 210, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 10, 11 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 10, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 100 && x < 200 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 110, startY: 260, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 12, 13 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 12, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 250 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 160, startY: 260, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 13, 14 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 13, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 300 && y > 250 && y < 300 && rectangle.w > 65 && rectangle.w < 95 && rectangle.h > 25 && rectangle.h < 45 )
         {
             temp = { startX: 210, startY: 260, w: 80, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 14, 15 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 14, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         // Vertical
         else if ( x > 100 && x < 150 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 110, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 0, 4 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 0, 4 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 200 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 110, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 1, 5 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 1, 5 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 250 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 110, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 2, 6 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 2, 6 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 250 && x < 300 && y > 100 && y < 200 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 260, startY: 110, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 3, 7 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 3, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 100 && x < 150 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 160, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 4, 8 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 4, 8 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 200 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 160, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 5, 9 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 5, 9 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 250 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 160, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 6, 10 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 6, 10 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 250 && x < 300 && y > 150 && y < 250 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 260, startY: 160, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 7, 11 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 7, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 100 && x < 150 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 110, startY: 210, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 8, 12 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 8, 12 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 200 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 160, startY: 210, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 9, 13 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 9, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 250 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 210, startY: 210, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 10, 14 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-            //console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 10, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 250 && x < 300 && y > 200 && y < 300 && rectangle.w > 25 && rectangle.w < 45 && rectangle.h > 65 && rectangle.h < 95 )
         {
             temp = { startX: 260, startY: 210, w: 30, h : 80, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 11, 15 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            arrayToBeAdded = [ 11, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         // Horizontal Wraps
         else if ( x > 60 && x < 100 && y > 100 && y < 140 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 100, startY: 110, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 3 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 265, startY: 110, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 0, 3 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 60 && x < 100 && y > 150 && y < 190 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 100, startY: 160, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 4, 7 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 265, startY: 160, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 4, 7 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 60 && x < 100 && y > 200 && y < 240 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 100, startY: 210, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 8, 11 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 265, startY: 210, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 8, 11 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-            console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 60 && x < 100 && y > 250 && y < 290 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 100, startY: 260, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 12, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 265, startY: 260, w: 35, h : 30, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 12, 15 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         // Vertical groups 
         else if ( x > 105 && x < 145 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 110, startY: 100, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 0, 12 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 110, startY: 260, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 0, 12 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 150 && x < 200 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 160, startY: 100, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 1, 13 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 160, startY: 260, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 1, 13 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-          //  console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 200 && x < 250 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 210, startY: 100, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 2, 14 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray);
             temp = { startX: 210, startY: 260, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 2, 14 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else if ( x > 250 && x < 300 && y > 60 && y < 100 && rectangle.w > 20 && rectangle.w < 50 && rectangle.h > 20 && rectangle.h < 50 )
         {
             temp = { startX: 260, startY: 100, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
+            arrayToBeAdded = [ 3, 15 ];
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
             temp = { startX: 260, startY: 260, w: 30, h : 40, color: rectColor };
-            addRectangleToArray( temp );
-            
-            // Creates array space and adds array
-            index = createArraySpace( twoDrawingArray );
-            twoDrawingArray[index] = [ 3, 15 ];
-            twoDrawingArray = removeDuplicates( twoDrawingArray );
-           // console.log( "TWO DRAWING ARRAY: " + JSON.stringify( twoDrawingArray ) );
+            addToDrawingArray( temp, arrayToBeAdded, index, twoDrawingArray );
         }
         
         else
@@ -1273,165 +874,6 @@ init();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// This function draws the octect for problems where the user needs to write the equation
-function drawEquationOctetRectangles( drawRect, firstIndex, secondIndex, thirdIndex, fourthIndex, fifth, sixth, seventh, eighth )
-{
-    var startX = 110;
-    var startY = 110;
-    var indexIncrement = 50;
-    var octetWidth;
-    var octetHeight;
-    
-    // Sets drawing canvas to random color
-    var canvas = document.getElementById('myKMapCanvas');
-    var context = canvas.getContext('2d');
-    context.strokeStyle = generateColor();
-    
-    if ( drawRect == 1 && array.length == 8 )
-    {
-        octetWidth = 180;
-        octetHeight = 80;
-        context.strokeRect( startX, startY, octetWidth, octetHeight );
-    }
-    
-}
-// This function draws the quad rectangles for problems where the user needs to write the equation
-function drawEquationQuadRectangles( drawRect, firstIndex, secondIndex, thirdIndex, fourthIndex )
-{
-    var startX = 110;
-    var startY = 110;
-    var indexIncrement = 50;
-    var quadWidth = 0;
-    var quadHeight = 0;
-    
-    // Sets drawing canvas to random color
-    var canvas = document.getElementById('myKMapCanvas');
-    var context = canvas.getContext('2d');
-    context.strokeStyle = generateColor();
-    
-    if ( drawRect == 1 && array.length == 8 )
-    {
-        // For vertical quads
-        if ( firstIndex + 4 == thirdIndex && firstIndex + 5 == fourthIndex )
-        {
-            quadWidth = 80;
-            quadHeight = 80;
-            
-            startX += indexIncrement * firstIndex;
-            context.strokeRect( startX, startY, quadWidth, quadHeight );
-        }
-        
-        // For horizonal quads
-        else if ( firstIndex + 2 == thirdIndex )
-        {
-            quadWidth = 180;
-            quadHeight = 30;
-            
-            if ( firstIndex == 4 )
-            {
-                startY = 160;
-            }
-            
-            context.strokeRect( startX, startY, quadWidth, quadHeight );
-        }
-        
-        else
-        {
-            quadWidth = 40;
-            quadHeight = 80;
-            startX = 100;
-            context.strokeRect( startX, startY, quadWidth, quadHeight );
-            startX = 260;
-            context.strokeRect( startX, startY, quadWidth, quadHeight );
-        }
-    }
-}
-
-// This function draws the pair rectangles for problems where the user needs to write the equation
-function drawEquationPairRectangles( simplifiedArray )
-{
-    // Passes in twoDArray after redundacy check
-    var startX;
-    var startY;
-    var indexIncrement = 50;
-    var pairWidth;
-    var pairHeight;
-    
-    // 30 80 for vertical, 80 30 for horizontal
-    
-    // Sets drawing canvas to random color
-    var canvas = document.getElementById('myKMapCanvas');
-    var context = canvas.getContext('2d');
-    
-    for ( var index = 0; index < simplifiedArray.length; index++ ) 
-    {
-        startX = 110;
-        startY = 110;
-        context.strokeStyle = generateColor();
-        
-        //console.log( "FIRST NUM: " + simplifiedArray[index][0] + " SECOND NUM: " + simplifiedArray[index][1] );
-        
-        // For horizontal grouping
-            // If difference of group is 1 ( double check for horizonal )
-        if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 1 )
-        {
-            pairWidth = 80;
-            pairHeight = 30;
-            
-            if ( simplifiedArray[index][0] >= 0 && simplifiedArray[index][0] <= 2 )
-            {
-                startX += indexIncrement * simplifiedArray[index][0];
-                context.strokeRect( startX, startY, pairWidth, pairHeight );
-            }
-            
-            else if ( simplifiedArray[index][0] >= 4 && simplifiedArray[index][0] <= 6 )
-            {
-                startX += indexIncrement * ( simplifiedArray[index][0] - 4 );
-                startY += indexIncrement;
-                context.strokeRect( startX, startY, pairWidth, pairHeight );
-            }
-        }
-        
-        // For vertical grouping
-            // If difference of group is 4 ( double check for vertical )
-        else if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 4 )
-        {
-            pairWidth = 30;
-            pairHeight = 80;
-            
-            startX += indexIncrement * simplifiedArray[index][0];
-            context.strokeRect( startX, startY, pairWidth, pairHeight );
-        }
-        
-        // For the wraps
-        else
-        {
-            if ( simplifiedArray[index][1] - simplifiedArray[index][0] == 3 )
-            {
-                pairWidth = 40;
-                pairHeight = 30;
-                
-                // Top row wrap
-                if ( simplifiedArray[index][0] == 0 )
-                {
-                    startX = 100;
-                    context.strokeRect( startX, startY, pairWidth, pairHeight );
-                    startX = 260;
-                    context.strokeRect( startX, startY, pairWidth, pairHeight );
-                }
-                
-                else
-                {
-                    startY += indexIncrement;
-                    startX = 100;
-                    context.strokeRect( startX, startY, pairWidth, pairHeight );
-                    startX = 260;
-                    context.strokeRect( startX, startY, pairWidth, pairHeight );
-                }
-            }
-        }
-    }
-}    
 
 // Creates an array based on the number of variables provided
 function createArray( numberOfVariables )
@@ -1450,14 +892,12 @@ function createArray( numberOfVariables )
     {
         if ( ( array[0] != 1 || array[1] != 1 ) && dontCare == 0 )
         {
-            console.log("DONT CARE: " + dontCare );
             array[0] = 1;
             array[1] = 1;
         }
         
         else if ( ( array[0] != 1 || array[1] != "X" ) && dontCare == 1 )
         {
-            console.log("ADD X: " + dontCare );
             array[0] = 1;
             array[1] = "X";
         }
@@ -2033,14 +1473,9 @@ function find16s()
         sixteenArrayIndex = createArraySpace( sixteenArray );
         sixteenArray[sixteenArrayIndex] = newArray;
         sixteenAmount += 1;
-        console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
     }
-    
-    else 
-    {
-        console.log( "SIXTEEN ARRAY NOT FORMED" );
-        console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
-    }
+        
+    console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
 }
 
 // Finds 8s in array
@@ -2067,7 +1502,6 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
@@ -2085,7 +1519,6 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
@@ -2103,7 +1536,6 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
                 
                 else if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index + 14] == 1 || array[index + 14] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
@@ -2114,7 +1546,6 @@ function find8s()
                     eightArrayIndex = createArraySpace( eightArray );
                     eightArray[eightArrayIndex] = newArray;
                     eightAmount += 1;
-                    //console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
                 }
             }
         }
@@ -2223,7 +1654,6 @@ function find4s()
         }
     }
     
-    //console.log( "FOUR ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( fourArray ) );
     fourArray = eliminateRedundancies( fourArray );
     console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
@@ -2405,72 +1835,6 @@ function eliminateRedundancies( arrayPassed )
     return arrayPassed;
 }
 
-// Checks the 1, "X" condition
-function elimateOneandOnesInGroup( arrayPassed, otherArrayPassed )
-{
-    // arrayPassed: [5, 6]
-    // otherArrayPassed: [12, 13, 14, 15], [0, 1, 4, 5]
-    
-    var removeFlag = false;
-    var numOfOnes = 0;
-    var counter = 0;
-    
-    if ( arrayPassed != null && otherArrayPassed != null )
-    {
-        for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
-        {
-            removeFlag = false;
-            
-            for ( var innerIndex = 0; innerIndex < otherArrayPassed.length; innerIndex++ )
-            {
-                if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
-                {
-                    console.log( "COMPARING:" + arrayPassed[outerIndex] + " with " + otherArrayPassed[innerIndex] );
-                    
-                    removeFlag = checkForRemoval( arrayPassed[outerIndex], otherArrayPassed[innerIndex], removeFlag, numOfOnes, counter );
-                
-                    if ( removeFlag )
-                    {
-                        arrayPassed.splice( outerIndex, 1 );
-                        removeFlag = false;
-                    }
-                }
-            }
-        }
-
-        // Adding null to empty array
-        if ( arrayPassed.length == 0 )
-        {
-            arrayPassed[0] = null;
-        }
-    }
-    
-    return arrayPassed;
-}
-
-function checkForRemoval( arrayOne, arrayTwo, flag, numberOfOnes, count )
-{
-    // arrayOne: [5, 6]
-    // arrayTwo: [12, 13, 14, 15]
-    
-    if ( ( array[arrayOne[0]] == 1 && array[arrayOne[1]] == "X" ) || ( array[arrayOne[1]] == 1 && array[arrayOne[0]] == "X" ) && arrayOne.length == 2 )
-    {
-        for ( var outerIndex = 0; outerIndex < arrayOne.length; outerIndex++ )
-        {
-            for ( var innerIndex = 0; innerIndex < arrayTwo.length; innerIndex++ )
-            {
-                //console.log( "\nARRAY AT OUTER INDEX: " + array[arrayOne[outerIndex]] );
-                if ( arrayOne[outerIndex] == arrayTwo[innerIndex] && array[arrayOne[outerIndex]] == 1 )
-                {
-                    flag = true;
-                }
-            }
-        } 
-    }
-    
-    return flag;
-}
-
 // Eliminates redundacies within 2 arrays
 function eliminateRedundanciesFromTwoArrays( arrayPassed, otherArrayPassed, lastArrayPassed )
 {
@@ -2526,21 +1890,12 @@ function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, arr
     
     while ( comparedArray[whileIndex] != null )
     {
-        //console.log( "Comparing " + arrayPassed + " to " + comparedArray[whileIndex] );
-        //console.log( "\nIONEDUP: " + iOneDup );
-        //console.log( "ITWODUP: "+ iTwoDup );
         checkForDuplicates( arrayPassed, comparedArray[whileIndex] );
         whileIndex += 1;
     }
-    
-    // console.log( "While INDEX: " + whileIndex );
-    // console.log( "COMPARED ARRAY LENGTH: " + whileIndex );
-    // console.log( "Compared Array: " + JSON.stringify(comparedArray) );
 
     if ( count == 0 && ( !iOneDup || !iTwoDup || !iThreeDup || !iFourDup ) && arrayPassed.length == 4 && number == 4 )
     {
-        //console.log( "NEW ARRAY ADDED" );
-        // Creates slot to add array and adds the array
         arrayIndex = createArraySpace( array );
         array[arrayIndex] = arrayPassed;
         arrayAmount += 1;
@@ -2548,8 +1903,6 @@ function checkIfCanAdd( arrayPassed, comparedArray, arrayIndex, arrayAmount, arr
     
     else if ( count == 0 && ( !iOneDup || !iTwoDup ) && arrayPassed.length == 2 && number == 2 )
     {  
-        //console.log( "IN HERE" );
-        //console.log( "ADDED: " + arrayPassed );
         arrayIndex = createArraySpace( array );
         array[arrayIndex] = arrayPassed;
         arrayAmount += 1;
@@ -2570,7 +1923,6 @@ function checkForDuplicates( arrayOne, arrayTwo )
         {
             for ( var arrayTwoIndex = 0; arrayTwoIndex < arrayTwo.length; arrayTwoIndex++ )
             {
-                //console.log( "COMPARING: " + arrayOne[arrayOneIndex] + " with " + arrayTwo[arrayTwoIndex] );       
                 if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] )
                 {
                     if ( arrayOneIndex == 0 )
@@ -2595,11 +1947,6 @@ function checkForDuplicates( arrayOne, arrayTwo )
                 }
             }
         }
-        
-        /*console.log( "\nIONEDUP: " + iOneDup );
-        console.log( "ITWODUP: "+ iTwoDup );
-        console.log( "ITHREEDUP: " + iThreeDup );
-        console.log( "IFOURDUP: " + iFourDup );*/
     }
 }
 
@@ -2658,7 +2005,6 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
     
     else if ( arrayOne[0] == null && arrayTwo[0] == null )
     {
-        //console.log( "HERE" );
         return true;
     }
     
@@ -2666,23 +2012,6 @@ function checkIfArraysMatch( arrayOne, arrayTwo )
     {
         return false;
     }
-}
-
-function checkIfArrayAlreadyMade( arrayOne, arrayTwo )
-{
-    var flag = false;
-    
-    for ( var index = 0; index < arrayTwo.length; index++ )
-    {
-        //console.log( "Comparing: " + arrayOne + " to " + arrayTwo[index] );
-        
-        if ( arraysEqual( arrayOne, arrayTwo[index] ) )
-        {
-            flag = true;
-        }
-    }
-    
-    return flag;
 }
 
 // Checks both arrays to see if they match
@@ -3037,48 +2366,57 @@ function addValuesToEquationArray( arrayPassed )
                 firstIndex = arrayPassed[index][0];
                 lastIndex = arrayPassed[index][7];
                 
-                // Horizontals
-                if ( firstIndex == 0 && lastIndex == 7 )
+                // For four variable
+                if ( array.length == 16 )
                 {
-                    addToEquationArray( "A'" );
+                    // Horizontals
+                    if ( firstIndex == 0 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "B" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "A" );
+                    }
+
+                    // Verticals
+                    else if ( firstIndex == 0 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "C'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "C" );
+                    }
+
+                    // Horizontal wrap
+                    else if ( firstIndex == 0 && lastIndex == 15 && arrayPassed[index][1] != 1 )
+                    {
+                        addToEquationArray( "D'" );
+                    }
+
+                    // Vertical wrap
+                    else if ( firstIndex == 0 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "B'" );
+                    }
                 }
                 
-                else if ( firstIndex == 4 && lastIndex == 11 )
+                else
                 {
-                    addToEquationArray( "B" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 15 )
-                {
-                    addToEquationArray( "A" );
-                }
-                
-                // Verticals
-                else if ( firstIndex == 0 && lastIndex == 13 )
-                {
-                    addToEquationArray( "C'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 14 )
-                {
-                    addToEquationArray( "D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 15 )
-                {
-                    addToEquationArray( "C" );
-                }
-                
-                // Horizontal wrap
-                else if ( firstIndex == 0 && lastIndex == 15 && arrayPassed[index][1] != 1 )
-                {
-                    addToEquationArray( "D'" );
-                }
-                
-                // Vertical wrap
-                else if ( firstIndex == 0 && lastIndex == 15 )
-                {
-                    addToEquationArray( "B'" );
+                    addToEquationArray( "1" );
                 }
             }
         }
@@ -3091,130 +2429,169 @@ function addValuesToEquationArray( arrayPassed )
                 firstIndex = arrayPassed[index][0];
                 lastIndex = arrayPassed[index][3];
                 
-                // Horizontals
-                if ( firstIndex == 0 && lastIndex == 3 )
+                if ( array.length == 16 )
                 {
-                    addToEquationArray( "A'B'" );
+                    // Horizontals
+                    if ( firstIndex == 0 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'B'" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'B" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "AB" );
+                    }
+
+                    else if ( firstIndex == 12 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "AB'" );
+                    }
+
+                    // Verticals
+                    else if ( firstIndex == 0 && lastIndex == 12 )
+                    {
+                        addToEquationArray( "C'D'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "C'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "CD" );
+                    }
+
+                    else if ( firstIndex == 3 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "CD'" );
+                    }
+
+                    // Horizontal wraps
+                    else if ( firstIndex == 0 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'D'" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "BD'" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "AD'" );
+                    }
+
+                    // Squares ( from top left to bottom right )
+                    else if ( firstIndex == 0 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "A'C'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "A'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'C" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 9 )
+                    {
+                        addToEquationArray( "BC'" );
+                    }
+
+                    else if ( firstIndex == 5 && lastIndex == 10 )
+                    {
+                        addToEquationArray( "BD" );
+                    }
+
+                    else if ( firstIndex == 6 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "BC" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "AC'" );
+                    }
+
+                    else if ( firstIndex == 9 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "AD" );
+                    }
+
+                    else if ( firstIndex == 10 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "AC" );
+                    }
+
+                    // Vertical wraps
+                    else if ( firstIndex == 0 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "B'C'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "B'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "B'C" );
+                    }
+
+                    // Four corner quad
+                    else if ( firstIndex == 0 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "B'D'" );
+                    }
                 }
                 
-                else if ( firstIndex == 4 && lastIndex == 7 )
+                else 
                 {
-                    addToEquationArray( "A'B" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 11 )
-                {
-                    addToEquationArray( "AB" );
-                }
-                
-                else if ( firstIndex == 12 && lastIndex == 15 )
-                {
-                    addToEquationArray( "AB'" );
-                }
-                
-                // Verticals
-                else if ( firstIndex == 0 && lastIndex == 12 )
-                {
-                    addToEquationArray( "C'D'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 13 )
-                {
-                    addToEquationArray( "C'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 14 )
-                {
-                    addToEquationArray( "CD" );
-                }
-                
-                else if ( firstIndex == 3 && lastIndex == 15 )
-                {
-                    addToEquationArray( "CD'" );
-                }
-                
-                // Horizontal wraps
-                else if ( firstIndex == 0 && lastIndex == 7 )
-                {
-                    addToEquationArray( "A'D'" );
-                }
-                
-                else if ( firstIndex == 4 && lastIndex == 11 )
-                {
-                    addToEquationArray( "BD'" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 15 )
-                {
-                    addToEquationArray( "AD'" );
-                }
-                
-                // Squares ( from top left to bottom right )
-                else if ( firstIndex == 0 && lastIndex == 5 )
-                {
-                    addToEquationArray( "A'C'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 6 )
-                {
-                    addToEquationArray( "A'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 7 )
-                {
-                    addToEquationArray( "A'C" );
-                }
-                
-                else if ( firstIndex == 4 && lastIndex == 9 )
-                {
-                    addToEquationArray( "BC'" );
-                }
-                
-                else if ( firstIndex == 5 && lastIndex == 10 )
-                {
-                    addToEquationArray( "BD" );
-                }
-                
-                else if ( firstIndex == 6 && lastIndex == 11 )
-                {
-                    addToEquationArray( "BC" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 13 )
-                {
-                    addToEquationArray( "AC'" );
-                }
-                
-                else if ( firstIndex == 9 && lastIndex == 14 )
-                {
-                    addToEquationArray( "AD" );
-                }
-                
-                else if ( firstIndex == 10 && lastIndex == 15 )
-                {
-                    addToEquationArray( "AC" );
-                }
-                
-                // Vertical wraps
-                else if ( firstIndex == 0 && lastIndex == 13 )
-                {
-                    addToEquationArray( "B'C'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 14 )
-                {
-                    addToEquationArray( "B'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 15 )
-                {
-                    addToEquationArray( "B'C" );
-                }
-                
-                // Four corner quad
-                else if ( firstIndex == 0 && lastIndex == 15 )
-                {
-                    addToEquationArray( "B'D'" );
+                    // Horizontals 
+                    if ( firstIndex == 0 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'" );
+                    }
+                    
+                    else if ( firstIndex == 4 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A" );
+                    }
+                    
+                    // Squares
+                    else if ( firstIndex == 0 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "B'" );
+                    }
+                    
+                    else if ( firstIndex == 1 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "C" );
+                    }
+                    
+                    else if ( firstIndex == 2 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "B" );
+                    }
+                    
+                    // Wrap
+                    else if ( firstIndex == 0 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "C'" );
+                    }
                 }
             }
         }
@@ -3227,168 +2604,237 @@ function addValuesToEquationArray( arrayPassed )
                 firstIndex = arrayPassed[index][0];
                 lastIndex = arrayPassed[index][1];
                 
-                // Horizontals
-                if ( firstIndex == 0 && lastIndex == 1 )
+                if ( array.length == 2 )
                 {
-                    addToEquationArray( "A'B'C'" );
+                    // Horizontals
+                    if ( firstIndex == 0 && lastIndex == 1 )
+                    {
+                        addToEquationArray( "A'B'C'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 2 )
+                    {
+                        addToEquationArray( "A'B'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'B'C" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "A'BC'" );
+                    }
+
+                    else if ( firstIndex == 5 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "A'BD" );
+                    }
+
+                    else if ( firstIndex == 6 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'BC" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 9 )
+                    {
+                        addToEquationArray( "ABC'" );
+                    }
+
+                    else if ( firstIndex == 9 && lastIndex == 10 )
+                    {
+                        addToEquationArray( "ABD" );
+                    }
+
+                    else if ( firstIndex == 10 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "ABC" );
+                    }
+
+                    else if ( firstIndex == 12 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "AB'C'" );
+                    }
+
+                    else if ( firstIndex == 13 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "AB'D" );
+                    }
+
+                    else if ( firstIndex == 14 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "AB'C" );
+                    }
+
+                    // Verticals
+                    else if ( firstIndex == 0 && lastIndex == 4 )
+                    {
+                        addToEquationArray( "A'C'D'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "A'C'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "A'CD" );
+                    }
+
+                    else if ( firstIndex == 3 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'CD'" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 8 )
+                    {
+                        addToEquationArray( "BC'D'" );
+                    }
+
+                    else if ( firstIndex == 5 && lastIndex == 9 )
+                    {
+                        addToEquationArray( "BC'D" );
+                    }
+
+                    else if ( firstIndex == 6 && lastIndex == 10 )
+                    {
+                        addToEquationArray( "BCD" );
+                    }
+
+                    else if ( firstIndex == 7 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "BCD'" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 12 )
+                    {
+                        addToEquationArray( "AC'D'" );
+                    }
+
+                    else if ( firstIndex == 9 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "AC'D" );
+                    }
+
+                    else if ( firstIndex == 10 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "ACD" );
+                    }
+
+                    else if ( firstIndex == 11 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "ACD'" );
+                    }
+
+                    // Horizontal pair wraps
+                    else if ( firstIndex == 0 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'B'D'" );
+                    }
+
+                    else if ( firstIndex == 4 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "A'BD'" );
+                    }
+
+                    else if ( firstIndex == 8 && lastIndex == 11 )
+                    {
+                        addToEquationArray( "ABD'" );
+                    }
+
+                    else if ( firstIndex == 12 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "AB'D'" );
+                    }
+
+                    // Vertical pair wraps
+                    else if ( firstIndex == 0 && lastIndex == 12 )
+                    {
+                        addToEquationArray( "B'C'D'" );
+                    }
+
+                    else if ( firstIndex == 1 && lastIndex == 13 )
+                    {
+                        addToEquationArray( "B'C'D" );
+                    }
+
+                    else if ( firstIndex == 2 && lastIndex == 14 )
+                    {
+                        addToEquationArray( "B'CD" );
+                    }
+
+                    else if ( firstIndex == 3 && lastIndex == 15 )
+                    {
+                        addToEquationArray( "B'CD'" );
+                    }
                 }
                 
-                else if ( firstIndex == 1 && lastIndex == 2 )
+                else 
                 {
-                    addToEquationArray( "A'B'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 3 )
-                {
-                    addToEquationArray( "A'B'C" );
-                }
-                
-                else if ( firstIndex == 4 && lastIndex == 5 )
-                {
-                    addToEquationArray( "A'BC'" );
-                }
-                
-                else if ( firstIndex == 5 && lastIndex == 6 )
-                {
-                    addToEquationArray( "A'BD" );
-                }
-                
-                else if ( firstIndex == 6 && lastIndex == 7 )
-                {
-                    addToEquationArray( "A'BC" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 9 )
-                {
-                    addToEquationArray( "ABC'" );
-                }
-                
-                else if ( firstIndex == 9 && lastIndex == 10 )
-                {
-                    addToEquationArray( "ABD" );
-                }
-                
-                else if ( firstIndex == 10 && lastIndex == 11 )
-                {
-                    addToEquationArray( "ABC" );
-                }
-                
-                else if ( firstIndex == 12 && lastIndex == 13 )
-                {
-                    addToEquationArray( "AB'C'" );
-                }
-                
-                else if ( firstIndex == 13 && lastIndex == 14 )
-                {
-                    addToEquationArray( "AB'D" );
-                }
-                
-                else if ( firstIndex == 14 && lastIndex == 15 )
-                {
-                    addToEquationArray( "AB'C" );
-                }
-                
-                // Verticals
-                else if ( firstIndex == 0 && lastIndex == 4 )
-                {
-                    addToEquationArray( "A'C'D'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 5 )
-                {
-                    addToEquationArray( "A'C'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 6 )
-                {
-                    addToEquationArray( "A'CD" );
-                }
-                
-                else if ( firstIndex == 3 && lastIndex == 7 )
-                {
-                    addToEquationArray( "A'CD'" );
-                }
-                
-                else if ( firstIndex == 4 && lastIndex == 8 )
-                {
-                    addToEquationArray( "BC'D'" );
-                }
-                
-                else if ( firstIndex == 5 && lastIndex == 9 )
-                {
-                    addToEquationArray( "BC'D" );
-                }
-                
-                else if ( firstIndex == 6 && lastIndex == 10 )
-                {
-                    addToEquationArray( "BCD" );
-                }
-                
-                else if ( firstIndex == 7 && lastIndex == 11 )
-                {
-                    addToEquationArray( "BCD'" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 12 )
-                {
-                    addToEquationArray( "AC'D'" );
-                }
-                
-                else if ( firstIndex == 9 && lastIndex == 13 )
-                {
-                    addToEquationArray( "AC'D" );
-                }
-                
-                else if ( firstIndex == 10 && lastIndex == 14 )
-                {
-                    addToEquationArray( "ACD" );
-                }
-                
-                else if ( firstIndex == 11 && lastIndex == 15 )
-                {
-                    addToEquationArray( "ACD'" );
-                }
-                
-                // Horizontal pair wraps
-                else if ( firstIndex == 0 && lastIndex == 3 )
-                {
-                    addToEquationArray( "A'B'D'" );
-                }
-                
-                else if ( firstIndex == 4 && lastIndex == 7 )
-                {
-                    addToEquationArray( "A'BD'" );
-                }
-                
-                else if ( firstIndex == 8 && lastIndex == 11 )
-                {
-                    addToEquationArray( "ABD'" );
-                }
-                
-                else if ( firstIndex == 12 && lastIndex == 15 )
-                {
-                    addToEquationArray( "AB'D'" );
-                }
-                
-                // Vertical pair wraps
-                else if ( firstIndex == 0 && lastIndex == 12 )
-                {
-                    addToEquationArray( "B'C'D'" );
-                }
-                
-                else if ( firstIndex == 1 && lastIndex == 13 )
-                {
-                    addToEquationArray( "B'C'D" );
-                }
-                
-                else if ( firstIndex == 2 && lastIndex == 14 )
-                {
-                    addToEquationArray( "B'CD" );
-                }
-                
-                else if ( firstIndex == 3 && lastIndex == 15 )
-                {
-                    addToEquationArray( "B'CD'" );
+                    // Horizontal
+                    if ( firstIndex == 0 && lastIndex == 1 )
+                    {
+                        addToEquationArray( "A'B'" );
+                    }
+                    
+                    else if ( firstIndex == 1 && lastIndex == 2 )
+                    {
+                        addToEquationArray( "A'C" );
+                    }
+                    
+                    else if ( firstIndex == 2 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'B" );
+                    }
+                    
+                    else if ( firstIndex == 4 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "AB'" );
+                    }
+                    
+                    else if ( firstIndex == 5 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "AC" );
+                    }
+                    
+                    else if ( firstIndex == 6 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "AB" );
+                    }
+                    
+                    // Vertical 
+                    else if ( firstIndex == 0 && lastIndex == 4 )
+                    {
+                        addToEquationArray( "B'C'" );
+                    }
+                    
+                    else if ( firstIndex == 1 && lastIndex == 5 )
+                    {
+                        addToEquationArray( "B'C" );
+                    }
+                    
+                    else if ( firstIndex == 2 && lastIndex == 6 )
+                    {
+                        addToEquationArray( "BC" );
+                    }
+                    
+                    else if ( firstIndex == 3 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "BC'" );
+                    }
+                    
+                    // Wraps
+                    else if ( firstIndex == 0 && lastIndex == 3 )
+                    {
+                        addToEquationArray( "A'C'" );
+                    }
+                    
+                    else if ( firstIndex == 4 && lastIndex == 7 )
+                    {
+                        addToEquationArray( "AC'" );
+                    }
                 }
             }
         }       
@@ -3397,6 +2843,21 @@ function addValuesToEquationArray( arrayPassed )
 
 function generateArrayIndex()
 {
+    var arraysToGenerateFrom3Var = [ [1,"X",1,"X",1,1,1,1], [1,"X",1,"X",0,1,0,1], [1,"X",0,0,"X","X",0,1],
+                             [1,"X",1,1,1,1,"X",1], [1,"X",0,1,1,1,1,1], [1,"X","X",1,0,1,0,1],
+                             [1,"X",1,"X","X","X",1,1], [1,"X",1,1,0,0,1,1], [1,"X","X",1,"X","X",1,1],
+                             [1,"X",0,0,0,"X","X",0], [1,"X",1,1,"X",1,1,"X"], [1,"X","X","X",0,1,1,0],
+                             [1,"X",1,0,1,1,"X",0], [1,"X",1,0,1,1,1,1], [1,"X",1,0,1,1,1,0],
+                             [1,"X","X","X",1,1,1,1], [1,"X",0,0,1,1,0,1], [1,"X",1,"X","X","X",1,"X"],
+                             [1,"X","X",1,0,"X",0,1], [1,"X",1,"X",1,1,"X",1], [1,"X",0,0,1,1,1,1],
+                             [1,"X",1,1,1,0,0,"X"], [1,"X",0,0,1,"X",0,1], [1,"X","X",1,0,0,1,"X"],
+                             [1,"X","X","X",1,1,"X",1], [1,"X",0,0,"X",1,0,0], [1,"X","X",1,1,0,0,0],
+                             [1,"X","X",1,"X",0,0,1], [1,"X","X","X",0,0,"X",1],
+                             [1,"X",1,1,"X","X","X","X"], [1,"X","X","X","X","X",1,1],  [1,"X","X",1,1,"X",1,1], [1,"X",1,1,1,1,1,1], [1,"X","X",1,0,0,1,1], [1,"X",1,"X",1,"X","X",1],
+                             [1,"X",0,1,"X",1,0,0], [1,"X",1,1,1,0,0,0], [1,"X","X",1,"X",1,1,1], [1,"X",1,1,1,"X",1,1], [1,"X",1,1,0,1,1,1], [1,"X",1,"X",1,"X",1,1],
+                             [1,"X",1,1,1,"X","X",1], [1,"X",1,0,"X",1,"X",0], [1,"X",0,0,0,"X",0,1],
+                             [1,"X",0,0,0,1,1,1], [1,"X",1,1,1,1,0,1], [1,"X",0,"X",1,1,0,1], [1,"X",0,1,1,1,1,0], [1,"X",0,1,1,1,0,0], [1,"X","X",1,1,1,"X",1] ];
+    
     var arraysToGenerateFrom = [ [1,1,0,1,1,1,1,1,0,0,"X",1,"X",1,"X","X"],
                              [1,1,1,"X",1,"X",0,0,1,"X",0,"X",1,1,0,1],
                              [1,1,1,"X","X",1,"X",1,0,0,0,0,1,1,1,0],
@@ -3498,359 +2959,18 @@ function generateArrayIndex()
                              [1,1,1,"X",1,"X",1,1,"X","X",1,1,1,1,1,1],
                              [1,1,0,0,1,0,0,"X",0,1,0,1,1,1,1,"X"] ];
     
-    var number = Math.floor((Math.random() * arraysToGenerateFrom.length) + 0);
-    console.log( "NUMBER GENERATED IS: " + number );
-    
-    return arraysToGenerateFrom[number];
-}
-
-//////////// Section for 4 variable GROUPING //////////////
-
-// Finds octet matches in array
-function findOctetGroups()
-{
-    var length = getLengthOfArray();
-    
-    //console.log( "LENGTH: " + length );
-
-    // For 3 Var KMap
-    if ( length == 8 )
+    if ( array.length == 8 )
     {
-        if ( array[ 0 ] == 1 || array[ 0 ] == "X" )
-        {
-            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 0 );
-            checkEightArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 4, 5, 6, 7, 1 );
-        }
+        var number = Math.floor((Math.random() * arraysToGenerateFrom3Var.length) + 0);
+        console.log( "NUMBER GENERATED: " + number );
+        return arraysToGenerateFrom3Var[number];
     }
-}
-
-// Finds quad matches in array
-function findQuadGroups()
-{
-    var length = getLengthOfArray();
-
-    // This is for a 3 variable truth table: Read it from TOP LEFT to BOTTOM RIGHT
-    if ( length == 8 )
+    
+    else 
     {
-        // First for loop is for grouping 1s ONLY
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 0 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 4, 5, 6, 7, 0 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 4, 5, 0 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 1, 2, 5, 6, 0 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 2, 3, 6, 7, 0 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 3, 4, 7, 0 );
-        
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 2, 3, 1 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 4, 5, 6, 7, 1 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 1, 4, 5, 1 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 1, 2, 5, 6, 1 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 2, 3, 6, 7, 1 );
-        checkFourArrayIndicesIfOneAndNotInGroupArray( 0, 3, 4, 7, 1 );
+        var number = Math.floor((Math.random() * arraysToGenerateFrom.length) + 0);
+        return arraysToGenerateFrom[number];
     }
-}
-
-function findPairGroups()
-{
-    var length = getLengthOfArray();
-
-    // For a 3 variable truth table
-    if ( length == 8 )
-    {   
-        // The first two while loops are for finding 1s first
-        var index = 0;
-        
-        // Horizontal groupings for finding 1s FIRST
-        while ( index < length )
-        {
-            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1, 0 );
-            }
-            
-            index++;
-        }
-        
-        // Reset index
-        index = 0;
-        
-        // Vertical groupings for finding 1s FIRST
-        while ( index < length )
-        {
-            if ( index == 0 || index == 1 || index == 2 || index == 3 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4, 0 );
-            }
-            
-            index++;
-        }
-        
-        // Wrap conditions
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3, 0 );
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7, 0 );
-        
-        // The next two while loops are for finding dont cares
-        
-        // Reset index
-        index = 0;
-        
-        // Horizontal groupings for finding 1s FIRST
-        while ( index < length )
-        {
-            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 1, 1 );
-            }
-            
-            index++;
-        }
-        
-        // Reset index
-        index = 0;
-        
-        // Vertical groupings for finding Xs after 1s groups have been made
-        while ( index < length )
-        {
-            if ( index == 0 || index == 1 || index == 2 || index == 3 )
-            {
-                checkTwoArrayIndicesIfOneAndNotInGroupArray( index, index + 4, 1 );
-            }
-            
-            index++;
-        }
-        
-        // Wrap conditions
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 0, 3, 1 );
-        checkTwoArrayIndicesIfOneAndNotInGroupArray( 4, 7, 1 );
-    }
-}
-
-// Prints array
-function printArray()
-{
-    console.log(JSON.stringify(array));
-    console.log(JSON.stringify(equationArray));
-
-    console.log( "\nA | BC________________________");
-    console.log( "  |     00 |  01 |  11 |  10  |");
-    console.log( " 0|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
-    console.log( " 1|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
-}
-
-// Check eight indices in array to see if they are one. More modular.
-function checkEightArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex,
-fifthIndex, sixthIndex, seventhIndex, eighthIndex, checkForXs )
-{
-    var octetFormed = Boolean(array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
-            && array[ fourthIndex ] == 1 && array[ fifthIndex ] == 1 && array[ sixthIndex ] == 1
-            && array[ seventhIndex ] == 1 && array[ eighthIndex ] == 1 );
-    
-    var octetFormedWithXs = Boolean(array[ firstIndex ] != 0 && array[ secondIndex ] != 0 && array[ thirdIndex ] != 0 && array[ fourthIndex ] != 0 && array[ fifthIndex ] != 0 && array[ sixthIndex ] != 0
-    && array[ seventhIndex ] != 0 && array[ eighthIndex ] != 0 );
-
-    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1
-            || groupingArray[ fourthIndex ] != 1 || groupingArray[ fifthIndex ] != 1 || groupingArray[ sixthIndex ] != 1
-            || groupingArray[ seventhIndex ] != 1 || groupingArray[ eighthIndex ] != 1 );
-
-    if ( octetFormed && inGroupArray && checkForXs == 0 )
-    {
-        addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
-        eighthIndex );
-    }
-    
-    else if ( octetFormedWithXs && checkForXs == 1 )
-    {
-        addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex,
-        eighthIndex ); 
-    }
-}
-
-// Check four indices in array to see if they are one. More modular.
-function checkFourArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, checkForXs )
-{
-    var quadFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 && array[ thirdIndex ] == 1
-    && array[ fourthIndex ] == 1 );
-
-    var notInGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 || groupingArray[ thirdIndex ] != 1 || groupingArray[ fourthIndex ] != 1 );
-    
-    var xInQuad = Boolean( array[ firstIndex ] == "X" || array[ secondIndex ] == "X" || array[ thirdIndex ] == "X" || array[ fourthIndex ] == "X" )
-    
-    var atLeastAOne = Boolean( ( array[ firstIndex ] == 1 && array[ firstIndex ] != groupingArray[firstIndex] ) || ( array[ secondIndex ] == 1 && array[ secondIndex ] != groupingArray[secondIndex] ) || ( array[ thirdIndex ] == 1 && array[ thirdIndex ] != groupingArray[thirdIndex] ) || ( array[ fourthIndex ] == 1 && array[ fourthIndex] != groupingArray[fourthIndex] ) ); 
-    
-    var areZero = Boolean( groupingArray[ firstIndex ] == 0 || groupingArray[ secondIndex ] == 0 || groupingArray[ thirdIndex ] == 0 || groupingArray[ fourthIndex ] == 0 );
-    
-    var arrayFine = Boolean( array[ firstIndex ] != 0 && array[ secondIndex ] != 0 && array[ thirdIndex ] != 0 && array[ fourthIndex ] != 0 );
-
-    if ( quadFormed && notInGroupArray && checkForXs == 0 )
-    {
-        addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
-    }
-    
-    /*console.log( "\nxInQuad: " + xInQuad );
-    console.log( "atLeastAOne: " + atLeastAOne );
-    console.log( "noneAreZero: " + areZero );
-    console.log( "Check for Xs: " + checkForXs );*/
-    
-    if ( xInQuad && atLeastAOne && areZero && arrayFine && checkForXs == 1 )
-    {
-        addQuadToGroupArray(firstIndex, secondIndex, thirdIndex, fourthIndex);
-    }
-}
-
-// Check two indices in array to see if they are one. More modular.
-function checkTwoArrayIndicesIfOneAndNotInGroupArray( firstIndex, secondIndex, checkForXs )
-{
-    var pairFormed = Boolean( array[ firstIndex ] == 1 && array[ secondIndex ] == 1 );
-    var inGroupArray = Boolean( groupingArray[ firstIndex ] != 1 || groupingArray[ secondIndex ] != 1 );
-    
-    var pairFormedWithX = Boolean( ( array[ firstIndex ] == "X" && array[ secondIndex ] == 1 ) || ( array[ firstIndex ] == 1 && array[ secondIndex ] == "X" ) );
-    var noXPairNeeded = Boolean( groupingArray[ firstIndex ] == 1 || groupingArray[ secondIndex ] == 1 );
-
-    // If both indexes are one.
-    if ( pairFormed && inGroupArray && checkForXs == 0 )
-    {
-        addPairToGroupArray( firstIndex, secondIndex );
-    }
-    
-    // If one index is X and the other is a 1.
-    else if ( pairFormedWithX && !noXPairNeeded && checkForXs == 1 )
-    {
-        addPairToGroupArray( firstIndex, secondIndex );
-        //console.log( "GROUPING ARRAY: " + JSON.stringify( groupingArray ) );
-    }
-}
-
-// Adds given pair to group array. More modular.
-function addPairToGroupArray( firstIndex, secondIndex )
-{
-    pairs += 1;
-    groupingArray[ firstIndex ] = array[ firstIndex ];
-    groupingArray[ secondIndex ] = array[ secondIndex ];
-    canGroup = 1;
-    console.log( "\nPair formed: " + firstIndex + ", " + secondIndex + ".\n" );
-    twoDArray = addPairToTwoDArray( twoDArray, firstIndex, secondIndex );
-    //addPairToThreeVarEquation( firstIndex, secondIndex );
-}
-
-// Creates 2D array 
-function create2DArray( twoDimensionArray )
-{
-    // Loop to create 2D array using 1D array 
-    for ( var index = 0; index < twoDimensionArray.length; index++ ) 
-    { 
-        twoDimensionArray[index] = new Array(2); 
-    } 
-  
-    // Loop to initilize 2D array elements. 
-    for (var i = 0; i < twoDimensionArray.length; i++) 
-    { 
-        for (var j = 0; j < 2; j++) 
-        { 
-            twoDimensionArray[i][j] = 0; 
-        } 
-    } 
-}
-
-// Adds pair to twoDArray
-function addPairToTwoDArray( arrayPassed, firstIndex, secondIndex )
-{
-    var index = 0; 
-    var canAdd = 0;
-    
-    while ( arrayPassed[ index ][0] != 0 || arrayPassed[ index ][1] != 0  )
-    {
-        if ( arrayPassed[ index ][0] == firstIndex && arrayPassed[ index ][1] == secondIndex )
-        {
-            canAdd -= -1;
-        }
-            
-        index++;
-    }
-    
-    if ( canAdd == 0 )
-    {
-        arrayPassed[ index ][ 0 ] = firstIndex;
-        arrayPassed[ index ][ 1 ] = secondIndex;
-    }
-    
-    console.log( "Stopped at index: " + index );
-    console.log( "NEW ARRAY: " + JSON.stringify( arrayPassed ) );
-    
-    return arrayPassed;
-}
-
-// takes an array of pairs and returns the array with no redundant groups
-// Make sure z
-function checkForRedundancies( pairsArray ) 
-{
-    var temp = pairsArray;
-    var redundant1; //boolean for first element
-    var redundant2; //boolean for second element
-
-    //loop through all groups
-    for ( group in temp ) 
-    {
-        //console.log( "FIRST NUM: " + pairsArray[group][0] + " SECOND NUM: " + pairsArray[group][1] );
-        
-        if ( temp[group][0] != 0 || temp[group][1] != 0 ) 
-        {
-            //reset redundant when checking a new group
-            redundant1 = false;
-            redundant2 = false;
-            
-            //loop through all groups to compare to
-            for ( compareGroup in temp ) 
-            {
-                if ( temp[compareGroup][0] != 0 || temp[compareGroup][1] != 0 ) 
-                {
-                    //console.log("Comparing groups " + group + " " + compareGroup);
-                    // do not compare to self
-                    if ( compareGroup != group ) 
-                    {
-                        //console.log("Comparing " + temp[group][0] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
-
-                        // if first element matches either element in compare
-                        if ( temp[group][0] == temp[compareGroup][0] || temp[group][0] == temp[compareGroup][1] ) 
-                        {
-                            //first element is redundant
-                            redundant1 = true;
-                            //console.log( "R1 IS TRUE" );
-                        }
-                        //console.log("Comparing " + temp[group][1] + " with " + temp[compareGroup][0] + " and " + temp[compareGroup][1]);
-
-                        //if second element matches either element in compare
-                        if ( temp[group][1] == temp[compareGroup][0] || temp[group][1] == temp[compareGroup][1] ) 
-                        {
-                            //second element is redundant
-                            redundant2 = true;
-                            //console.log( "R2 IS TRUE" );
-                        }
-                    }
-                }
-            }
-
-            //both elements were redundant
-            if ( redundant1 && redundant2 ) 
-            {
-                //console.log(`Element ${group} is redundant`);
-                //shift all elements starting from group to the left
-                //this removes the group from the array
-                for ( var i = group; i < temp.length - 1; i++ ) 
-                {
-                    //console.log(temp[i]);
-                    //console.log(temp[Number(i) + 1]);
-                    var next = i + 1;
-                    //console.log(`Swapping ${temp[i]} with ${temp[Number(i) + 1]}`);
-                    temp[i] = temp[Number(i) + 1];
-                }
-                
-                //set final element to 0,0 since it will be listed twice
-                temp[temp.length-1] = [0,0];
-            }
-        }
-    }
-    
-    //hand back modified local array
-    return temp;
 }
 
 // Counts number of elements in equation array
@@ -3879,157 +2999,6 @@ function addToEquationArray( equationString )
     }
     
     equationArray[ index ] = equationString;
-    //console.log(JSON.stringify(equationArray));
-    //console.log( countElementsInEquationArray() );
-}
-
-// Adds given pair to three variable equation. More modular.
-function addPairsToThreeVarEquation( twoDimArray )
-{
-    var firstValue;
-    var secondValue;
-    
-    for ( var index = 0; index < twoDimArray.length - 1; index++ ) 
-    {
-        firstValue = twoDimArray[index][0];
-        secondValue = twoDimArray[index][1];
-        
-        if ( firstValue == 0 && secondValue == 1 )
-        {
-            addToEquationArray( "A'B'" );
-        }
-
-        else if ( firstValue == 0 && secondValue == 3 )
-        {
-            addToEquationArray( "A'C'" );
-        }
-
-        else if ( firstValue == 0 && secondValue == 4 )
-        {
-            addToEquationArray( "B'C'" );
-        }
-
-        else if ( firstValue == 1 && secondValue == 2 )
-        {
-            addToEquationArray( "A'C" );
-        }
-
-        else if ( firstValue == 1 && secondValue == 5 )
-        {
-            addToEquationArray( "B'C" );
-        }
-
-        else if ( firstValue == 2 && secondValue == 3 )
-        {
-            addToEquationArray( "A'B" );
-        }
-
-        else if ( firstValue == 2 && secondValue == 6 )
-        {
-            addToEquationArray( "BC" );
-        }
-
-        else if ( firstValue == 3 && secondValue == 7 )
-        {
-            addToEquationArray( "BC'" );
-        }
-
-        else if ( firstValue == 4 && secondValue == 5 )
-        {
-            addToEquationArray( "AB'" );
-        }
-
-        else if ( firstValue == 4 && secondValue == 7 )
-        {
-            addToEquationArray( "AC'" );
-        }
-
-        else if ( firstValue == 5 && secondValue == 6 )
-        {
-            addToEquationArray( "AC" );
-        }
-
-        else if ( firstValue == 6 && secondValue == 7 )
-        {
-            addToEquationArray( "AB" );
-        }
-    }
-}
-
-// Adds given quad pair to group array. More modular.
-function addQuadToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex )
-{
-    quads += 1;
-    groupingArray[ firstIndex ] = array[ firstIndex ];
-    groupingArray[ secondIndex ] = array[ secondIndex ];
-    groupingArray[ thirdIndex ] = array[ thirdIndex ];
-    groupingArray[ fourthIndex ] = array[ fourthIndex ];
-    canGroup = 1;
-    console.log( "\nQuad formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ".\n");
-    drawEquationQuadRectangles( drawRectangles, firstIndex, secondIndex, thirdIndex, fourthIndex );
-    addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex );
-}
-
-// Adds given octet to group array. More modular.
-function addOctetToGroupArray( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
-                                  sixthIndex, seventhIndex, eighthIndex )
-{
-    octects += 1;
-    groupingArray[ firstIndex ] = array[ firstIndex ];
-    groupingArray[ secondIndex ] = array[ secondIndex ];
-    groupingArray[ thirdIndex ] = array[ thirdIndex ];
-    groupingArray[ fourthIndex ] = array[ fourthIndex ];
-    groupingArray[ fifthIndex ] = array[ fifthIndex ];
-    groupingArray[ sixthIndex ] = array[ sixthIndex ];
-    groupingArray[ seventhIndex ] = array[ seventhIndex ];
-    groupingArray[ eighthIndex ] = array[ eighthIndex ];
-    canGroup = 1;
-    console.log( "\nOctet formed: " + firstIndex + ", " + secondIndex + ", " + thirdIndex + ", " + fourthIndex + ", " +
-    fifthIndex + ", " + sixthIndex + ", " + seventhIndex + ", " + eighthIndex + ".\n");
-    drawEquationOctetRectangles( drawRectangles, firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
-    sixthIndex, seventhIndex, eighthIndex );
-    addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex, sixthIndex, seventhIndex, eighthIndex );
-}
-
-// Adds octet to three variable equation. More modular.
-function addOctetToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex, fifthIndex,
-sixthIndex, seventhIndex, eighthIndex )
-{
-    addToEquationArray( "1" );
-}
-
-// Adds quad to three variable equation. More modular.
-function addQuadToThreeVarEquation( firstIndex, secondIndex, thirdIndex, fourthIndex )
-{
-    if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 2 && fourthIndex == 3 )
-    {
-        addToEquationArray( "A'" );
-    }
-
-    else if ( firstIndex == 0 && secondIndex == 1 && thirdIndex == 4 && fourthIndex == 5 )
-    {
-        addToEquationArray( "B'" );
-    }
-
-    else if ( firstIndex == 0 && secondIndex == 3 && thirdIndex == 4 && fourthIndex == 7 )
-    {
-        addToEquationArray( "C'" );
-    }
-
-    else if ( firstIndex == 1 && secondIndex == 2 && thirdIndex == 5 && fourthIndex == 6 )
-    {
-        addToEquationArray( "C" );
-    }
-
-    else if ( firstIndex == 2 && secondIndex == 3 && thirdIndex == 6 && fourthIndex == 7 )
-    {
-        addToEquationArray( "B" );
-    }
-
-    else if ( firstIndex == 4 && secondIndex == 5 && thirdIndex == 6 && fourthIndex == 7 )
-    {
-        addToEquationArray( "A" );
-    }
 }
 
 /////////////////////////////// Check functions go here /////////////////////////////////////////
@@ -4040,14 +3009,12 @@ function checkAnswers()
     
     for ( var index = 0; index < array.length; index++ )
     {
-        //console.log( "Checking " + userArray[index] + " with " + array[index] );
-        if ( Boolean( userArray[index] != array[index] ) )
+        //console.log( "Checking " + userArray[index].toUpperCase() + " with " + array[index] );
+        if ( userArray[index].toUpperCase() != array[index] )
         {
             isRight = -1;
         }
     }
-    
-    console.log( isRight );
     
     if ( isRight == 0 )
     {
@@ -4055,37 +3022,22 @@ function checkAnswers()
         passUserStars( userStars );
         
         //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
-
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestion1") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestion2.html";
-        }
         
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion4") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestion5.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion5") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestion6.html";
-        }
-        
-        else if ( Boolean( window.location.href.indexOf("moduleOneQuestion6") > -1 ) )
-        {
-            window.location.href = "moduleOneQuestion7.html";
-        }
-        
-        else if ( window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
+        if ( practiceMode == 1 )
         {
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
+        }
+        
+        else
+        {
+            goToNextPage();
         }
     }
         
     else
     {
-        if ( window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
+        if ( practiceMode == 1 )
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
@@ -4100,162 +3052,46 @@ function checkAnswers()
     return 0;
 }
 
-function compareTwo2DArrays( arrayOne, arrayTwo )
-{
-    var number = 0;
-    var arrayOneLength = 0;
-    var arrayTwoLength = 0;
-    var index = 0;
-
-    // First you would check lengths of both 2DArrays
-    while ( arrayOne[index][0] != 0 || arrayOne[index][1] != 0 )
-    {
-        arrayOneLength += 1;
-        index++;
-    }
-    
-    index = 0;
-    
-    while ( arrayTwo[index][0] != 0 || arrayTwo[index][1] != 0 )
-    {
-        arrayTwoLength += 1;
-        index++;
-    }
-    
-    console.log( "Array one length: " + arrayOneLength );
-    console.log( "Array two length: " + arrayTwoLength );
-    
-    // If they're the same then you can compare both arrays
-    if ( arrayOneLength == arrayTwoLength )
-    {
-        // You can choose arrayOneLength or arrayTwoLength since both are the same
-        for ( var outerGroup = 0; outerGroup < arrayOneLength; outerGroup++ )
-        {
-            for ( var innerGroup = 0; innerGroup < arrayTwoLength; innerGroup++ )
-            {
-                //console.log( "Comparing: " + arrayOne[outerGroup] + " with " + arrayTwo[innerGroup] );
-                if ( arrayOne[outerGroup][0] == arrayTwo[innerGroup][0] && arrayOne[outerGroup][1] == arrayTwo[innerGroup][1]  )
-                {
-                    //console.log( "MATCH" );
-                    number++;
-                }
-            }
-        }
-        
-        if ( number == arrayOneLength )
-        {
-            number = 1;
-        }
-    }
-    
-    return number;
-}
-
 function checkGroupings()
 {       
     var length = getLengthOfArray();
-    //console.log( "ARE SAME: " + both2DArraysTheSame );
+    var sixteenArraysMatch = checkIfArraysMatch( sixteenArray, sixteenDrawingArray );
+    var eightArraysMatch = checkIfArraysMatch( eightArray, eightDrawingArray );
+    var fourArraysMatch = checkIfArraysMatch( fourArray, fourDrawingArray );
+    var twoArraysMatch = checkIfArraysMatch( twoArray, twoDrawingArray );
     
-    if ( length == 8 )
+    console.log( "16: " + sixteenArraysMatch );
+    console.log( "8: " + eightArraysMatch );
+    console.log( "4: " + fourArraysMatch );
+    console.log( "TWO ARRAY: " + JSON.stringify( twoArray ) );
+    console.log( "TWO DARRAY: " + JSON.stringify( twoDrawingArray ) );
+    console.log( "2: " + twoArraysMatch );
+        
+    if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
     {
-        var isRight = 0;
-        var both2DArraysTheSame = compareTwo2DArrays( twoDArray, user2DArray );
-        for ( var index = 0; index < groupingArray.length; index++ )
+        if ( practiceMode == 1 )
         {
-            if ( drawingArray[ index ] != groupingArray[ index ] )
-            {
-                isRight = 1;
-            }
+            alert( "Congrats, you got the answer right!" );
+            window.location.href = "moduleOneQuestionPicker.html";   
         }
 
-        //console.log( isRight );
-
-        if ( isRight == 0 && both2DArraysTheSame )
+        else 
         {
-            userStars += starsGiven;
-            passUserStars( userStars );
-
-            //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
-
-            if ( window.location.href.indexOf("moduleOneQuestion2") > -1 )
-            {
-                window.location.href = "moduleOneQuestion3.html";
-            }
-
-            else if ( window.location.href.indexOf("moduleOneQuestion7") > -1 )
-            {
-                window.location.href = "moduleOneQuestion8.html";
-            }
-
-            else if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
-            {
-                alert( "Congrats, you got the answer right!" );
-                window.location.href = "moduleOneQuestionPicker.html";   
-            }
-        }
-
-        else
-        {
-            if ( window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 )
-            {
-                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
-            }
-
-            else
-            {
-                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-                attemptsLeft = decreaseAttempts( attemptsLeft );
-            }
+            goToNextPage();
         }
     }
-    
-    // For 4 variable
-    else if ( length == 16 )
+
+    else
     {
-        var sixteenArraysMatch = checkIfArraysMatch( sixteenArray, sixteenDrawingArray );
-        var eightArraysMatch = checkIfArraysMatch( eightArray, eightDrawingArray );
-        var fourArraysMatch = checkIfArraysMatch( fourArray, fourDrawingArray );
-        var twoArraysMatch = checkIfArraysMatch( twoArray, twoDrawingArray );
-        
-        console.log( "SIXTEEN ARRAYS MATCH: " + sixteenArraysMatch );
-        console.log( "EIGHT ARRAYS MATCH: " + eightArraysMatch );
-        console.log( "FOUR ARRAYS MATCH: " + fourArraysMatch );
-        console.log( "TWO ARRAYS MATCH: " + twoArraysMatch );
-        
-        if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
+        if ( practiceMode == 1 )
         {
-            if ( window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 )
-            {
-                alert( "Congrats, you got the answer right!" );
-                window.location.href = "moduleOneQuestionPicker.html";   
-            }
-            
-            else 
-            {
-                if ( window.location.href.indexOf("moduleOneQuestion9") > -1 )
-                {
-                    window.location.href = "moduleOneQuestion10.html";
-                }
-                
-                else if ( window.location.href.indexOf("moduleOneQuestion11") > -1 )
-                {
-                    window.location.href = "moduleOneQuestion12.html";
-                }
-            }
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
-        
+
         else
         {
-            if ( window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 )
-            {
-                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
-            }
-            
-            else
-            {
-                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
-                attemptsLeft = decreaseAttempts( attemptsLeft );
-            }
+            document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";
+            attemptsLeft = decreaseAttempts( attemptsLeft );
         }
     }
     
@@ -4267,9 +3103,6 @@ function checkUserEquation()
 {  
     var counter = 0;
     var userInput = document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase().split("+");
-    
-    console.log( "USER INPUT: " + userInput );
-    console.log( "EQUATION ARRAY: " + equationArray );
     
     if ( Boolean( userInput.length == countElementsInEquationArray() ) )
     {
@@ -4289,46 +3122,23 @@ function checkUserEquation()
         {
             //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
             
-            if ( window.location.href.indexOf("moduleOneQuestion3") > -1 )
+            if ( practiceMode == 0 )
             {
-                window.location.href = "moduleOneQuestion4.html";
+                goToNextPage();
             }
             
-            else if ( window.location.href.indexOf("moduleOneQuestion8") > -1 )
-            {
-                 window.location.href = "moduleOneQuestion9.html";    
-            }
-            
-            else if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 )
+            else
             {
                 alert( "Congrats, you got the answer right!" );
-                window.location.href = "moduleOneQuestionPicker.html";   
-            }
-            
-            else if ( window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
-            {
-                alert( "Congrats, you got the answer right!" );
-                window.location.href = "moduleOneQuestionPicker.html";   
-            }
-            
-            else if ( window.location.href.indexOf("moduleOneQuestion10") > -1 )
-            {
-                // I can figure out how to add star here
-                //alert( "Congrats, you got the answer right!" );
-                window.location.href = "moduleOneQuestion11.html"; 
-            }
-            
-            else if ( window.location.href.indexOf("moduleOneQuestion12") > -1 )
-            {
-                alert( "Congrats, you got the answer right!" );
+                window.location.href = "moduleOneQuestionPicker.html";  
             }
         }
         
         else
         {
-            if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
+            if ( practiceMode == 1 )
             {
-                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
+                document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again"; 
             }
             
             else
@@ -4341,14 +3151,9 @@ function checkUserEquation()
     
     else
     {
-        if ( window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarEquationWriting") > -1 || window.location.href.indexOf("pracMode4VarDCEquationWriting") > -1 )
+        if ( practiceMode == 1 )
         {
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
-        }
-        
-        else if ( window.location.href.indexOf("moduleOneQuestion10") > -1 )
-        {
-            alert( "WRONG!" );
         }
             
         else
@@ -4395,20 +3200,17 @@ function resetGroupings()
     
     if ( length == 8 )
     {
-        setDrawingArray();
-        resetTwoDArray( user2DArray );
+        eightDrawingArray = resetDrawingArray( eightDrawingArray );
+        fourDrawingArray = resetDrawingArray( fourDrawingArray );
+        twoDrawingArray = resetDrawingArray( twoDrawingArray );
     }
     
     else if ( length == 16 )
     {
         sixteenDrawingArray = resetDrawingArray( sixteenDrawingArray );
-        //console.log( "SIXTEEN DRAWING ARRAY RESET: " + JSON.stringify( sixteenDrawingArray ) );
         eightDrawingArray = resetDrawingArray( eightDrawingArray );
-        //console.log( "EIGHT DRAWING ARRAY RESET: " + JSON.stringify( eightDrawingArray ) );
         fourDrawingArray = resetDrawingArray( fourDrawingArray );
-        //console.log( "FOUR DRAWING ARRAY RESET: " + JSON.stringify( fourDrawingArray ) );
         twoDrawingArray = resetDrawingArray( twoDrawingArray );
-        //console.log( "TWO DRAWING ARRAY RESET: " + JSON.stringify( twoDrawingArray ) );
     }
 }
 
@@ -4430,28 +3232,20 @@ function clearRectangleArray()
     }
 }
 
-function resetTwoDArray( arrayToReset )
-{
-    for ( var index = 0; index < arrayToReset.length - 1; index++ )
-    {
-        arrayToReset[index] = [0,0];
-    }
-}
-
 /////////////////////////////// Hint functions go here /////////////////////////////////////////
 function receiveHint()
 {
-    if ( window.location.href.indexOf("moduleOneQuestion1") > -1 || window.location.href.indexOf("moduleOneQuestion4") > -1 || window.location.href.indexOf("moduleOneQuestion5") > -1 || window.location.href.indexOf("moduleOneQuestion6") > -1 || window.location.href.indexOf("pracMode3VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode3VarDCTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarTruthTableTranslation") > -1 || window.location.href.indexOf("pracMode4VarDCTruthTableTranslation") > -1 )
+    if ( hint == 1 )
     {
         document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion2") > -1 || window.location.href.indexOf("moduleOneQuestion7") > -1 || window.location.href.indexOf("pracMode3VarGrouping") > -1 || window.location.href.indexOf("pracMode3VarDCGrouping") > -1 || window.location.href.indexOf("pracMode4VarGrouping") > -1 || window.location.href.indexOf("pracMode4VarDCGrouping") > -1 || window.location.href.indexOf("moduleOneQuestion9") > -1 || window.location.href.indexOf("moduleOneQuestion11") > -1 )
+    else if ( hint == 2 )
     {
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else if ( window.location.href.indexOf("moduleOneQuestion3") > -1 || window.location.href.indexOf("pracMode3VarEquationWriting") > -1 || window.location.href.indexOf("pracMode3VarDCEquationWriting") > -1 || window.location.href.indexOf("moduleOneQuestion10") )
+    else
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
     }
@@ -4466,9 +3260,7 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
         starsGiven -= 1;
-        
         document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
     }
     
@@ -4476,31 +3268,33 @@ function decreaseAttempts( number )
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        
-        //log(student_id, 1, "test", false, userStars, 3, 1);
-
-
-        for ( var index = 1; index <= 15; index++ )
-        {
-            if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
-            {
-                if ( index < 12 )
-                {
-                    var nextPage = index + 1;
-                    window.location.href = "moduleOneQuestion" + nextPage + ".html";
-                }
-                
-                else
-                {
-                    window.location.href = "moduleOneQuestionsComplete.html"
-                }
-            }
-        }
-    
+        //log(student_id, 1, "test", false, userStars, 3, 1);    
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
+        goToNextPage();
     }
     
     return number;
+}
+
+// Navigates to next page 
+function goToNextPage()
+{
+    for ( var index = 1; index <= 15; index++ )
+    {
+        if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
+        {
+            if ( index < 12 )
+            {
+                var nextPage = index + 1;
+                window.location.href = "moduleOneQuestion" + nextPage + ".html";
+            }
+
+            else
+            {
+                window.location.href = "moduleOneQuestionsComplete.html"
+            }
+        }
+    }
 }
 
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////

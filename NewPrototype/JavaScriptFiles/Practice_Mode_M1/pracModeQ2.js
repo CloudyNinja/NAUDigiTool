@@ -1,8 +1,10 @@
+// 3 var grouping
 var array = new Array(8);
 var groupingArray = new Array(8);
 var twoDArray = new Array( 4 );
 create2DArray( twoDArray );
 var dontCare = 0;
+var hint = 2;
 
 var user2DArray = new Array( 20 );
 create2DArray( user2DArray );
