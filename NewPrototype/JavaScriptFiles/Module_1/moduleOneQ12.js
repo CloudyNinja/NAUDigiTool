@@ -1,3 +1,4 @@
+// 4 var equation writing ( DC )
 var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);
@@ -36,7 +37,6 @@ var iOneDup = false;
 var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
-
 
 array = createArray(4);
 array = generateArrayIndex();

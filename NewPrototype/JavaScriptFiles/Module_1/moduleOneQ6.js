@@ -1,3 +1,4 @@
+// 4 var truth table translation ( DC )
 var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);

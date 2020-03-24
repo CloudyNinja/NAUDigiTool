@@ -1,4 +1,4 @@
-// 3 var equation writing
+// 3 var equation writing ( DC )
 var array = new Array(8);
 var userArray = new Array(8);
 var groupingArray = new Array(8);

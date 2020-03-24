@@ -1,3 +1,4 @@
+// 4 variable grouping
 var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);

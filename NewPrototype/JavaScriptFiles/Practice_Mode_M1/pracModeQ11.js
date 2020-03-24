@@ -1,7 +1,10 @@
+// 4 var grouping ( DC )
 var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);
 var dontCare = 1;
+var hint = 2;
+var practiceMode = 1;
 
 // Counter for 16s along with array
 var sixteenCounter = 0;
@@ -34,7 +37,6 @@ var iOneDup = false;
 var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
-
 
 array = createArray(4);
 array = generateArrayIndex();

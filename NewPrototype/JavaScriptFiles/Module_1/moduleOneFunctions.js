@@ -3021,8 +3021,6 @@ function checkAnswers()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
-        
         if ( practiceMode == 1 )
         {
             alert( "Congrats, you got the answer right!" );
@@ -3031,6 +3029,7 @@ function checkAnswers()
         
         else
         {
+            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3068,9 +3067,7 @@ function checkGroupings()
     console.log( "2: " + twoArraysMatch );
         
     if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
-    {
-        db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
-        
+    {   
         if ( practiceMode == 1 )
         {
             alert( "Congrats, you got the answer right!" );
@@ -3079,6 +3076,7 @@ function checkGroupings()
 
         else 
         {
+            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3121,11 +3119,10 @@ function checkUserEquation()
         
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
-        {
-            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
-            
+        {   
             if ( practiceMode == 0 )
             {
+                db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
                 showIt();
             }
             

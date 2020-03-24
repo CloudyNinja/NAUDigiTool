@@ -1,7 +1,10 @@
+// 4 var equation writing
 var array = new Array(16);
 var userArray = new Array(16);
 var groupingArray = new Array(16);
 var dontCare = 0;
+var hint = 3;
+var practiceMode = 1;
 
 // Counter for 16s along with array
 var sixteenCounter = 0;
@@ -43,16 +46,16 @@ fillKMap();
 
 // For hardcoding array ( testing )
 /*array[0] = 1;
-array[1] = 1;
-array[2] = 1;
-array[3] = 0;
+array[1] = 0;
+array[2] = 0;
+array[3] = 1;
 array[4] = 1;
 array[5] = 0;
 array[6] = 0;
-array[7] = 0;
-array[8] = 0;
-array[9] = 1;
-array[10] = 1;
+array[7] = 1;
+array[8] = 1;
+array[9] = 0;
+array[10] = 0;
 array[11] = 1;
 array[12] = 1;
 array[13] = 0;
@@ -70,6 +73,16 @@ find16s();
 find8s();
 find4s();
 find2s();
+
+autodrawRectangles( sixteenArray );
+autodrawRectangles( eightArray );
+autodrawRectangles( fourArray );
+autodrawRectangles( twoArray );
+
+addValuesToEquationArray( sixteenArray );
+addValuesToEquationArray( eightArray );
+addValuesToEquationArray( fourArray );
+addValuesToEquationArray( twoArray );
 
 // Attempts Left Message
 var starsGiven = 0;
