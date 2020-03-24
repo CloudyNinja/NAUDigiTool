@@ -3021,7 +3021,7 @@ function checkAnswers()
         userStars += starsGiven;
         passUserStars( userStars );
         
-        //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+        db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
         
         if ( practiceMode == 1 )
         {
@@ -3069,6 +3069,8 @@ function checkGroupings()
         
     if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
     {
+        db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
+        
         if ( practiceMode == 1 )
         {
             alert( "Congrats, you got the answer right!" );
@@ -3120,7 +3122,7 @@ function checkUserEquation()
         // Since user input has to be same length as answer array
         if ( counter == userInput.length )
         {
-            //log(student_id, 1, "test", true, userStars, 3-userStars, 1);
+            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             
             if ( practiceMode == 0 )
             {
@@ -3268,7 +3270,7 @@ function decreaseAttempts( number )
     {
         userStars += starsGiven;
         passUserStars( userStars );
-        //log(student_id, 1, "test", false, userStars, 3, 1);    
+        db_log(student_id, 1, 0, false, userStars, 3, 1);    
         /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
         goToNextPage();
     }

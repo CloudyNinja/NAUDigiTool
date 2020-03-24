@@ -3,6 +3,8 @@
    and functions that allow users to get a hint on their current problem and reset the boxes on a page
 */
 
+var student_id = sessionStorage.getItem("student_id");
+
 // Generates random decimal number
 function randomDecimal()
 {
@@ -286,6 +288,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion5.html";
@@ -314,6 +318,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion15.html";
@@ -341,6 +347,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion6.html";
@@ -368,6 +376,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion7.html";
@@ -398,6 +408,8 @@ function submitDecimalFractionToOctal()
     }
     if( counter == 3 )
     {
+        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
         alert( "Congrats, you passed this page!" );
         // Move onto next page
         window.location.href = "moduleTwoQuestion16.html";
@@ -427,6 +439,8 @@ function submitDecimalFractionToHex()
     }
     if( counter == 3 )
     {
+        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
         alert( "Congrats, you passed this page!" );
         // Move onto next page
         window.location.href = "moduleTwoQuestion17.html";
@@ -460,6 +474,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion3.html";
@@ -488,6 +504,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion13.html";
@@ -516,6 +534,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion10.html";
@@ -546,6 +566,8 @@ function submitOctalFraction()
     }
     if( counter == 3 )
     {
+        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
         alert( "Congrats, you passed this page!" );
         // Move onto next page
         window.location.href = "moduleTwoQuestion13.html";
@@ -579,6 +601,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion2.html";
@@ -607,6 +631,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion8.html";
@@ -636,6 +662,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion9.html";
@@ -669,6 +697,8 @@ function submitBinaryFraction()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion12.html";
@@ -699,6 +729,8 @@ function submitBinaryFractionToOctal()
     }
     if( counter == 3 )
     {
+        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
         alert( "Congrats, you passed this page!" );
         // Move onto next page
         window.location.href = "moduleTwoQuestion18.html";
@@ -728,6 +760,8 @@ function submitBinaryFractionToHex()
     }
     if( counter == 3 )
     {
+        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
         alert( "Congrats, you passed this page!" );
         // Move onto next page
         window.location.href = "moduleTwoQuestion18.html";
@@ -761,6 +795,8 @@ function submitHex()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion4.html";
@@ -789,6 +825,8 @@ function submitHex()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion11.html";
@@ -821,6 +859,8 @@ function submitHexFraction()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion14.html";
@@ -848,6 +888,8 @@ function submitHexFraction()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "moduleTwoQuestion14.html";
@@ -956,6 +998,8 @@ function decreaseAttempts( number )
         userStars += starsGiven;
         passUserStars( userStars );
         
+        db_log(student_id, 2, 0, false, starsGiven, 3-starsGiven, 1);
+
         for( var index = 1; index <= 20; index++ )
         {
             if ( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
