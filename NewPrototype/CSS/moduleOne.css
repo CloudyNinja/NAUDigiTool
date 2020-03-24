@@ -381,3 +381,38 @@ body
     margin-bottom: 100px;
     min-width: 200px;
 }
+
+#myalert 
+{
+    /* style for our alert window */	
+    background: #a6c5f7;	
+    border: solid 2px #000000;	
+    position: absolute;  
+
+    /* places it anywhere */	
+    top:25%;	
+    left:25%;	
+    width:50%;	
+    height:50%;	
+    display:none;   
+
+    /* makes it hidden */	
+    z-index:99;	 
+
+    /* on the top of everything*/
+}
+
+#alertText
+{
+    text-align: center;
+    display: block;
+    color: black;
+}
+
+#myimg
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}

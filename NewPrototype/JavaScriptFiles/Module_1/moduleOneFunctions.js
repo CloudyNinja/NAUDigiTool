@@ -3031,7 +3031,7 @@ function checkAnswers()
         
         else
         {
-            goToNextPage();
+            showIt();
         }
     }
         
@@ -3079,7 +3079,7 @@ function checkGroupings()
 
         else 
         {
-            goToNextPage();
+            showIt();
         }
     }
 
@@ -3126,7 +3126,7 @@ function checkUserEquation()
             
             if ( practiceMode == 0 )
             {
-                goToNextPage();
+                showIt();
             }
             
             else
@@ -3315,3 +3315,16 @@ function showScore()
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nModule failed. Try again.");
     }
 }
+
+/////////////////////////////// For alerts /////////////////////////////////////////
+function showIt()
+{			   
+    document.getElementById('myalert').style.display = "block";	 
+    setTimeout( hideIt, 2000 );
+}
+                    
+function hideIt()
+{  
+    document.getElementById('myalert').style.display = "none";
+    goToNextPage();
+} 
