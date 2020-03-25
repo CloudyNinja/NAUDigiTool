@@ -3017,10 +3017,7 @@ function checkAnswers()
     }
     
     if ( isRight == 0 )
-    {
-        userStars += starsGiven;
-        passUserStars( userStars );
-        
+    {        
         if ( practiceMode == 1 )
         {
             alert( "Congrats, you got the answer right!" );
@@ -3029,7 +3026,7 @@ function checkAnswers()
         
         else
         {
-            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
+            //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3076,7 +3073,7 @@ function checkGroupings()
 
         else 
         {
-            db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
+            //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3122,7 +3119,7 @@ function checkUserEquation()
         {   
             if ( practiceMode == 0 )
             {
-                db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
+                //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
                 showIt();
             }
             
@@ -3259,16 +3256,16 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        starsGiven -= 1;
         document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
     }
     
     else
     {
-        userStars += starsGiven;
-        passUserStars( userStars );
-        db_log(student_id, 1, 0, false, userStars, 3, 1);    
-        /*alert( " Star Score: " + userStars.toString() + "/" + moduleOneMaxStars.toString() );*/
+        starsGiven = 0;
+        totalUserStars += starsGiven;
+        passUserStars( totalUserStars );
+        db_log(student_id, 1, 0, false, userStars, 3, 1);  
+        alert( "Answer missed. No star given." );
         goToNextPage();
     }
     
@@ -3277,8 +3274,8 @@ function decreaseAttempts( number )
 
 // Navigates to next page 
 function goToNextPage()
-{
-    for ( var index = 1; index <= 15; index++ )
+{    
+    for ( var index = 1; index <= 12; index++ )
     {
         if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
         {
@@ -3290,7 +3287,8 @@ function goToNextPage()
 
             else
             {
-                window.location.href = "moduleOneQuestionsComplete.html"
+                window.location.href = "moduleOneQuestionsComplete.html";
+                showScore();
             }
         }
     }
@@ -3298,24 +3296,30 @@ function goToNextPage()
 
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
-{
-    totalUserStars += starsGiven;
-    passUserStars( totalUserStars );
-    
-    if ( totalUserStars >= 21 )
+{    
+    if ( totalUserStars >= 10 )
     {
+        // You can add that database flag that allows then access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
+        window.location.href = "../../modules.html";
     }
     
     else
     {
+        // You can add that database flag that allows then access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nModule failed. Try again.");
+        window.location.href = "../../modules.html";
     }
 }
 
 /////////////////////////////// For alerts /////////////////////////////////////////
 function showIt()
-{			   
+{			
+    starsGiven = 1;
+    totalUserStars += starsGiven;
+    passUserStars( totalUserStars );
+    // Here's your db_log line... elimates other 3 lines you had
+    db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
     document.getElementById('myalert').style.display = "block";	 
     setTimeout( hideIt, 2000 );
 }
