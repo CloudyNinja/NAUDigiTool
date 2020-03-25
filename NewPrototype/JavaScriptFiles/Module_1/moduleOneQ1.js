@@ -22,7 +22,13 @@ array[7] = 1;*/
 
 //console.log( JSON.stringify( array ) );
 
+/*var start = new Date().getTime();
+var end = new Date().getTime();
+var time = end - start;
+alert('Execution time: ' + time);*/
+
 // Attempts Left Message
+var start = new Date().getTime();
 var attemptsLeft = 3;
 var starsGiven = 1;
 var levelMaxStars = 1;

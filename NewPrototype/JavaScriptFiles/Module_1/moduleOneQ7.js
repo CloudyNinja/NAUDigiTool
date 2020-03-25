@@ -5,6 +5,14 @@ var groupingArray = new Array(8);
 var dontCare = 1;
 var hint = 2;
 var practiceMode = 0;
+var ctx = canvas.getContext('2d');
+function init() 
+{
+    canvas.addEventListener('mousedown', mouseDown, false);
+    canvas.addEventListener('mouseup', mouseUp, false);
+    canvas.addEventListener('mousemove', mouseMove, false);
+}
+init();
 
 // Counter for 16s along with array
 var sixteenCounter = 0;

@@ -4,7 +4,6 @@ var quads =  0;
 var pairs = 0;
 
 var canvas = document.getElementById('userCanvas');
-var ctx = canvas.getContext('2d');
 var rect = {};
 var drag = false;
 
@@ -46,13 +45,6 @@ function addInputsToUserArray()
         swapUserArrayIndices( 10, 15 );
         swapUserArrayIndices( 11, 14 );
     }
-}
-
-function init() 
-{
-    canvas.addEventListener('mousedown', mouseDown, false);
-    canvas.addEventListener('mouseup', mouseUp, false);
-    canvas.addEventListener('mousemove', mouseMove, false);
 }
 
 function mouseDown(e) 
@@ -869,8 +861,6 @@ function generateColor()
     
     return color;
 }
-
-init();
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
