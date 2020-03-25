@@ -1,6 +1,8 @@
 
 /* This page includes all of the functions for the Module Two Practice Mode */
 
+var student_id = sessionStorage.getItem("student_id");
+var mistakes = 0;
 // For practice mode selection page
 function generateQuestion()
 {
@@ -225,6 +227,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -232,7 +236,7 @@ function submitDecimal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 
@@ -250,6 +254,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -257,7 +263,7 @@ function submitDecimal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 
@@ -275,6 +281,8 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -282,6 +290,7 @@ function submitDecimal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
+            mistakes++;
         }
     }
 }
@@ -306,6 +315,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -313,7 +324,7 @@ function submitOctal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 
@@ -332,6 +343,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -339,7 +352,7 @@ function submitOctal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 
@@ -358,6 +371,8 @@ function submitOctal()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -365,9 +380,7 @@ function submitOctal()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-            // Decrease attempts and star score by 1
-            attemptsLeft = decreaseAttempts( attemptsLeft );
-        
+            mistakes++;
         }
     }
 }
@@ -392,6 +405,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -399,6 +414,7 @@ function submitBinary()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
+            mistakes++;
         }
     }
 
@@ -417,6 +433,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -424,6 +442,7 @@ function submitBinary()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
+            mistakes++;
         }
     }
 
@@ -443,6 +462,8 @@ function submitBinary()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -450,7 +471,7 @@ function submitBinary()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 }
@@ -475,6 +496,8 @@ function submitHex()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -482,7 +505,7 @@ function submitHex()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
-        
+            mistakes++;
         }
     }
 
@@ -501,6 +524,8 @@ function submitHex()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -508,6 +533,7 @@ function submitHex()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
+            mistakes++;
         }
     }
 
@@ -526,6 +552,8 @@ function submitHex()
         }
         if( counter == 3 )
         {
+            db_log(student_id, 2, 1, true, 0, mistakes, 1);
+
             alert( "Congrats, you passed this page!" );
             // Move onto next page
             window.location.href = "practiceModuleTwoQuestion.html";
@@ -533,6 +561,7 @@ function submitHex()
         else
         {
             document.getElementById( "incorrectAnswerMessage" ).innerHTML = "Not all answers are correct.";
+            mistakes++;
         }
     }
 }

@@ -23,11 +23,13 @@
     $entry = mysqli_fetch_array($result);
 
     #if the pull matches input they are a user with correct pass
-    if( $entry['Username'] == $username && $entry['Password'] == $password )
+    if(isset($entry['Username']) && isset($entry['Password']))
     {
         #Success
         echo 'true,',$entry['Student_ID'] ;
-    } else {
+    }
+    else 
+    {
         #Failed
         echo 'User does not exist or password was incorrect';
     }

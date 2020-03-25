@@ -3264,7 +3264,7 @@ function decreaseAttempts( number )
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
-        db_log(student_id, 1, 0, false, userStars, 3, 1);  
+        db_log(student_id, 1, 0, false, starsGiven, 3, 1);  
         alert( "Answer missed. No star given." );
         goToNextPage();
     }
@@ -3319,7 +3319,7 @@ function showIt()
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     // Here's your db_log line... elimates other 3 lines you had
-    db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
+    db_log(student_id, 1, 0, true, starsGiven, 3-attemptsLeft, 1);
     document.getElementById('myalert').style.display = "block";	 
     setTimeout( hideIt, 2000 );
 }
