@@ -52,6 +52,7 @@ userArray = createUserArray(4);
 createTruthTable(4);
 createKMap(4);
 fillKMap();
+timer = setInterval( "countDown()", 1000 );
 
 // For hardcoding array ( testing )
 /*array[0] = 1;

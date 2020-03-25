@@ -20,6 +20,7 @@ array[7] = 1;*/
 array = createArray(3);
 createTruthTable(3);
 createKMap(3);
+timer = setInterval( "countDown()", 1000 );
 
 console.log( JSON.stringify( array ) );
 userArray = createUserArray(3);

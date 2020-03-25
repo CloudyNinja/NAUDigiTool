@@ -52,6 +52,7 @@ userArray = createUserArray(3);
 createTruthTable(3);
 createKMap(3);
 fillKMap();
+timer = setInterval( "countDown()", 1000 );
 
 /*function checkIfArrayAlreadyMade( arrayPassed, otherArrayPassed )
 {

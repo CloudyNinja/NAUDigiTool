@@ -416,3 +416,15 @@ body
     margin-right: auto;
     margin-top: 50px;
 }
+
+#timer
+{
+    position: absolute;
+    color: black;
+    top: 130px;
+    left: 950px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    margin-bottom: 100px;
+    min-width: 200px;
+}

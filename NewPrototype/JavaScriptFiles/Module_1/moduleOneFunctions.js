@@ -12,6 +12,50 @@ var drawingArray = new Array( 1 );
 
 var student_id = sessionStorage.getItem('student_id');
 
+///// Timer stuff /////////
+var maxTime = 60 * 5;
+var minutes;
+var seconds;
+
+/*if( window.name == '' || window.name == '-1' || isNaN( window.name ) )
+{
+    // Set timer for five minutes
+    maxTime = 60 * 5;
+}
+
+else
+{
+    maxTime = window.name;
+}*/
+
+function getTimeTaken( minutesPassed, secondsPassed )
+{
+    var minuteCounter = 0;
+    var secondCounter = 0;
+    var total = 0;
+    
+    while ( minutesPassed != 5 )
+    {
+        while ( secondsPassed != 60 )
+        {
+            secondCounter += 1;
+            secondsPassed++;
+        }
+        
+        minutesPassed += 1;
+        
+        if ( minutesPassed != 5 )
+        {
+            minuteCounter += 1;
+        }
+    }
+    
+    total = minuteCounter + " minutes " + secondCounter + " seconds ";
+    return total;
+}
+    
+///// Timer stuff /////////
+
 // Creates user equation for truth table translation inputs
 function createUserArray()
 {
@@ -3016,7 +3060,6 @@ function checkAnswers()
         
         else
         {
-            //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3063,7 +3106,6 @@ function checkGroupings()
 
         else 
         {
-            //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
     }
@@ -3109,7 +3151,6 @@ function checkUserEquation()
         {   
             if ( practiceMode == 0 )
             {
-                //db_log(student_id, 1, 0, true, starsGiven, 3-starsGiven, 1);
                 showIt();
             }
             
@@ -3254,8 +3295,13 @@ function decreaseAttempts( number )
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
-        db_log(student_id, 1, 0, false, starsGiven, 3, 1);  
+        timeTaken = getTimeTaken( minutes, seconds );
+        console.log( "TIME TAKEN: " + timeTaken );
+        // You can store the timeTaken variable in the db_log statement
+        // As of right now it's only registers per question
+        db_log(student_id, 1, 0, false, starsGiven, 3, 1); 
         alert( "Answer missed. No star given." );
+        clearInterval( timer );
         goToNextPage();
     }
     
@@ -3308,7 +3354,11 @@ function showIt()
     starsGiven = 1;
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
-    // Here's your db_log line... elimates other 3 lines you had
+    timeTaken = getTimeTaken( minutes, seconds );
+    //alert( "TIME TAKEN: " + timeTaken );
+    console.log( "TIME TAKEN: " + timeTaken );
+    // You can store the timeTaken variable in the db_log statement
+    // As of right now it's only registers per question
     db_log(student_id, 1, 0, true, starsGiven, 3-attemptsLeft, 1);
     document.getElementById('myalert').style.display = "block";	 
     setTimeout( hideIt, 2000 );
@@ -3316,6 +3366,36 @@ function showIt()
                     
 function hideIt()
 {  
+    clearInterval( timer );
     document.getElementById('myalert').style.display = "none";
     goToNextPage();
 } 
+
+/////////////////////////////// For timer /////////////////////////////////////////
+
+// Creates and sets a timer for each page
+function countDown()
+{
+    if ( maxTime >= 0 )
+    {
+        hours = Math.floor( maxTime / 3600 );
+        minutes = Math.floor( ( maxTime - hours * 3600 ) / 60 );
+        seconds = Math.floor( maxTime % 60 );
+        var msg = "Time left: " + minutes + " minutes, " + seconds + " seconds.";
+        document.getElementById( "timer" ).innerHTML = msg;
+        
+        // Decrements time
+        --maxTime;
+        window.name = maxTime;
+    }
+    
+    else
+    {
+        clearInterval( timer );
+        timeTaken = getTimeTaken( minutes, seconds );
+        console.log( "TIME TAKEN: " + timeTaken );
+        // You can put a db log statement here as well
+        alert( "Time has expired. Moving to next page.");
+        goToNextPage();
+    }
+}
