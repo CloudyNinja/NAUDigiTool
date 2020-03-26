@@ -177,7 +177,7 @@ function randomOctalFraction()
         if( index == 1 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 88 ) + 1 ); // Generates random number between 1 and 88
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 1 ); // Generates random suffix between 1 and 7
             octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
             octalNumberSuffix = randomNumberSuffix.toString(8);
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
@@ -186,7 +186,7 @@ function randomOctalFraction()
         else if( index == 2 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 87 ) + 88 ); // Generates random number between 88 and 174
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 7 ); // Generates random suffix between 7 and 13
             octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
             octalNumberSuffix = randomNumberSuffix.toString(8);
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
@@ -195,7 +195,7 @@ function randomOctalFraction()
         else 
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 157 ) + 174 ); // Generates random number between 174 and 330
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 13 ); // Generates random suffix between 13 and 19 
             octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
             octalNumberSuffix = randomNumberSuffix.toString(8);
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
@@ -242,8 +242,8 @@ function randomHexFraction()
         if( index == 1 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
-            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
@@ -251,8 +251,8 @@ function randomHexFraction()
         else if( index == 2 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
-            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            randomNumberSuffix = Math.floor( ( Math.random() * 14 ) + 15 ); // Generates random suffix between 14 and 30
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
@@ -260,8 +260,8 @@ function randomHexFraction()
         else
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
-            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to octal
+            randomNumberSuffix = Math.floor( ( Math.random() * 29 ) + 30 ); // Generates random suffix between 30 and 60
+            hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = hexNumberPrefix + "." + hexNumberSuffix;
@@ -289,10 +289,7 @@ function submitDecimal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion5.html";
+            showIt();
         }
         else
         {
@@ -319,10 +316,7 @@ function submitDecimal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion15.html";
+            showIt();
         }
         else
         {
@@ -348,10 +342,8 @@ function submitDecimal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion6.html";
+            showIt();
+            console.log( totalUserStars );
         }
         else
         {
@@ -377,10 +369,7 @@ function submitDecimal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion7.html";
+            showIt();
         }
         else
         {
@@ -409,10 +398,7 @@ function submitDecimalFractionToOctal()
     if( counter == 3 )
     {
         db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestion16.html";
+        showIt();
     }
     else
     {
@@ -440,10 +426,7 @@ function submitDecimalFractionToHex()
     if( counter == 3 )
     {
         db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestion17.html";
+        showIt();
     }
     else
     {
@@ -475,10 +458,7 @@ function submitOctal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion3.html";
+            showIt();
         }
         else
         {
@@ -505,10 +485,7 @@ function submitOctal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion13.html";
+            showIt();
         }
         else
         {
@@ -535,10 +512,7 @@ function submitOctal()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion10.html";
+            showIt();
         }
         else
         {
@@ -567,10 +541,7 @@ function submitOctalFraction()
     if( counter == 3 )
     {
         db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestion13.html";
+        showIt();
     }
     else
     {
@@ -602,10 +573,7 @@ function submitBinary()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion2.html";
+            showIt();
         }
         else
         {
@@ -632,10 +600,7 @@ function submitBinary()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion8.html";
+            showIt();
         }
         else
         {
@@ -663,10 +628,7 @@ function submitBinary()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion9.html";
+            showIt();
         }
         else
         {
@@ -698,10 +660,7 @@ function submitBinaryFraction()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion12.html";
+            showIt();
         }
         else
         {
@@ -730,10 +689,7 @@ function submitBinaryFractionToOctal()
     if( counter == 3 )
     {
         db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestion18.html";
+        showIt();
     }
     else
     {
@@ -761,10 +717,7 @@ function submitBinaryFractionToHex()
     if( counter == 3 )
     {
         db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-        alert( "Congrats, you passed this page!" );
-        // Move onto next page
-        window.location.href = "moduleTwoQuestion18.html";
+        showIt();
     }
     else
     {
@@ -796,10 +749,7 @@ function submitHex()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion4.html";
+            showIt();
         }
         else
         {
@@ -826,10 +776,7 @@ function submitHex()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion11.html";
+            showIt();
         }
         else
         {
@@ -860,10 +807,7 @@ function submitHexFraction()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion14.html";
+            showIt();
         }
         else
         {
@@ -889,10 +833,7 @@ function submitHexFraction()
         if( counter == 3 )
         {
             db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
-
-            alert( "Congrats, you passed this page!" );
-            // Move onto next page
-            window.location.href = "moduleTwoQuestion14.html";
+            showIt();
         }
         else
         {
@@ -987,67 +928,142 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        
-        starsGiven -= 1;
-        
         document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+    }
+    else
+    {
+        starsGiven = 0;
+        totalUserStars += starsGiven;
+        passUserStars( totalUserStars );
+        timeTaken = getTimeTaken( minutes, seconds );
+        console.log( "TIME TAKEN: " + timeTaken );
+        // You can store the timeTaken variable in the db_log statement
+        // As of right now it's only registers per question
+        db_log(student_id, 2, 0, false, starsGiven, 3-starsGiven, 1); 
+        alert( "Answer missed. No star given." );
+        clearInterval( timer );
+        goToNextPage();
+    }
+    return number;
+}
+
+// Navigates to next page 
+function goToNextPage()
+{    
+    for ( var index = 1; index <= 20; index++ )
+    {
+        if ( Boolean( window.location.href.indexOf("moduleTwoQuestion" + index ) > -1 ) )
+        {
+            if ( index < 20 )
+            {
+                var nextPage = index + 1;
+                window.location.href = "moduleTwoQuestion" + nextPage + ".html";
+            }
+
+            else
+            {
+                window.location.href = "moduleTwoQuestionsComplete.html";
+                showScore();
+            }
+        }
+    }
+}
+
+///// Timer stuff /////////
+var maxTime = 60 * 10;
+var minutes;
+var seconds;
+
+// Creates and sets a timer for each page
+function countDown()
+{
+    if ( maxTime >= 0 )
+    {
+        hours = Math.floor( maxTime / 3600 );
+        minutes = Math.floor( ( maxTime - hours * 3600 ) / 60 );
+        seconds = Math.floor( maxTime % 60 );
+        var msg = "Time left: " + minutes + " minutes, " + seconds + " seconds.";
+        document.getElementById( "timer" ).innerHTML = msg;
+        
+        // Decrements time
+        --maxTime;
+        window.name = maxTime;
+    }
+    else
+    {
+        clearInterval( timer );
+        timeTaken = getTimeTaken( minutes, seconds );
+        console.log( "TIME TAKEN: " + timeTaken );
+        // You can put a db log statement here as well
+        alert( "Time has expired. Moving to next page.");
+        goToNextPage();
+    }
+}
+
+function getTimeTaken( minutesPassed, secondsPassed )
+{
+    var minuteCounter = 0;
+    var secondCounter = 0;
+    var total = 0;
+    
+    while ( minutesPassed != 10 )
+    {
+        while ( secondsPassed != 60 )
+        {
+            secondCounter += 1;
+            secondsPassed++;
+        }
+        
+        minutesPassed += 1;
+        
+        if ( minutesPassed != 10 )
+        {
+            minuteCounter += 1;
+        }
+    }
+    
+    total = minuteCounter + " minutes " + secondCounter + " seconds ";
+    return total;
+}
+
+/////////////////////////////// For alerts /////////////////////////////////////////
+function showIt()
+{			
+    starsGiven = 1;
+    totalUserStars += starsGiven;
+    passUserStars( totalUserStars );
+    timeTaken = getTimeTaken( minutes, seconds );
+    //alert( "TIME TAKEN: " + timeTaken );
+    console.log( "TIME TAKEN: " + timeTaken );
+    // You can store the timeTaken variable in the db_log statement
+    // As of right now it's only registers per question
+    db_log(student_id, 2, 0, true, starsGiven, 3-attemptsLeft, 1);
+    document.getElementById('myalert').style.display = "block";	 
+    setTimeout( hideIt, 2000 );
+}
+                    
+function hideIt()
+{  
+    clearInterval( timer );
+    document.getElementById('myalert').style.display = "none";
+    goToNextPage();
+} 
+
+/////////////////////////////// Only one function needed for score /////////////////////////////////////////
+function showScore()
+{    
+    if ( totalUserStars == 20 )
+    {
+        // You can add that database flag that allows then access to Module 2 or not.
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleTwoMaxStars.toString() + "\n\n\nYou passed Numeric Conversions!");
+        window.location.href = "../../modules.html";
     }
     
     else
     {
-        userStars += starsGiven;
-        passUserStars( userStars );
-        
-        db_log(student_id, 2, 0, false, starsGiven, 3-starsGiven, 1);
-
-        for( var index = 1; index <= 20; index++ )
-        {
-            if ( Boolean( window.location.href.indexOf( "moduleTwoQuestion" + index ) > -1 ) )
-            {
-                if( index < 20)
-                {
-                    var nextPage = index + 1;
-                    window.location.href = "moduleTwoQuestion" + nextPage + ".html";
-                }
-                else
-                {
-                    window.location.href = "moduleTwoQuestionComplete.html";
-                }
-            }
-        }
-        
+        // You can add that database flag that allows then access to Module 2 or not.
+        alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleTwoMaxStars.toString() + "\n\n\nModule failed. Try again.");
+        window.location.href = "../../modules.html";
     }
-    
-    return number;
 }
-
-// Creates and sets a timer for each page
-// var maxtime;
-// if(window.name=='' || window.name == '-1' || isNaN(window.name))
-// {
-//     maxtime = 10*60;
-// }else
-// {
-//     maxtime = window.name;
-// }
-// function CountDown()
-// {
-//     if(maxtime>=0)
-//     {
-//         hours = Math.floor(maxtime/3600);
-//         minutes = Math.floor((maxtime-hours*3600)/60);
-//         seconds = Math.floor(maxtime%60);
-//         msg = "Time left: " + minutes + " minutes, " + seconds + " seconds.";
-//         document.getElementById( "timer" ).innerHTML = msg;
-//         if(maxtime == 5*60) alert('only 5mins!');
-//         --maxtime;
-//         window.name = maxtime;
-//     }
-//     else
-//     {
-//         clearInterval(timer);
-//         document.getElementById( "timer" ).innerHTML = "Time has expired.";
-//     }
-// }
-// timer = setInterval("CountDown()",1000);
 
