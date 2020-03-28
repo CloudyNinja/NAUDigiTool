@@ -17,16 +17,8 @@ var maxTime = 60 * 5;
 var minutes;
 var seconds;
 
-/*if( window.name == '' || window.name == '-1' || isNaN( window.name ) )
-{
-    // Set timer for five minutes
-    maxTime = 60 * 5;
-}
-
-else
-{
-    maxTime = window.name;
-}*/
+///// Progress Bar /////////
+var progress = 0;
 
 function getTimeTaken( minutesPassed, secondsPassed )
 {
@@ -3313,7 +3305,7 @@ function goToNextPage()
 {    
     for ( var index = 1; index <= 12; index++ )
     {
-        if ( Boolean( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 ) )
+        if ( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 )
         {
             if ( index < 12 )
             {
