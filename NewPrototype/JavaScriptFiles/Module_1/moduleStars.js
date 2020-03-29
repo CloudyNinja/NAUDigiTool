@@ -1,4 +1,4 @@
-var moduleOneMaxStars = 12;
+var moduleOneMaxStars = 20;
 
 function passUserStars( variable )
 {

@@ -4113,11 +4113,11 @@ function decreaseAttempts( number )
 // Navigates to next page 
 function goToNextPage()
 {    
-    for ( var index = 1; index <= 16; index++ )
+    for ( var index = 1; index <= 20; index++ )
     {
         if ( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 )
         {
-            if ( index < 16 )
+            if ( index < 20 )
             {
                 var nextPage = index + 1;
                 window.location.href = "moduleOneQuestion" + nextPage + ".html";
