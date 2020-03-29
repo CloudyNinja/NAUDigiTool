@@ -1,11 +1,11 @@
-// 3 var equation writing
-var array = new Array(8);
-var userArray = new Array(8);
-var groupingArray = new Array(8);
+// 4 var equation writing ( POS )
+var array = new Array(16);
+var userArray = new Array(16);
+var groupingArray = new Array(16);
 var dontCare = 0;
 var hint = 3;
 var practiceMode = 0;
-var pos = 0;
+var pos = 1;
 
 // Counter for 16s along with array
 var sixteenCounter = 0;
@@ -39,39 +39,36 @@ var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
 
-array = createArray(3);
-userArray = createUserArray(3);
-createTruthTable(3);
-createKMap(3);
+array = createArray(4);
+array[0] = 0;
+array[1] = 0;
+userArray = createUserArray(4);
+createTruthTable(4);
+createKMap(4);
 fillKMap();
 timer = setInterval( "countDown()", 1000 );
-
-// For hardcoding array ( testing )
-/*array[0] = 1;
-array[1] = 1;
-array[2] = 1;
-array[3] = 1;
-array[4] = 1;
-array[5] = 1;
-array[6] = 1;
-array[7] = 1;*/
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
 console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
 console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
+console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] + " |   " + array[11] + "  |\n" );
+console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
 
-find8s();
-find4s();
-find2s();
+find16sPOS();
+find8sPOS();
+find4sPOS();
+find2sPOS();
 
+autodrawRectangles( sixteenArray );
 autodrawRectangles( eightArray );
 autodrawRectangles( fourArray );
 autodrawRectangles( twoArray );
 
-addValuesToEquationArray( eightArray );
-addValuesToEquationArray( fourArray );
-addValuesToEquationArray( twoArray );
+addValuesToEquationArrayPOS( sixteenArray );
+addValuesToEquationArrayPOS( eightArray );
+addValuesToEquationArrayPOS( fourArray );
+addValuesToEquationArrayPOS( twoArray );
 
 // Attempts Left Message
 var attemptsLeft = 3;
@@ -83,4 +80,3 @@ document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attempts
 
 // Star score message
 document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
-
