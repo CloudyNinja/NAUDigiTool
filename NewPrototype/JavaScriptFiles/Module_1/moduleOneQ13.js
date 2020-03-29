@@ -1,9 +1,9 @@
-// 3 var grouping ( SOP )
+// 3 var grouping ( POS )
 var array = new Array(8);
 var userArray = new Array(8);
 var groupingArray = new Array(8);
 var dontCare = 0;
-var hint = 2;
+var hint = 4;
 var practiceMode = 0;
 var ctx = canvas.getContext('2d');
 function init() 
@@ -47,30 +47,22 @@ var iThreeDup = false;
 var iFourDup = false;
 
 array = createArray(3);
+array[0] = 0;
+array[1] = 0;
 userArray = createUserArray(3);
 createTruthTable(3);
 createKMap(3);
 fillKMap();
 timer = setInterval( "countDown()", 1000 );
 
-// For hardcoding array ( testing )
-/*array[0] = 1;
-array[1] = 1;
-array[2] = 1;
-array[3] = 0;
-array[4] = 1;
-array[5] = 0;
-array[6] = 0;
-array[7] = 0;*/
-
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
 console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
 console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
 
-find8s();
-find4s();
-find2s();
+find8sPOS();
+find4sPOS();
+find2sPOS();
 
 // Attempts Left Message
 var attemptsLeft = 3;

@@ -1504,6 +1504,40 @@ function find16s()
     console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
 }
 
+// Finds 16s in array ( Product of Sums )
+function find16sPOS()
+{
+    var length = getLengthOfArray();
+    var counter = 0;
+    var newArray = new Array(1);
+    var sixteenArrayIndex = 0;
+    
+    for ( var index = 0; index < length; index++ )
+    {
+        if ( array[index] == 0 || array[index] == "X" )
+        {
+            counter += 1;
+        }
+    }
+    
+    // If all 16s
+    if ( counter == 16 )
+    {
+        // Adds array with indexes equal to 1 to new array
+        for ( var index = 0; index < length; index++ )
+        {
+            newArray = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ];
+        }
+        
+        // Creates slot to add array and adds the array
+        sixteenArrayIndex = createArraySpace( sixteenArray );
+        sixteenArray[sixteenArrayIndex] = newArray;
+        sixteenAmount += 1;
+    }
+        
+    console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
+}
+
 // Finds 8s in array
 function find8s()
 {
@@ -1514,10 +1548,7 @@ function find8s()
     {
         // 3 Horizontal Groups
         for ( var index = 0; index < length; index++ )
-        {
-            oneCount = 0;
-            xCount = 0;
-            
+        {   
             if ( index == 0 || index == 4 || index == 8 )
             {                
                 if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 4] == 1 || array[index + 4] == "X" ) && ( array[index + 5] == 1 || array[index + 5] == "X" ) && ( array[index + 6] == 1 || array[index + 6] == "X" ) && ( array[index + 7] == 1 || array[index + 7] == "X" ) )
@@ -1565,6 +1596,80 @@ function find8s()
                 }
                 
                 else if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 1] == 1 || array[index + 1] == "X" ) && ( array[index + 2] == 1 || array[index + 2] == "X" ) && ( array[index + 3] == 1 || array[index + 3] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index + 13] == 1 || array[index + 13] == "X" ) && ( array[index + 14] == 1 || array[index + 14] == "X" ) && ( array[index + 15] == 1 || array[index + 15] == "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 2, index + 3, index + 12, index + 13, index + 14, index + 15 ];
+        
+                    // Creates slot to add array and adds the array
+                    eightArrayIndex = createArraySpace( eightArray );
+                    eightArray[eightArrayIndex] = newArray;
+                    eightAmount += 1;
+                }
+            }
+        }
+        
+    }
+    
+    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
+}
+
+// Finds 8s in array ( Product of Sums )
+function find8sPOS()
+{
+    var length = getLengthOfArray();
+    var newArray = new Array(1);
+    
+    if ( sixteenAmount == 0 )
+    {
+        // 3 Horizontal Groups
+        for ( var index = 0; index < length; index++ )
+        {   
+            if ( index == 0 || index == 4 || index == 8 )
+            {                
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 2] == 0 || array[index + 2] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 5] == 0 || array[index + 5] == "X" ) && ( array[index + 6] == 0 || array[index + 6] == "X" ) && ( array[index + 7] == 0 || array[index + 7] == "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 2, index + 3, index + 4, index + 5, index + 6, index + 7 ];
+        
+                    // Creates slot to add array and adds the array
+                    eightArrayIndex = createArraySpace( eightArray );
+                    eightArray[eightArrayIndex] = newArray;
+                    eightAmount += 1;
+                }
+            }
+        }
+        
+        // 3 Vertical Groups
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 5] == 0 || array[index + 5] == "X" ) && ( array[index + 8] == 0 || array[index + 8] == "X" ) && ( array[index + 9] == 0 || array[index + 9] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index + 13] == 0 || array[index + 13] == "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 4, index + 5, index + 8, index + 9, index + 12, index + 13 ];
+        
+                    // Creates slot to add array and adds the array
+                    eightArrayIndex = createArraySpace( eightArray );
+                    eightArray[eightArrayIndex] = newArray;
+                    eightAmount += 1;
+                }
+            }
+        }
+        
+        // 2 Wraps
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 7] == 0 || array[index + 7] == "X" ) && ( array[index + 8] == 0 || array[index + 8] == "X" ) && ( array[index + 11] == 0 || array[index + 11] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index + 15] == 0 || array[index + 15] == "X" ) )
+                {
+                    newArray = [ index, index + 3, index + 4, index + 7, index + 8, index + 11, index + 12, index + 15 ];
+        
+                    // Creates slot to add array and adds the array
+                    eightArrayIndex = createArraySpace( eightArray );
+                    eightArray[eightArrayIndex] = newArray;
+                    eightAmount += 1;
+                }
+                
+                else if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 2] == 0 || array[index + 2] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index + 13] == 0 || array[index + 13] == "X" ) && ( array[index + 14] == 0 || array[index + 14] == "X" ) && ( array[index + 15] == 0 || array[index + 15] == "X" ) )
                 {
                     newArray = [ index, index + 1, index + 2, index + 3, index + 12, index + 13, index + 14, index + 15 ];
         
@@ -1685,6 +1790,110 @@ function find4s()
     resetAllDuplicates();
 }
 
+// Finds 4s in array ( Product of Sums )
+function find4sPOS()
+{
+    var length = getLengthOfArray();
+    var newArray = new Array(1);
+    
+    if ( sixteenAmount == 0 )
+    {
+        // For horizontal groupings ( lines only )
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 4 || index == 8 || index == 12 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 2] == 0 || array[index + 2] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 2] != "X" || array[index + 3] != "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 2, index + 3 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Vertical lines
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 8] == 0 || array[index + 8] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index] != "X" || array[index + 4] != "X" || array[index + 8] != "X" || array[index + 12] != "X" ) )
+                {
+                    newArray = [ index, index + 4, index + 8, index + 12 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Squares from top left to bottom right
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( ( index >= 0 && index <= 2 ) || ( index >= 4 && index <= 6 ) || ( index >= 8 && index <= 10 ) )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 5] == 0 || array[index + 5] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 4] != "X" || array[index + 5] != "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 4, index + 5 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Horizontal Wraps
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 4 || index == 8 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index + 7] == 0 || array[index + 7] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" || array[index + 4] != "X" || array[index + 7] != "X" ) )
+                {
+                    newArray = [ index, index + 3, index + 4, index + 7 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Vertical Wraps
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index + 13] == 0 || array[index + 13] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" || array[index + 12] != "X" || array[index + 13] != "X" ) )
+                {
+                    newArray = [ index, index + 1, index + 12, index + 13 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Four corner wrap
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index + 15] == 0 || array[index + 15] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" || array[index + 12] != "X" || array[index + 15] != "X" ) )
+                {
+                    newArray = [ index, index + 3, index + 12, index + 15 ];
+                    checkIfCanAdd( newArray, eightArray, fourArrayIndex, fourAmount, fourArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, fourArrayIndex, fourAmount, fourArray, 4 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+    }
+    
+    fourArray = eliminateRedundancies( fourArray );
+    console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
+    resetAllDuplicates();
+}
+
 function resetAllDuplicates()
 {
     iOneDup = false;
@@ -1755,6 +1964,93 @@ function find2s()
             if ( index == 0 || index == 1 || index == 2 || index == 3 )
             {
                 if ( ( array[index] == 1 || array[index] == "X" ) && ( array[index + 12] == 1 || array[index + 12] == "X" ) && ( array[index] != "X" || array[index + 12] != "X" ) )
+                {
+                    newArray = [ index, index + 12 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+    }
+
+    if ( twoArray[0] != null && fourArray[0] != null )
+    {
+        twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
+        console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
+    }
+    
+    else 
+    {
+        //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
+        twoArray = eliminateRedundancies( twoArray );
+        console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
+    }
+}
+
+// Finds 2s in array  ( Product of Sums )
+function find2sPOS()
+{
+    var length = getLengthOfArray();
+    var newArray = new Array(1);
+
+    if ( sixteenAmount == 0 )
+    {
+        // For horizontal groupings ( lines only )
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 4 || index == 5 || index == 6 || index == 8 || index == 9 || index == 10 || index == 12 || index == 13 || index == 14 )
+            {            
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 1] == 0 || array[index + 1] == "X" ) && ( array[index] != "X" || array[index + 1] != "X" ) )
+                {
+                    newArray = [ index, index + 1 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Vertical lines
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 || index == 4 || index == 5 || index == 6 || index == 7 || index == 8 || index == 9 || index == 10 || index == 11 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 4] == 0 || array[index + 4] == "X" ) && ( array[index] != "X" || array[index + 4] != "X" ) )
+                {
+                    newArray = [ index, index + 4 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Horizontal Wraps
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 4 || index == 8 || index == 12 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 3] == 0 || array[index + 3] == "X" ) && ( array[index] != "X" || array[index + 3] != "X" ) )
+                {
+                    newArray = [ index, index + 3 ];
+                    checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
+                    checkIfCanAdd( newArray, fourArray, twoArrayIndex, twoAmount, twoArray, 4 );
+                    checkIfCanAdd( newArray, twoArray, twoArrayIndex, twoAmount, twoArray, 2 );
+                    resetAllDuplicates();
+                }
+            }
+        }
+
+        // Vertical Wraps
+        for ( var index = 0; index < length; index++ )
+        {
+            if ( index == 0 || index == 1 || index == 2 || index == 3 )
+            {
+                if ( ( array[index] == 0 || array[index] == "X" ) && ( array[index + 12] == 0 || array[index + 12] == "X" ) && ( array[index] != "X" || array[index + 12] != "X" ) )
                 {
                     newArray = [ index, index + 12 ];
                     checkIfCanAdd( newArray, eightArray, twoArrayIndex, twoAmount, twoArray, 8 );
@@ -3264,9 +3560,14 @@ function receiveHint()
         document.getElementById("hint").innerHTML = "0s should never be grouped...";
     }
     
-    else
+    else if ( hint == 3 )
     {
         document.getElementById("hint").innerHTML = "Completely simplify answer...";
+    }
+    
+    else
+    {
+        document.getElementById("hint").innerHTML = "1s should never be grouped...";
     }
     
     return 0;
@@ -3303,11 +3604,11 @@ function decreaseAttempts( number )
 // Navigates to next page 
 function goToNextPage()
 {    
-    for ( var index = 1; index <= 12; index++ )
+    for ( var index = 1; index <= 16; index++ )
     {
         if ( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 )
         {
-            if ( index < 12 )
+            if ( index < 16 )
             {
                 var nextPage = index + 1;
                 window.location.href = "moduleOneQuestion" + nextPage + ".html";
@@ -3315,7 +3616,7 @@ function goToNextPage()
 
             else
             {
-                window.location.href = "moduleOneQuestionsComplete.html";
+                //window.location.href = "moduleOneQuestionsComplete.html";
                 showScore();
             }
         }
@@ -3325,16 +3626,16 @@ function goToNextPage()
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {    
-    if ( totalUserStars >= 10 )
+    if ( totalUserStars >= 13 )
     {
-        // You can add that database flag that allows then access to Module 2 or not.
+        // You can add that database flag that allows them access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");
         window.location.href = "../../modules.html";
     }
     
     else
     {
-        // You can add that database flag that allows then access to Module 2 or not.
+        // You can add that database flag that allows them access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nModule failed. Try again.");
         window.location.href = "../../modules.html";
     }
