@@ -4135,7 +4135,7 @@ function goToNextPage()
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {    
-    if ( totalUserStars >= 13 )
+    if ( totalUserStars >= 16 )
     {
         // You can add that database flag that allows them access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");

@@ -30,9 +30,13 @@
         <input type="radio" id="questionOne" name="questionType" value="questionOne">
         <label for="questionOne" id="questionOneText">Translation of Truth Table</label><br>
         <input type="radio" id="questionTwo" name="questionType" value="questionTwo">
-        <label for="questionTwo" id="questionTwoText">Grouping</label><br>
+        <label for="questionTwo" id="questionTwoText">SOP Grouping</label><br>
         <input type="radio" id="questionThree" name="questionType" value="questionThree">
-        <label for="questionThree" id="questionThreeText">Equation Writing</label><br>
+        <label for="questionThree" id="questionThreeText">SOP Equation Writing</label><br>
+        <input type="radio" id="questionFour" name="questionType" value="questionFour">
+        <label for="questionFour" id="questionFourText">POS Grouping</label><br>
+        <input type="radio" id="questionFive" name="questionType" value="questionFive">
+        <label for="questionFive" id="questionFiveText">POS Equation Writing</label><br>
         
         <button type="button" id="subButton" onclick="generateQuestion()">Submit</button>
         
@@ -63,6 +67,16 @@
                     window.location.href = "pracMode3VarEquationWriting.html";
                 }
                 
+                else if ( document.getElementById("optionOne").checked && document.getElementById("questionFour").checked  )
+                {
+                    window.location.href = "pracMode3VarGroupingPOS.html";
+                }
+                
+                else if ( document.getElementById("optionOne").checked && document.getElementById("questionFive").checked  )
+                {
+                    window.location.href = "pracMode3VarEquationWritingPOS.html";
+                }
+                
                 else if ( document.getElementById("optionTwo").checked && document.getElementById("questionOne").checked  )
                 {
                     window.location.href = "pracMode3VarDCTruthTableTranslation.html";
@@ -78,7 +92,17 @@
                     window.location.href = "pracMode3VarDCEquationWriting.html";
                 }
                 
-                // For 4 variable, not finished yet
+                else if ( document.getElementById("optionTwo").checked && document.getElementById("questionFour").checked  )
+                {
+                    window.location.href = "pracMode3VarGroupingDCPOS.html";
+                }
+                
+                else if ( document.getElementById("optionTwo").checked && document.getElementById("questionFive").checked  )
+                {
+                    window.location.href = "pracMode3VarDCEquationWritingPOS.html";
+                }
+                
+                // For 4 variable
                 else if ( document.getElementById("optionThree").checked && document.getElementById("questionOne").checked  )
                 {
                     window.location.href = "pracMode4VarTruthTableTranslation.html";

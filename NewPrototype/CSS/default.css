@@ -209,11 +209,12 @@ li a:hover
     border-radius: 20px;
 }
 
+/* Truth table translation option */
 #questionOne
 {
     position: absolute;
     top: 400px;
-    left: 240px;
+    left: 140px;
     height: 50px;
     width: 100px;
 }
@@ -222,7 +223,7 @@ li a:hover
 {
     position: absolute;
     top: 400px;
-    left: 270px;
+    left: 170px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
@@ -232,7 +233,32 @@ li a:hover
     border-radius: 20px;
 }
 
+/* SOP grouping option */
 #questionTwo
+{
+    position: absolute;
+    top: 400px;
+    left: 340px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionTwoText
+{
+    position: absolute;
+    top: 400px;
+    left: 370px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/* SOP equation writing option */
+#questionThree
 {
     position: absolute;
     top: 400px;
@@ -241,7 +267,7 @@ li a:hover
     width: 100px;
 }
 
-#questionTwoText
+#questionThreeText
 {
     position: absolute;
     top: 400px;
@@ -255,20 +281,45 @@ li a:hover
     border-radius: 20px;
 }
 
-#questionThree
+/* POS grouping option */
+#questionFour
 {
     position: absolute;
     top: 400px;
-    left: 840px;
+    left: 740px;
     height: 50px;
     width: 100px;
 }
 
-#questionThreeText
+#questionFourText
 {
     position: absolute;
     top: 400px;
-    left: 870px;
+    left: 770px;
+    padding-top: 15px;
+    height: 50px;
+    width: 120px;
+    color: black;
+    background-color: #597dd9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+/* POS equation writing option */
+#questionFive
+{
+    position: absolute;
+    top: 400px;
+    left: 940px;
+    height: 50px;
+    width: 100px;
+}
+
+#questionFiveText
+{
+    position: absolute;
+    top: 400px;
+    left: 970px;
     padding-top: 15px;
     height: 50px;
     width: 120px;
