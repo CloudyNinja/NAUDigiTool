@@ -59,7 +59,6 @@ userArray = createUserArray(3);
 createTruthTable(3);
 createKMap(3);
 fillKMap();
-timer = setInterval( "countDown()", 1000 );
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");

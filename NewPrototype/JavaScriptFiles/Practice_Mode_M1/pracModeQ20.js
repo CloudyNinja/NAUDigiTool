@@ -1,25 +1,17 @@
-// 3 var grouping ( POS )
-var array = new Array(8);
-var userArray = new Array(8);
-var groupingArray = new Array(8);
+// 4 var equation writing ( POS )
+var array = new Array(16);
+var userArray = new Array(16);
+var groupingArray = new Array(16);
 var dontCare = 0;
-var hint = 4;
+var hint = 3;
 var practiceMode = 1;
 var pos = 1;
-var ctx = canvas.getContext('2d');
-function init() 
-{
-    canvas.addEventListener('mousedown', mouseDown, false);
-    canvas.addEventListener('mouseup', mouseUp, false);
-    canvas.addEventListener('mousemove', mouseMove, false);
-}
-init();
 
-// Since no sixteens are present
+// Counter for 16s along with array
+var sixteenCounter = 0;
 var sixteenAmount = 0;
-var sixteenArray = [null];
+var sixteenArray = new Array(1);
 var sixteenDrawingArray = new Array(1);
-var sixteenArrayIndex = 0;
 
 // Counter for 8s along with array
 var eightCounter = 0;
@@ -47,22 +39,37 @@ var iTwoDup = false;
 var iThreeDup = false;
 var iFourDup = false;
 
-array = createArray(3);
+array = createArray(4);
 array[0] = 0;
 array[1] = 0;
-userArray = createUserArray(3);
-createTruthTable(3);
-createKMap(3);
+userArray = createUserArray(4);
+createTruthTable(4);
+createKMap(4);
 fillKMap();
 
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
 console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
 console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
+console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] + " |   " + array[11] + "  |\n" );
+console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
 
+console.log( "ARRAY FORMED: " + JSON.stringify( array ) );
+
+find16sPOS();
 find8sPOS();
 find4sPOS();
 find2sPOS();
+
+autodrawRectangles( sixteenArray );
+autodrawRectangles( eightArray );
+autodrawRectangles( fourArray );
+autodrawRectangles( twoArray );
+
+addValuesToEquationArrayPOS( sixteenArray );
+addValuesToEquationArrayPOS( eightArray );
+addValuesToEquationArrayPOS( fourArray );
+addValuesToEquationArrayPOS( twoArray );
 
 // Attempts Left Message
 var starsGiven = 0;
