@@ -4113,11 +4113,11 @@ function decreaseAttempts( number )
 // Navigates to next page 
 function goToNextPage()
 {    
-    for ( var index = 1; index <= 20; index++ )
+    for ( var index = 1; index <= 60; index++ )
     {
         if ( window.location.href.indexOf("moduleOneQuestion" + index ) > -1 )
         {
-            if ( index < 20 )
+            if ( index < 60 )
             {
                 var nextPage = index + 1;
                 window.location.href = "moduleOneQuestion" + nextPage + ".html";
@@ -4135,7 +4135,7 @@ function goToNextPage()
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {    
-    if ( totalUserStars >= 16 )
+    if ( totalUserStars >= 48 )
     {
         // You can add that database flag that allows them access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");

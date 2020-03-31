@@ -5,27 +5,28 @@
         <link rel="stylesheet" href="../../CSS/default.css">
         <link rel="stylesheet" href="../../CSS/moduleOne.css">
         <link rel="shortbut icon" href="../../CSS/CSS_Pictures/Team15_Logo.jpg" type="image/x-icon"/>
-        <title>Module One Question Fourteen</title>
+        <title>Module One Question 14</title>
     </head>
     <body>
         <div id="moduleNavbar"></div>
         
-        <h2 id="problem">Question Fourteen: Select the minimal set of groupings for Product of Sums.</h2>
+        <h2 id="problem">Question 14: Enter the POS equation based off of the KMap.</h2>
         
         <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
         <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
-        <canvas id="userCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
         
-        <button type="button" id="submitButton" onclick="checkGroupings()">Submit</button>
+        <input id="userEquation" type='text' placeholder="Y ="/>
+        
+        <button type="button" id="submitButton" onclick="checkUserEquation()">Submit</button>
         <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
-        <button type="button" id="resetButton" onclick="resetGroupings()">Reset</button>
+        <button type="button" id="resetButton" onclick="resetEquation()">Reset</button>
         
         <p id="incorrectAnswerMessage"></p>
         <p id="hint"></p>
         <p id="attemptsLeft"></p>
         <p id="scoreText"></p>
         <p id="timer"></p>
-        <p id="questionsCompleted">Questions completed: 13 out of 20.</p>
+        <p id="questionsCompleted">Questions completed: 13 out of 60.</p>
         
         <!--the alert div-->
         <div id="myalert" >
@@ -36,7 +37,7 @@
         <!--Progress bar-->
         <div class="w3-container">
             <div id="blueBar" style="height:30px;width:250px;margin-left: 10px;">
-                <div id="myBar" style="height:30px;width:156px"></div>
+                <div id="myBar" style="height:30px;width:52px"></div>
             </div>
         </div>
         
@@ -44,7 +45,7 @@
         <script src="../../JavaScriptFiles/tracker.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleStars.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleOneFunctions.js"></script>
-        <script src="../../JavaScriptFiles/Module_1/moduleOneQ14.js"></script>
+        <script src="../../JavaScriptFiles/Module_1/moduleOneQ17.js"></script>
         
         <!--Footer for bottom of page-->
         <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>

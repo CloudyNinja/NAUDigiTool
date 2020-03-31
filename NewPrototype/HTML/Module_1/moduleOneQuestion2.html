@@ -5,27 +5,35 @@
         <link rel="stylesheet" href="../../CSS/default.css">
         <link rel="stylesheet" href="../../CSS/moduleOne.css">
         <link rel="shortbut icon" href="../../CSS/CSS_Pictures/Team15_Logo.jpg" type="image/x-icon"/>
-        <title>Module One Question Two</title>
+        <title>Module One Question 2</title>
     </head>
     <body>
         <div id="moduleNavbar"></div>
         
-        <h2 id="problem">Question Two: Select the minimal set of groupings for Sum of Products.</h2>
+        <h2 id="problem">Question 2: Convert the truth table into a K-Map.</h2>
         
         <canvas id="myTruthTableCanvas" width="250" height="400" style="border:2px solid #000000;"></canvas>
         <canvas id="myKMapCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
-        <canvas id="userCanvas" width="400" height="300" style="border:2px solid #000000;"></canvas>
         
-        <button type="button" id="submitButton" onclick="checkGroupings()">Submit</button>
+        <button type="button" id="submitButton" onclick="checkAnswers()">Submit</button>
         <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
-        <button type="button" id="resetButton" onclick="resetGroupings()">Reset</button>
+        <button type="button" id="resetButton" onclick="resetNumbers()">Reset</button>
+        
+        <input type="text" id="number1" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number2" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number3" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number4" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number5" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number6" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number7" value="0" onclick="this.select()" maxlength="1" placeholder="0">
+        <input type="text" id="number8" value="0" onclick="this.select()" maxlength="1" placeholder="0">
         
         <p id="incorrectAnswerMessage"></p>
         <p id="hint"></p>
         <p id="attemptsLeft"></p>
         <p id="scoreText"></p>
         <p id="timer"></p>
-        <p id="questionsCompleted">Questions completed: 1 out of 20.</p>
+        <p id="questionsCompleted">Questions completed: 1 out of 60.</p>
         
         <!--the alert div-->
         <div id="myalert" >
@@ -36,15 +44,15 @@
         <!--Progress bar-->
         <div class="w3-container">
             <div id="blueBar" style="height:30px;width:250px;margin-left: 10px;">
-                <div id="myBar" style="height:30px;width:12px"></div>
+                <div id="myBar" style="height:30px;width:4px"></div>
             </div>
         </div>
         
-        <!--Loads the JavaScript file-->
+        <!--Loads the JavaScript files-- Order of scripts matter!-->
         <script src="../../JavaScriptFiles/tracker.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleStars.js"></script>
         <script src="../../JavaScriptFiles/Module_1/moduleOneFunctions.js"></script>
-        <script src="../../JavaScriptFiles/Module_1/moduleOneQ2.js"></script>
+        <script src="../../JavaScriptFiles/Module_1/moduleOneQ21.js"></script>
         
         <!--Footer for bottom of page-->
         <div id="footer"> © 2019 Northern Arizona University, DigiTool Inc.</div>
