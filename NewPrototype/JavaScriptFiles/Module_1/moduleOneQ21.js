@@ -21,4 +21,4 @@ var totalUserStars = parseInt(localStorage.getItem("updatedUserStars"));
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 60;

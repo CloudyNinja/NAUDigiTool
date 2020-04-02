@@ -1052,7 +1052,7 @@ function hideIt()
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {    
-    if ( totalUserStars == 20 )
+    if ( totalUserStars >= 18 )
     {
         // You can add that database flag that allows then access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleTwoMaxStars.toString() + "\n\n\nYou passed Numeric Conversions!");

@@ -54,59 +54,12 @@ createKMap(3);
 fillKMap();
 timer = setInterval( "countDown()", 1000 );
 
-/*function checkIfArrayAlreadyMade( arrayPassed, otherArrayPassed )
-{
-    var count = 0;
-    
-    for ( var index = 0; index < otherArrayPassed.length; index++ )
-    {
-        if ( arraysEqual( arrayPassed, otherArrayPassed[index] ) )
-        {
-            count += 1;
-        }
-    }
-    
-    return count;
-}
-
-function findSimilarArrays( arrayPassed )
-{
-    var copiedArray = arrayPassed;
-    
-    for ( var outerIndex = 0; outerIndex < copiedArray.length; outerIndex++ )
-    {
-        for ( var innerIndex = 0; innerIndex < arrayPassed.length; innerIndex++ )
-        {
-            if ( arraysEqual( copiedArray[outerIndex], arrayPassed[innerIndex] ) && outerIndex != innerIndex )
-            {
-                console.log( "ARRAYS MATCH: " + outerIndex + " AND " + innerIndex)
-            }
-        }
-    }
-}
-
-function countElementsInArray( arrayPassed )
-{
-    count = 0;
-    
-    for ( var index = 0; index < arrayPassed.length; index++ )
-    {
-        count += 1;
-    }
-    
-    return count;
-}
-
-findSimilarArrays( arraysToGenerateFrom );*/
-
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
 console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
 console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
 
 console.log( "ARRAY FORMED: " + JSON.stringify( array ) );
-/*console.log( "IS THERE AN ARRAY SIMILAR: " + checkIfArrayAlreadyMade( array, arraysToGenerateFrom ) );
-console.log( "NUMBER OF ELEMENTS IN ARRAY: " + countElementsInArray( arraysToGenerateFrom ) );*/
 
 find8s();
 find4s();
@@ -121,5 +74,5 @@ var totalUserStars = parseInt(localStorage.getItem("updatedUserStars"));
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 60;
 

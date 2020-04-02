@@ -363,7 +363,7 @@ body
     position: absolute;
     color: black;
     top: 600px;
-    left: 800px;
+    left: 950px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     margin-bottom: 100px;
@@ -375,7 +375,7 @@ body
     position: absolute;
     color: black;
     top: 600px;
-    left: 1000px;
+    left: 1150px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 14px;
     margin-bottom: 100px;
@@ -462,6 +462,18 @@ body
     top: 200px;
     left: 960px;
     color: black;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#starsEarned
+{
+    position: absolute;
+    color: black;
+    top: 320px;
+    left: 960px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
     margin-bottom: 100px;
     min-width: 200px;
 }

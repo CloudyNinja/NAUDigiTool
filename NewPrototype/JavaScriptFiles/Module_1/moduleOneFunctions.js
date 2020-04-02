@@ -4061,22 +4061,22 @@ function receiveHint()
 {
     if ( hint == 1 )
     {
-        document.getElementById("hint").innerHTML = "0s and 1s are only needed...";
+        document.getElementById("hint").innerHTML = "0s and 1s are only needed " + "<br />" + " unless you see Xs. Xs aren't " + "<br />" + "case sensitive.";
     }
     
     else if ( hint == 2 )
     {
-        document.getElementById("hint").innerHTML = "0s should never be grouped...";
+        document.getElementById("hint").innerHTML = "Group 1s for SOP and 0s " + "<br />" + "for POS. Make your groups as big as possible and " + "<br />" + "if there's a don't care state, pick the values that can " + "<br />" + "make a bigger group.";
     }
     
     else if ( hint == 3 )
     {
-        document.getElementById("hint").innerHTML = "Completely simplify answer...";
+        document.getElementById("hint").innerHTML = "When writing equations, don't include 'Y=' " + "<br />" + "and variables aren't case sensitive.";
     }
     
     else
     {
-        document.getElementById("hint").innerHTML = "1s should never be grouped...";
+        document.getElementById("hint").innerHTML = "Group 1s for SOP and 0s " + "<br />" + "for POS. Make your groups as big as possible and " + "<br />" + "if there's a don't care state, pick the values that can " + "<br />" + "make a bigger group.";
     }
     
     return 0;
@@ -4089,7 +4089,7 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars.toString() + "/" + 60;
     }
     
     else
@@ -4135,7 +4135,7 @@ function goToNextPage()
 /////////////////////////////// Only one function needed for score /////////////////////////////////////////
 function showScore()
 {    
-    if ( totalUserStars >= 48 )
+    if ( totalUserStars >= 54 )
     {
         // You can add that database flag that allows them access to Module 2 or not.
         alert( "MODULE STAR SCORE: " + totalUserStars + "/" + moduleOneMaxStars.toString() + "\n\n\nYou passed Karnaugh Maps!!");

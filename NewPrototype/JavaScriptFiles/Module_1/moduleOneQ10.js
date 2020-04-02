@@ -46,24 +46,6 @@ createKMap(4);
 fillKMap();
 timer = setInterval( "countDown()", 1000 );
 
-// For hardcoding array ( testing )
-/*array[0] = 1;
-array[1] = 0;
-array[2] = 0;
-array[3] = 1;
-array[4] = 1;
-array[5] = 0;
-array[6] = 0;
-array[7] = 1;
-array[8] = 1;
-array[9] = 0;
-array[10] = 0;
-array[11] = 1;
-array[12] = 1;
-array[13] = 0;
-array[14] = 0;
-array[15] = 1;*/
-
 console.log( "\nA | BC________________________");
 console.log( "  |     00 |  01 |  11 |  10  |");
 console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
@@ -95,4 +77,4 @@ var totalUserStars = parseInt(localStorage.getItem("updatedUserStars"));
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 60;
