@@ -17,30 +17,28 @@ var starsGiven = 1;
 var levelMaxStars = 1;
 var totalUserStars = 0;
 
-var c = document.createDocumentFragment();
-var star = document.createElement("IMG");
+/* Allows stars to be visually shown but I could only get one to show everytime
+
+var star = document.createElement( "IMG" );
 star.height = 15;
 star.width = 15;
+star.marginLeft = 1060;
+star.marginTop = 338;
 star.src = "../../CSS/CSS_Pictures/Star.png";
 
 // Shows stars
-var starMarginLeft = 1060;
-var starMarginTop = 338;
-for ( var index = 0; index < 1; index++ )
+for ( var index = 0; index < 2; index++ )
 {
     document.body.appendChild(star);
-    star.style.marginLeft = starMarginLeft.toString() + "px";
-    star.style.marginTop = starMarginTop.toString() + "px";
+    star.style.marginLeft = star.marginLeft.toString() + "px";
+    star.style.marginTop = star.marginTop.toString() + "px";
     
     // Move star
-    starMarginLeft += 10;
-}
+    star.marginLeft += 10;
+}*/
 
 // Attempts Left Message
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
 document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 60;
-
-// Show the stars earned
-document.getElementById("starsEarned").innerHTML =  " Stars earned: ";

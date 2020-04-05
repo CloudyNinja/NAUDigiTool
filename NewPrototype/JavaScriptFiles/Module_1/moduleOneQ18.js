@@ -88,4 +88,3 @@ document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attempts
 
 // Star score message
 document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 60;
-
