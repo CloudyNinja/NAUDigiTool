@@ -450,3 +450,41 @@ body
     font-family: serif;
     color: black;
 }
+
+/* Styling for questions completed progress bar*/
+#questionsCompleted
+{
+    position: absolute;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    top: 200px;
+    left: 1050px;
+    color: black;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
+
+#blueBar
+{
+    position: absolute;
+    left: 15px;
+    background-color: #597dd9;
+    border-radius: 20px;
+}
+
+#myBar
+{
+    position: absolute;
+    border-radius: 20px;
+    background-color: #a6d4ff;
+}
+
+.w3-container
+{
+    position: absolute;
+    top: 270px;
+    left: 1020px;
+    color: black;
+    margin-bottom: 100px;
+    min-width: 200px;
+}
