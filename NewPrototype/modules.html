@@ -12,20 +12,64 @@
         
         <h1 id="moduleText">Modules</h1>
         
-        <a href="HTML/Module_1/moduleOneQuestion1.html">
-        <img id="moduleOneImage" src="CSS/CSS_Pictures/Module1.png" alt="Module 1 image" height="200" width="300">
-        </a>
+        <img id="moduleOneImage" src="CSS/CSS_Pictures/Module1.png" alt="Module 1 image" height="200" width="300" onclick="showM1Buttons()">
         <br><br>
         <br><br>
-        <a href="HTML/Module_2/moduleTwoQuestion1.html">
-        <img id="moduleTwoImage" src="CSS/CSS_Pictures/Module2.png" alt="Module 2 image" height="200" width="300">
-        </a>
+        <img id="moduleTwoImage" src="CSS/CSS_Pictures/Module2.png" alt="Module 2 image" height="200" width="300" onclick="showM2Buttons()">
+        
+        <button type="button" id="continueButtonM1" onclick="goToModuleQuestions(3)">Continue from last checkpoint</button>
+        <button type="button" id="restartButtonM1" onclick="goToModuleQuestions(1)">Start module from beginning</button>
+        <button type="button" id="continueButtonM2" onclick="goToModuleQuestions(4)">Continue from last checkpoint</button>
+        <button type="button" id="restartButtonM2" onclick="goToModuleQuestions(2)">Start module from beginning</button>
         
         <div id="footer"></div>
         
         <!-- Dependencies -->
         <script src="./node_modules/react/umd/react.development.js"></script>
         <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+        
+        <script>
+            
+            function showM1Buttons()
+            {
+                var contButton = document.getElementById("continueButtonM1");
+                var resButton = document.getElementById("restartButtonM1");
+                contButton.style.display = "block";
+                resButton.style.display = "block";
+            }
+            
+            function showM2Buttons()
+            {
+                var contButton = document.getElementById("continueButtonM2");
+                var resButton = document.getElementById("restartButtonM2");
+                contButton.style.display = "block";
+                resButton.style.display = "block";
+            }
+            
+            function goToModuleQuestions( number )
+            {
+                if ( number == 1 )
+                {
+                    window.location.href = "HTML/Module_1/moduleOneQuestion1.html";
+                }
+                
+                else if ( number == 2 )
+                {
+                    window.location.href = "HTML/Module_2/moduleTwoQuestion1.html";
+                }
+                
+                else if ( number == 3 )
+                {
+                    alert( "Function to load Module 1 data would go here" );
+                }
+                
+                else
+                {
+                    alert( "Function to load Module 2 data would go here" );
+                }
+            }
+                         
+        </script>
 
         <!-- Main -->
         <script src="./dist/main.js"></script>

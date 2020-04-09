@@ -39,3 +39,83 @@ img:hover
     margin-top: 100px;
     color: black;
 }
+
+#continueButtonM1
+{
+    position: absolute;
+    top: 200px;
+    left: 850px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 50px;
+    display: none;
+}
+
+#continueButtonM1:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+#restartButtonM1
+{
+    position: absolute;
+    top: 280px;
+    left: 850px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 50px;
+    display: none;
+}
+
+#restartButtonM1:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+#continueButtonM2
+{
+    position: absolute;
+    top: 480px;
+    left: 850px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 50px;
+    display: none;
+}
+
+#continueButtonM2:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
+
+#restartButtonM2
+{
+    position: absolute;
+    top: 560px;
+    left: 850px;
+    height: 50px;
+    width: 100px;
+    background-color: #597dd9;
+    color: white;
+    margin-bottom: 100px;
+    border-radius: 50px;
+    display: none;
+}
+
+#restartButtonM2:hover
+{
+    background-color: #fbff94;
+    color: black;
+}
