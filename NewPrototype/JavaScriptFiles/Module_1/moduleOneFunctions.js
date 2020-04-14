@@ -1105,7 +1105,7 @@ function createTruthTable( numOfVariables )
         {
             verticalLine.beginPath();
             verticalLine.moveTo(200, 50);
-            verticalLine.lineTo(200, 360);
+            verticalLine.lineTo(200, 485);
             verticalLine.stroke();
             
             horizontalLine.beginPath();
