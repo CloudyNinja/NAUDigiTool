@@ -3826,6 +3826,7 @@ function checkAnswers()
     {        
         if ( practiceMode == 1 )
         {
+            disableButton( document.getElementById('submitButton') );
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
         }
@@ -3872,6 +3873,7 @@ function checkGroupings()
     {   
         if ( practiceMode == 1 )
         {
+            disableButton( document.getElementById('submitButton') );
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";   
         }
@@ -3940,6 +3942,7 @@ function checkUserEquation()
             
             else
             {
+                disableButton( document.getElementById('submitButton') );
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";  
             }
