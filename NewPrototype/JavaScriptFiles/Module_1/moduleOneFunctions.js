@@ -4081,6 +4081,7 @@ function decreaseAttempts( number )
     
     else
     {
+        disableButton( document.getElementById('submitButton') );
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
@@ -4139,7 +4140,8 @@ function showScore()
 
 /////////////////////////////// For alerts /////////////////////////////////////////
 function showIt()
-{			
+{	
+    disableButton( document.getElementById('submitButton') );
     starsGiven = 1;
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
@@ -4188,3 +4190,14 @@ function countDown()
         goToNextPage();
     }
 }
+
+/////////////////////////////// Disables submit button on click /////////////////////////////////////////
+function disableButton( elementId )
+{
+    elementId.disabled = true;
+    console.log( "Button disabled" );
+}
+
+
+
+
