@@ -1106,7 +1106,7 @@ function createTruthTable( numOfVariables )
         {
             verticalLine.beginPath();
             verticalLine.moveTo(200, 50);
-            verticalLine.lineTo(200, 360);
+            verticalLine.lineTo(200, 485);
             verticalLine.stroke();
             
             horizontalLine.beginPath();
@@ -3828,6 +3828,7 @@ function checkAnswers()
         if ( practiceMode == 1 )
         {
             db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
+            disableButton( document.getElementById('submitButton') );
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
         }
@@ -3876,6 +3877,7 @@ function checkGroupings()
         if ( practiceMode == 1 )
         {
             db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
+            disableButton( document.getElementById('submitButton') );
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";   
         }
@@ -3946,6 +3948,7 @@ function checkUserEquation()
             else
             {
                 db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
+                disableButton( document.getElementById('submitButton') );
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";  
             }
@@ -4091,6 +4094,7 @@ function decreaseAttempts( number )
     
     else
     {
+        disableButton( document.getElementById('submitButton') );
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
@@ -4149,7 +4153,8 @@ function showScore()
 
 /////////////////////////////// For alerts /////////////////////////////////////////
 function showIt()
-{			
+{	
+    disableButton( document.getElementById('submitButton') );
     starsGiven = 1;
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
@@ -4198,3 +4203,14 @@ function countDown()
         goToNextPage();
     }
 }
+
+/////////////////////////////// Disables submit button on click /////////////////////////////////////////
+function disableButton( elementId )
+{
+    elementId.disabled = true;
+    console.log( "Button disabled" );
+}
+
+
+
+
