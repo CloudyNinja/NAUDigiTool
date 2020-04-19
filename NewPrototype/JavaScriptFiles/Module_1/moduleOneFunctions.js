@@ -11,6 +11,7 @@ var rectangleArray = new Array( 1 );
 var drawingArray = new Array( 1 );
 
 var student_id = sessionStorage.getItem('student_id');
+var mistakesMade = 0;
 
 ///// Timer stuff /////////
 var maxTime = 60 * 5;
@@ -3826,6 +3827,7 @@ function checkAnswers()
     {        
         if ( practiceMode == 1 )
         {
+            db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
         }
@@ -3840,6 +3842,7 @@ function checkAnswers()
     {
         if ( practiceMode == 1 )
         {
+            mistakesMade++;
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
         
@@ -3872,6 +3875,7 @@ function checkGroupings()
     {   
         if ( practiceMode == 1 )
         {
+            db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";   
         }
@@ -3886,6 +3890,7 @@ function checkGroupings()
     {
         if ( practiceMode == 1 )
         {
+            mistakesMade++;
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
 
@@ -3940,6 +3945,7 @@ function checkUserEquation()
             
             else
             {
+                db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";  
             }
@@ -3949,6 +3955,7 @@ function checkUserEquation()
         {
             if ( practiceMode == 1 )
             {
+                mistakesMade++;
                 document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again"; 
             }
             
@@ -3964,6 +3971,7 @@ function checkUserEquation()
     {
         if ( practiceMode == 1 )
         {
+            mistakesMade++;
             document.getElementById("incorrectAnswerMessage").innerHTML = "Incorrect, please try again";  
         }
             
@@ -4072,6 +4080,8 @@ function receiveHint()
 /////////////////////////////// Decrease attemmpts go here /////////////////////////////////////////
 function decreaseAttempts( number )
 {
+    mistakesMade++;
+
     if ( number > 1 )
     {
         number -= 1;
@@ -4088,7 +4098,7 @@ function decreaseAttempts( number )
         console.log( "TIME TAKEN: " + timeTaken );
         // You can store the timeTaken variable in the db_log statement
         // As of right now it's only registers per question
-        db_log(student_id, 1, 0, false, starsGiven, 3, 1); 
+        db_log(student_id, 1, 0, false, starsGiven, mistakesMade, timeTaken); 
         alert( "Answer missed. No star given." );
         clearInterval( timer );
         goToNextPage();
@@ -4148,7 +4158,7 @@ function showIt()
     console.log( "TIME TAKEN: " + timeTaken );
     // You can store the timeTaken variable in the db_log statement
     // As of right now it's only registers per question
-    db_log(student_id, 1, 0, true, starsGiven, 3-attemptsLeft, 1);
+    db_log(student_id, 1, 0, true, starsGiven, 3-attemptsLeft, timeTaken);
     document.getElementById('myalert').style.display = "block";	 
     setTimeout( hideIt, 2000 );
 }

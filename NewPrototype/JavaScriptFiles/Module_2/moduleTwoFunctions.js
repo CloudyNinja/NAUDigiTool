@@ -4,6 +4,7 @@
 */
 
 var student_id = sessionStorage.getItem("student_id");
+var mistakesMade = 0;
 
 // Generates random decimal number
 function randomDecimal()
@@ -288,7 +289,6 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -315,7 +315,6 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -341,7 +340,6 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
             console.log( totalUserStars );
         }
@@ -368,7 +366,6 @@ function submitDecimal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -397,7 +394,6 @@ function submitDecimalFractionToOctal()
     }
     if( counter == 3 )
     {
-        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
         showIt();
     }
     else
@@ -425,7 +421,6 @@ function submitDecimalFractionToHex()
     }
     if( counter == 3 )
     {
-        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
         showIt();
     }
     else
@@ -457,7 +452,6 @@ function submitOctal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -484,7 +478,6 @@ function submitOctal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -511,7 +504,6 @@ function submitOctal()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -540,7 +532,6 @@ function submitOctalFraction()
     }
     if( counter == 3 )
     {
-        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
         showIt();
     }
     else
@@ -572,7 +563,6 @@ function submitBinary()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -599,7 +589,6 @@ function submitBinary()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -627,7 +616,6 @@ function submitBinary()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -659,7 +647,6 @@ function submitBinaryFraction()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -688,7 +675,6 @@ function submitBinaryFractionToOctal()
     }
     if( counter == 3 )
     {
-        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
         showIt();
     }
     else
@@ -716,7 +702,6 @@ function submitBinaryFractionToHex()
     }
     if( counter == 3 )
     {
-        db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
         showIt();
     }
     else
@@ -748,7 +733,6 @@ function submitHex()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -775,7 +759,6 @@ function submitHex()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -806,7 +789,6 @@ function submitHexFraction()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -832,7 +814,6 @@ function submitHexFraction()
         }
         if( counter == 3 )
         {
-            db_log(student_id, 2, 0, true, starsGiven, 3-starsGiven, 1);
             showIt();
         }
         else
@@ -924,6 +905,8 @@ function resetEquation()
 // Decreases number of attempts left and number of stars given
 function decreaseAttempts( number )
 {
+    mistakesMade++;
+
     if ( number > 1 )
     {
         number -= 1;
@@ -939,7 +922,7 @@ function decreaseAttempts( number )
         console.log( "TIME TAKEN: " + timeTaken );
         // You can store the timeTaken variable in the db_log statement
         // As of right now it's only registers per question
-        db_log(student_id, 2, 0, false, starsGiven, 3-starsGiven, 1); 
+        db_log(student_id, 2, 0, false, starsGiven, mistakesMade, timeTaken); 
         alert( "Answer missed. No star given." );
         clearInterval( timer );
         goToNextPage();
@@ -1037,7 +1020,7 @@ function showIt()
     console.log( "TIME TAKEN: " + timeTaken );
     // You can store the timeTaken variable in the db_log statement
     // As of right now it's only registers per question
-    db_log(student_id, 2, 0, true, starsGiven, 3-attemptsLeft, 1);
+    db_log(student_id, 2, 0, true, starsGiven, mistakesMade, timeTaken);
     document.getElementById('myalert').style.display = "block";	 
     setTimeout( hideIt, 2000 );
 }
