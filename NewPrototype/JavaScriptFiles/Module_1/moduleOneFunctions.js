@@ -20,6 +20,8 @@ var seconds;
 ///// Progress Bar /////////
 var progress = 0;
 
+setTimeout( enableButton, 3000 );
+
 function getTimeTaken( minutesPassed, secondsPassed )
 {
     var minuteCounter = 0;
@@ -3826,7 +3828,7 @@ function checkAnswers()
     {        
         if ( practiceMode == 1 )
         {
-            disableButton( document.getElementById('submitButton') );
+            disableButton();
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
         }
@@ -3873,7 +3875,7 @@ function checkGroupings()
     {   
         if ( practiceMode == 1 )
         {
-            disableButton( document.getElementById('submitButton') );
+            disableButton();
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";   
         }
@@ -3942,7 +3944,7 @@ function checkUserEquation()
             
             else
             {
-                disableButton( document.getElementById('submitButton') );
+                disableButton();
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";  
             }
@@ -4084,7 +4086,7 @@ function decreaseAttempts( number )
     
     else
     {
-        disableButton( document.getElementById('submitButton') );
+        disableButton();
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
@@ -4144,7 +4146,7 @@ function showScore()
 /////////////////////////////// For alerts /////////////////////////////////////////
 function showIt()
 {	
-    disableButton( document.getElementById('submitButton') );
+    disableButton();
     starsGiven = 1;
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
@@ -4195,12 +4197,15 @@ function countDown()
 }
 
 /////////////////////////////// Disables submit button on click /////////////////////////////////////////
-function disableButton( elementId )
+function disableButton()
 {
-    elementId.disabled = true;
+    document.getElementById('submitButton').disabled = true;
     console.log( "Button disabled" );
 }
 
-
-
+function enableButton()
+{
+    document.getElementById('submitButton').disabled = false;
+    console.log( "Button enabled" );
+}
 
