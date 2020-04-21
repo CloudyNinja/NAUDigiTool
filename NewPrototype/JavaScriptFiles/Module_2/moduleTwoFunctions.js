@@ -5,6 +5,7 @@
 
 var student_id = sessionStorage.getItem("student_id");
 var mistakesMade = 0;
+setupSave();
 
 // Generates random decimal number
 function randomDecimal()
@@ -1070,4 +1071,148 @@ function move() {
       }
     }
   }
+}
+
+/////////////////////////////// Disables submit button on click /////////////////////////////////////////
+function disableButton()
+{
+    document.getElementById('submitButton').disabled = true;
+    console.log( "Button disabled" );
+}
+
+setTimeout( enableButton, 3000 );
+
+function enableButton()
+{
+    document.getElementById('submitButton').disabled = false;
+    console.log( "Button enabled" );
+}
+
+/////////////////////////////// On start up functions -- some needed to be in seperate functions due to how indexof() works /////////////////////
+function start()
+{
+    // Load random binary numbers for these pages
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion1") > -1) || 
+       ( Boolean( window.location.href.indexOf("moduleTwoQuestion7") > -1) || 
+       ( Boolean( window.location.href.indexOf("moduleTwoQuestion8") > -1 ) ) )  )
+    {
+        randomBinary();
+        disableButton();
+    }
+
+    // Load random octal numbers for these pages
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion2") > -1) || 
+            ( Boolean( window.location.href.indexOf("moduleTwoQuestion9") > -1) )  )
+    {
+        randomOctal();
+        disableButton();
+    }
+
+    // Load random decimal numbers for these pages
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion4") > -1) || 
+            ( Boolean( window.location.href.indexOf("moduleTwoQuestion5") > -1) || 
+            ( Boolean( window.location.href.indexOf("moduleTwoQuestion6") > -1 ) ) )  )
+    {
+        randomDecimal();
+        disableButton();
+    }
+
+    // Load random hex numbers for these pages
+    else if ( Boolean( window.location.href.indexOf("moduleTwoQuestion3") > -1) )
+    {
+        randomHex();
+        disableButton();
+    }
+}
+
+function startHex()
+{
+    // Load random hex for this page -- needed to be in a seperate function due to how indexof() works
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion10") > -1) )
+    {
+        randomHex();
+        disableButton();
+    }
+}
+
+function startBinaryFraction()
+{
+    // Load random binary fractions for these pages
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion11") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion17") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion18") > -1) )
+    {
+        randomBinaryFraction();
+        disableButton();
+    }
+}
+
+function startOctalFraction()
+{
+    // Load random octal fractions for these pages
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion12") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion19") > -1 ) )
+    {
+        randomOctalFraction();
+        disableButton();
+    }
+}
+
+function startHexFraction()
+{
+    // Load random hex fractions for these pages
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion13") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion20") > -1 ) )
+    {
+        randomHexFraction();
+        disableButton();
+    }
+}
+
+function startDecimalFraction()
+{
+    // Load random decimal fractions for these pages
+    if ( Boolean( window.location.href.indexOf("moduleTwoQuestion14") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion15") > -1 ) ||
+         Boolean( window.location.href.indexOf("moduleTwoQuestion16") > -1 ) )
+    {
+        randomDecimalFraction();
+        disableButton();
+    }
+}
+
+
+
+/////////////////////////////// Creates variable in storage for creating a save /////////////////////////////////////////
+
+function setupSave()
+{
+    let header = window.location.href;
+
+    if( !header.match("Practice") )
+    {
+        // works because we have a folder for which module
+        // and the question # is the only int
+        let moduleAndQNum = header.match(/\d+/g);
+        let moduleNum = parseInt(moduleAndQNum[0]);
+        let qNum = parseInt(moduleAndQNum[1]);
+
+        let currentStars =  localStorage.getItem( "updatedUserStars" );
+
+        let saveData = new Array();
+        saveData[0] = student_id;
+        saveData[1] = moduleNum;
+        saveData[2] = qNum;
+        if( currentStars != null)
+        {
+            saveData[3] = currentStars;
+        }
+        else
+        {
+            saveData[3] = 0;
+        }
+    
+        sessionStorage.setItem("saveData", JSON.stringify(saveData));
+        console.log("Created savepoint");
+    }
 }

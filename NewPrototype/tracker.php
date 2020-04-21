@@ -1,12 +1,13 @@
 <?php
 
+    $dbinfo = file_get_contents("dbinfo.json");
+    $dbinfo = json_decode($dbinfo, true);
+
     #create connection
-    # ---- should move these outside so when we go to an actual database, 
-    # ---- the connection info isnt on github ---- VERY IMPORTANT
-    define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_DATABASE', 'digitool');
+    define('DB_SERVER', $dbinfo['MYSQLhostname']);
+    define('DB_USERNAME', $dbinfo['MYSQLusername']);
+    define('DB_PASSWORD', $dbinfo['MYSQLpassword']);
+    define('DB_DATABASE', $dbinfo['MYSQLdbname']);
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
     #get vars through post

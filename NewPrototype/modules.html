@@ -25,6 +25,7 @@
         <div id="footer"></div>
         
         <!-- Dependencies -->
+        <script src="./JavaScriptFiles/tracker.js"></script>
         <script src="./node_modules/react/umd/react.development.js"></script>
         <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
         
@@ -60,12 +61,12 @@
                 
                 else if ( number == 3 )
                 {
-                    alert( "Function to load Module 1 data would go here" );
+                    loadFromSave(1);
                 }
                 
                 else
                 {
-                    alert( "Function to load Module 2 data would go here" );
+                    loadFromSave(2);
                 }
             }
                          

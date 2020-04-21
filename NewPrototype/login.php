@@ -1,10 +1,15 @@
 <?php
 
+
+    $dbinfo = file_get_contents("dbinfo.json");
+    $dbinfo = json_decode($dbinfo, true);
+
     #create connection
-    define('DB_SERVER', 'localhost');
-    define('DB_USERNAME', 'root');
-    define('DB_PASSWORD', '');
-    define('DB_DATABASE', 'digitool');
+    define('DB_SERVER', $dbinfo['MYSQLhostname']);
+    define('DB_USERNAME', $dbinfo['MYSQLusername']);
+    define('DB_PASSWORD', $dbinfo['MYSQLpassword']);
+    define('DB_DATABASE', $dbinfo['MYSQLdbname']);
+    
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
     #get vars through post

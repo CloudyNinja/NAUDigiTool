@@ -12,6 +12,7 @@ var drawingArray = new Array( 1 );
 
 var student_id = sessionStorage.getItem('student_id');
 var mistakesMade = 0;
+setupSave();
 
 ///// Timer stuff /////////
 var maxTime = 60 * 5;
@@ -20,6 +21,8 @@ var seconds;
 
 ///// Progress Bar /////////
 var progress = 0;
+
+setTimeout( enableButton, 3000 );
 
 function getTimeTaken( minutesPassed, secondsPassed )
 {
@@ -3828,7 +3831,7 @@ function checkAnswers()
         if ( practiceMode == 1 )
         {
             db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
-            disableButton( document.getElementById('submitButton') );
+            disableButton();
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";    
         }
@@ -3877,7 +3880,7 @@ function checkGroupings()
         if ( practiceMode == 1 )
         {
             db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
-            disableButton( document.getElementById('submitButton') );
+            disableButton(  );
             alert( "Congrats, you got the answer right!" );
             window.location.href = "moduleOneQuestionPicker.html";   
         }
@@ -3948,7 +3951,7 @@ function checkUserEquation()
             else
             {
                 db_log(student_id, 1, 1, true, starsGiven, mistakesMade, 1);
-                disableButton( document.getElementById('submitButton') );
+                disableButton();
                 alert( "Congrats, you got the answer right!" );
                 window.location.href = "moduleOneQuestionPicker.html";  
             }
@@ -4094,7 +4097,7 @@ function decreaseAttempts( number )
     
     else
     {
-        disableButton( document.getElementById('submitButton') );
+        disableButton();
         starsGiven = 0;
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
@@ -4154,7 +4157,7 @@ function showScore()
 /////////////////////////////// For alerts /////////////////////////////////////////
 function showIt()
 {	
-    disableButton( document.getElementById('submitButton') );
+    disableButton();
     starsGiven = 1;
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
@@ -4205,12 +4208,48 @@ function countDown()
 }
 
 /////////////////////////////// Disables submit button on click /////////////////////////////////////////
-function disableButton( elementId )
+function disableButton()
 {
-    elementId.disabled = true;
+    document.getElementById('submitButton').disabled = true;
     console.log( "Button disabled" );
 }
 
+function enableButton()
+{
+    document.getElementById('submitButton').disabled = false;
+    console.log( "Button enabled" );
+}
 
+/////////////////////////////// Creates variable in storage for creating a save /////////////////////////////////////////
 
+function setupSave()
+{
+    let header = window.location.href;
 
+    if( !header.match("Practice") )
+    {
+        // works because we have a folder for which module
+        // and the question # is the only int
+        let moduleAndQNum = header.match(/\d+/g);
+        let moduleNum = parseInt(moduleAndQNum[0]);
+        let qNum = parseInt(moduleAndQNum[1]);
+
+        let currentStars =  localStorage.getItem( "updatedUserStars" );
+
+        let saveData = new Array();
+        saveData[0] = student_id;
+        saveData[1] = moduleNum;
+        saveData[2] = qNum;
+        if( currentStars != null)
+        {
+            saveData[3] = currentStars;
+        }
+        else
+        {
+            saveData[3] = 0;
+        }
+    
+        sessionStorage.setItem("saveData", JSON.stringify(saveData));
+        console.log("Created savepoint");
+    }
+}
