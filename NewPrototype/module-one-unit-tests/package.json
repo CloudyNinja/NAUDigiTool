@@ -1,0 +1,17 @@
+{
+  "name": "module-one-unit-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sum.js",
+  "scripts": 
+  {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": 
+  {
+    "jest": "^25.4.0"
+  }
+}
