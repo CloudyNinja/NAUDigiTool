@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for createArray.js</title>
+    <title>Code coverage report for checkForDuplicates.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> createArray.js</h1>
+        <h1><a href="index.html">All files</a> checkForDuplicates.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.37% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/27</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/20</span>
+                <span class='fraction'>10/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">69.23% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>18/26</span>
+                <span class='fraction'>19/19</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -101,41 +101,35 @@
 <a name='L42'></a><a href='#L42'>42</a>
 <a name='L43'></a><a href='#L43'>43</a>
 <a name='L44'></a><a href='#L44'>44</a>
-<a name='L45'></a><a href='#L45'>45</a>
-<a name='L46'></a><a href='#L46'>46</a>
-<a name='L47'></a><a href='#L47'>47</a>
-<a name='L48'></a><a href='#L48'>48</a>
-<a name='L49'></a><a href='#L49'>49</a>
-<a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a>
-<a name='L52'></a><a href='#L52'>52</a>
-<a name='L53'></a><a href='#L53'>53</a>
-<a name='L54'></a><a href='#L54'>54</a>
-<a name='L55'></a><a href='#L55'>55</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L45'></a><a href='#L45'>45</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -143,21 +137,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,61 +145,51 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">function createArray( numberOfVariables )
-{
-    // Added these two variables since test needed them 
-    var array = new Array(2);
-    var groupingArray = new Array(2);
-    var dontCare = 0;
-    var variable = Math.round(Math.random());
-    var arrayOfThings = [ 0, 1, "X" ];
-    
-    <span class="missing-if-branch" title="if path not taken" >I</span>if ( dontCare == 1 )
-    {
-<span class="cstat-no" title="statement not covered" >        variable = arrayOfThings[ Math.round( Math.random() * 2 ) ];</span>
-    }
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">function checkForDuplicates( arrayOne, arrayTwo )
+{    
+    var string = "";
 &nbsp;
-    var length = Math.pow( 2, numberOfVariables );
-    array.length = length;
-    groupingArray.length = length;
-&nbsp;
-    for ( var index = 0; index &lt; array.length; index++ )
+    <span class="missing-if-branch" title="else path not taken" >E</span>if ( arrayTwo != null )
     {
-        array[ index ] = arrayOfThings[ Math.round( Math.random() * 1 ) ];;
-        groupingArray[ index ] = 0;
-    }
-&nbsp;
-    <span class="missing-if-branch" title="else path not taken" >E</span>if ( numberOfVariables == 3 )
-    {
-        <span class="missing-if-branch" title="else path not taken" >E</span>if ( ( array[0] != 1 || <span class="branch-1 cbranch-no" title="branch not covered" >array[1] != 1 </span>) &amp;&amp; dontCare == 0 )
+        for ( var arrayOneIndex = 0; arrayOneIndex &lt; arrayOne.length; arrayOneIndex++ )
         {
-            array[0] = 1;
-            array[1] = 1;
-        }
-        
-        else <span class="cstat-no" title="statement not covered" >if ( ( array[0] != 1 || array[1] != "X" ) &amp;&amp; dontCare == 1 )</span>
-        {
-<span class="cstat-no" title="statement not covered" >            array[0] = 1;</span>
-<span class="cstat-no" title="statement not covered" >            array[1] = "X";</span>
-        }
+            for ( var arrayTwoIndex = 0; arrayTwoIndex &lt; arrayTwo.length; arrayTwoIndex++ )
+            {
+                if ( arrayOne[arrayOneIndex] == arrayTwo[arrayTwoIndex] )
+                {
+                    if ( arrayOneIndex == 0 )
+                    {
+                        iOneDup = true;
+                        string += "Duplicate found 1! ";
+                    }
 &nbsp;
-        // Removed swap indices funciton since that will be ran as a separate test
-    }
-    
-    else <span class="cstat-no" title="statement not covered" >if ( numberOfVariables == 4 )</span>
-    {
-<span class="cstat-no" title="statement not covered" >        if ( array[0] != 1 || array[1] != 1 )</span>
-        {
-<span class="cstat-no" title="statement not covered" >            array[0] = 1;</span>
-<span class="cstat-no" title="statement not covered" >            array[1] = 1;</span>
+                    else if ( arrayOneIndex == 1 )
+                    {
+                        iTwoDup = true;
+                        string += "Duplicate found 2! ";
+                    }
+&nbsp;
+                    else if ( arrayOneIndex == 2 )
+                    {
+                        iThreeDup = true;
+                        string += "Duplicate found 3! ";
+                    }
+&nbsp;
+                    else <span class="missing-if-branch" title="else path not taken" >E</span>if ( arrayOneIndex == 3 )
+                    {
+                        iFourDup = true;
+                        string += "Duplicate found 4! ";
+                    }
+                }
+            }
         }
     }
 &nbsp;
-    // Instead of returning array, I returned a print statement since array is always randomized
-    return "Array sucessfully created!";
+    // Added string to use for test
+    return string;
 }
 &nbsp;
-module.exports = createArray;</pre></td></tr></table></pre>
+module.exports = checkForDuplicates;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
