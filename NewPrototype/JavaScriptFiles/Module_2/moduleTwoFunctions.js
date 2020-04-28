@@ -342,7 +342,6 @@ function submitDecimal()
         if( counter == 3 )
         {
             showIt();
-            console.log( totalUserStars );
         }
         else
         {
@@ -920,7 +919,6 @@ function decreaseAttempts( number )
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
         timeTaken = getTimeTaken( minutes, seconds );
-        console.log( "TIME TAKEN: " + timeTaken );
         // You can store the timeTaken variable in the db_log statement
         // As of right now it's only registers per question
         db_log(student_id, 2, 0, false, starsGiven, mistakesMade, timeTaken); 
@@ -977,7 +975,6 @@ function countDown()
     {
         clearInterval( timer );
         timeTaken = getTimeTaken( minutes, seconds );
-        console.log( "TIME TAKEN: " + timeTaken );
         // You can put a db log statement here as well
         alert( "Time has expired. Moving to next page.");
         goToNextPage();
@@ -1017,8 +1014,6 @@ function showIt()
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     timeTaken = getTimeTaken( minutes, seconds );
-    //alert( "TIME TAKEN: " + timeTaken );
-    console.log( "TIME TAKEN: " + timeTaken );
     // You can store the timeTaken variable in the db_log statement
     // As of right now it's only registers per question
     db_log(student_id, 2, 0, true, starsGiven, mistakesMade, timeTaken);
@@ -1077,7 +1072,6 @@ function move() {
 function disableButton()
 {
     document.getElementById('submitButton').disabled = true;
-    console.log( "Button disabled" );
 }
 
 setTimeout( enableButton, 3000 );
@@ -1085,7 +1079,6 @@ setTimeout( enableButton, 3000 );
 function enableButton()
 {
     document.getElementById('submitButton').disabled = false;
-    console.log( "Button enabled" );
 }
 
 /////////////////////////////// On start up functions -- some needed to be in seperate functions due to how indexof() works /////////////////////
