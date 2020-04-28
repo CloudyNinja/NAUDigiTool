@@ -45,21 +45,6 @@ createTruthTable(3);
 createKMap(3);
 fillKMap();
 
-// For hardcoding array ( testing )
-/*array[0] = 1;
-array[1] = 1;
-array[2] = 1;
-array[3] = 1;
-array[4] = 1;
-array[5] = 1;
-array[6] = 1;
-array[7] = 1;*/
-
-console.log( "\nA | BC________________________");
-console.log( "  |     00 |  01 |  11 |  10  |");
-console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
-console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
-
 find8s();
 find4s();
 find2s();

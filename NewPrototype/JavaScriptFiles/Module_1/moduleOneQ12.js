@@ -47,15 +47,6 @@ createKMap(4);
 fillKMap();
 timer = setInterval( "countDown()", 1000 );
 
-console.log( "\nA | BC________________________");
-console.log( "  |     00 |  01 |  11 |  10  |");
-console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
-console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
-console.log( "11|      " + array[8] + " |   " + array[9] + " |   " + array[10] + " |   " + array[11] + "  |\n" );
-console.log( "10|      " + array[12] + " |   " + array[13] + " |   " + array[14] + " |   " + array[15] + "  |\n\n" );
-
-console.log( "ARRAY FORMED: " + JSON.stringify( array ) );
-
 find16s();
 find8s();
 find4s();

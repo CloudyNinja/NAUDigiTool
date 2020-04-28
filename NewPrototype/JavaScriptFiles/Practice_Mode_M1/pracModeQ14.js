@@ -47,11 +47,6 @@ createTruthTable(3);
 createKMap(3);
 fillKMap();
 
-console.log( "\nA | BC________________________");
-console.log( "  |     00 |  01 |  11 |  10  |");
-console.log( "00|      " + array[0] + " |   " + array[1] + " |   " + array[2] + " |   " + array[3] + "  |" );
-console.log( "01|      " + array[4] + " |   " + array[5] + " |   " + array[6] + " |   " + array[7] + "  |\n" );
-
 find8sPOS();
 find4sPOS();
 find2sPOS();

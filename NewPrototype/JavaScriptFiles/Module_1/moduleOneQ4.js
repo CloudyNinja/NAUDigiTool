@@ -11,8 +11,6 @@ userArray = createUserArray(4);
 createTruthTable(4);
 createKMap(4);
 timer = setInterval( "countDown()", 1000 );
-
-console.log( JSON.stringify( array ) );
 userArray = createUserArray(4);
 
 // Attempts Left Message
