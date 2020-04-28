@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="CSS/default.css">
+        <link rel="shortbut icon" href="CSS/CSS_Pictures/Team15_Logo.jpg" type="image/x-icon"/>
+        <title>Homepage</title>
+    </head>
+    <body>
+        <div id="navbar"></div>
+        
+        <div id="topContainer">
+            <p><b>Welcome to NAUDigiTool!</b></p>
+            <img id="logo" height="250" weight="250" src="CSS/CSS_Pictures/Team15_Logo.jpg">
+        </div>
+        
+        <div id="instructions">
+            <p><b>Using our Web Application</b><br><br>Welcome to our web application that aims to increase the proffiency rate of students who are enrolled in EE110! As of right now, 2 modules are available for students to practice, which include Karnaugh Maps and Numeric Conversions. There are a couple things you should take note of before starting each module.<br><br><ul><li>Module 1: Karnaugh Maps. In order to pass this module you need to score a 90% ( 54/60 ) in order to pass.</li>
+            
+            <br><br><li>Module 1: View tutorials at the bottom of the page to help solve Module 1 problems.</li>
+            
+            <br><br><li>Module 2: In order to pass this module you need to score a 90% ( 18/20 ) in order to pass.</li><br><br>
+            
+            <li>Practice Mode is now available for both modes.</li><br><br>
+            
+            <li>Minor errors may occur. We are currently fixing and adding on to our project.</li></ul><br><br>
+            
+            <div id="iconCredits">
+            <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+            </div>
+        </div>
+        
+        <div id="videoContainer">
+            <h2>Tutorials</h2>
+            <h3>Grouping 3 Variable Problems</h3>
+            <video width="450" height="300" controls>
+              <source src="tutorialVideos/Grouping3Var.mov">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <h3>Grouping 4 Variable Problems</h3>
+            <video width="450" height="300" controls>
+              <source src="tutorialVideos/4VarGrouping.mov">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <h3>Writing SOP Equations</h3>
+            <video width="450" height="300" controls>
+              <source src="tutorialVideos/WritingSOPEquations.mov">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            <h3>Writing POS Equations</h3>
+            <video width="450" height="300" controls>
+              <source src="tutorialVideos/WritingPOSEquations.mov">
+              Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <div id="footer"></div>
+        
+        <!-- Dependencies -->
+        <script src="./node_modules/react/umd/react.development.js"></script>
+        <script src="./node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <!-- Main -->
+        <script src="./dist/main.js"></script>
+    </body>
+</html>

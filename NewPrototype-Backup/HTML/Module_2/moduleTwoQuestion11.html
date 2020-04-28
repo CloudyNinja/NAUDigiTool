@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="../../CSS/default.css">
+        <link rel="stylesheet" href="../../CSS/moduleTwo.css">
+        <link rel="shortbut icon" href="../../CSS/CSS_Pictures/Team15_Logo.jpg" type="image/x-icon"/>
+        <title>Convert Binary to Decimal</title>
+    </head>
+    <body onload="startBinaryFraction()">
+        <div id="moduleNavbar" ></div>
+
+        <h2 id="problem"> Conversion 11: Convert the following binary fractions to decimal fractions. </h2>
+
+        <h3 id="question1"> Given <span id="randomNumber1"></span>, convert to decimal: </h3>
+        <input type="text" id="input1" placeholder="Enter decimal value here" />
+
+        <br>
+
+        <h3 id="question2"> Given <span id="randomNumber2"></span>, convert to decimal: </h3>
+        <input type="text" id="input2" placeholder="Enter decimal value here" />
+
+        <br>
+
+        <h3 id="question3"> Given <span id="randomNumber3"></span>, convert to decimal: </h3>
+        <input type="text" id="input3" placeholder="Enter decimal value here" />
+
+        <button type="button" id="submitButton" onclick="submitBinaryFraction()">Submit</button>
+        <button type="button" id="hintButton" onclick="receiveHint()">Hint</button>
+        <button type="button" id="resetButton" onclick="resetEquation()">Reset</button>
+
+        <p id="incorrectAnswerMessage"></p>
+        
+        <p id="hint"></p>
+        
+        <p id="attemptsLeft"></p>
+        
+        <p id="scoreText"></p>
+
+        <p id="timer"></p>
+
+        <!--the alert div-->
+        <div id="myalert" >
+            <h2 id="alertText">You are correct! Star earned!</h2>
+            <img id="myimg" src="../../CSS/CSS_Pictures/Star.png" alt="Image of Star" height="150" width = "150" align="top" > 
+        </div>
+
+        <!--Progress bar-->
+        <div class="w3-container">
+            <div id="blueBar" style="height:30px;width:250px;margin-left: 10px;">
+                <div id="myBar" style="height:30px;width:120px"></div>
+            </div>
+        </div>
+
+        <!-- Loads the JavaScript files -->
+        <script src="../../JavaScriptFiles/tracker.js"></script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoStars.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoFunctions.js"> </script>
+        <script src="../../JavaScriptFiles/Module_2/moduleTwoQ2.js"> </script>
+        
+        <div id="footer"></div>
+        
+        <!-- Dependencies -->
+        <script src="../../node_modules/react/umd/react.development.js"></script>
+        <script src="../../node_modules/react-dom/umd/react-dom.development.js"></script>
+
+        <!-- Main -->
+        <script src="../../dist/main.js"></script>
+    </body>
+</html>
