@@ -121,7 +121,6 @@ function addToDrawingArray( tempPassed, arrayPassed, indexPassed, drawingArrayPa
     indexPassed = createArraySpace( drawingArrayPassed );
     drawingArrayPassed[indexPassed] = arrayPassed;
     drawingArrayPassed = removeDuplicates( drawingArrayPassed );
-    console.log( "DRAWING ARRAY: " + JSON.stringify( drawingArrayPassed ) );
 }
 
 // This formats rectangle as a user groups them
@@ -875,7 +874,6 @@ function sketchRectangle()
 {
     ctx.strokeStyle = "#FF0000";
     ctx.strokeRect( rect.startX, rect.startY, rect.w, rect.h );
-    //console.log( rect.startX + " " + rect.startY + " " + rect.w + " " + rect.h );
 }
 
 function getMousePos( canvas, event )
@@ -883,7 +881,6 @@ function getMousePos( canvas, event )
     var rect = canvas.getBoundingClientRect();
     var x = event.clientX - rect.left;
     var y = event.clientY - rect.top;
-    //console.log( "X: " + x + " Y: " + y );
 }
   
 // This function can be used for grouping but I haven't implemented it yet.
@@ -1504,8 +1501,6 @@ function find16s()
         sixteenArray[sixteenArrayIndex] = newArray;
         sixteenAmount += 1;
     }
-        
-    console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
 }
 
 // Finds 16s in array ( Product of Sums )
@@ -1538,8 +1533,6 @@ function find16sPOS()
         sixteenArray[sixteenArrayIndex] = newArray;
         sixteenAmount += 1;
     }
-        
-    console.log( "SIXTEEN ARRAY: " + JSON.stringify( sixteenArray ) );
 }
 
 // Finds 8s in array
@@ -1612,8 +1605,6 @@ function find8s()
         }
         
     }
-    
-    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
 }
 
 // Finds 8s in array ( Product of Sums )
@@ -1686,8 +1677,6 @@ function find8sPOS()
         }
         
     }
-    
-    console.log( "EIGHT ARRAY: " + JSON.stringify( eightArray ) );
 }
 
 // Finds 4s in array
@@ -1790,7 +1779,6 @@ function find4s()
     }
     
     fourArray = eliminateRedundancies( fourArray );
-    console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
 }
 
@@ -1894,7 +1882,6 @@ function find4sPOS()
     }
     
     fourArray = eliminateRedundancies( fourArray );
-    console.log( "FOUR ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( fourArray ) );
     resetAllDuplicates();
 }
 
@@ -1982,14 +1969,11 @@ function find2s()
     if ( twoArray[0] != null && fourArray[0] != null )
     {
         twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
-        console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
     }
     
     else 
     {
-        //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
         twoArray = eliminateRedundancies( twoArray );
-        console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
     }
 }
 
@@ -2069,22 +2053,17 @@ function find2sPOS()
     if ( twoArray[0] != null && fourArray[0] != null )
     {
         twoArray = eliminateRedundanciesFromTwoArrays( twoArray, fourArray, twoArray );
-        console.log( "TWO ARRAY FORMED AFTER REDUNDACY FROM FOUR ARRAY: " + JSON.stringify( twoArray ) );
     }
     
     else 
     {
-        //console.log( "TWO ARRAY FORMED BEFORE REDUNDACY: " + JSON.stringify( twoArray ) );
         twoArray = eliminateRedundancies( twoArray );
-        console.log( "TWO ARRAY FORMED AFTER REDUNDACY: " + JSON.stringify( twoArray ) );
     }
 }
 
 // Eliminates Redundacies within one array
 function eliminateRedundancies( arrayPassed )
-{
-    //console.log( "LENGTH OF ARRAY PASSED: "+ arrayPassed.length );
-    
+{    
     if ( arrayPassed != null )
     {        
         for ( var outerIndex = arrayPassed.length - 1; outerIndex > 0; outerIndex-- )
@@ -2095,14 +2074,12 @@ function eliminateRedundancies( arrayPassed )
             {
                 if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
                 {
-                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
                     checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
 
                     if ( arrayPassed[innerIndex].length == 4 )
                     {
                         if ( iOneDup && iTwoDup && iThreeDup && iFourDup )
                         {
-                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                             arrayPassed.splice( outerIndex, 1 );
                             resetAllDuplicates();
                         }
@@ -2112,7 +2089,6 @@ function eliminateRedundancies( arrayPassed )
                     {
                         if ( iOneDup && iTwoDup )
                         {
-                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                             arrayPassed.splice( outerIndex, 1 );
                             resetAllDuplicates();
                         }
@@ -2129,14 +2105,12 @@ function eliminateRedundancies( arrayPassed )
             {
                 if ( arrayPassed[outerIndex] != arrayPassed[innerIndex] )
                 {
-                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + arrayPassed[innerIndex] );
                     checkForDuplicates( arrayPassed[outerIndex], arrayPassed[innerIndex] );
 
                     if ( arrayPassed[innerIndex].length == 4 )
                     {
                         if ( iOneDup && iTwoDup && iThreeDup && iFourDup )
                         {
-                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                             arrayPassed.splice( outerIndex, 1 );
                             resetAllDuplicates();
                         }
@@ -2146,7 +2120,6 @@ function eliminateRedundancies( arrayPassed )
                     {
                         if ( iOneDup && iTwoDup )
                         {
-                            //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                             arrayPassed.splice( outerIndex, 1 );
                             resetAllDuplicates();
                         }
@@ -2164,8 +2137,6 @@ function eliminateRedundancies( arrayPassed )
 // Eliminates redundacies within 2 arrays
 function eliminateRedundanciesFromTwoArrays( arrayPassed, otherArrayPassed, lastArrayPassed )
 {
-    //console.log( "LENGTH OF ARRAY PASSED: "+ arrayPassed.length );
-    
     if ( arrayPassed != null && otherArrayPassed != null )
     {        
         for ( var outerIndex = 0; outerIndex < arrayPassed.length; outerIndex++ )
@@ -2174,13 +2145,10 @@ function eliminateRedundanciesFromTwoArrays( arrayPassed, otherArrayPassed, last
 
             for ( var innerIndex = 0; innerIndex < otherArrayPassed.length; innerIndex++ )
             {
-
-                //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + otherArrayPassed[innerIndex] );
                 checkForDuplicates( arrayPassed[outerIndex], otherArrayPassed[innerIndex] );
 
                 if ( iOneDup && iTwoDup )
                 {
-                    //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                     arrayPassed.splice( outerIndex, 1 );
                     resetAllDuplicates();
                 }
@@ -2190,12 +2158,10 @@ function eliminateRedundanciesFromTwoArrays( arrayPassed, otherArrayPassed, last
             {
                 if ( arrayPassed[outerIndex] != lastArrayPassed[index] )
                 {
-                    //console.log( "Comparing " + arrayPassed[outerIndex] + " to " + lastArrayPassed[index] );
                     checkForDuplicates( arrayPassed[outerIndex], lastArrayPassed[index] );
                     
                     if ( iOneDup && iTwoDup )
                     {
-                        //console.log( "REMOVING ARRAY AT: " + arrayPassed[outerIndex] );
                         arrayPassed.splice( outerIndex, 1 );
                         resetAllDuplicates();
                     }
@@ -3772,7 +3738,6 @@ function generateArrayIndex()
     if ( array.length == 8 )
     {
         var number = Math.floor((Math.random() * arraysToGenerateFrom3Var.length) + 0);
-        console.log( "NUMBER GENERATED: " + number );
         return arraysToGenerateFrom3Var[number];
     }
     
@@ -3819,7 +3784,6 @@ function checkAnswers()
     
     for ( var index = 0; index < array.length; index++ )
     {
-        //console.log( "Checking " + userArray[index].toUpperCase() + " with " + array[index] );
         if ( userArray[index].toUpperCase() != array[index] )
         {
             isRight = -1;
@@ -3867,13 +3831,6 @@ function checkGroupings()
     var eightArraysMatch = checkIfArraysMatch( eightArray, eightDrawingArray );
     var fourArraysMatch = checkIfArraysMatch( fourArray, fourDrawingArray );
     var twoArraysMatch = checkIfArraysMatch( twoArray, twoDrawingArray );
-    
-    console.log( "16: " + sixteenArraysMatch );
-    console.log( "8: " + eightArraysMatch );
-    console.log( "4: " + fourArraysMatch );
-    console.log( "TWO ARRAY: " + JSON.stringify( twoArray ) );
-    console.log( "TWO DARRAY: " + JSON.stringify( twoDrawingArray ) );
-    console.log( "2: " + twoArraysMatch );
         
     if ( sixteenArraysMatch && eightArraysMatch && fourArraysMatch && twoArraysMatch )
     {   
@@ -3923,9 +3880,6 @@ function checkUserEquation()
     {
         var userInput = document.getElementById("userEquation").value.replace(/ /g,'').toUpperCase().split("*");
     }
-    
-    console.log( "USER INPUT: " + userInput );
-    console.log( "Equation Array: " + JSON.stringify(equationArray) );
     
     if ( Boolean( userInput.length == countElementsInEquationArray() ) )
     {
@@ -4102,7 +4056,6 @@ function decreaseAttempts( number )
         totalUserStars += starsGiven;
         passUserStars( totalUserStars );
         timeTaken = getTimeTaken( minutes, seconds );
-        console.log( "TIME TAKEN: " + timeTaken );
         // You can store the timeTaken variable in the db_log statement
         // As of right now it's only registers per question
         db_log(student_id, 1, 0, false, starsGiven, mistakesMade, timeTaken); 
@@ -4162,8 +4115,6 @@ function showIt()
     totalUserStars += starsGiven;
     passUserStars( totalUserStars );
     timeTaken = getTimeTaken( minutes, seconds );
-    //alert( "TIME TAKEN: " + timeTaken );
-    console.log( "TIME TAKEN: " + timeTaken );
     // You can store the timeTaken variable in the db_log statement
     // As of right now it's only registers per question
     db_log(student_id, 1, 0, true, starsGiven, 3-attemptsLeft, timeTaken);
@@ -4200,8 +4151,6 @@ function countDown()
     {
         clearInterval( timer );
         timeTaken = getTimeTaken( minutes, seconds );
-        console.log( "TIME TAKEN: " + timeTaken );
-        // You can put a db log statement here as well
         alert( "Time has expired. Moving to next page.");
         goToNextPage();
     }
@@ -4211,13 +4160,11 @@ function countDown()
 function disableButton()
 {
     document.getElementById('submitButton').disabled = true;
-    console.log( "Button disabled" );
 }
 
 function enableButton()
 {
     document.getElementById('submitButton').disabled = false;
-    console.log( "Button enabled" );
 }
 
 /////////////////////////////// Creates variable in storage for creating a save /////////////////////////////////////////
@@ -4250,6 +4197,5 @@ function setupSave()
         }
     
         sessionStorage.setItem("saveData", JSON.stringify(saveData));
-        console.log("Created savepoint");
     }
 }
