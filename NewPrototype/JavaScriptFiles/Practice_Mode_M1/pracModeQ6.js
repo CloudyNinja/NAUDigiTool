@@ -5,6 +5,7 @@ var groupingArray = new Array(8);
 var dontCare = 1;
 var hint = 3;
 var practiceMode = 1;
+var pos = 0;
 
 // Counter for 16s along with array
 var sixteenCounter = 0;
