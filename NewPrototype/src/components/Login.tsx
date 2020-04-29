@@ -42,7 +42,6 @@ export class Login extends React.Component<{}>
                 if (response_data[0] == "true") {
                     //data is split into true and student_id
                     sessionStorage.setItem("student_id", response_data[1]);
-                    alert(sessionStorage.getItem("student_id"));
                     window.location.href = "index.html";
                     
                 }
