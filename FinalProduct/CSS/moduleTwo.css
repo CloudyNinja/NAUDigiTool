@@ -492,7 +492,7 @@ body
 #starsEarned
 {
     position: absolute;
-    color: black;
+    color: red;
     top: 320px;
     left: 960px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
