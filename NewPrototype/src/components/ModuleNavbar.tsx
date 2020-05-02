@@ -12,10 +12,10 @@ export class ModuleNavbar extends React.Component<{}>
 
     render() {
         return <ul id="navigationBar">
-            <li onClick={() => this.createSave()}><a href="../../index.html">Home</a></li>
+            <li onClick={() => this.createSave()}><a href="../../homepage.html">Home</a></li>
             <li onClick={() => this.createSave()}><a href="../../modules.html">Modules</a></li>
             <li onClick={() => this.createSave()}><a href="../../practiceMode.html">Practice Mode</a></li>
-            <li onClick={() => this.logout()}><a href="../../login.html">Log Out</a></li>
+            <li onClick={() => this.logout()}><a href="../../index.html">Log Out</a></li>
         </ul>;
     }
 
