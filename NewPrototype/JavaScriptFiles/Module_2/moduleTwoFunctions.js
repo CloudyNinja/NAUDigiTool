@@ -911,7 +911,7 @@ function decreaseAttempts( number )
     {
         number -= 1;
         document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + number.toString();
-        document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+        document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 20;
     }
     else
     {
