@@ -11,4 +11,4 @@ timer = setInterval( "countDown()", 1000 );
 document.getElementById("attemptsLeft").innerHTML = "Attempts left: " + attemptsLeft.toString();
 
 // Star score message
-document.getElementById("scoreText").innerHTML =  " Star Score: " + starsGiven.toString() + "/" + levelMaxStars.toString();
+document.getElementById("scoreText").innerHTML =  " Star Score: " + totalUserStars + "/" + 20;
