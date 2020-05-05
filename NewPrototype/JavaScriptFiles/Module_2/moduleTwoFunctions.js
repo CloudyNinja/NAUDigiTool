@@ -43,14 +43,74 @@ function randomDecimalFraction()
         if( index == 1 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
-            randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            randomNumberSuffix = Math.floor( ( Math.random() * 875 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            // if block ensures that only specific decimals are chosen
+            if( randomNumberSuffix != 5 || randomNumberSuffix != 25 || randomNumberSuffix != 75 || randomNumberSuffix != 125
+                || randomNumberSuffix != 625 || randomNumberSuffix != 875 )
+            {
+                var choice = Math.floor( ( Math.random() * 6 ) + 1 );
+                if( choice == 1 )
+                {
+                    randomNumberSuffix = 5;
+                }
+                else if( choice == 2 )
+                {
+                    randomNumberSuffix = 25;
+                }
+                else if( choice == 3 )
+                {
+                    randomNumberSuffix = 75;
+                }
+                else if( choice == 4 )
+                {
+                    randomNumberSuffix = 125;
+                }
+                else if( choice == 5 )
+                {
+                    randomNumberSuffix = 625;
+                }
+                else 
+                {
+                    randomNumberSuffix = 875;
+                }
+            }
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
         }
         else if( index == 2 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
-            randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            randomNumberSuffix = Math.floor( ( Math.random() * 875 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            // if block ensures that only specific decimals are chosen
+            if( randomNumberSuffix != 5 || randomNumberSuffix != 25 || randomNumberSuffix != 75 || randomNumberSuffix != 125
+                || randomNumberSuffix != 625 || randomNumberSuffix != 875 )
+            {
+                var choice = Math.floor( ( Math.random() * 6 ) + 1 );
+                if( choice == 1 )
+                {
+                    randomNumberSuffix = 5;
+                }
+                else if( choice == 2 )
+                {
+                    randomNumberSuffix = 25;
+                }
+                else if( choice == 3 )
+                {
+                    randomNumberSuffix = 75;
+                }
+                else if( choice == 4 )
+                {
+                    randomNumberSuffix = 125;
+                }
+                else if( choice == 5 )
+                {
+                    randomNumberSuffix = 625;
+                }
+                else 
+                {
+                    randomNumberSuffix = 875;
+                }
+            }
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
         }
@@ -58,6 +118,36 @@ function randomDecimalFraction()
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
             randomNumberSuffix = Math.floor( ( Math.random() * 128 ) + 1 ); // Generates random suffix between 1 and 15 ( 1/2 to 1/16 )
+            // if block ensures that only specific decimals are chosen
+            if( randomNumberSuffix != 5 || randomNumberSuffix != 25 || randomNumberSuffix != 75 || randomNumberSuffix != 125
+                || randomNumberSuffix != 625 || randomNumberSuffix != 875 )
+            {
+                var choice = Math.floor( ( Math.random() * 6 ) + 1 );
+                if( choice == 1 )
+                {
+                    randomNumberSuffix = 5;
+                }
+                else if( choice == 2 )
+                {
+                    randomNumberSuffix = 25;
+                }
+                else if( choice == 3 )
+                {
+                    randomNumberSuffix = 75;
+                }
+                else if( choice == 4 )
+                {
+                    randomNumberSuffix = 125;
+                }
+                else if( choice == 5 )
+                {
+                    randomNumberSuffix = 625;
+                }
+                else 
+                {
+                    randomNumberSuffix = 875;
+                }
+            }
             document.getElementById( "randomNumber" + index ).innerHTML = randomNumberPrefix + "." + randomNumberSuffix;
             document.getElementById( "randomNumber" + index ).value = randomNumberPrefix + "." + randomNumberSuffix;
         }
