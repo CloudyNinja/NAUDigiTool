@@ -278,7 +278,7 @@ function randomOctalFraction()
         else if( index == 2 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 87 ) + 88 ); // Generates random number between 88 and 174
-            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 7 ); // Generates random suffix between 7 and 13
+            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 1 ); // Generates random suffix between 1 and 7
             octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
             octalNumberSuffix = randomNumberSuffix.toString(8);
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
@@ -287,7 +287,7 @@ function randomOctalFraction()
         else 
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 157 ) + 174 ); // Generates random number between 174 and 330
-            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 13 ); // Generates random suffix between 13 and 19 
+            randomNumberSuffix = Math.floor( ( Math.random() * 7 ) + 1 ); // Generates random suffix between 1 and 7
             octalNumberPrefix = randomNumberPrefix.toString(8); // Converts random number to octal
             octalNumberSuffix = randomNumberSuffix.toString(8);
             document.getElementById( "randomNumber" + index ).innerHTML = octalNumberPrefix + "." + octalNumberSuffix;
@@ -334,7 +334,7 @@ function randomHexFraction()
         if( index == 1 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 256 ) + 1 ); // Generates random number between 1 and 256
-            randomNumberSuffix = Math.floor( ( Math.random() * 15 ) + 1 ); // Generates random suffix between 1 and 15
+            randomNumberSuffix = Math.floor( ( Math.random() * 9 ) + 1 ); // Generates random suffix between 1 and 9 (four points of precision)
             hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
@@ -343,7 +343,7 @@ function randomHexFraction()
         else if( index == 2 )
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 257 ) + 256 ); // Generates random number between 256 and 512
-            randomNumberSuffix = Math.floor( ( Math.random() * 14 ) + 15 ); // Generates random suffix between 14 and 30
+            randomNumberSuffix = Math.floor( ( Math.random() * 9 ) + 1 ); // Generates random suffix between 1 and 9 (four points of precision)
             hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
@@ -352,7 +352,7 @@ function randomHexFraction()
         else
         {
             randomNumberPrefix = Math.floor( ( Math.random() * 489 ) + 512 ); // Generates random number between 512 and 1,000
-            randomNumberSuffix = Math.floor( ( Math.random() * 29 ) + 30 ); // Generates random suffix between 30 and 60
+            randomNumberSuffix = Math.floor( ( Math.random() * 9 ) + 1 ); // Generates random suffix between 1 and 9 (four points of precision)
             hexNumberPrefix = randomNumberPrefix.toString(16).toUpperCase(); // Converts random number to hex
             hexNumberSuffix = randomNumberSuffix.toString(16).toUpperCase();
             document.getElementById( "randomNumber" + index ).innerHTML = hexNumberPrefix + "." + hexNumberSuffix;
