@@ -11,7 +11,10 @@
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
     #get vars through post
-    $id =  $_POST['id'];
+    $id =  $_POST['student_id'];
+    #$id =  $_ENV['REMOTE_USER'];
+
+
     $mistakes =  $_POST['mistakes'];
     $module_num =  $_POST['module_num'];
     $success =  $_POST['success'];

@@ -7,6 +7,7 @@ export class Login extends React.Component<{}>
         super(props);
 
         this.attempt_login = this.attempt_login.bind(this);
+        this.createAccount = this.createAccount.bind(this);
     }
 
 
@@ -19,6 +20,7 @@ export class Login extends React.Component<{}>
                     Password
                     <input type="password" id="pass" placeholder="Password"></input><br />
                     <input type="submit" ></input>
+                    <button onClick={() => this.createAccount()}>Create an account</button>
                 </form>
             </div>
         )
@@ -42,7 +44,7 @@ export class Login extends React.Component<{}>
                 if (response_data[0] == "true") {
                     //data is split into true and student_id
                     sessionStorage.setItem("student_id", response_data[1]);
-                    window.location.href = "index.html";
+                    window.location.href = "homepage.html";
                     
                 }
                 else {
@@ -57,5 +59,9 @@ export class Login extends React.Component<{}>
         let pass = (document.getElementById("pass") as HTMLInputElement).value;
 
         xmlhttp.send( "username="+user+"&password="+pass);
+    }
+
+    createAccount() {
+        window.location.href = "register.html";
     }
 }

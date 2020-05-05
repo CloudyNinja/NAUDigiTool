@@ -9,7 +9,6 @@
     define('DB_USERNAME', $dbinfo['MYSQLusername']);
     define('DB_PASSWORD', $dbinfo['MYSQLpassword']);
     define('DB_DATABASE', $dbinfo['MYSQLdbname']);
-    
     $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 
     #get vars through post
@@ -19,7 +18,7 @@
     #injection protection
     $username = stripcslashes($username);
     $password = stripcslashes($password);
-
+    $password = hash("sha256", $password );
 
     #pull user data
     $result = mysqli_query($db, "SELECT * FROM student WHERE Username = '$username' AND Password ='$password'")

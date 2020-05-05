@@ -5,7 +5,13 @@ import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import { ModuleNavbar } from "./components/ModuleNavbar";
 import { Login } from "./components/Login"
+import { Registration } from "./components/Registration";
 //import { Hello } from "./components/Hello";
+
+//Because webpack puts all of our react components in main.js
+//this index file will try to render every component on every page
+//react doesnt like this and breaks the page -> need to check if that
+//component actually exists on the page before trying to render it. 
 
 if (document.getElementById("navbar") != null) {
     ReactDOM.render(
@@ -32,6 +38,13 @@ if (document.getElementById("login") != null) {
     ReactDOM.render(
         <Login />,
         document.getElementById("login")
+    );
+}
+
+if (document.getElementById("registration") != null) {
+    ReactDOM.render(
+        <Registration />,
+        document.getElementById("registration")
     );
 }
 
