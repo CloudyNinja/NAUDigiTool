@@ -5,7 +5,7 @@
 function db_log(id, module_num, mode, success, stars, mistakes, time_taken) {
     var xmlhttp = new XMLHttpRequest();
     //open is the method, file on the serverside to access, and async or not
-    xmlhttp.open("POST", "../../tracker.php", true);
+    xmlhttp.open("POST", "../../attempt.php", true);
 
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 

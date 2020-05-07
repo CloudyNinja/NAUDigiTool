@@ -11,6 +11,10 @@ var rectangleArray = new Array( 1 );
 var drawingArray = new Array( 1 );
 
 var student_id = sessionStorage.getItem('student_id');
+if( student_id == null){
+    alert("You are not logged in!");
+    window.location.href = "../../index.html"; 
+}
 var mistakesMade = 0;
 setupSave();
 
